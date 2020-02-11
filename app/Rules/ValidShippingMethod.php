@@ -36,7 +36,7 @@ class ValidShippingMethod implements Rule
             return false;
         }
 
-        return $address->country->shippingMethods->contains('id', $value);
+        return $address->city->shippingMethods->contains('id', $value);
     }
 
     /**

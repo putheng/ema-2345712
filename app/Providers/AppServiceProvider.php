@@ -5,6 +5,9 @@ namespace App\Providers;
 use App\Cart\Cart;
 use App\Cart\Payments\Gateway;
 use App\Cart\Payments\Gateways\StripeGateway;
+use App\Models\Image;
+use App\Models\Product;
+use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\ServiceProvider;
 use Stripe\Stripe;
 
@@ -18,6 +21,11 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Stripe::setApiKey(config('services.stripe.secret'));
+
+        Relation::morphMap([
+            'product' => Product::class,
+            'image' => Image::class,
+        ]);
     }
 
     /**

@@ -3,7 +3,9 @@
 namespace App\Models;
 
 use App\Models\Address;
+use App\Models\Agent;
 use App\Models\PaymentMethod;
+use App\Models\Product;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
@@ -57,6 +59,11 @@ class User extends Authenticatable implements JWTSubject
         return [];
     }
 
+    public function agent()
+    {
+        return $this->hasOne(Agent::class);
+    }
+
     public function cart()
     {
         return $this->belongsToMany(ProductVariation::class, 'cart_user')
@@ -67,6 +74,16 @@ class User extends Authenticatable implements JWTSubject
     public function addresses()
     {
         return $this->hasMany(Address::class);
+    }
+
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
+
+    public function variations()
+    {
+        return $this->hasManyThrough(ProductVariation::class, Product::class);
     }
 
     public function orders()

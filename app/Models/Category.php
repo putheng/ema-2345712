@@ -17,6 +17,20 @@ class Category extends Model
         'order'
     ];
 
+    public static function boot()
+    {
+        parent::boot();
+
+        static::creating(function($model){
+            $model->slug = str_slug($model->name);
+        });
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
     public function children()
     {
         return $this->hasMany(Category::class, 'parent_id', 'id');

@@ -9,7 +9,7 @@ use Faker\Generator as Faker;
 
 $factory->define(City::class, function (Faker $faker) {
     return [
-    	'name' => 'Cambodia',
+    	'name' => 'Phnom Penh',
         'country_id' => factory(Country::class)->create()->id,
     ];
 });

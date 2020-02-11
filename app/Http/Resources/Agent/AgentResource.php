@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Resources;
+namespace App\Http\Resources\Agent;
 
-use App\Http\Resources\CategoryResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class CategoryResource extends JsonResource
+class AgentResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -17,9 +16,10 @@ class CategoryResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'name' => $this->name,
-            'slug' => $this->slug,
-            'children' => CategoryResource::collection($this->whenLoaded('children'))
+            'name' => $this->user->name,
+            'level' => $this->level,
+            'child' => $this->child_count,
+            'children' => AgentResource::collection($this->children)
         ];
     }
 }

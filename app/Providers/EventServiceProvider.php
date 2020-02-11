@@ -31,6 +31,10 @@ class EventServiceProvider extends ServiceProvider
             'App\Listeners\Order\CreateTransaction',
             'App\Listeners\Order\MarkOrderProcessing'
         ],
+
+        'App\Events\Agent\AgentCreated' => [
+            'App\Listeners\Agent\CreateAgentProfile',
+        ],
     ];
 
     /**

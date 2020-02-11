@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Cart\Money;
 use App\Models\Collections\ProductVariationCollection;
+use App\Models\Order;
 use App\Models\Product;
 use App\Models\ProductVariationType;
 use App\Models\Traits\HasPrice;
@@ -12,6 +13,10 @@ use Illuminate\Database\Eloquent\Model;
 class ProductVariation extends Model
 {
     use HasPrice;
+
+    protected $fillable = [
+        'name', 'price'
+    ];
 
     public function getPriceAttribute($value)
     {
@@ -50,6 +55,11 @@ class ProductVariation extends Model
     public function product()
     {
         return $this->belongsTo(Product::class);
+    }
+
+    public function orders()
+    {
+        return $this->belongsToMany(Order::class, 'product_variation_order');
     }
 
     public function stocks()

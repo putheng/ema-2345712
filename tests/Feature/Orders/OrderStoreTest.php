@@ -260,7 +260,7 @@ class OrderStoreTest extends TestCase
 
         $shipping = factory(ShippingMethod::class)->create();
 
-        $shipping->countries()->attach($address->country);
+        $shipping->cities()->attach($address->city);
 
         $payment = factory(PaymentMethod::class)->create([
             'user_id' => $user->id

@@ -3,6 +3,7 @@
 namespace Tests\Feature\Categories;
 
 use App\Models\Category;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -20,6 +21,18 @@ class CategoryIndexTest extends TestCase
                 'slug' => $category->slug
             ]);
         });
+    }
+
+    public function test_admin_can_create_category()
+    {
+        $category = factory(Category::class)->create();
+        $user = factory(User::class)->create();
+
+        $this->actingAs($user, 'api')->json('GET', 'api/admin/category')
+            ->assertJsonFragment([
+                'name' => $category->name,
+                'slug' => $category->slug,
+            ]);
     }
 
     public function test_it_returns_only_parent_categories()
