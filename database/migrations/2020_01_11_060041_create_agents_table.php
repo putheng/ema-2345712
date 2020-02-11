@@ -15,7 +15,7 @@ class CreateAgentsTable extends Migration
     {
         Schema::create('agents', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('user_id')->unsigned()->index();;
+            $table->integer('user_id')->unsigned()->index();
             $table->nestedSet();
             $table->timestamps();
 
