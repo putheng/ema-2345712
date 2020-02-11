@@ -18,7 +18,7 @@ class CreateCitiesTable extends Migration
             $table->string('name');
             $table->integer('country_id')->unsinged()->index();
 
-            $table->foreign('country_id')->references('id')->on('countries');
+            // $table->foreign('country_id')->references('id')->on('countries');
         });
     }
 
