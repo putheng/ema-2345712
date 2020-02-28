@@ -24,6 +24,8 @@ class ProductVariationResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'price' => $this->price->amount(),
+            'sale_price' => $this->sale_price,
+            'weight' => $this->weight,
             'stock' => (int) $this->stockCount(),
         ];
 

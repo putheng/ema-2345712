@@ -31,6 +31,8 @@ class ProductStoreRequest extends FormRequest
             'variations.*.options.*.option' => 'required',
             'variations.*.options.*.price' => 'required|numeric',
             'variations.*.options.*.stock' => 'nullable|numeric',
+            'variations.*.options.*.weight' => 'required|numeric',
+            'variations.*.options.*.sale_price' => 'required|numeric',
         ];
     }
 

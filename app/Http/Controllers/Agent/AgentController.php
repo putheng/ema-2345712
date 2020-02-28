@@ -28,4 +28,9 @@ class AgentController extends Controller
     {
     	return new AgentResource($request->user()->agent);
     }
+
+    public function members(User $user, Request $request)
+    {
+        return new AgentResource($user->agent);
+    }
 }

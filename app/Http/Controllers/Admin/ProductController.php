@@ -78,6 +78,8 @@ class ProductController extends Controller
 
             $productvariation->name = $option['option'];
             $productvariation->price = $option['price'];
+            $productvariation->weight = $option['weight'];
+            $productvariation->sale_price = $option['sale_price'];
             $productvariation->product()->associate($product);
             $productvariation->product_variation_type_id = $type->id;
 

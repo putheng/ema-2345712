@@ -7,6 +7,7 @@ use App\Cart\Payments\Gateway;
 use App\Cart\Payments\Gateways\StripeGateway;
 use App\Models\Image;
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\ServiceProvider;
 use Stripe\Stripe;
@@ -25,6 +26,7 @@ class AppServiceProvider extends ServiceProvider
         Relation::morphMap([
             'product' => Product::class,
             'image' => Image::class,
+            'user' => User::class,
         ]);
     }
 

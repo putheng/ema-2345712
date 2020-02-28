@@ -12,10 +12,11 @@
         "barryvdh/laravel-cors": "^0.11.0",
         "fideloper/proxy": "^4.0",
         "kalnoy/nestedset": "^5.0",
-        "laravel/framework": "^6.2",
+        "laravel/framework": "^6.0",
         "laravel/helpers": "^1.1",
         "laravel/tinker": "^1.0",
         "moneyphp/money": "^3.1",
+        "spatie/laravel-permission": "^3.9",
         "stripe/stripe-php": "^6.27",
         "tymon/jwt-auth": "^1.0"
     },

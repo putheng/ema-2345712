@@ -20,8 +20,7 @@ class ProductVariantsController extends Controller
     }
 
     public function store(Request $request, Product $product)
-    {
-    	
+    {	
     	$variations = collect($request->variations)->each(function($value, $key) use ($product){
 
 
@@ -31,6 +30,8 @@ class ProductVariantsController extends Controller
     			$variation->update([
     				'name' => $value['name'],
     				'price' => $value['price'],
+                    'sale_price' => $value['sale_price'],
+                    'weight' => $value['weight'],
     			]);
 
     		});

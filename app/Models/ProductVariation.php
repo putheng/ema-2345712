@@ -15,7 +15,7 @@ class ProductVariation extends Model
     use HasPrice;
 
     protected $fillable = [
-        'name', 'price'
+        'name', 'price', 'sale_price', 'weight'
     ];
 
     public function getPriceAttribute($value)

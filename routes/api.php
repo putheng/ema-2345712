@@ -4,6 +4,8 @@ Route::group(['middleware' => ['auth:api']], function () {
     Route::post('agent/store', 'Agent\AgentController@store');
     Route::get('agent/show', 'Agent\AgentController@show');
 
+    Route::get('agent/show/{user}/members', 'Agent\AgentController@members');
+
     Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function(){
         
         Route::resource('product', 'ProductController');
@@ -14,6 +16,12 @@ Route::group(['middleware' => ['auth:api']], function () {
         Route::resource('variation', 'VariantStockController');
 
         Route::resource('customer', 'CustomerController');
+
+        Route::resource('roles', 'RoleController');
+        Route::get('roles/{role}/permission', 'RolePermissionController@show');
+        Route::post('roles/{role}/permission', 'RolePermissionController@update');
+
+        Route::resource('permissions', 'PermissionController');
     });
 });
 

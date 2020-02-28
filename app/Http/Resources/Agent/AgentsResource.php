@@ -2,10 +2,9 @@
 
 namespace App\Http\Resources\Agent;
 
-use App\Http\Resources\Agent\AgentsResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class AgentResource extends JsonResource
+class AgentsResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -20,8 +19,7 @@ class AgentResource extends JsonResource
             'name' => $this->user->name,
             'level' => $this->level,
             'child' => $this->child_count,
-            'user_id' => $this->user_id,
-            'children' => AgentsResource::collection($this->children)
+            'user_id' => $this->user_id
         ];
     }
 }
