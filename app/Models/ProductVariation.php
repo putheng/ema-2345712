@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Cart\Money;
 use App\Models\Collections\ProductVariationCollection;
+use App\Models\Image;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\ProductVariationType;
@@ -65,6 +66,11 @@ class ProductVariation extends Model
     public function stocks()
     {
         return $this->hasMany(Stock::class);
+    }
+
+    public function image()
+    {
+        return $this->morphOne(Image::class, 'imageable');
     }
 
     public function stock()

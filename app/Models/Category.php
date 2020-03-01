@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Image;
 use App\Models\Product;
 use App\Models\Traits\HasChildren;
 use App\Models\Traits\IsOrderable;
@@ -26,6 +27,11 @@ class Category extends Model
         });
     }
 
+    public function scopeArea($q, $area)
+    {
+        return $q->where('area', $area);
+    }
+
     public function getRouteKeyName()
     {
         return 'slug';
@@ -39,5 +45,10 @@ class Category extends Model
     public function products()
     {
         return $this->belongsToMany(Product::class);
+    }
+
+    public function image()
+    {
+        return $this->morphOne(Image::class, 'imageable');
     }
 }

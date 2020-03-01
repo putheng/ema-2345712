@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Cart\Cart;
 use App\Cart\Payments\Gateway;
 use App\Cart\Payments\Gateways\StripeGateway;
+use App\Models\Category;
 use App\Models\Image;
 use App\Models\Product;
 use App\Models\User;
@@ -26,6 +27,7 @@ class AppServiceProvider extends ServiceProvider
         Relation::morphMap([
             'product' => Product::class,
             'image' => Image::class,
+            'category' => Category::class,
             'user' => User::class,
         ]);
     }

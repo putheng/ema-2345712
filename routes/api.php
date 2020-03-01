@@ -16,6 +16,7 @@ Route::group(['middleware' => ['auth:api']], function () {
         Route::resource('variation', 'VariantStockController');
 
         Route::resource('customer', 'CustomerController');
+        Route::resource('store', 'StoreController');
 
         Route::resource('roles', 'RoleController');
         Route::get('roles/{role}/permission', 'RolePermissionController@show');
@@ -25,7 +26,11 @@ Route::group(['middleware' => ['auth:api']], function () {
     });
 });
 
+Route::get('categories/by', 'Categories\CategoryController@by');
 Route::resource('categories', 'Categories\CategoryController');
+
+Route::resource('popular', 'Categories\PopularController');
+
 Route::resource('products', 'Products\ProductController');
 Route::resource('addresses', 'Addresses\AddressController');
 Route::resource('cities', 'Addresses\CityController');
@@ -57,5 +62,9 @@ Route::resource('cart', 'Cart\CartController', [
 
 
 Route::get('test', function(){
+    $category = App\Models\Category::find(1);
 
+    dd($category->image);
 });
+
+
