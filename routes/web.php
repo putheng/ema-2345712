@@ -2,7 +2,7 @@
 
 Route::get('/', 'PageController@home');
 Route::get('/filter', 'Products\ProductController@index')->name('product.filter');
-Route::get('/product', 'PageController@product')->name('product.show');
+Route::get('/product/show', 'PageController@product')->name('product');
 
 Route::group(['prefix' => 'society', 'middleware' => ['auth']], function(){
 	

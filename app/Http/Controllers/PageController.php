@@ -11,7 +11,7 @@ class PageController extends Controller
     	return view('home.home');
     }
 
-    public function product()
+    public function product(Request $request)
     {
     	return view('home.product');
     }

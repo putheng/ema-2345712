@@ -57,5 +57,5 @@ Route::group(['middleware' => 'auth'], function(){
 
 Route::group(['prefix' => 'auth', 'middleware' => ['guest'], 'namespace' => 'Api'],function(){
 	Route::post('login', 'LoginController@login');
-	Route::post('register', 'RegisterController@store');
+	// Route::post('register', 'RegisterController@store');
 });

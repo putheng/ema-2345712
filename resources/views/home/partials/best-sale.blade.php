@@ -12,7 +12,7 @@
 					<button class="btn-wishlist btn-sm" type="button" data-toggle="tooltip" data-placement="left" title="Add to wishlist"><i class="czi-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="grocery-single.html"><img src="/images/products/08.jpg" alt="Product"></a>
 					<div class="card-body py-2">
 						<a class="product-meta d-block font-size-xs pb-1" href="#">Dairy and Eggs</a>
-						<h3 class="product-title font-size-sm"><a href="{{ route('product.show') }}">Mozzarella Cheese (125g)</a></h3>
+						<h3 class="product-title font-size-sm"><a href="{{ route('product') }}">Mozzarella Cheese (125g)</a></h3>
 						<div class="product-price"><span class="text-accent">$4.<small>30</small></span></div>
 					</div>
 					<div class="product-floating-btn">
@@ -26,7 +26,7 @@
 					<button class="btn-wishlist btn-sm" type="button" data-toggle="tooltip" data-placement="left" title="Add to wishlist"><i class="czi-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="grocery-single.html"><img src="/images/products/09.jpg" alt="Product"></a>
 					<div class="card-body py-2">
 						<a class="product-meta d-block font-size-xs pb-1" href="#">Personal hygiene</a>
-						<h3 class="product-title font-size-sm"><a href="{{ route('product.show') }}">Men’s Shampoo (400ml)</a></h3>
+						<h3 class="product-title font-size-sm"><a href="{{ route('product') }}">Men’s Shampoo (400ml)</a></h3>
 						<div class="product-price"><span class="text-accent">$5.<small>99</small></span></div>
 					</div>
 					<div class="product-floating-btn">
@@ -40,7 +40,7 @@
 					<button class="btn-wishlist btn-sm" type="button" data-toggle="tooltip" data-placement="left" title="Add to wishlist"><i class="czi-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="grocery-single.html"><img src="/images/products/10.jpg" alt="Product"></a>
 					<div class="card-body py-2">
 						<a class="product-meta d-block font-size-xs pb-1" href="#">Meat and Poultry</a>
-						<h3 class="product-title font-size-sm"><a href="{{ route('product.show') }}">Frozen Oven-ready Poultry</a></h3>
+						<h3 class="product-title font-size-sm"><a href="{{ route('product') }}">Frozen Oven-ready Poultry</a></h3>
 						<div class="product-price"><span class="text-accent">$12.<small>00</small></span></div>
 					</div>
 					<div class="product-floating-btn">
@@ -54,7 +54,7 @@
 					<button class="btn-wishlist btn-sm" type="button" data-toggle="tooltip" data-placement="left" title="Add to wishlist"><i class="czi-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="grocery-single.html"><img src="/images/products/11.jpg" alt="Product"></a>
 					<div class="card-body py-2">
 						<a class="product-meta d-block font-size-xs pb-1" href="#">Snacks, Sweets and Chips</a>
-						<h3 class="product-title font-size-sm"><a href="{{ route('product.show') }}">Dark Chocolate with Nuts</a></h3>
+						<h3 class="product-title font-size-sm"><a href="{{ route('product') }}">Dark Chocolate with Nuts</a></h3>
 						<div class="product-price"><span class="text-accent">$2.<small>50</small></span></div>
 					</div>
 					<div class="product-floating-btn">
@@ -68,7 +68,7 @@
 					<button class="btn-wishlist btn-sm" type="button" data-toggle="tooltip" data-placement="left" title="Add to wishlist"><i class="czi-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="grocery-single.html"><img src="/images/products/12.jpg" alt="Product"></a>
 					<div class="card-body py-2">
 						<a class="product-meta d-block font-size-xs pb-1" href="#">Canned Food and Oil</a>
-						<h3 class="product-title font-size-sm"><a href="{{ route('product.show') }}">Corn Oil Bottle (500ml)</a></h3>
+						<h3 class="product-title font-size-sm"><a href="{{ route('product') }}">Corn Oil Bottle (500ml)</a></h3>
 						<div class="product-price"><span class="text-accent">$3.<small>10</small></span></div>
 					</div>
 					<div class="product-floating-btn">
@@ -82,7 +82,7 @@
 					<button class="btn-wishlist btn-sm" type="button" data-toggle="tooltip" data-placement="left" title="Add to wishlist"><i class="czi-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="grocery-single.html"><img src="/images/products/13.jpg" alt="Product"></a>
 					<div class="card-body py-2">
 						<a class="product-meta d-block font-size-xs pb-1" href="#">Fish and Seafood</a>
-						<h3 class="product-title font-size-sm"><a href="{{ route('product.show') }}">Steak Salmon Fillet (1kg)</a></h3>
+						<h3 class="product-title font-size-sm"><a href="{{ route('product') }}">Steak Salmon Fillet (1kg)</a></h3>
 						<div class="product-price"><span class="text-accent">$17.<small>99</small></span></div>
 					</div>
 					<div class="product-floating-btn">
@@ -96,7 +96,7 @@
 					<button class="btn-wishlist btn-sm" type="button" data-toggle="tooltip" data-placement="left" title="Add to wishlist"><i class="czi-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="grocery-single.html"><img src="/images/products/14.jpg" alt="Product"></a>
 					<div class="card-body py-2">
 						<a class="product-meta d-block font-size-xs pb-1" href="#">Canned Food and Oil</a>
-						<h3 class="product-title font-size-sm"><a href="{{ route('product.show') }}">Sardine in Tomato Sauce (105g)</a></h3>
+						<h3 class="product-title font-size-sm"><a href="{{ route('product') }}">Sardine in Tomato Sauce (105g)</a></h3>
 						<div class="product-price"><span class="text-accent">$3.<small>25</small></span></div>
 					</div>
 					<div class="product-floating-btn">

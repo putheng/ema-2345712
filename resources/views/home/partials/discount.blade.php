@@ -30,7 +30,7 @@
 					<button class="btn-wishlist btn-sm" type="button" data-toggle="tooltip" data-placement="left" title="Add to wishlist"><i class="czi-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="grocery-single.html"><img src="/images/products/02.jpg" alt="Product"></a>
 					<div class="card-body py-2">
 						<a class="product-meta d-block font-size-xs pb-1" href="#">Dairy and Eggs</a>
-						<h3 class="product-title font-size-sm"><a href="{{ route('product.show') }}">Soft Creme Cheese (200g)</a></h3>
+						<h3 class="product-title font-size-sm"><a href="{{ route('product') }}">Soft Creme Cheese (200g)</a></h3>
 						<div class="product-price"><span class="text-accent">$2.<small>99</small></span>
 							<del class="font-size-sm text-muted">$3.<small>99</small></del>
 						</div>
@@ -47,7 +47,7 @@
 					<button class="btn-wishlist btn-sm" type="button" data-toggle="tooltip" data-placement="left" title="Add to wishlist"><i class="czi-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="grocery-single.html"><img src="/images/products/03.jpg" alt="Product"></a>
 					<div class="card-body py-2">
 						<a class="product-meta d-block font-size-xs pb-1" href="#">Soft Drinks and Juice</a>
-						<h3 class="product-title font-size-sm"><a href="{{ route('product.show') }}">Pepsi Soda Can (.33ml)</a></h3>
+						<h3 class="product-title font-size-sm"><a href="{{ route('product') }}">Pepsi Soda Can (.33ml)</a></h3>
 						<div class="product-price"><span class="text-accent">$1.<small>00</small></span>
 							<del class="font-size-sm text-muted">$1.<small>25</small></del>
 						</div>
@@ -64,7 +64,7 @@
 					<button class="btn-wishlist btn-sm" type="button" data-toggle="tooltip" data-placement="left" title="Add to wishlist"><i class="czi-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="grocery-single.html"><img src="/images/products/04.jpg" alt="Product"></a>
 					<div class="card-body py-2">
 						<a class="product-meta d-block font-size-xs pb-1" href="#">Fruits and Vegetables</a>
-						<h3 class="product-title font-size-sm"><a href="{{ route('product.show') }}">Fresh Orange, Spain (1kg)</a></h3>
+						<h3 class="product-title font-size-sm"><a href="{{ route('product') }}">Fresh Orange, Spain (1kg)</a></h3>
 						<div class="product-price"><span class="text-accent">$1.<small>15</small></span>
 							<del class="font-size-sm text-muted">$1.<small>75</small></del>
 						</div>
@@ -81,7 +81,7 @@
 					<button class="btn-wishlist btn-sm" type="button" data-toggle="tooltip" data-placement="left" title="Add to wishlist"><i class="czi-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="grocery-single.html"><img src="/images/products/05.jpg" alt="Product"></a>
 					<div class="card-body py-2">
 						<a class="product-meta d-block font-size-xs pb-1" href="#">Personal hygiene</a>
-						<h3 class="product-title font-size-sm"><a href="{{ route('product.show') }}">Moisture Body Lotion (250ml)</a></h3>
+						<h3 class="product-title font-size-sm"><a href="{{ route('product') }}">Moisture Body Lotion (250ml)</a></h3>
 						<div class="product-price"><span class="text-accent">$4.<small>20</small></span>
 							<del class="font-size-sm text-muted">$5.<small>99</small></del>
 						</div>
@@ -98,7 +98,7 @@
 					<button class="btn-wishlist btn-sm" type="button" data-toggle="tooltip" data-placement="left" title="Add to wishlist"><i class="czi-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="grocery-single.html"><img src="/images/products/06.jpg" alt="Product"></a>
 					<div class="card-body py-2">
 						<a class="product-meta d-block font-size-xs pb-1" href="#">Snacks, Sweets and Chips</a>
-						<h3 class="product-title font-size-sm"><a href="{{ route('product.show') }}">Nut Chocolate Paste (750g)</a></h3>
+						<h3 class="product-title font-size-sm"><a href="{{ route('product') }}">Nut Chocolate Paste (750g)</a></h3>
 						<div class="product-price"><span class="text-accent">$6.<small>50</small></span>
 							<del class="font-size-sm text-muted">$7.<small>99</small></del>
 						</div>
@@ -115,7 +115,7 @@
 					<button class="btn-wishlist btn-sm" type="button" data-toggle="tooltip" data-placement="left" title="Add to wishlist"><i class="czi-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="grocery-single.html"><img src="/images/products/07.jpg" alt="Product"></a>
 					<div class="card-body py-2">
 						<a class="product-meta d-block font-size-xs pb-1" href="#">Dairy and Eggs</a>
-						<h3 class="product-title font-size-sm"><a href="{{ route('product.show') }}">Mozzarella Mini Cheese</a></h3>
+						<h3 class="product-title font-size-sm"><a href="{{ route('product') }}">Mozzarella Mini Cheese</a></h3>
 						<div class="product-price"><span class="text-accent">$3.<small>50</small></span>
 							<del class="font-size-sm text-muted">$4.<small>99</small></del>
 						</div>
