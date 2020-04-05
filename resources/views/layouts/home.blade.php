@@ -14,6 +14,7 @@
 		<div id="app" class="w-full">
 			<home-page/>
 		</div>
-	<script src="{{ asset('js/app.js?v='. time()) }}"></script>
+	{{-- <script src="{{ asset('js/app.js?v='. time()) }}"></script> --}}
+	<script src="{{ asset('js/app.js') }}"></script>
 	</body>
 </html>
