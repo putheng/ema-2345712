@@ -14,15 +14,18 @@ class AgentCreated
 
     public $placement;
 
+    public $sponsor;
+
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct(User $agent, $placement = null)
+    public function __construct(User $agent, $placement = null, $sponsor = null)
     {
         $this->agent = $agent;
         $this->placement = $placement;
+        $this->sponsor = $sponsor;
     }
 
 }

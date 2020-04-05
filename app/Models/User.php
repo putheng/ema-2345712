@@ -4,13 +4,15 @@ namespace App\Models;
 
 use App\Models\Address;
 use App\Models\Agent;
+use App\Models\Image;
 use App\Models\PaymentMethod;
 use App\Models\Product;
+use App\Models\Store;
+use App\Models\Transfer;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Tymon\JWTAuth\Contracts\JWTSubject;
-
 use Spatie\Permission\Traits\HasRoles;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
 class User extends Authenticatable implements JWTSubject
 {
@@ -22,7 +24,7 @@ class User extends Authenticatable implements JWTSubject
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'gateway_customer_id'
+        'name', 'email', 'password', 'gateway_customer_id', 'type'
     ];
 
     /**
@@ -41,6 +43,11 @@ class User extends Authenticatable implements JWTSubject
         static::creating(function ($user) {
             $user->password = bcrypt($user->password);
         });
+    }
+
+    public function scopeIsStore($q)
+    {
+        return $q->where('type', 'store');
     }
 
     /**
@@ -93,8 +100,23 @@ class User extends Authenticatable implements JWTSubject
         return $this->hasMany(Order::class);
     }
 
+    public function transfers()
+    {
+        return $this->hasMany(Transfer::class);
+    }
+
     public function paymentMethods()
     {
         return $this->hasMany(PaymentMethod::class);
+    }
+
+    public function image()
+    {
+        return $this->morphOne(Image::class, 'imageable');
+    }
+
+    public function store()
+    {
+        return $this->hasOne(Store::class);
     }
 }

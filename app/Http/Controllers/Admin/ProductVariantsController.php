@@ -7,6 +7,7 @@ use App\Http\Resources\Product\ProductResource;
 use App\Models\Product;
 use App\Models\ProductVariation;
 use Illuminate\Http\Request;
+use App\Http\Requests\Variation\StoreVariationRequest;
 
 class ProductVariantsController extends Controller
 {
@@ -19,7 +20,7 @@ class ProductVariantsController extends Controller
     	);
     }
 
-    public function store(Request $request, Product $product)
+    public function store(StoreVariationRequest $request, Product $product)
     {	
     	$variations = collect($request->variations)->each(function($value, $key) use ($product){
 

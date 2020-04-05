@@ -15,7 +15,9 @@ class Category extends Model
     protected $fillable = [
         'name',
         'slug',
-        'order'
+        'order',
+        'enable',
+        'aread',
     ];
 
     public static function boot()
@@ -35,6 +37,11 @@ class Category extends Model
     public function getRouteKeyName()
     {
         return 'slug';
+    }
+
+    public function scopeIsEnable($q)
+    {
+        return $q->where('enable', true);
     }
 
     public function children()

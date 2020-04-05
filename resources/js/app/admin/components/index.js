@@ -1,0 +1,23 @@
+import Vue from 'vue'
+
+/**/
+export const C15E69EA15EC032B = Vue.component('C15E69EA15EC032B', require('./profile/Password.vue').default)
+export const C15E69FC3059D6AB = Vue.component('C15E69FC3059D6AB', require('./profile/Index.vue').default)
+export const C15E69FC92DC23DB = Vue.component('C15E69FC92DC23DB', require('./profile/Wallet.vue').default)
+export const C15E6B237659700B = Vue.component('C15E6B237659700B', require('./society/Index.vue').default)
+export const C15E6B23BE39D00B = Vue.component('C15E6B23BE39D00B', require('./society/Create.vue').default)
+export const C15E6ED35724B59B = Vue.component('C15E6ED35724B59B', require('./settings/Profile.vue').default)
+export const C15E6F2570F1645B = Vue.component('C15E6F2570F1645B', require('./payments/Wallet.vue').default)
+export const C15E6F257E0EBC8B = Vue.component('C15E6F257E0EBC8B', require('./payments/Transfer.vue').default)
+export const C15E6F2589E59EFB = Vue.component('C15E6F2589E59EFB', require('./payments/Transactions.vue').default)
+export const C15E6F403D8FDCFB = Vue.component('C15E6F403D8FDCFB', require('./store/Index.vue').default)
+export const C15E6F4046712B8B = Vue.component('C15E6F4046712B8B', require('./store/Create.vue').default)
+export const C15E6F405F84D51B = Vue.component('C15E6F405F84D51B', require('./category/Index.vue').default)
+export const C15E6F406985EE4B = Vue.component('C15E6F406985EE4B', require('./category/Create.vue').default)
+export const C15E6F408437893B = Vue.component('C15E6F408437893B', require('./products/Create.vue').default)
+export const C15E6F408E69060B = Vue.component('C15E6F408E69060B', require('./products/Index.vue').default)
+export const C15E6F40D1BCB8BB = Vue.component('C15E6F40D1BCB8BB', require('./society/Sponsor.vue').default)
+export const C15E6F40DB82B65B = Vue.component('C15E6F40DB82B65B', require('./society/Placement.vue').default)
+export const C15E6F47B63FF71B = Vue.component('C15E6F47B63FF71B', require('./settings/Impersonate.vue').default)
+export const C15E70CE3479171B = Vue.component('C15E70CE3479171B', require('./settings/Role.vue').default)
+export const C15E70DAA0DE5CDB = Vue.component('C15E70DAA0DE5CDB', require('./settings/Createrole.vue').default)

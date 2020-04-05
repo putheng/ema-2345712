@@ -66,6 +66,10 @@ class Kernel extends HttpKernel
 
         'cart.sync' => \App\Http\Middleware\Cart\Sync::class,
         'cart.isnotempty' => \App\Http\Middleware\Cart\ResponseIfEmpty::class,
+
+        'role' => \Spatie\Permission\Middlewares\RoleMiddleware::class,
+        'permission' => \Spatie\Permission\Middlewares\PermissionMiddleware::class,
+        'role_or_permission' => \Spatie\Permission\Middlewares\RoleOrPermissionMiddleware::class,
     ];
 
     /**

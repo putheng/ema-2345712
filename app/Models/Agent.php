@@ -12,7 +12,9 @@ class Agent extends Model
 
     protected $fillable = [
     	'user_id',
-    	'parent_id'
+    	'parent_id',
+        'sponsor_id',
+        'level',
     ];
 
     public static function boot()
@@ -20,24 +22,32 @@ class Agent extends Model
     	parent::boot();
 
     	static::creating(function($model){
-    		$model->setIDParent();
+    		// $model->setIDParent();
     	});
 
     	static::created(function($model){
-    		$model->increment_child();
+    		$model->setID();
 
-    		$model->setLevel();
 
-    		$model->setIDParent();
-
+            // $model->increment_child();
+    		// $model->setLevel();
+    		// $model->setIDParent();
 	    });
+    }
+
+    protected function setID()
+    {
+        $uuid = substr('000000', strlen($this->id));
+
+        $this->uuid = 'EMA'. $uuid . $this->id;
+        $this->save();
     }
 
     protected function setIDParent()
     {
-    	if($this->parentExceedsChilLimit()){
-    		$this->parent_id = $this->getChildLessChil()->id;
-    	}
+    	// if($this->parentExceedsChilLimit()){
+    	// 	$this->parent_id = $this->getChildLessChil()->id;
+    	// }
     }
 
     protected function getChildLessChil()
@@ -69,6 +79,11 @@ class Agent extends Model
     public function scopeIsPa($builder)
     {
         return $builder->whereNull('parent_id');
+    }
+
+    public function scopeByUuid($q, $uuid)
+    {
+        return $q->where('uuid', $uuid);
     }
 
     public function pa()

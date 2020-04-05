@@ -29,7 +29,7 @@ Route::group(['middleware' => ['auth:api']], function () {
 Route::get('categories/by', 'Categories\CategoryController@by');
 Route::resource('categories', 'Categories\CategoryController');
 
-Route::resource('popular', 'Categories\PopularController');
+// Route::resource('popular', 'Categories\PopularController');
 
 Route::resource('products', 'Products\ProductController');
 Route::resource('addresses', 'Addresses\AddressController');

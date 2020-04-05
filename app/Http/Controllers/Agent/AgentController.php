@@ -16,12 +16,30 @@ class AgentController extends Controller
     {
     	$user = User::create($request->only('email', 'name', 'password'));
 
-    	event(new AgentCreated($user, $request->placement));
+        $user->assignRole('society');
+
+    	event(new AgentCreated($user, $request->placement, $request->sponsor));
 
     	return (new AgentResource($user->agent))
     		->additional([
-    			'success' => true
+    			'success' => true,
+                'message' => 'Member created successfuly'
     		]);
+    }
+
+    public function filter(Request $request)
+    {
+
+        $agent = Agent::where('uuid', strtoupper($request->get('id', '')));
+
+        if($agent->count()){
+            return (new AgentResource($agent->first()))
+                ->additional(['count' => $agent->count()]);
+        }
+
+        return response()->json([
+            'count' => 0
+        ]);
     }
 
     public function show(Request $request)

@@ -35,6 +35,15 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\Agent\AgentCreated' => [
             'App\Listeners\Agent\CreateAgentProfile',
         ],
+
+        'App\Events\Agent\StoreCreated' => [
+            'App\Listeners\Agent\CreateStoreProfile',
+        ],
+        'App\Events\Agent\TransferCreated' => [
+            'App\Listeners\Payment\CreateTransaction',
+            'App\Listeners\Payment\TransferFund',
+            'App\Listeners\Payment\RemoveFund'
+        ],
     ];
 
     /**

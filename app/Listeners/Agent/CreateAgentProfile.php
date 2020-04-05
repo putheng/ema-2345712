@@ -28,19 +28,29 @@ class CreateAgentProfile
 
     protected function ifNullPlacement($event)
     {
-        $parent = Agent::where('user_id', auth()->id())->first();
+        $parent = Agent::where('uuid', $event->sponsor)->first();
+        $parent->increment('child_count');
 
         Agent::create([
             'user_id' => $event->agent->id,
-            'parent_id' => $parent->id
+            'sponsor_id' => $parent->id,
+            'parent_id' => $parent->id,
+            'level' => ($parent->level + 1)
         ]);
     }
 
     protected function ifNotNullPlacement($event)
     {
+        $sponsor = Agent::where('uuid', $event->sponsor)->first();
+
+        $parent = Agent::where('uuid', $event->placement)->first();
+        $parent->increment('child_count');
+
         Agent::create([
             'user_id' => $event->agent->id,
-            'parent_id' => $event->placement
+            'sponsor_id' => $sponsor->id,
+            'parent_id' => $parent->id,
+            'level' => ($parent->level + 1)
         ]);
     }
 }

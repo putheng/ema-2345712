@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
-    public function action(RegisterRequest $request)
+    public function store(RegisterRequest $request)
     {
         $user = User::create($request->only('email', 'name', 'password'));
 

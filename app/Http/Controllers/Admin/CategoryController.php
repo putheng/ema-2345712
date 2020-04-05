@@ -19,11 +19,17 @@ class CategoryController extends Controller
 
     public function store(CategoryStoreRequest $request)
     {
-    	$category = Category::create($request->only('name'));
+    	$category = Category::create([
+            'name' => $request->name,
+            'area' => 1
+        ]);
 
     	return CategoryResource::collection(
             Category::with('children')->parents()->ordered()->get()
-        );
+        )->additional([
+            'success' => true,
+            'message' => 'Category created'
+        ]);
     }
 
     public function show(Request $request, Category $category)

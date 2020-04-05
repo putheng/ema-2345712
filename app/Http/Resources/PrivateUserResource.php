@@ -17,7 +17,10 @@ class PrivateUserResource extends JsonResource
         return [
             'id' => $this->id,
             'email' => $this->email,
+            'balance' => '$'. number_format($this->balance, 2),
             'name' => $this->name,
+            'avatar' => $this->avatar(),
+            'uuid' => optional($this->agent)->uuid,
             'role' => $this->getRoleNames()->first(),
             'permissions' => $this->formatedPermission()
         ];
@@ -26,8 +29,23 @@ class PrivateUserResource extends JsonResource
     protected function formatedPermission()
     {
         return $this->getPermissionsViaRoles()->pluck('name')->map(function($permission){
-            return explode(' ', $permission);
+            $permission = explode(' ', $permission);
+
+            return [
+                'action' => $permission[0],
+                'subject' => $permission[1],
+            ];
+            //{ "action": "read", "subject": "Settings" } 
         })
         ->toArray();
+    }
+
+    public function avatar()
+    {
+        if($this->image){
+            return $this->image->avatar();
+        }
+
+        return url('/images/empty-profile-picture.png');
     }
 }

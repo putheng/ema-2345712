@@ -1,0 +1,43 @@
+/* put your own styles to customize and override the theme */
+
+.spinner-border {
+	margin-right: 8px;
+}
+
+label.control-label.avatar_upload_form {
+    display: inline-block;
+    position: relative;
+    border: 2px dashed #c5c5c5;
+    padding: 10px 50px;
+    border-radius: 3px;
+    background-color: #eeeeee9c;
+    cursor: pointer;
+    font-size: 20px;
+    color: #616161;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 1s
+}
+
+.fade-enter,
+.fade-leave-to
+/* .fade-leave-active in <2.1.8 */
+
+{
+  opacity: 0
+}
+
+table.v-top tr td{
+    vertical-align: middle;
+}
+
+.push-right{
+    float: right !important;
+}
+
+.no-tb-padding{
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}

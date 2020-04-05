@@ -1,0 +1,119 @@
+
+.container-fluid.main-menu {
+    background: #368c43;
+    padding: 0px;
+}
+.container-fluid {
+    padding: 20px 0;
+}
+.logo {
+    width: 210px;
+    padding-left: 10px;
+}
+.main-menu .container {
+    padding: 0;
+}
+a.nav-link {
+    color: #fff!important;
+}
+.body-search {
+    background: #eee;
+}
+.jobseeker-form {
+    background: #3cb3d8;
+}
+.job-brow {
+    background: #c31e5b;
+}
+.popular-cate{
+	background: #eee;
+    padding: 20px 20px 10px 20px;
+}
+.urgent-job {
+    background: #e41e25;
+    padding: 20px;
+}
+.table-urgent-job{
+	color: #fff;
+}
+.resources{
+	background: #eee;
+}
+.footer-sidebar{
+	background: #368c43;
+	color: #fff;
+}
+.container-fluid.footer-credit {
+    background: #0a4a14;
+    color: #fff;
+}
+.employer-list{
+
+    padding: 5px;
+}
+.employer-logo-list {
+    border: 1px solid #eee;
+    border-radius: 5px;
+    padding: 10px;
+}
+.resources-itme{
+	max-width: 84px;
+
+}
+
+/*---back to top button---*/
+#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  font-size: 14px;
+  border: none;
+  outline: none;
+  background-color: red;
+  color: white;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 4px;
+}
+
+#myBtn:hover {
+  background-color: #555;
+}
+
+div.table-urgent-job div a,
+.container-fluid.footer-sidebar a,
+table.table-urgent-job td a {
+  color: #fff;
+}
+
+.container-fluid.footer-sidebar p{
+  margin-bottom: 5px;
+}
+
+.navbar-nav a.nav-link:hover {
+  text-decoration: underline;
+}
+
+.pull-right {
+  float: right !important;
+}
+
+@media (min-width: @screen-sm-min) {
+.pull-right-sm {
+  float: right;
+}
+}
+@media (min-width: @screen-md-min) {
+.pull-right-md {
+  float: right;
+}
+}
+@media (min-width: @screen-lg-min) {
+.pull-right-lg {
+  float: right;
+}
+}
+
+.job-brow .table-urgent-job .col-md-3 a{font-size:12px;}

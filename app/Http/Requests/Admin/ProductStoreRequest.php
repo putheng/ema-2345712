@@ -25,7 +25,7 @@ class ProductStoreRequest extends FormRequest
     {
         return [
             'name' => 'required|min:3|max:255',
-            'price' => 'required|numeric',
+            // 'price' => 'required|numeric',
             'category' => 'required|exists:categories,id',
             'variations.*.name' => 'required',
             'variations.*.options.*.option' => 'required',

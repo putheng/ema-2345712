@@ -27,7 +27,8 @@ class StoreAgentRequest extends FormRequest
             'name' => 'required',
             'password' => 'required|min:6|max:12',
             'email' => 'required|unique:users,email',
-            'placement' =>  'numeric|exists:agents,id|nullable'
+            'placement' =>  'exists:agents,uuid|nullable',
+            'sponsor' =>  'required|exists:agents,uuid'
         ];
     }
 }
