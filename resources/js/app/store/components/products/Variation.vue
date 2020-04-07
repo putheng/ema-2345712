@@ -16,7 +16,7 @@
 						Save Changes
 					</button>
 				</h1>
-				{{ errors }}
+				
 			</header>
 			<div class="page-section">
 				<div class="row">
@@ -25,38 +25,64 @@
 							<div class="card-body">
 								<div class="row form-group col-md-3">
 									<label>Name</label>
-									<input type="text" class="form-control" v-model="variation.name">
+									<input type="text" class="form-control" v-model="variation.name" :class="{'is-invalid': errors['variations.'+ index +'.name']}">
+
+									<div class="invalid-feedback" v-if="errors['variations.'+ index +'.name']">
+							            <i class="fa fa-exclamation-circle fa-fw"></i>
+							            {{ errors['variations.'+ index +'.name'][0] }}
+							        </div>
 								</div>
 								
-								<div class="row" v-for="(option, index) in variation.options">
+								<div class="row" v-for="(option, key) in variation.options">
 									<div class="col-md-3">
 										<div class="form-group">
 											<label class="control-label">Option</label>
-											<input v-model="option.name" type="text" class="form-control">
+											<input v-model="option.option" type="text" class="form-control" :class="{'is-invalid': errors['variations.'+ index +'.options.'+ key +'.option']}">
+											
+											<div class="invalid-feedback" v-if="errors['variations.'+ index +'.options.'+ key +'.option']">
+									            <i class="fa fa-exclamation-circle fa-fw"></i>
+									            {{ errors['variations.'+ index +'.options.'+ key +'.option'][0] }}
+									        </div>
 										</div>
 									</div>
 									<div class="col-md-3">
 										<div class="form-group">
 											<label class="control-label">Price</label>
-											<input v-model="option.price" type="text" class="form-control">
+											<input v-model="option.price" type="number" class="form-control" :class="{'is-invalid': errors['variations.'+ index +'.options.'+ key +'.price']}">
+											<div class="invalid-feedback" v-if="errors['variations.'+ index +'.options.'+ key +'.price']">
+									            <i class="fa fa-exclamation-circle fa-fw"></i>
+									            {{ errors['variations.'+ index +'.options.'+ key +'.price'][0] }}
+									        </div>
 										</div>
 									</div>
 									<div class="col-md-2">
 										<div class="form-group">
 											<label class="control-label">Sale Price</label>
-											<input v-model="option.sale_price" type="text" class="form-control">
+											<input v-model="option.sale_price" type="number" class="form-control" :class="{'is-invalid': errors['variations.'+ index +'.options.'+ key +'.sale_price']}">
+											<div class="invalid-feedback" v-if="errors['variations.'+ index +'.options.'+ key +'.sale_price']">
+									            <i class="fa fa-exclamation-circle fa-fw"></i>
+									            {{ errors['variations.'+ index +'.options.'+ key +'.sale_price'][0] }}
+									        </div>
 										</div>
 									</div>
 									<div class="col-md-2">
 										<div class="form-group">
 											<label class="control-label">Weight (g)</label>
-											<input v-model="option.weight" type="text" class="form-control">
+											<input v-model="option.weight" type="number" class="form-control" :class="{'is-invalid': errors['variations.'+ index +'.options.'+ key +'.weight']}">
+											<div class="invalid-feedback" v-if="errors['variations.'+ index +'.options.'+ key +'.weight']">
+									            <i class="fa fa-exclamation-circle fa-fw"></i>
+									            {{ errors['variations.'+ index +'.options.'+ key +'.weight'][0] }}
+									        </div>
 										</div>
 									</div>
 									<div class="col-md-2">
 										<div class="form-group">
 											<label class="control-label">Stock</label>
-											<input v-model="option.stock" type="number" class="form-control">
+											<input v-model="option.stock" type="number" class="form-control" :class="{'is-invalid': errors['variations.'+ index +'.options.'+ key +'.stock']}">
+											<div class="invalid-feedback" v-if="errors['variations.'+ index +'.options.'+ key +'.stock']">
+									            <i class="fa fa-exclamation-circle fa-fw"></i>
+									            {{ errors['variations.'+ index +'.options.'+ key +'.stock'][0] }}
+									        </div>
 										</div>
 									</div>
 								</div>
@@ -90,7 +116,7 @@
 						name: '',
 						options: [
 							{
-								name: '',
+								option: '',
 								price: '',
 								weight: '',
 								sale_price: '',

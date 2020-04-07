@@ -11,6 +11,11 @@ class Image extends Model
 		'url'
 	];
 
+    public function getNameAttribute()
+    {
+        return "ID{$this->id}ID";
+    }
+
     public function imageable()
     {
         return $this->morphTo();

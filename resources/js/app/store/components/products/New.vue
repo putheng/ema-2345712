@@ -21,6 +21,9 @@
 								<div class="row">
 									<div class="col-md-3">
 										<image-picker name="image1"/>
+										<div class="text-danger" v-if="errors.image1">
+											{{ errors.image1[0] }}
+										</div>
 									</div>
 									<div class="col-md-3">
 										<image-picker name="image2"/>
@@ -65,7 +68,9 @@
 			}
 		},
 		computed: {
-			//
+			...mapGetters({
+				errors: 'getValidationErrors'
+			})
 		},
 		mounted(){
 			this.fetchCategory()

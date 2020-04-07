@@ -47,3 +47,28 @@ export const setUserData = (state, data) => {
 export const formCompleted = (state, message) => {
 	state.formCompleted = message
 }
+
+export const  SET_PRODUCTS = (state, products) => {
+    state.products = products
+}
+
+export const SET_EMPTY = (state, empty) => {
+    state.empty = empty
+}
+
+export const SET_SUBTOTAL = (state, subtotal) => {
+    state.subtotal = subtotal
+}
+
+export const SET_TOTAL = (state, total) => {
+    state.total = total
+}
+
+export const SET_CHANGED = (state, changed) => {
+    state.changed = changed
+}
+
+export const SET_SHIPPING = (state, shipping) => {
+    state.shipping = shipping
+}
+

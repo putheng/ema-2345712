@@ -23,3 +23,31 @@ export const ability = () => {
 		}
 	})
 }
+
+export const products = (state) => {
+    return state.products
+}
+
+export const  count = (state) => {
+    return state.products.length
+}
+
+export const  empty = (state) => {
+    return state.empty
+}
+
+export const  subtotal = (state) => {
+    return state.subtotal
+}
+
+export const  total = (state) => {
+    return state.total
+}
+
+export const changed = (state) => {
+    return state.changed
+}
+
+export const shipping = (state) => {
+    return state.shipping
+}

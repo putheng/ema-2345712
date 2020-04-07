@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -13,6 +14,8 @@ class PageController extends Controller
 
     public function product(Request $request)
     {
-    	return view('home.product');
+    	$product = Product::find(11);
+
+    	return view('home.product', compact('product'));
     }
 }

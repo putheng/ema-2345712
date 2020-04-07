@@ -10,6 +10,8 @@ use App\Models\ProductVariation;
 use App\Models\ProductVariationType;
 use App\Models\Stock;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use App\Models\Image;
 
 class ProductController extends Controller
 {
@@ -26,17 +28,37 @@ class ProductController extends Controller
 
     	$product->name = $request->name;
     	$product->price = $request->price;
-    	$product->description = $request->description;
+    	$product->description = nl2br($request->description);
     	$product->user()->associate($request->user());
-
+        $product->category()->associate($request->category);
+        
     	$product->save();
 
-        $product->categories()->sync($request->category);
+        $this->updateImage($request, $product);
 
     	return (new ProductIndexResource($product))
             ->additional([
                 'success' => true
             ]);
+    }
+
+    protected function updateImage(Request $request, $product)
+    {
+        for ($i=1; $i < 5; $i++) { 
+            $file = $request->file('image'. $i);
+
+            if($file){
+                $path = '/' . uniqid(true).time() . '.png';
+                $fileName = $file->getClientOriginalName();
+                $imageFile = file_get_contents($file->getRealPath());
+                Storage::disk('public_dir')->put('products'. $path, $imageFile);
+
+                $image = new Image;
+                $image->url = $path;
+                $image->user()->associate($request->user());
+                $product->image()->save($image);
+            }
+        }
     }
 
     public function update(ProductStoreRequest $request, Product $product)

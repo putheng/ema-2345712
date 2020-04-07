@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\Product;
 
+use App\Http\Resources\ImageResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class ProductIndexResource extends JsonResource
@@ -19,10 +20,12 @@ class ProductIndexResource extends JsonResource
             'name' => $this->name,
             'slug' => $this->slug,
             'description' => $this->description,
+            'in_stock' => $this->inStock(),
             'formattedPrice' => $this->formattedPrice,
             'price' => $this->price->amount(),
-            'category' => $this->categories()->first()->id,
-            'publish' => (bool) $this->publish
+            'category' => $this->category()->first()->id,
+            'publish' => (bool) $this->publish,
+            'images' => ImageResource::collection($this->image)
         ];
     }
 }

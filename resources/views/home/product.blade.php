@@ -7,9 +7,9 @@
 		<nav class="mb-4" aria-label="breadcrumb">
 			<ol class="breadcrumb flex-lg-nowrap">
 				<li class="breadcrumb-item"><a class="text-nowrap" href="home-grocery-store.html"><i class="czi-home"></i>Home</a></li>
-				<li class="breadcrumb-item text-nowrap"><a href="#">Product catalog</a>
+				<li class="breadcrumb-item text-nowrap"><a href="#">{{ $product->category->name }}</a>
 				</li>
-				<li class="breadcrumb-item text-nowrap active" aria-current="page">Single product</li>
+				<li class="breadcrumb-item text-nowrap active" aria-current="page">{{ $product->name }}</li>
 			</ol>
 		</nav>
 		<!-- Content-->
@@ -19,42 +19,34 @@
 				<div class="h-100 bg-light rounded-lg p-4">
 					<div class="cz-product-gallery">
 						<div class="cz-preview order-sm-2">
-							<div class="cz-preview-item active" id="first"><img src="/images/products/single/01.jpg" alt="Product image"></div>
-							<div class="cz-preview-item" id="second"><img src="/images/products/single/02.jpg" alt="Product image"></div>
-							<div class="cz-preview-item" id="third"><img src="/images/products/single/03.jpg" alt="Product image"></div>
+							@foreach($product->image as $key => $image)
+								<div class="cz-preview-item {{ $key == 0 ? 'active' : '' }}" id="{{ $image->name }}">
+									<img src="{{ asset('uploads/products'. $image->url) }}" alt="Product imagex">
+								</div>
+							@endforeach
 						</div>
 						<div class="cz-thumblist order-sm-1">
-							<a class="cz-thumblist-item active" href="#first"><img src="/images/products/single/th01.jpg" alt="Product thumb"></a>
-							<a class="cz-thumblist-item" href="#second"><img src="/images/products/single/th02.jpg" alt="Product thumb"></a>
-							<a class="cz-thumblist-item" href="#third"><img src="/images/products/single/th03.jpg" alt="Product thumb"></a>
+							@foreach($product->image as $key => $image)
+								<a class="cz-thumblist-item {{ $key == 0 ? 'active' : '' }}" href="#{{ $image->name }}">
+									<img src="{{ asset('uploads/products'. $image->url) }}" alt="Product thumb">
+								</a>
+							@endforeach
 						</div>
 					</div>
 				</div>
 			</div>
+
 			<div class="col-xl-5 px-2 mb-3">
 				<div class="h-100 bg-light rounded-lg py-5 px-4 px-sm-5">
-					<a class="product-meta d-block font-size-sm pb-2" href="#">Packets, Cereals</a>
-					<h1 class="h2">Muesli Fitness Nutritious Energy, Gluten Free (500g)</h1>
-					<div class="h2 font-weight-normal text-accent">$4.<small>99</small></div>
-					<div class="form-group d-flex flex-wrap align-items-center pt-4 pb-2">
-						<select class="custom-select mr-3 mb-3" style="width: 5rem;">
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-							<option value="5">5</option>
-						</select>
-						<button class="btn btn-primary btn-shadow mr-3 mb-3" type="submit"><i class="czi-cart font-size-lg mr-2"></i>Add to Cart</button>
-						<button class="btn btn-icon btn-secondary mb-3" type="submit" data-toggle="tooltip" title="" data-original-title="Add to Wishlist"><i class="czi-heart font-size-lg"></i></button>
-					</div>
+					<a class="product-meta d-block font-size-sm pb-2" href="#">{{ $product->category->name }}</a>
+					<h1 class="h2">{{ $product->name }}</h1>
+					@if(!$product->inStock())
+						<span class="badge badge-secondary">Out of stock</span>
+					@endif
+					<div class="h2 font-weight-normal text-accent">{{ $product->formattedPrice }}</div>
+					<product-variations slug="{!! $product->slug !!}"/>
 					<h6>Product description</h6>
-					<ul class="list-unstyled font-size-sm pt-2 mb-0">
-						<li><i class="czi-check-circle text-success mr-2"></i>Natural ingredients</li>
-						<li><i class="czi-check-circle text-success mr-2"></i>No dyes and flavor enhancers</li>
-						<li><i class="czi-check-circle text-success mr-2"></i>Gluten free</li>
-						<li><i class="czi-check-circle text-success mr-2"></i>Vitamins B2, B3, B5 and B6</li>
-						<li><i class="czi-check-circle text-success mr-2"></i>Tastes better with milk</li>
-					</ul>
+					<p>{{ $product->description }}</p>
 				</div>
 			</div>
 		</section>

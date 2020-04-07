@@ -2,6 +2,8 @@ import router from './router'
 import store from './vuex'
 
 import * as components from './components/globals'
+import * as componentsHome from './components'
+
 import Locale from './vue-i18n-locales.generated'
 import VueInternationalization from 'vue-i18n'
 
@@ -38,6 +40,9 @@ Object.keys(components).forEach((key) => {
 	Vue.component(key, components[key])
 })
 
+Object.keys(componentsHome).forEach((key) => {
+	Vue.component(key, componentsHome[key])
+})
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

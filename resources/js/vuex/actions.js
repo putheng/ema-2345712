@@ -1,4 +1,5 @@
 import axios from 'axios'
+import queryString from 'query-string'
 
 export const submit = ({commit}, {endpoint, payload, method}) => {
 	commit('clearValidationErrors', '', {root:true})
@@ -47,4 +48,52 @@ export const clearValidationErrors = ({commit}) => {
 
 export const clearMessage = ({commit}) => {
 	commit('clearMessage')
+}
+
+export const getCart = ({ commit, state }) => {
+    let query = {}
+
+    if (state.shipping) {
+      query.shipping_method_id = state.shipping.id
+    }
+
+    return axios.get(`cart?${queryString.stringify(query)}`)
+	    .then((response) => {
+	    	commit('SET_PRODUCTS', response.data.data.products)
+		    commit('SET_EMPTY', response.data.meta.empty)
+		    commit('SET_SUBTOTAL', response.data.meta.subtotal)
+		    commit('SET_TOTAL', response.data.meta.total)
+		    commit('SET_CHANGED', response.data.meta.changed)
+
+	    	return Promise.resolve(response)
+	    })
+	    .catch((error) => {
+	    	return Promise.reject(error)
+	    })
+}
+
+export const destroy = ({ dispatch }, productId) => {
+    axios.delete(`cart/${productId}`)
+
+    dispatch('getCart')
+}
+
+export const update = ({ dispatch }, { productId, quantity }) => {
+    return axios.patch(`cart/${productId}`, {
+      quantity
+    })
+
+    dispatch('getCart')
+}
+
+export const storeCart = ({ dispatch }, products) => {
+    axios.post('cart', {
+      products
+    })
+
+    dispatch('getCart')
+}
+
+export const setShipping = ({ commit }, shipping) => {
+    commit('SET_SHIPPING', shipping)
 }

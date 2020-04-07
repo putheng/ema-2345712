@@ -1,4 +1,11 @@
 <?php
+Route::get('/products/{product}/variations', 'Admin\ProductVariantsController@show');
+Route::resource('cart', 'Cart\CartController', [
+    'parameters' => [
+        'cart' => 'productVariation'
+    ]
+]);
+
 Route::group(['middleware' => 'auth'], function(){
 	
 	Route::group(['prefix' => 'account'], function(){
@@ -26,8 +33,8 @@ Route::group(['middleware' => 'auth'], function(){
 		Route::resource('product', 'Admin\ProductController');
 
 		Route::resource('categories', 'Api\CategoryController');
+		Route::post('upload/image', 'Uploads\ImageController@store');
 
-		Route::get('/{product}/variations', 'Admin\ProductVariantsController@show');
 		Route::post('/{product}/variations', 'Admin\ProductVariantsController@store');
 	});
 

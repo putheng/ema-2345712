@@ -25,23 +25,17 @@ class ProductStoreRequest extends FormRequest
     {
         return [
             'name' => 'required|min:3|max:255',
-            // 'price' => 'required|numeric',
+            'price' => 'nullable|numeric',
             'category' => 'required|exists:categories,id',
-            'variations.*.name' => 'required',
-            'variations.*.options.*.option' => 'required',
-            'variations.*.options.*.price' => 'required|numeric',
-            'variations.*.options.*.stock' => 'nullable|numeric',
-            'variations.*.options.*.weight' => 'required|numeric',
-            'variations.*.options.*.sale_price' => 'required|numeric',
+            'image1' => 'required|image|max:1024'
         ];
     }
 
     public function messages()
     {
         return [
-            'variations.*.required' => 'This field is required.',
-            'variations.*.options.*.option' => 'This field is required.',
-            'variations.*.options.*.numeric' => 'This field must be a number.',
+            'image.image' => 'Hmm, not a valid image.',
+            'image1.required' => 'Please select an image.'
         ];
     }
 }

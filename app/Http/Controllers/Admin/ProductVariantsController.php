@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\Product\ProductResource;
 use App\Models\Product;
 use App\Models\ProductVariation;
+use App\Models\ProductVariationType;
 use Illuminate\Http\Request;
+use App\Models\Stock;
 use App\Http\Requests\Variation\StoreVariationRequest;
 
 class ProductVariantsController extends Controller
@@ -23,17 +25,31 @@ class ProductVariantsController extends Controller
     public function store(StoreVariationRequest $request, Product $product)
     {	
     	$variations = collect($request->variations)->each(function($value, $key) use ($product){
+            
+            $type = ProductVariationType::create([
+                'name' => $value['name']
+            ]);
 
+    		collect($value['options'])->each(function($value, $key) use ($type, $product){
 
-    		collect($value)->each(function($value, $key){
-    			$variation = ProductVariation::find($value['id']);
-    			
-    			$variation->update([
-    				'name' => $value['name'],
-    				'price' => $value['price'],
-                    'sale_price' => $value['sale_price'],
-                    'weight' => $value['weight'],
-    			]);
+    			$variation = new ProductVariation;
+                $variation->name = $value['option'];
+                $variation->price = $value['price'];
+                $variation->weight = $value['weight'];
+                $variation->sale_price = $value['sale_price'];
+                $variation->product_variation_type_id = $type->id;
+                $variation->product()->associate($product);
+
+                $variation->save();
+
+                if($value['stock'] > 0){
+
+                    $stock = new Stock;
+                    $stock->quantity = (int) $value['stock'];
+                    $stock->product_variation_id = $variation->id;
+                    $stock->save();
+                    
+                }
 
     		});
     	});
