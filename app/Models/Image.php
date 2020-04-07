@@ -36,6 +36,11 @@ class Image extends Model
         return url('uploads/avatar'. $this->url);
     }
 
+    public function product()
+    {
+        return url('uploads/products'. $this->url);
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);

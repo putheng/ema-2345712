@@ -18,4 +18,9 @@ class PageController extends Controller
 
     	return view('home.product', compact('product'));
     }
+
+    public function show(Request $request, Product $product)
+    {
+    	return view('home.product', compact('product'));
+    }
 }

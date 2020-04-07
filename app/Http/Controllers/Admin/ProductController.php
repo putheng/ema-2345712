@@ -27,7 +27,8 @@ class ProductController extends Controller
     	$product = new Product;
 
     	$product->name = $request->name;
-    	$product->price = $request->price;
+        $product->price = $request->price;
+    	$product->sale_price = $request->sale_price;
     	$product->description = nl2br($request->description);
     	$product->user()->associate($request->user());
         $product->category()->associate($request->category);

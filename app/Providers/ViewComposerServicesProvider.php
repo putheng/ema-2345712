@@ -2,9 +2,13 @@
 
 namespace App\Providers;
 
-use App\ViewComposers\CategoryComposer;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
+use App\ViewComposers\{
+    CategoryComposer,
+    DiscountProduct,
+    BestSale
+};
 
 class ViewComposerServicesProvider extends ServiceProvider
 {
@@ -28,6 +32,16 @@ class ViewComposerServicesProvider extends ServiceProvider
         View::composer(
             ['home.partials.global-search'], 
             CategoryComposer::class
+        );
+
+        View::composer(
+            ['home.partials.best-sale'], 
+            BestSale::class
+        );
+
+        View::composer(
+            ['home.partials.discount'], 
+            DiscountProduct::class
         );
     }
 }

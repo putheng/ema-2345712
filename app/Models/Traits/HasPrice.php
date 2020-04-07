@@ -15,8 +15,18 @@ trait HasPrice
         return new Money($value);
     }
 
+    public function getSalePriceAttribute($value)
+    {
+        return new Money($value);
+    }
+
     public function getFormattedPriceAttribute()
     {
         return $this->price->formatted();
+    }
+
+    public function getFormattedSalePriceAttribute()
+    {
+        return $this->sale_price->formatted();
     }
 }

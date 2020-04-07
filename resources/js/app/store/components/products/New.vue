@@ -17,6 +17,15 @@
 
 								<app-select name="category" :options="categories" label="Category"/>
 
+								<div class="row">
+									<div class="col-md-6">
+										<app-input name="price" label="Price"/>
+									</div>
+									<div class="col-md-6">
+										<app-input name="sale_price" label="Sale Price"/>
+									</div>
+								</div>
+
 								<br>
 								<div class="row">
 									<div class="col-md-3">
