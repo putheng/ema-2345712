@@ -49,11 +49,6 @@ export default {
 			default: ''
 		}
 	},
-	data(){
-		return {
-			inputValue: this.value
-		}
-	},
 	methods: {
 		clearValidation(){
 			this.$store.dispatch('clearValidateFor', this.inputName)
@@ -79,6 +74,14 @@ export default {
 		inputName(){
 			return this.name.replace(/\s+/g, '_').toLowerCase()
 		},
+		inputValue: {
+			get() {
+				return this.value;
+			},
+			set(val) {
+				this.$emit('input', val);
+			}
+		}
 	}
 }
 </script>

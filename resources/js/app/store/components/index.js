@@ -11,3 +11,4 @@ export const C15E818FBBE1A5AB = Vue.component('C15E818FBBE1A5AB', require('./pay
 export const C15E818FC8A12DDB = Vue.component('C15E818FC8A12DDB', require('./payments/Methods.vue').default)
 export const C15E818FD2763CEB = Vue.component('C15E818FD2763CEB', require('./payments/Balance.vue').default)
 export const C15E896E7217A60B = Vue.component('C15E896E7217A60B', require('./products/Variation.vue').default)
+export const C15E8DEC1EE9B1BB = Vue.component('C15E8DEC1EE9B1BB', require('./products/Edit.vue').default)

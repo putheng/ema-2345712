@@ -5,8 +5,7 @@
 		<div class="top-bar">
 			<div class="top-bar-brand">
 				<a href="/" target="_blank" style="margin: auto;">
-					<img src="https://mobilityfinuat.finflux.io/images/top_nav_logo.png" alt="" style="height: 32px;width: auto;">
-					<!-- <img src="/images/logo-s.png" alt="" style="height: 32px;width: auto;"> -->
+					<img src="/images/logo-s.png" alt="" style="height: 32px;width: auto;">
 				</a>
 			</div>
 			<div class="top-bar-list">

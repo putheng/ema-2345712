@@ -9,6 +9,7 @@ import {
 	C15E818FC8A12DDB,
 	C15E818FD2763CEB,
 	C15E896E7217A60B,
+	C15E8DEC1EE9B1BB,
 	/****/
 } from '../components'
 
@@ -63,6 +64,11 @@ export default [
 		path: '/store/products/:slug/variation',
 		component: C15E896E7217A60B,
 		name: 'store-products-variation'
+	},
+	{
+		path: '/store/products/:slug/edit',
+		component: C15E8DEC1EE9B1BB,
+		name: 'store-products-edit'
 	},
 	/**/
 ]

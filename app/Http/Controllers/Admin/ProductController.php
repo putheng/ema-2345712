@@ -123,7 +123,7 @@ class ProductController extends Controller
     public function index(Request $request)
     {
     	return ProductIndexResource::collection(
-    		$request->user()->products()->orderBy('id', 'desc')->get()
+    		$request->user()->products()->orderBy('id', 'desc')->paginate(20)
     	);
     }
 }
