@@ -1,12 +1,12 @@
 <template>
 <div class="page-inner">
 	<header class="page-title-bar">
-		<h1 class="page-title">Add New Product</h1>
+		<h1 class="page-title">Update Product</h1>
 	</header>
 	<div class="page-section">
 		<div class="row">
 			<div class="col-md-10">
-				<app-form @success="onSuccess" action="products/product">
+				<app-form @success="onSuccess" :action="'products/product/'+ product.slug +'/edit'">
 					<div class="card card-fluid">
 						<div class="card-body">
 							<h3 class="card-title"> What are you offering? </h3>
@@ -28,21 +28,21 @@
 
 								<br>
 								<div class="row">
-									<div class="col-md-3">
-										<image-picker name="image1"/>
-										<div class="text-danger" v-if="errors.image1">
-											{{ errors.image1[0] }}
-										</div>
-									</div>
-									<div class="col-md-3">
-										<image-picker name="image2"/>
-									</div>
-									<div class="col-md-3">
-										<image-picker name="image3"/>
-									</div>
-									<div class="col-md-3">
-										<image-picker name="image4"/>
-									</div>
+									<template v-for="(img, index) in 4">
+										<template v-if="product.images">
+											<div class="col-md-3">
+												<image-picker :image="product.images[index]" :name="'image'+ (index + 1)"/>
+												<div class="text-danger" v-if="errors.image+ (index + 1)">
+													{{ errors.image1[0] }}
+												</div>
+											</div>
+										</template>
+										<template v-else>
+											<div class="col-md-3">
+												<image-picker :name="'image'+ (index + 1)"/>
+											</div>	
+										</template>
+									</template>
 								</div>
 						</div>
 						<div class="card-body text-right npt">

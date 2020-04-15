@@ -20,8 +20,10 @@ class ProductIndexResource extends JsonResource
             'slug' => $this->slug,
             'description' => $this->description,
             'price' => $this->formattedPrice,
+            'sale_price' => $this->formattedSalePrice,
             'stock_count' => $this->stockCount(),
             'in_stock' => $this->inStock(),
+            'images' => ImageResource::collection($this->image)
         ];
     }
 }

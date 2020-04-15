@@ -26,6 +26,6 @@ class CartProductVariationResource extends ProductVariationResource
 
     protected function getTotal()
     {
-        return new Money($this->pivot->quantity * $this->price->amount());
+        return new Money($this->pivot->quantity * $this->sale_price->amount());
     }
 }

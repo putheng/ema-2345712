@@ -86,12 +86,22 @@ export const update = ({ dispatch }, { productId, quantity }) => {
     dispatch('getCart')
 }
 
-export const storeCart = ({ dispatch }, products) => {
+export const storeCart = ({ dispatch, commit }, products) => {
     axios.post('cart', {
       products
     })
+    .then((response) => {
+    	commit('SET_PRODUCTS', response.data.data.products)
+	    commit('SET_EMPTY', response.data.meta.empty)
+	    commit('SET_SUBTOTAL', response.data.meta.subtotal)
+	    commit('SET_TOTAL', response.data.meta.total)
+	    commit('SET_CHANGED', response.data.meta.changed)
 
-    dispatch('getCart')
+    	return Promise.resolve(response)
+    })
+    .catch((error) => {
+    	return Promise.reject(error)
+    })
 }
 
 export const setShipping = ({ commit }, shipping) => {

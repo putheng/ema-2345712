@@ -14,7 +14,7 @@ class Money
 
     public function __construct($value)
     {
-        $this->money = new BaseMoney($value . 00, new Currency('USD'));
+        $this->money = new BaseMoney($value, new Currency('USD'));
     }
 
     public function amount()

@@ -12,7 +12,7 @@ class PaymentMethodController extends Controller
 {
     public function __construct(Gateway $gateway)
     {
-        $this->middleware(['auth:api']);
+        $this->middleware(['auth']);
         $this->gateway = $gateway;
     }
     

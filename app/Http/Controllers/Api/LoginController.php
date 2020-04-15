@@ -19,7 +19,7 @@ class LoginController extends Controller
     {
         return response()->json([
             'success' => true,
-            'redirect' => '/admin'
+            'redirect' => $user->dashboard()
         ]);
     }
 

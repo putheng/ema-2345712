@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Admin;
+namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ProductStoreRequest extends FormRequest
+class ProductEditRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -28,7 +28,7 @@ class ProductStoreRequest extends FormRequest
             'price' => 'nullable|numeric',
             'sale_price' => 'nullable|numeric',
             'category' => 'required|exists:categories,id',
-            'image1' => 'required|image|max:5120',
+            'image1' => 'nullable|image|max:5120',
             'image2' => 'nullable|image|max:5120',
             'image3' => 'nullable|image|max:5120',
             'image4' => 'nullable|image|max:5120',

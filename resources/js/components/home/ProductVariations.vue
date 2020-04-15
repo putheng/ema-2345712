@@ -20,6 +20,10 @@
 			</div>
 
 			<button @click.prevent="add" class="btn btn-primary btn-shadow mr-3 mb-3" type="submit">
+				<span v-if="loading" 
+			class="spinner-border spinner-border-sm"
+			role="status" aria-hidden="true"></span>
+
 				<i class="czi-cart font-size-lg mr-2"></i>
 				Add to Cart
 			</button>
@@ -35,6 +39,7 @@
 		data(){
 			return {
 				variations: [],
+				loading: false,
 				form: {
 		        	variation: '',
 		         	quantity: 1
@@ -48,7 +53,8 @@
 	    },
 		methods: {
 			...mapActions({
-		    	store: 'storeCart'
+		    	store: 'storeCart',
+		    	getCart: 'getCart'
 		    }),
 			fetchVariation(slug){
 				axios.get(`products/${slug}/variations`)
@@ -57,15 +63,21 @@
 					})
 					.catch((error) => {})
 			},
-			add () {
-		        this.store([{
+			async add () {
+				this.loading = true
+		        
+		        await this.store([{
 		          id: this.form.variation.id, quantity: this.form.quantity
-		        }])
+		        }]).then((re) => {
+		        	this.loading = false
+		        	this.form = {
+			          variation: '',
+			          quantity: 1
+			        }
+		        })
 
-		        this.form = {
-		          variation: '',
-		          quantity: 1
-		        }
+
+		        // this.getCart()
 		    }
 		},
 		mounted(){

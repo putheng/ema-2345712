@@ -12,6 +12,11 @@
 			:style="{ 'background-image': 'url(' + imgSrc + ')' }"
 			:for="'vpc02'+ inputName">
 		</label>
+		<label v-else-if="image"
+			class="visual-picker-figure" 
+			:style="{ 'background-image': 'url(' + image.url + ')' }"
+			:for="'vpc02'+ inputName">
+		</label>
 		<label v-else
 			class="visual-picker-figure" 
 			:for="'vpc02'+ inputName">
@@ -24,6 +29,9 @@
 		<a v-if="onSelected" 
 			@click.prevent="remove"
 			href="#" class="visual-picker-peek">Remove</a>
+		<a v-if="image" 
+			@click.prevent="removeImage(image.id)"
+			href="#" class="visual-picker-peek">Remove</a>
 	</div>
 </template>
 
@@ -34,20 +42,28 @@
 				required: true,
 				type: String
 			},
+			image: {
+				required: false,
+				type: Object
+			}
 		},
 		data(){
 			return {
 				onSelected: false,
 				url: '',
 				inputValue: '',
-				imgSrc: 'mm'
+				imgSrc: '',
 			}
+		},
+
+		mounted(){
+			this.imgSrc = this.image
 		},
 
 		computed: {
 			inputName(){
 				return this.name.replace(/\s+/g, '_').toLowerCase()
-			},
+			}
 		},
 
 		methods: {
@@ -55,6 +71,14 @@
 				this.onSelected = false
 				this.inputValue = ''
 			},
+
+			removeImage(imageID){
+				this.image = ''
+				axios.post(`products/image/remove`, {
+					id: imageID
+				})
+			},
+
 			readURL(e) {
 				const file = e.target.files[0]
 				
@@ -85,5 +109,6 @@
 .visual-picker-figure{
 	background-position: center;
 	background-size: contain;
+	background-repeat: no-repeat;
 }
 </style>

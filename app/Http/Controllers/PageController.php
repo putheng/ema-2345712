@@ -23,4 +23,9 @@ class PageController extends Controller
     {
     	return view('home.product', compact('product'));
     }
+
+    public function cart()
+    {
+        return view('home.cart');
+    }
 }

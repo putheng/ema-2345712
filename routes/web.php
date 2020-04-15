@@ -4,6 +4,8 @@ Route::get('/', 'PageController@home');
 Route::get('/filter', 'Products\ProductController@index')->name('product.filter');
 Route::get('/product/show', 'PageController@product')->name('product');
 
+Route::get('/cart/checkout', 'PageController@cart')->name('checkout');
+
 Route::get('/product/{product}/show', 'PageController@show')->name('show.product');
 
 Route::group(['prefix' => 'society', 'middleware' => ['auth']], function(){

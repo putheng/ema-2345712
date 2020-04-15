@@ -44,9 +44,16 @@
 						<span class="badge badge-secondary">Out of stock</span>
 					@endif
 					<div class="h2 font-weight-normal text-accent">{{ $product->formattedPrice }}</div>
+
+					<div>
+						<br>
+						<h6>Product description</h6>
+						<p>{{ $product->description }}</p>
+						<br>
+					</div>	
+
 					<product-variations slug="{!! $product->slug !!}"/>
-					<h6>Product description</h6>
-					<p>{{ $product->description }}</p>
+
 				</div>
 			</div>
 		</section>

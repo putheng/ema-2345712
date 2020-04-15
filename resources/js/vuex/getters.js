@@ -28,19 +28,19 @@ export const products = (state) => {
     return state.products
 }
 
-export const  count = (state) => {
+export const cartCount = (state) => {
     return state.products.length
 }
 
-export const  empty = (state) => {
+export const empty = (state) => {
     return state.empty
 }
 
-export const  subtotal = (state) => {
+export const subtotal = (state) => {
     return state.subtotal
 }
 
-export const  total = (state) => {
+export const total = (state) => {
     return state.total
 }
 

@@ -44,6 +44,17 @@ class CartController extends Controller
     public function store(CartStoreRequest $request, Cart $cart)
     {
         $cart->add($request->products);
+
+        $cart->sync();
+
+        $request->user()->load([
+            'cart.product', 'cart.product.variations.stock', 'cart.stock', 'cart.type'
+        ]);
+
+        return (new CartResource($request->user()))
+            ->additional([
+                'meta' => $this->meta($cart, $request)
+            ]);
     }
 
     public function update(ProductVariation $productVariation, CartUpdateRequest $request, Cart $cart)

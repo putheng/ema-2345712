@@ -50,6 +50,11 @@ class User extends Authenticatable implements JWTSubject
         return $q->where('type', 'store');
     }
 
+    public function dashboard()
+    {
+        return url($this->type);
+    }
+
     /**
      * [getJWTIdentifier description]
      * @return [type] [description]
