@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Address;
+use App\Models\Wishlist;
 use App\Models\Agent;
 use App\Models\Image;
 use App\Models\PaymentMethod;
@@ -13,10 +14,11 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
 use Tymon\JWTAuth\Contracts\JWTSubject;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable implements JWTSubject
 {
-    use Notifiable, HasRoles;
+    use Notifiable, HasRoles, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -98,6 +100,11 @@ class User extends Authenticatable implements JWTSubject
     public function variations()
     {
         return $this->hasManyThrough(ProductVariation::class, Product::class);
+    }
+
+    public function wishlists()
+    {
+        return $this->hasMany(Wishlist::class);
     }
 
     public function orders()

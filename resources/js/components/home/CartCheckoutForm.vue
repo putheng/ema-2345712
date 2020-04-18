@@ -5,24 +5,19 @@
 		<div class="col-xl-6 mb-3">
 			<h1 class="h2 mb-4">Checkout</h1>
 			<h2 class="h5 mb-4">Delivery details</h2>
-			<shipping-address />
+			<shipping-address 
+				:addresses="addresses"
+            	v-model="form.address_id"
+			/>
+			
 			<div>
 				<h2 class="h5 pb-3">Your order</h2>
-				<div class="media align-items-center py-2 border-bottom" 
-					v-for="(product, index) in products">
-					<a class="d-block mr-2" href="grocery-single.html">
-					<img width="64" :src="product.product.images[0].url" alt="Product"/>
-					</a>
-					<div class="media-body">
-						<h6 class="widget-product-title">
-							<a href="grocery-single.html">{{ product.product.name }} - {{ product.name }}</a>
-						</h6>
-						<div class="widget-product-meta">
-							<span class="text-accent mr-2">{{ product.sale_price }}</span>
-							<span class="text-muted">x {{ product.quantity }}</span>
-						</div>
-					</div>
-				</div>
+				<cart-overview-product 
+					v-for="(product, index) in products"
+					:key="index"
+					:product="product"
+				/>
+
 			</div>
 		</div>
 		<!-- Order summary + payment-->
@@ -38,7 +33,9 @@
 						<span class="text-right font-weight-medium">$7.<small>00</small></span>
 					</li>
 				</ul>
-				<h3 class="font-weight-normal text-center my-4 py-2">{{ totalPrice }}</h3>
+				<h3 class="font-weight-normal text-center my-4 py-2">
+					<small>Total :</small> {{ totalPrice }}
+				</h3>
 				<div class="accordion box-shadow-sm mb-4" id="payment-methods">
 					<div class="card">
 						<div class="card-header py-3 px-3">
@@ -61,28 +58,6 @@
 							</div>
 						</div>
 					</div>
-					<div class="card">
-						<div class="card-header py-3 px-3">
-							<div class="custom-control custom-radio">
-								<input class="custom-control-input" type="radio" name="license" id="payment-cash">
-								<label class="custom-control-label font-weight-medium text-dark" for="payment-cash" data-toggle="collapse" data-target="#cash">Cash on delivery<i class="czi-wallet text-muted font-size-lg align-middle mt-n1 ml-2"></i></label>
-							</div>
-						</div>
-						<div class="collapse" id="cash" data-parent="#payment-methods">
-							<div class="card-body">
-								<p class="font-size-sm mb-0">I will pay with cash to the courier on delivery.</p>
-							</div>
-						</div>
-					</div>
-					<div class="card">
-						<div class="card-body">
-							<h2 class="h6 pb-2">Do you have a coupon code?</h2>
-							<div class="d-flex">
-								<input class="form-control mr-3" type="text" placeholder="Coupon code">
-								<button class="btn btn-outline-primary" type="button">Apply code</button>
-							</div>
-						</div>
-					</div>
 				</div>
 				<div class="pt-2">
 					<button class="btn btn-primary btn-block" type="submit">Place Order</button>
@@ -97,14 +72,54 @@
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
+	data(){
+		return {
+			selecting: false,
+        	creating: false,
+        	shippingMethods: [],
+        	addresses: [],
+        	form: {
+	          address_id: null,
+	          payment_method_id: null,
+	        }
+		}
+	},
+
+	watch: {
+		'form.address_id' (addressId) {
+			this.getShippingMethodsForAddress(addressId).then(() => {
+			  this.setShipping(this.shippingMethods[0])
+			})
+		},
+
+		shippingMethodId () {
+			this.getCart()
+		}
+    },
+
 	methods: {
 		...mapActions({
-			getCart: 'getCart'
-		})
+			getCart: 'getCart',
+			setShipping: 'setShipping',
+		}),
+		async fetchData(){
+
+			let addresses = await axios.get('addresses')
+
+			this.addresses = addresses.data.data
+		},
+		async getShippingMethodsForAddress (addressId) {
+	        let response = await axios.get(`addresses/${addressId}/shipping`)
+
+	        this.shippingMethods = response.data.data
+
+	        return response
+	    }
 	},
 
 	mounted(){
 		this.getCart()
+		this.fetchData()
 	},
 
 	computed:{
@@ -112,8 +127,20 @@ export default {
 	        cartCount: 'cartCount',
 	        totalPrice: 'total',
 	        subtotal: 'subtotal',
-	        products: 'products'
-	    })
+	        products: 'products',
+	        empty: 'empty',
+        	shipping: 'shipping'
+	    }),
+	    shippingMethodId: {
+	        get () {
+	        	return this.shipping ? this.shipping.id : ''
+	        },
+	        set (shippingMethodId) {
+		        this.setShipping(
+		            this.shippingMethods.find(s => s.id === shippingMethodId)
+		        )
+	        }
+	    }
 	}
 }
 </script>

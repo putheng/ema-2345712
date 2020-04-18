@@ -10,7 +10,7 @@
 					<div class="card card-fluid">
 						<div class="card-body">
 							<h3 class="card-title"> What are you offering? </h3>
-								{{ product }}
+								
 								<input-binding v-model="product.name" name="name" label="Product name" />
 
 								<text-area-binding v-model="product.description" name="description" label="Product description"/>

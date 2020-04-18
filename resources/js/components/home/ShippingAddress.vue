@@ -4,64 +4,121 @@
 			<div class="media media-ie-fix align-items-center mr-3 py-2">
 				<div class="media-body">
 					<div class="font-size-ms text-muted">Shipping to:</div>
-					<div class="font-size-md font-weight-medium text-heading">New York, USA</div>
+					<div class="font-size-md font-weight-medium text-heading" v-if="selectedAddress">
+            {{ selectedAddress.name }} - {{ selectedAddress.phone }}<br>
+            {{ selectedAddress.address }},
+            {{ selectedAddress.city.name }},
+            {{ selectedAddress.country.name }}
+            
+            
+          </div>
 				</div>
 			</div>
 			<div class="py-2">
-				<a class="btn btn-light btn-sm btn-shadow mt-3 mt-sm-0" href="#" @click.prevent="creating = true">
-				<i class="czi-edit mr-2"></i>Add an address
+        <a class="btn btn-light btn-sm btn-shadow mt-3 mt-sm-0"
+          href="#" @click.prevent="changeAddress">
+          Change shipping address
+        </a>
+				<a class="btn btn-light btn-sm btn-shadow mt-3 mt-sm-0"
+					href="#" @click.prevent="addAddress">
+					Add an address
 				</a>
 			</div>
 		</div>
-		<div class="row" v-if="creating">
-			<div class="col-sm-6">
-				<div class="form-group">
-					<label for="co-fn">First name <span class='text-danger'>*</span></label>
-					<input class="form-control" type="text" id="co-fn" required>
-				</div>
-			</div>
-			<div class="col-sm-6">
-				<div class="form-group">
-					<label for="co-ln">Last name <span class='text-danger'>*</span></label>
-					<input class="form-control" type="text" id="co-ln" required>
-				</div>
-			</div>
-			<div class="col-sm-6">
-				<div class="form-group">
-					<label for="co-ln">Phone number <span class='text-danger'>*</span></label>
-					<input class="form-control" type="text" id="co-phone" required>
-				</div>
-			</div>
-			<div class="col-sm-6">
-				<div class="form-group">
-					<label for="co-fn">Email address</label>
-					<input class="form-control" type="email" id="co-email">
-				</div>
-			</div>
-			<div class="col-sm-12">
-				<div class="form-group">
-					<label for="co-address">Address <span class='text-danger'>*</span></label>
-					<input class="form-control" type="text" id="co-address" required>
-				</div>
-			</div>
-			<div class="col-sm-12">
-				<div class="form-group">
-					<label for="co-note">Order note</label>
-					<textarea class="form-control" id="co-note" rows="6" placeholder="Please write here any additional information..."></textarea>
-				</div>
-			</div>
-		</div>
+		
+		<template v-if="selecting">
+      <shipping-address-selector
+        :addresses="addresses"
+        :selectedAddress="selectedAddress"
+        @click="addressSelected"
+      />
+  	</template>
+  	<template v-else-if="creating">
+    	<shipping-address-creator
+      	@cancel="creating = false"
+      	@created="created"
+      />
+  	</template>
 	</div>
 </template>
 
 <script>
-export default {
-	data(){
-		return {
-			selecting: false,
-        	creating: false,
-		}
-	}
+
+import { mapGetters, mapActions } from 'vuex'
+
+  export default {
+    data () {
+      return {
+        selecting: false,
+        creating: false,
+        // localAddresses: this.addresses,
+        selectedAddress: null
+      }
+    },
+
+    watch: {
+      selectedAddress (address) {
+        this.$emit('input', address.id)
+      }
+    },
+
+    props: {
+      addresses: {
+        required: true,
+        type: Array
+      }
+    },
+
+    computed: {
+      defaultAddress () {
+        return this.localAddresses.find(a => a.default === true)
+      },
+
+      localAddresses:{
+        set(value){
+          return this.addresses = value
+        },
+        get(){
+          return this.addresses
+        }
+      }
+    },
+
+    methods: {
+      addressSelected (address) {
+        this.switchAddress(address)
+        this.selecting = false
+        this.creating = false
+      },
+
+      addAddress(){
+        this.creating = true
+        this.selecting = false
+      },
+
+      changeAddress(){
+        this.selecting = true
+
+        this.switchAddress(this.defaultAddress)
+      },
+
+      switchAddress (address) {
+        this.selectedAddress = address
+      },
+
+      created (address) {
+        this.localAddresses.push(address)
+        this.creating = false
+
+        this.switchAddress(address)
+      }
+    },
+
+    created () {
+      if (this.addresses.length) {
+        this.switchAddress(this.defaultAddress)
+      }
+    }
 }
 </script>
 

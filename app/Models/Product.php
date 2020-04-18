@@ -2,12 +2,15 @@
 
 namespace App\Models;
 
-use App\Models\Category;
-use App\Models\Image;
+use App\Models\{
+    Category,
+    Wishlist,
+    Image,
+    User
+};
 use App\Models\ProductVariation;
 use App\Models\Traits\CanBeScoped;
 use App\Models\Traits\HasPrice;
-use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
@@ -56,6 +59,11 @@ class Product extends Model
     public function image()
     {
         return $this->morphMany(Image::class, 'imageable');
+    }
+
+    public function inWishlist()
+    {
+        return auth()->user()->wishlists->where('product_id', $this->id)->count() > 0;
     }
 
     public function categories()

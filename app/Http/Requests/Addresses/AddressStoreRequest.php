@@ -25,9 +25,9 @@ class AddressStoreRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'address_1' => 'required',
+            'address' => 'required',
             'city_id' => 'required',
-            'postal_code' => 'required',
+            'phone' => 'required',
             'country_id' => 'required|exists:countries,id',
         ];
     }

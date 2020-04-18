@@ -8,6 +8,15 @@ Route::resource('cart', 'Cart\CartController', [
 ]);
 Route::resource('payment-methods', 'PaymentMethods\PaymentMethodController');
 Route::resource('orders', 'Orders\OrderController');
+Route::resource('addresses', 'Addresses\AddressController');
+Route::resource('cities', 'Addresses\CityController');
+Route::resource('countries', 'Countries\CountryController');
+
+Route::resource('discounts', 'Api\DiscountController');
+Route::resource('newsletter', 'Api\NewsletterController');
+Route::get('addresses/{address}/shipping', 'Addresses\AddressShippingController@action');
+
+Route::resource('bast-sell', 'Api\BestSellController');
 
 Route::group(['middleware' => 'auth'], function(){
 	
@@ -34,6 +43,10 @@ Route::group(['middleware' => 'auth'], function(){
 
 	Route::group(['prefix' => 'products'], function(){
 		Route::resource('product', 'Admin\ProductController');
+
+		Route::get('wishlist', 'Api\WishlistController@index');
+		Route::post('wishlist', 'Api\WishlistController@store');
+		Route::post('wishlist/remove', 'Api\WishlistController@destroy');
 
 		Route::post('product/{product}/edit', 'Admin\ProductEditController@store');
 		Route::post('image/remove', 'Admin\ImageController@destroy');

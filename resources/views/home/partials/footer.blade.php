@@ -47,33 +47,11 @@
 					<div class="widget widget-links widget-light pb-2 mb-4">
 						<h3 class="widget-title text-light">Product catalog</h3>
 						<ul class="widget-list">
-							<li class="widget-list-item">
-								<a class="widget-list-link" href="#">Special offers</a>
-							</li>
-							<li class="widget-list-item">
-								<a class="widget-list-link" href="#">Bakery</a>
-							</li>
-							<li class="widget-list-item">
-								<a class="widget-list-link" href="#">Fruits and Vegetables</a>
-							</li>
-							<li class="widget-list-item">
-								<a class="widget-list-link" href="#">Dairy and Eggs</a>
-							</li>
-							<li class="widget-list-item">
-								<a class="widget-list-link" href="#">Meat and Poultry</a>
-							</li>
-							<li class="widget-list-item">
-								<a class="widget-list-link" href="#">Fish and Seafood</a>
-							</li>
-							<li class="widget-list-item">
-								<a class="widget-list-link" href="#">Sauces and Spices</a>
-							</li>
-							<li class="widget-list-item">
-								<a class="widget-list-link" href="#">Canned Food and Oil</a>
-							</li>
-							<li class="widget-list-item">
-								<a class="widget-list-link" href="#">Alcoholic Beverages</a>
-							</li>
+							@foreach($categories as $category)
+								<li class="widget-list-item">
+									<a class="widget-list-link" href="#">{{ $category->name }}</a>
+								</li>
+							@endforeach
 						</ul>
 					</div>
 				</div>
@@ -82,14 +60,14 @@
 						<h3 class="widget-title text-light">Company</h3>
 						<ul class="widget-list">
 							<li class="widget-list-item">
-								<a class="widget-list-link" href="#">About us</a>
+								<a class="widget-list-link" href="{{ route('about') }}">About us</a>
 							</li>
 							<li class="widget-list-item">
-								<a class="widget-list-link" href="#">Store locator</a>
+								<a class="widget-list-link" href="{{ route('stores') }}">Store locator</a>
 							</li>
 
 							<li class="widget-list-item">
-								<a class="widget-list-link" href="#">Contacts</a>
+								<a class="widget-list-link" href="{{ route('contact') }}">Contacts</a>
 							</li>
 							<li class="widget-list-item">
 								<a class="widget-list-link" href="#">Help center</a>
@@ -108,24 +86,7 @@
 					</div>
 				</div>
 				<div class="col-xl-4 col-sm-8">
-					<div class="widget pb-2 mb-4">
-						<h3 class="widget-title text-light pb-1">Stay informed</h3>
-						<form class="validate" action="https://studio.us12.list-manage.com/subscribe/post-json?u=c7103e2c981361a6639545bd5&amp;amp;id=29ca296126&amp;c=?" method="get" name="mc-embedded-subscribe-form" id="mc-embedded-subscribe-form">
-							<div class="input-group input-group-overlay flex-nowrap">
-								<div class="input-group-prepend-overlay"><span class="input-group-text text-muted font-size-base"><i class="czi-mail"></i></span></div>
-								<input class="form-control prepended-form-control" type="email" name="EMAIL" id="mce-EMAIL" value="" placeholder="Your email" required>
-								<div class="input-group-append">
-									<button class="btn btn-primary" type="submit" name="subscribe" id="mc-embedded-subscribe">Subscribe*</button>
-								</div>
-							</div>
-							<!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-							<div style="position: absolute; left: -5000px;" aria-hidden="true">
-								<input type="text" name="b_c7103e2c981361a6639545bd5_29ca296126" tabindex="-1">
-							</div>
-							<small class="form-text text-light opacity-50" id="mc-helper">*Subscribe to our newsletter to receive early discount offers, updates and new products info.</small>
-							<div class="subscribe-status"></div>
-						</form>
-					</div>
+					<newsletter/>
 					<div class="widget pb-2 mb-4">
 						<h3 class="widget-title text-light pb-1">Download our app</h3>
 						<div class="d-flex flex-wrap">

@@ -74,16 +74,18 @@ export const getCart = ({ commit, state }) => {
 
 export const destroy = ({ dispatch }, productId) => {
     axios.delete(`cart/${productId}`)
-
-    dispatch('getCart')
+    .then((response) => {
+    	dispatch('getCart')
+    })
 }
 
 export const update = ({ dispatch }, { productId, quantity }) => {
     return axios.patch(`cart/${productId}`, {
       quantity
     })
-
-    dispatch('getCart')
+    .then((response) => {
+    	dispatch('getCart')
+    })
 }
 
 export const storeCart = ({ dispatch, commit }, products) => {

@@ -12,7 +12,7 @@ class AddressController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['auth:api']);
+        $this->middleware(['auth']);
     }
 
     public function index(Request $request)
@@ -25,7 +25,7 @@ class AddressController extends Controller
     public function store(AddressStoreRequest $request)
     {
         $address = Address::make($request->only([
-            'name', 'address_1', 'city_id', 'postal_code', 'country_id', 'default'
+            'name', 'address', 'city_id', 'phone', 'country_id', 'default'
         ]));
 
         $request->user()->addresses()->save($address);

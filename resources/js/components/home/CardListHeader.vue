@@ -5,7 +5,7 @@
 	</a>
 	<a class="navbar-tool-text" href="/cart/checkout">
 		<small>My Cart</small>
-		$25.00
+		{{ totalPrice }}
 	</a>
 	<div class="dropdown-menu dropdown-menu-right open" style="width: 20rem;">
 
@@ -13,7 +13,7 @@
 			<div style="height: 15rem;">
 				
 				<div class="widget-cart-item py-2 border-bottom" v-for="product in products">
-					<button class="close text-danger" type="button" aria-label="Remove">
+					<button @click.prevent="destroy(product.id)" class="close text-danger" type="button" aria-label="Remove">
 						<span aria-hidden="true">&times;</span>
 					</button>
 					<div class="media align-items-center">
@@ -60,8 +60,9 @@ import { mapGetters, mapActions } from 'vuex'
 export default {
 	methods: {
 		...mapActions({
-			getCart: 'getCart'
-		})
+			getCart: 'getCart',
+			destroy: 'destroy',
+		}),
 	},
 
 	mounted(){

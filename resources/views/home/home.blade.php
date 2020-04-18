@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
-<section class="px-lg-3 pt-4">
+<section class="px-lg-3 pt-4 container">
 	<div class="px-3 pt-2">
 		@include('home.partials.slider')
 		<section class="pt-4 mb-5">

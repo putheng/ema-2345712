@@ -10,6 +10,10 @@ import {
 	C15E818FD2763CEB,
 	C15E896E7217A60B,
 	C15E8DEC1EE9B1BB,
+	C15E9A8D409C560B,
+	C15E9A8D4D1DD86B,
+	C15E9A8D5B54D26B,
+	C15E9A8D683E323B,
 	/****/
 } from '../components'
 
@@ -69,6 +73,26 @@ export default [
 		path: '/store/products/:slug/edit',
 		component: C15E8DEC1EE9B1BB,
 		name: 'store-products-edit'
+	},
+	{
+		path: '/store/cart/order',
+		component: C15E9A8D409C560B,
+		name: 'store-cart-order'
+	},
+	{
+		path: '/store/cart/tickets',
+		component: C15E9A8D4D1DD86B,
+		name: 'store-cart-tickets'
+	},
+	{
+		path: '/store/cart/wishlist',
+		component: C15E9A8D5B54D26B,
+		name: 'store-cart-wishlist'
+	},
+	{
+		path: '/store/cart/viewticket',
+		component: C15E9A8D683E323B,
+		name: 'store-cart-viewticket'
 	},
 	/**/
 ]

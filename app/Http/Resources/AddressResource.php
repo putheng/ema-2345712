@@ -19,11 +19,11 @@ class AddressResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'address_1' => $this->address_1,
+            'address' => $this->address,
             'city' => new CityResource($this->city),
-            'postal_code' => $this->postal_code,
+            'phone' => $this->phone,
             'country' => new CountryResource($this->country),
-            'default' => $this->default
+            'default' => (bool) $this->default
         ];
     }
 }

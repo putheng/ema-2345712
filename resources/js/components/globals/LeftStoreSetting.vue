@@ -1,20 +1,22 @@
 <template>
 	<nav id="stacked-menu" class="stacked-menu">
 		<ul class="menu">
-			<li class="menu-header" style="margin-top: 0;">payment</li>
+			
+
+			<li class="menu-header">Cart</li>
 			<li class="menu-item">
-				<!-- <router-link :to="{ name: 'store-payments-balance' }" class="menu-link">
-					<span class="oi oi-dollar"></span>
-					<span class="menu-text">Balance</span>
-				</router-link> -->
-				<router-link :to="{ name: 'store-payments-payout' }" class="menu-link">
-					<span class="oi oi-aperture"></span>
-					<span class="menu-text">Payouts</span>
+				<router-link :to="{ name: 'store-cart-order' }" class="menu-link">
+					<span class="menu-icon oi oi-cart"></span>
+					<span class="menu-text">Order</span>
 				</router-link>
-				<!-- <router-link :to="{ name: 'store-payments-methods' }" class="menu-link">
-					<span class="oi oi-credit-card"></span>
-					<span class="menu-text">Payouts</span>
-				</router-link> -->
+				<router-link :to="{ name: 'store-cart-wishlist' }" class="menu-link">
+					<span class="menu-icon oi oi-heart"></span>
+					<span class="menu-text">Wishlist</span>
+				</router-link>
+				<router-link :to="{ name: 'store-cart-tickets' }" class="menu-link">
+					<span class="menu-icon oi oi-info"></span>
+					<span class="menu-text">Support tickets</span>
+				</router-link>
 			</li>
 
 			<li class="menu-header">Products</li>
@@ -30,6 +32,22 @@
 				<router-link :to="{ name: 'store-products-new' }" class="menu-link">
 					<span class="oi oi-plus"></span>
 					<span class="menu-text">Add New Product</span>
+				</router-link>
+			</li>
+
+			<li class="menu-header" style="margin-top: 0;">Payment</li>
+			<li class="menu-item">
+				<router-link :to="{ name: 'store-payments-payout' }" class="menu-link">
+					<span class="oi oi-aperture"></span>
+					<span class="menu-text">Payouts</span>
+				</router-link>
+				<router-link :to="{ name: 'store-payments-payout' }" class="menu-link">
+					<span class="oi oi-dollar"></span>
+					<span class="menu-text">Withdraw</span>
+				</router-link>
+				<router-link :to="{ name: 'store-payments-payout' }" class="menu-link">
+					<span class="oi oi-dollar"></span>
+					<span class="menu-text">Transactons</span>
 				</router-link>
 			</li>
 

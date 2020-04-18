@@ -28,4 +28,20 @@ class PageController extends Controller
     {
         return view('home.cart');
     }
+
+    public function contact()
+    {
+        return view('home.contact');
+    }
+
+    public function about()
+    {
+        return view('home.about');
+    }
+
+    public function stores()
+    {
+        return view('home.stores');
+    }
+
 }
