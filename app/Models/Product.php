@@ -63,7 +63,12 @@ class Product extends Model
 
     public function inWishlist()
     {
-        return auth()->user()->wishlists->where('product_id', $this->id)->count() > 0;
+        if(auth()->check()){
+            return auth()->user()->wishlists->where('product_id', $this->id)->count() > 0;
+        }
+
+        return false;
+        
     }
 
     public function categories()
