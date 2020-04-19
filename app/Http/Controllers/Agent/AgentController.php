@@ -44,6 +44,7 @@ class AgentController extends Controller
 
     public function show(Request $request)
     {
+        
     	return new AgentResource($request->user()->agent);
     }
 

@@ -22,7 +22,7 @@ class AgentsResource extends JsonResource
             'child' => $this->child_count,
             'user_id' => $this->user_id,
             'avatar' => $this->avatar(),
-            'children' => []
+            'children' => AgentsResource::collection($this->children)
         ];
     }
 
