@@ -4,6 +4,7 @@ export { default as Application } from './Application'
 export { default as Dashboard } from './Dashboard'
 export { default as SocietyLayout } from './layouts/SocietyLayout'
 export { default as StoreLayout } from './layouts/StoreLayout'
+export { default as SupplierLayout } from './layouts/SupplierLayout'
 
 export { default as AppMain } from './AppMain'
 export { default as UserSetting } from './UserSetting'

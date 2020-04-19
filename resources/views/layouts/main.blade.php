@@ -13,6 +13,7 @@
 		<meta name="theme-color" content="#ffffff">
 		<link rel="stylesheet" media="screen" href="{{ asset('css/vendor.min.css') }}">
 		<link rel="stylesheet" media="screen" id="main-styles" href="{{ asset('css/theme.min.css?v=2') }}">
+		@yield('head')
 	</head>
 	<body class="bg-secondary">
 		<div id="app">
@@ -31,5 +32,6 @@
 		<script src="{{ asset('js/app.js?v='. time()) }}"></script>
 		<script src="{{ asset('js/vendor.min.js?v=3') }}"></script>
 		<script src="{{ asset('js/theme.js') }}"></script>
+		@yield('script')
 	</body>
 </html>

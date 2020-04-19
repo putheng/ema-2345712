@@ -20,6 +20,11 @@ import {
 
 export default [
 	{
+		path: '/store',
+		component: C15E818BDC0DFDBB,
+		name: 'store-index'
+	},
+	{
 		path: '/store/setting',
 		component: C15E818B8012FC0B,
 		name: 'store-setting'
@@ -90,7 +95,7 @@ export default [
 		name: 'store-cart-wishlist'
 	},
 	{
-		path: '/store/cart/viewticket',
+		path: '/store/cart/tickets/:id',
 		component: C15E9A8D683E323B,
 		name: 'store-cart-viewticket'
 	},

@@ -16,12 +16,17 @@ import {
 
 export default [
 	{
-		path: '/dashboard/order',
+		path: '/dashboard',
 		component: C15E721F8BC2EACB,
 		name: 'user-dashboard-order'
 	},
 	{
-		path: '/dashboard/wishlist',
+		path: '/dashboard/cart/order',
+		component: C15E721F8BC2EACB,
+		name: 'user-dashboard-order'
+	},
+	{
+		path: '/dashboard/cart/wishlist',
 		component: C15E721F9ADACE4B,
 		name: 'user-dashboard-wishlist'
 	},
@@ -61,7 +66,7 @@ export default [
 		name: 'user-dashboard-tickets'
 	},
 	{
-		path: '/dashboard/ticket/view',
+		path: '/dashboard/ticket/:id',
 		component: C15E72F0BEAB700B,
 		name: 'user-dashboard-viewticket'
 	},

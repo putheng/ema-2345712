@@ -15,6 +15,13 @@ use App\Models\Image;
 
 class ProductController extends Controller
 {
+    public function index(Request $request)
+    {
+        return ProductIndexResource::collection(
+            $request->user()->products()->with('image', 'category', 'variations')->orderBy('id', 'desc')->paginate(20)
+        );
+    }
+
     public function show(Request $request, Product $product)
     {
         return new ProductIndexResource(
@@ -118,12 +125,5 @@ class ProductController extends Controller
             }
         });
         
-    }
-
-    public function index(Request $request)
-    {
-    	return ProductIndexResource::collection(
-    		$request->user()->products()->orderBy('id', 'desc')->paginate(20)
-    	);
     }
 }

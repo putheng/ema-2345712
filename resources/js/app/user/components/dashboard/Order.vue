@@ -1,114 +1,77 @@
 <template>
-	<div class="page">
-		<div class="page-inner">
-			<header class="page-title-bar">
-				<h1 class="page-title">My orders</h1>
-			</header>
-			<div class="page-section">
-				<div class="row">
-					<div class="col-md-12">
-						<div class="card card-fluid">
-							<div class="card-body">
-								<table class="table">
-									<thead>
-										<th>Order #</th>
-										<th>Date Purchased</th>
-										<th>Status</th>
-										<th>Total</th>
-									</thead>
-									<tbody>
-										<tr>
-											<td>
-												<app-modal 
-													commit="admin/setIndustries"
-													:data="{id:'00'}"
-													:option="{ title: 'Update', url: '/api/industry/edit'}"
-													cancel="Close" id="convertToID" title="Update" >
-													<h6>Order No - 34VB5540K83</h6>
-												</app-modal>
+<div class="page-inner">
+	<header class="page-title-bar">
+		<h1 class="page-title">My orders</h1>
+	</header>
+	<div class="page-section">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="card card-fluid">
+					<div class="card-body">
 
-												<a href="#" 
-													data-toggle="modal" 
-													data-target="#convertToID">
-													34VB5540K83
-												</a>
-												
-											</td>
-											<td>May 21, 2020</td>
-											<td><span class="badge badge-primary">In Progress</span></td>
-											<td>$358.75</td>
-										</tr>
-										<tr>
-											<td>
-												<a href="#" 
-													data-toggle="modal" 
-													data-target="#convertToID">
-													34VB5540K83
-												</a>
-											</td>
-											<td>May 21, 2020</td>
-											<td><span class="badge badge-danger">Cancel</span></td>
-											<td>$358.75</td>
-										</tr>
-										<tr>
-											<td @click.prevent="$modal.show('newTodo')">
-												<a href="#" 
-													data-toggle="modal" 
-													data-target="#convertToID">
-													34VB5540K83
-												</a>
-											</td>
-											<td>May 21, 2020</td>
-											<td><span class="badge badge-warning">Delayed</span></td>
-											<td>$358.75</td>
-										</tr>
-										<tr>
-											<td @click.prevent="$modal.show('newTodo')">
-												<a href="#" 
-													data-toggle="modal" 
-													data-target="#convertToID">
-													34VB5540K83
-												</a>
-											</td>
-											<td>May 21, 2020</td>
-											<td><span class="badge badge-success">Delivered</span></td>
-											<td>$358.75</td>
-										</tr>
-										<tr>
-											<td @click.prevent="$modal.show('newTodo')">
-												<a href="#" 
-													data-toggle="modal" 
-													data-target="#convertToID">
-													34VB5540K83
-												</a>
-											</td>
-											<td>May 21, 2020</td>
-											<td><span class="badge badge-success">Delivered</span></td>
-											<td>$358.75</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-						</div>
+						<table class="table">
+							<thead>
+								<th>Order #</th>
+								<th>Date Purchased</th>
+								<th>Status</th>
+								<th>Total</th>
+							</thead>
+							<tbody>
+								<tr v-if="orders.length" v-for="(order, i) in orders">
+									<td>
+										<a href="#" @click.prevent="showModal(order)">
+											EMAO{{ order.id }}
+										</a>
+									</td>
+									<td>{{ order.created_at }}</td>
+									<td><span class="badge "
+										:class="{
+											'badge-warning': order.status == 'pending',
+											'badge-primary': order.status == 'processing',
+											'badge-danger': order.status == 'payment_failed',
+											'badge-success': order.status == 'completed',
+										}"
+										>{{ order.status }}</span></td>
+									<td>{{ order.total }}</td>
+								</tr>
+							</tbody>
+						</table>
 					</div>
 				</div>
 			</div>
 		</div>
+		<OrderModal :order="order"/>
 	</div>
+</div>
 </template>
 
 <script>
 	import { mapGetters, mapActions } from 'vuex'
+	import OrderModal from './partials/OrderModal'
 
 	export default {
+		data(){
+			return {
+				orders: [],
+				order: null
+			}
+		},
 		methods: {
-			//
+			async fetch(){
+				let r = await axios.get(`orders`)
+
+				this.orders = r.data.data
+			},
+			showModal(order){
+				this.order = order
+				$('#orderModal').modal('show')
+			}
 		},
-		computed: {
-			//
+		components: {
+			OrderModal
 		},
-		mounted(){
-			//
+		created(){
+			this.fetch()
 		}
 	}
 </script>

@@ -11,6 +11,6 @@ class Transaction extends Model
      * @var [type]
      */
     protected $fillable = [
-        'total'
+        'total', 'type', 'symbol'
     ];
 }

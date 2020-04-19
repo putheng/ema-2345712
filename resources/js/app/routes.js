@@ -1,3 +1,4 @@
+import suppliers from './suppliers/routes'
 import store from './store/routes'
 import society from './society/routes'
 import user from './user/routes'
@@ -10,5 +11,6 @@ export default [
 	...user,
 	...society,
 	...store,
+	...suppliers,
 	/**/
 ]

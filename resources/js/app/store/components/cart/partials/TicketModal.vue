@@ -2,7 +2,7 @@
 <transition name="fade">
 	<div class="modal modal-alert fade" id="TicketModal" data-backdrop="static" tabindex="-1" role="dialog"aria-hidden="true">
 		<div class="modal-dialog modal-lg" role="document">
-			<app-form action="/">
+			<app-form @created="created" action="/ticket">
 				<div class="modal-content">
 					<div class="modal-header">
 						<h5 class="modal-title">
@@ -60,16 +60,16 @@
 			return {
 				types:[
 					{name: 'Order problem', value: '1'},
-					{name: 'Partner request', value: '1'},
-					{name: 'Complaint', value: '1'},
-					{name: 'Info inquiry', value: '1'},
-					{name: 'Delivery problem', value: '1'}
+					{name: 'Partner request', value: '2'},
+					{name: 'Complaint', value: '3'},
+					{name: 'Info inquiry', value: '4'},
+					{name: 'Delivery problem', value: '5'}
 				],
 				options: [
 					{name: 'Urgent', value: '1'},
-					{name: 'High', value: '1'},
-					{name: 'Medium', value: '1'},
-					{name: 'Low', value: '1'},
+					{name: 'High', value: '2'},
+					{name: 'Medium', value: '3'},
+					{name: 'Low', value: '4'},
 				]
 			}
 		},
@@ -89,6 +89,9 @@
 				this.clearValidationErrors()
 				this.clearMessage()
 				this.clearErrors()
+			},
+			created(e){
+				this.$emit('created', e)
 			}
 		}
 	}

@@ -36,6 +36,11 @@ Route::group(['middleware' => 'auth'], function(){
 		Route::get('store', 'Api\StoreController@index');
 	});
 
+	Route::resource('ticket', 'Api\TicketController');
+
+	Route::resource('tick_types', 'Api\TypeController');
+	Route::resource('priority', 'Api\PriorityController');
+
 	Route::group(['prefix' => 'payment'], function(){
 		Route::resource('transfer', 'Api\TransferController');
 		Route::post('transfer/confirm', 'Api\TransferController@confirm');
@@ -81,7 +86,7 @@ Route::group(['middleware' => 'auth'], function(){
 	
 });
 
-Route::group(['prefix' => 'auth', 'middleware' => ['guest'], 'namespace' => 'Api'],function(){
-	Route::post('login', 'LoginController@login');
-	// Route::post('register', 'RegisterController@store');
+Route::group(['prefix' => 'auth', 'middleware' => ['guest']],function(){
+	Route::post('login', 'Api\LoginController@login');
+	Route::post('register', 'Api\RegisterController@store');
 });

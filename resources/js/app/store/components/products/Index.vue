@@ -29,8 +29,8 @@
 											<h5>
 												<a :href="'/product/'+ product.slug +'/show'" target="_blank">{{ product.name }}</a>
 											</h5>
-											<div>Sales: <strong>26</strong></div>
-											<div>Earnings: <strong>$327.60</strong></div>
+											<!-- <div>Sales: <strong>26</strong></div>
+											<div>Earnings: <strong>$327.60</strong></div> -->
 											<h5 class="text-info">{{ product.formattedPrice }}</h5>
 										</td>
 										<td>
@@ -39,9 +39,9 @@
 												class="btn btn-sm btn-outline-info">
 												<span class="oi oi-pencil mr-1"></span> Edit
 											</router-link>
-											<button class="btn btn-sm btn-outline-danger">
+											<!-- <button class="btn btn-sm btn-outline-danger">
 												<span class="oi oi-trash mr-1"></span> Remove
-											</button>
+											</button> -->
 										</td>
 									</tr>
 								</tbody>

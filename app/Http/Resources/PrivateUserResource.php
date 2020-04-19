@@ -19,6 +19,7 @@ class PrivateUserResource extends JsonResource
             'email' => $this->email,
             'balance' => '$'. number_format($this->balance, 2),
             'name' => $this->name,
+            'dashboard' => $this->dashboard(),
             'avatar' => $this->avatar(),
             'uuid' => optional($this->agent)->uuid,
             'role' => $this->getRoleNames()->first(),

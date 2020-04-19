@@ -9,7 +9,7 @@ use App\Models\Image;
 use App\Models\PaymentMethod;
 use App\Models\Product;
 use App\Models\Store;
-use App\Models\Transfer;
+use App\Models\{Transfer, Ticket};
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
@@ -57,6 +57,11 @@ class User extends Authenticatable implements JWTSubject
         return url($this->type);
     }
 
+    public function avatar()
+    {
+        return $this->image->avatar();
+    }
+
     /**
      * [getJWTIdentifier description]
      * @return [type] [description]
@@ -95,6 +100,11 @@ class User extends Authenticatable implements JWTSubject
     public function products()
     {
         return $this->hasMany(Product::class);
+    }
+
+    public function tickets()
+    {
+        return $this->hasMany(Ticket::class);
     }
 
     public function variations()

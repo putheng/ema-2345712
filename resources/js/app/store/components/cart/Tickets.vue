@@ -9,6 +9,7 @@
 				<div class="card card-fluid">
 					<div class="card-body">
 						<h3 class="card-title"> My tickets </h3>
+
 						<table class="table table-hover">
 							<thead>
 								<th>Ticket Subject</th>
@@ -19,49 +20,19 @@
 							</thead>
 
 							<tbody>
-								<tr>
+								<tr v-for="(ticket, index) in tickets">
 									<td>
-										<router-link :to="{name: 'user-dashboard-viewticket'}">
-											My old ticket
+										<router-link :to="{name: 'store-cart-viewticket', params:{id:ticket.id}}">
+											{{ ticket.subject }}
 										</router-link>
 									</td>
-									<td>06/19/2020 | 06/20/2020</td>
-									<td>Info inquiry</td>
+									<td>{{ ticket.created }} | {{ ticket.updated }}</td>
+									<td>{{ ticket.type }}</td>
 									<td>
-										<span class="badge badge-warning">High</span>
+										<span class="badge badge-warning">{{ ticket.priority }}</span>
 									</td>
 									<td>
-										<span class="badge badge-success">Open</span>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<router-link :to="{name: 'user-dashboard-viewticket'}">
-											My New ticket
-										</router-link>
-									</td>
-									<td>06/19/2020 | 06/20/2020</td>
-									<td>Info inquiry</td>
-									<td>
-										<span class="badge badge-danger">Urgent</span>
-									</td>
-									<td>
-										<span class="badge badge-secondary">Closed</span>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<a href="#">
-											My New ticket
-										</a>
-									</td>
-									<td>06/19/2020 | 06/20/2020</td>
-									<td>Info inquiry</td>
-									<td>
-										<span class="badge badge-info">Medium</span>
-									</td>
-									<td>
-										<span class="badge badge-secondary">Closed</span>
+										<span class="badge badge-success">{{ ticket.status }}</span>
 									</td>
 								</tr>
 							</tbody>
@@ -81,7 +52,7 @@
 			</div>
 		</div>
 	</div>
-	<TicketModal/>
+	<TicketModal @created="created"/>
 </div>
 </template>
 
@@ -91,14 +62,32 @@
 	import TicketModal from './partials/TicketModal'
 
 	export default {
+		data(){
+			return {
+				tickets: []
+			}
+		},
 		methods: {
-			//
+			created(e){
+				$('#TicketModal').modal('hide')
+
+				this.tickets = e.data.data
+			},
+
+			async fetch(){
+				let response = await axios.get('ticket')
+
+				this.tickets = response.data.data
+			}
+		},
+		components:{
+			TicketModal
 		},
 		computed: {
 			//
 		},
 		mounted(){
-			//
+			this.fetch()
 		}
 	}
 </script>

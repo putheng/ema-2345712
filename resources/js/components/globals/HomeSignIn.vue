@@ -44,37 +44,17 @@
 					Sign in
 			</button>
 		</form>	
-		<form class="needs-validation tab-pane fade" autocomplete="off" novalidate id="signup-tab">
-			<div class="form-group">
-				<label for="su-name">Full name</label>
-				<input class="form-control" type="text" id="su-name" placeholder="John Doe" required>
-				<div class="invalid-feedback">Please fill in your name.</div>
-			</div>
-			<div class="form-group">
-				<label for="su-email">Email address</label>
-				<input class="form-control" type="email" id="su-email" placeholder="johndoe@example.com" required>
-				<div class="invalid-feedback">Please provide a valid email address.</div>
-			</div>
-			<div class="form-group">
-				<label for="su-password">Password</label>
-				<div class="password-toggle">
-					<input class="form-control" type="password" id="su-password" required>
-					<label class="password-toggle-btn">
-					<input class="custom-control-input" type="checkbox"><i class="czi-eye password-toggle-indicator"></i><span class="sr-only">Show password</span>
-					</label>
-				</div>
-			</div>
-			<div class="form-group">
-				<label for="su-password-confirm">Confirm password</label>
-				<div class="password-toggle">
-					<input class="form-control" type="password" id="su-password-confirm" required>
-					<label class="password-toggle-btn">
-					<input class="custom-control-input" type="checkbox"><i class="czi-eye password-toggle-indicator"></i><span class="sr-only">Show password</span>
-					</label>
-				</div>
-			</div>
-			<button class="btn btn-primary btn-block btn-shadow" type="submit">Sign up</button>
-		</form>
+		<app-form @created="created" action="/auth/register" class="tab-pane fade" id="signup-tab">
+			
+			<app-input label="Full name" name="name" placeholder="Please enter your name" />
+
+			<app-input label="Email address" name="email" placeholder="Please enter your email" />
+
+			<app-input label="Password" name="password" type="password" placeholder="Please enter password"/>
+			<app-input label="Confirm password" name="password_confirmation" type="password" placeholder="Please enter password again"/>
+
+			<app-button type="submit">Sign up</app-button>
+		</app-form>
 	</div>
 </div>
 </template>
@@ -113,7 +93,12 @@
 			},
 			clearValidation(data){
 				this.$store.dispatch('clearValidateFor', data)
-			}
+			},
+			created(e){
+				if(e.data.success){
+					window.location = e.data.data.dashboard
+				}
+			}	
 		},
 		computed: {
 			...mapGetters({

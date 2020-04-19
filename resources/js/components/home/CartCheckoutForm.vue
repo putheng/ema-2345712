@@ -60,7 +60,17 @@
 					</div>
 				</div>
 				<div class="pt-2">
-					<button class="btn btn-primary btn-block" type="submit">Place Order</button>
+					<button 
+						class="btn btn-primary btn-block"
+						type="submit"
+						:disabled="empty || submitting"
+                		@click.prevent="order"
+					>
+						<span v-if="submitting" 
+						class="spinner-border spinner-border-sm mr-2"
+						role="status" aria-hidden="true"></span>
+						Place Order
+					</button>
 				</div>
 			</div>
 		</div>
@@ -74,13 +84,12 @@ import { mapGetters, mapActions } from 'vuex'
 export default {
 	data(){
 		return {
-			selecting: false,
-        	creating: false,
         	shippingMethods: [],
+        	submitting: false,
         	addresses: [],
         	form: {
 	          address_id: null,
-	          payment_method_id: null,
+	          payment_method_id: 1,
 	        }
 		}
 	},
@@ -114,7 +123,30 @@ export default {
 	        this.shippingMethods = response.data.data
 
 	        return response
-	    }
+	    },
+	    async order () {
+	        this.submitting = true
+
+	        try {
+				await axios.post('orders', {
+					...this.form,
+					shipping_method_id: this.shippingMethodId
+				})
+				.then((r) => {
+					this.getCart()
+					this.submitting = false
+
+					window.location = r.data.data.dashboard + '/cart/order'
+				})
+
+	        } catch (e) {
+
+	          this.getCart()
+	          this.submitting = false
+	        }
+
+	        
+	      },
 	},
 
 	mounted(){

@@ -17,7 +17,9 @@ class CreateTransaction
     public function handle(OrderPaid $event)
     {
         $event->order->transactions()->create([
-            'total' => $event->order->total()->amount()
+            'total' => $event->order->total()->amount(),
+            'type' => 'Purchase',
+            'symbol' => '-'
         ]);
     }
 }

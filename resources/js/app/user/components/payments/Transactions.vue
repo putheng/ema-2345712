@@ -8,7 +8,7 @@
 				<div class="row">
 					<div class="col-md-12">
 						
-						<div class="metric-row">
+						<!-- <div class="metric-row">
 							<div class="col">
 								<div class="metric metric-bordered">
 									<h2 class="metric-label"> Purchase </h2>
@@ -33,7 +33,7 @@
 									</p>
 								</div>
 							</div>
-						</div>
+						</div> -->
 
 						<div class="card card-fluid">
 							<div class="card-body">

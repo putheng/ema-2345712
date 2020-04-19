@@ -23,6 +23,14 @@ Route::group(['prefix' => 'society', 'middleware' => ['auth']], function(){
 
 });
 
+
+Route::group(['prefix' => 'supplier', 'middleware' => ['auth']], function(){
+	
+	Route::get('/{vue?}', 'HomeController@supplier')
+		->where('vue', '[\/\w\.-]*');
+
+});
+
 Route::group(['prefix' => 'store', 'middleware' => ['auth']], function(){
 	
 	Route::get('/{vue?}', 'HomeController@store')

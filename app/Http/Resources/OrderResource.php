@@ -21,7 +21,9 @@ class OrderResource extends JsonResource
             'created_at' => $this->created_at->toDateTimeString(),
             'subtotal' => $this->subtotal->formatted(),
             'total' => $this->total()->formatted(),
-            'products' => ProductVariationResource::collection(
+            'dashboard' => auth()->user()->dashboard(),
+            
+            'products' => ProductVariationOrderResource::collection(
                 $this->whenLoaded('products')
             ),
             'address' => new AddressResource(

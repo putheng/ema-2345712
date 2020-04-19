@@ -63,6 +63,7 @@ export default {
 				payload: fileData,
 				method: this.method
 			}).then((response) => {
+				this.$emit('created', response)
 
 				if(this.hideModal != undefined){
 					$('#'+ this.hideModal).modal('hide')
@@ -86,7 +87,7 @@ export default {
 					this.$router.replace(this.redirect)
 				}
 			}).catch((error) => {
-
+				this.$emit('error', error)
 			})
 		},
 		...mapActions({

@@ -1,5 +1,9 @@
 @extends('layouts.main')
 
+@section('head')
+  <script type="text/javascript" src="https://js.stripe.com/v3"></script>
+@endsection
+
 @section('content')
 <main class="container pt-4">
   <section class="px-lg-3 pt-4">
