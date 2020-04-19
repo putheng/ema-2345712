@@ -13,11 +13,11 @@
 				</a>
 				
 				@if(auth()->check())
-					<a class="navbar-tool d-none d-lg-flex" href="{{ auth()->user()->dashboard() }}/cart/wishlist">
+					<a class="navbar-tool d-none d-lg-flex" href="/cart/wishlist">
 						<span class="navbar-tool-tooltip">Wishlist</span>
 						<div class="navbar-tool-icon-box"><i class="navbar-tool-icon czi-heart"></i></div>
 					</a>
-					<a class="navbar-tool ml-1 ml-lg-0 mr-n1 mr-lg-2" href="{{ auth()->user()->dashboard() }}">
+					<a class="navbar-tool ml-1 ml-lg-0 mr-n1 mr-lg-2" href="">
 						<div class="navbar-tool-icon-box"><i class="navbar-tool-icon czi-user"></i></div>
 						<div class="navbar-tool-text ml-n3"><small>Hello, {{ auth()->user()->name }}</small>My Account</div>
 					</a>
