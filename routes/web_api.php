@@ -78,6 +78,9 @@ Route::group(['middleware' => 'auth'], function(){
 
 		Route::get('filter', 'Agent\AgentController@filter');
 
+		Route::resource('sponsore', 'Agent\SponsorController');
+		Route::resource('placement', 'Agent\PlacementController');
+
 		Route::post('create', 'Agent\AgentController@store');
 		Route::get('show', 'Agent\AgentController@show');
 		Route::get('show/{user}/members', 'Agent\AgentController@members');

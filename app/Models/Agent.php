@@ -76,6 +76,11 @@ class Agent extends Model
     	return $this->belongsTo(User::class);
     }
 
+    public function scopePlacements($query)
+    {
+        return $query->where();
+    }
+
     public function scopeIsPa($builder)
     {
         return $builder->whereNull('parent_id');

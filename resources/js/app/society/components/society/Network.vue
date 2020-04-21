@@ -33,17 +33,23 @@
 								<div class="hv-item-parent">
 									<div class="person">
 										<img :src="child.avatar" alt="">
-										<p class="name">
+										<p class="name" @click.prevent="loadMember(child.user_id)">
 											{{ child.name }} <b>/ {{ child.uuid }}</b>
 										</p>
 									</div>
+								</div>
+								<div class="person">
+									<img :src="child.avatar" alt="">
+									<p class="name" @click.prevent="loadMember(child.user_id)">
+										{{ child.name }} <b>/ {{ child.uuid }}</b>
+									</p>
 								</div>
 								<div class="hv-item-children" v-if="child.children">
 									<div class="hv-item-child" v-for="ch in child.children">
 										<div class="hv-item">
 											<div class="person">
 												<img :src="ch.avatar" alt="">
-												<p class="name">
+												<p class="name" @click.prevent="loadMember(ch.user_id)">
 													{{ ch.name }} <b>/ {{ ch.uuid }}</b>
 												</p>
 											</div>
@@ -84,6 +90,12 @@
 				let r = await axios.get(`sociaty/show`)
 
 				this.agents = r.data.data
+			},
+			async loadMember(id){
+				let r = await axios.get(`sociaty/show/${id}/members`)
+				
+				this.agents = r.data.data
+
 			}
 		},
 		computed: {
@@ -187,6 +199,7 @@ p.simple-card {
 			margin: 0;
 			position: relative;
 			white-space: nowrap;
+			cursor: pointer;
 			b {
 				color: #ff6500;
 			}
