@@ -8,38 +8,35 @@
 				<div class="col-md-12">
 					<div class="card card-fluid">
 						<div class="card-body">
-							<h3 class="card-title"> Transactions </h3>
-							<table class="table table-hover">
-								<thead>
-									<th>#</th>
-									<th>From</th>
-									<th>To</th>
-									<th>Amount</th>
-									<th>Fee</th>
-									<th>Date</th>
-									<th>Mark</th>
-								</thead>
-								<tbody>
-									<template v-if="transfers.length">
-										<tr v-for="tran in transfers">
-											<td>{{ tran.uuid }}</td>
-											<td>{{ tran.sender }}</td>
-											<td>{{ tran.receiver }}</td>
-											<td>{{ tran.amount }}</td>
-											<td>{{ tran.fee }}</td>
-											<td>{{ tran.date }}</td>
-											<td>{{ tran.mark }}</td>
-										</tr>
-									</template>
-									<template v-else>
-										<tr>
-											<td colspan="7">
-												<div class="text-center">No transaction</div>
+							<h3 class="card-title"> Transaction <strong>History</strong> </h3>
+							
+							<div class="table table-responsive">
+								<table class="table table-hovered table-striped">
+									<thead>
+										<th>Transaction ID</th>
+										<th>Date</th>
+										<th>Type</th>
+										<th>Status</th>
+										<th>Amount</th>
+									</thead>
+
+									<tbody>
+										<tr v-if="transactions" v-for="tr in transactions">
+											<td>{{ tr.id }}</td>
+											<td>{{ tr.created }}</td>
+											<td>{{ tr.type }}</td>
+											<td>
+												<span class="badge badge-success">
+												Success</span>
 											</td>
-										</tr>	
-									</template>
-								</tbody>
-							</table>
+											<td>{{ tr.symbol }} {{ tr.value }}</td>
+										</tr>
+										<tr v-else>
+											<td colspan="5">No transaction</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -54,21 +51,21 @@
 	export default {
 		data(){
 			return {
-				transfers: []
+				transactions: []
 			}
 		},
 		methods: {
-			async fetchTransfers(){
-				let response = await axios.get('payment/transfer')
+			async fetch(){
+				let response = await axios.get('transactions')
 
-				this.transfers = response.data.data
+				this.transactions = response.data.data
 			}
 		},
 		computed: {
 			//
 		},
 		mounted(){
-			this.fetchTransfers()
+			this.fetch()
 		}
 	}
 </script>

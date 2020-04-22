@@ -18,7 +18,7 @@ export default [
 	{
 		path: '/dashboard',
 		component: C15E721F8BC2EACB,
-		name: 'user-dashboard-order'
+		name: 'user-dashboard'
 	},
 	{
 		path: '/dashboard/cart/order',

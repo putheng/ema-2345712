@@ -41,8 +41,12 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::resource('tick_types', 'Api\TypeController');
 	Route::resource('priority', 'Api\PriorityController');
 
+	Route::resource('transactions', 'Api\TrackableController');
+
 	Route::group(['prefix' => 'payment'], function(){
 		Route::resource('transfer', 'Api\TransferController');
+
+
 		Route::post('transfer/confirm', 'Api\TransferController@confirm');
 	});
 
@@ -75,6 +79,8 @@ Route::group(['middleware' => 'auth'], function(){
 	});
 
 	Route::group(['prefix' => 'sociaty'], function(){
+
+		Route::get('summary', 'Agent\SummaryController@index');
 
 		Route::get('filter', 'Agent\AgentController@filter');
 

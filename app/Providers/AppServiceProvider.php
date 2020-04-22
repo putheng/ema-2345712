@@ -9,6 +9,9 @@ use App\Models\Category;
 use App\Models\Image;
 use App\Models\Product;
 use App\Models\User;
+use App\Models\Order;
+use App\Models\Track;
+use App\Models\Transfer;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\ServiceProvider;
 use Stripe\Stripe;
@@ -29,6 +32,9 @@ class AppServiceProvider extends ServiceProvider
             'image' => Image::class,
             'category' => Category::class,
             'user' => User::class,
+            'track' => Track::class,
+            'order' => Order::class,
+            'transfer' => Transfer::class,
         ]);
     }
 

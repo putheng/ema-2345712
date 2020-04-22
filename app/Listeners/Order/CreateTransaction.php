@@ -2,6 +2,7 @@
 
 namespace App\Listeners\Order;
 
+use App\Models\Track;
 use App\Events\Order\OrderPaid;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -16,10 +17,21 @@ class CreateTransaction
      */
     public function handle(OrderPaid $event)
     {
+        $amount = $event->order->total()->amount();
+
         $event->order->transactions()->create([
-            'total' => $event->order->total()->amount(),
+            'total' => $amount,
             'type' => 'Purchase',
             'symbol' => '-'
         ]);
+
+
+        $track = new Track;
+        $track->symbol = '-';
+        $track->value = $amount;
+        $track->user()->associate(auth()->user());
+
+        $event->order->track()->save($track);
+
     }
 }

@@ -14,3 +14,7 @@ export const C15E7864304BEE9B = Vue.component('C15E7864304BEE9B', require('./soc
 export const C15E78C0F5C0B29B = Vue.component('C15E78C0F5C0B29B', require('./society/Networks.vue').default)
 export const C15E79D1424C5BBB = Vue.component('C15E79D1424C5BBB', require('./payments/Transferhistory.vue').default)
 export const C15E79D268967C1B = Vue.component('C15E79D268967C1B', require('./payments/Userearning.vue').default)
+export const C15EA0513B643BBB = Vue.component('C15EA0513B643BBB', require('./cart/Order.vue').default)
+export const C15EA0514623B55B = Vue.component('C15EA0514623B55B', require('./cart/Tickets.vue').default)
+export const C15EA05152F08A9B = Vue.component('C15EA05152F08A9B', require('./cart/Viewticket.vue').default)
+export const C15EA0515DC0203B = Vue.component('C15EA0515DC0203B', require('./cart/Wishlist.vue').default)

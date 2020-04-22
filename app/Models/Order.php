@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Track;
 use App\Cart\Money;
 use App\Models\PaymentMethod;
 use App\Models\Transaction;
@@ -20,6 +21,10 @@ class Order extends Model
         'shipping_method_id',
         'payment_method_id',
         'subtotal'
+    ];
+
+    protected $appends = [
+        
     ];
 
     public static function boot()
@@ -49,6 +54,11 @@ class Order extends Model
     public function address()
     {
         return $this->belongsTo(Address::class);
+    }
+
+    public function track()
+    {
+        return $this->morphMany(Track::class, 'trackable');
     }
 
     public function shippingMethod()

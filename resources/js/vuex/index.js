@@ -8,6 +8,7 @@ import * as getters from './getters'
 import abilityPlugin from './ability'
 
 /*import*/
+import cart from '../app/cart/vuex'
 import suppliers from '../app/suppliers/vuex'
 import store from '../app/store/vuex'
 import society from '../app/society/vuex'
@@ -29,6 +30,7 @@ export default new Vuex.Store({
 		society:society,
 		store:store,
 		suppliers:suppliers,
+		cart:cart,
 		/*export*/
     },
     plugins: [

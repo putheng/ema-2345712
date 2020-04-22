@@ -169,14 +169,20 @@
 				})
 			},
 			confirms(){
+
 				this.loading = true
 				axios.post(`payment/transfer/confirm`, this.confirm).then((response) => {
 					this.loading = false
 
-					if(response.data.status == 'confirm'){
+					if(response.data.success){
 						this.confirm.show = true
 						this.confirm.data = response.data.data
+						this.$router.push({
+							name: 'society-payments-transactions'
+						})
 					}
+
+				
 
 				}).catch(() => {
 					this.loading = false

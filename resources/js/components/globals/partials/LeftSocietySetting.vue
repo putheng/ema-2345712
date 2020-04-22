@@ -2,7 +2,7 @@
 	<nav id="stacked-menu" class="stacked-menu">
 		<ul class="menu">
 			<li class="menu-item">
-				<router-link :to="{ name: 'society-payments-userearning' }" class="menu-link">
+				<router-link :to="{ name: 'society' }" class="menu-link">
 					<span class="menu-icon fas fa-home"></span>
 					<span class="menu-text">{{ $t('general.home') }}</span>
 				</router-link>
@@ -10,66 +10,60 @@
 			</li>
 			<!-- /.menu-item -->
 			<!-- .menu-item -->
-			<li class="menu-item has-child">
-				<a href="#" class="menu-link"><span class="menu-icon fas fa-money-check-alt"></span> <span class="menu-text">E-Wallet</span></a>
-				<ul class="menu">
-					<li class="menu-item">
-						<router-link class="menu-link" :to="{name: 'society-payments-earning'}">
-							E-Wallet Summary
-						</router-link>
-						<router-link class="menu-link" :to="{name: 'society-payments-transfer'}">
-							Fund Transfter
-						</router-link>
-						<router-link class="menu-link" :to="{name: 'society-payments-transferhistory'}">
-							Transfter History
-						</router-link>
-						<router-link class="menu-link" :to="{name: 'society-payments-withdraw'}">
-							Withdraw
-						</router-link>
-						<router-link class="menu-link" :to="{name: 'society-payments-userearning'}">
-							User Earnings
-						</router-link>
-						<router-link class="menu-link" :to="{name: 'society-payments-transactions'}">
-							All Transactions
-						</router-link>
-					</li>
-				</ul>
-				<!-- /child menu -->
+
+			<li class="menu-header">Cart</li>
+			<li class="menu-item">
+				<router-link :to="{ name: 'society-cart-order' }" class="menu-link">
+					<span class="menu-text">Order</span>
+				</router-link>
+				<router-link :to="{ name: 'society-cart-wishlist' }" class="menu-link">
+					<span class="menu-text">Wishlist</span>
+				</router-link>
+				<router-link :to="{ name: 'society-cart-tickets' }" class="menu-link">
+					<span class="menu-text">Support tickets</span>
+				</router-link>
 			</li>
+			
+			<li class="menu-header">E-Wallet</li>
+
+			<li class="menu-item">
+				<router-link class="menu-link" :to="{name: 'society-payments-earning'}">
+					E-Wallet Summary
+				</router-link>
+				<router-link class="menu-link" :to="{name: 'society-payments-transfer'}">
+					Fund Transfter
+				</router-link>
+				<router-link class="menu-link" :to="{name: 'society-payments-transferhistory'}">
+					Transfter History
+				</router-link>
+				<router-link class="menu-link" :to="{name: 'society-payments-transactions'}">
+					All Transactions
+				</router-link>
+			</li>
+
 			<!-- /.menu-item -->
 			<!-- .menu-item -->
-			<li class="menu-item has-child">
-				<a href="#" class="menu-link">
-					<span class="menu-icon oi oi-people"></span>
-					<span class="menu-text">Society</span>
-				</a> <!-- child menu -->
-				<ul class="menu">
-					<li class="menu-item">
-						<router-link class="menu-link" :to="{ name:'society-society-network' }">
-							Network
-						</router-link>
-						<router-link class="menu-link" :to="{name: 'society-society-sponsor'}">
-							Sponsor
-						</router-link>
-						<router-link class="menu-link" :to="{name: 'society-society-placement'}">
-							Placement Tree
-						</router-link>
-					</li>
-				</ul>
+			<li class="menu-header">Society</li>
+			<li class="menu-item">
+				<router-link class="menu-link" :to="{ name:'society-society-network' }">
+					Network
+				</router-link>
+				<router-link class="menu-link" :to="{name: 'society-society-sponsor'}">
+					Sponsor
+				</router-link>
+				<router-link class="menu-link" :to="{name: 'society-society-placement'}">
+					Placement Tree
+				</router-link>
 			</li>
-			<li class="menu-item has-child">
-				<a href="#" class="menu-link"><span class="menu-icon fas fa-wrench"></span> <span class="menu-text">Setting</span></a> <!-- child menu -->
-				<ul class="menu">
-					<li class="menu-item">
-						<router-link class="menu-link" :to="{ name:'society-settings-profile' }">
-							Profile
-						</router-link>
-						<router-link class="menu-link" :to="{ name:'society-settings-password' }">
-							Password
-						</router-link>
-					</li>
-				</ul>
-				<!-- /child menu -->
+
+			<li class="menu-header">Settings</li>
+			<li class="menu-item">
+				<router-link class="menu-link" :to="{ name:'society-settings-profile' }">
+					Profile
+				</router-link>
+				<router-link class="menu-link" :to="{ name:'society-settings-password' }">
+					Password
+				</router-link>
 			</li>
 			<!-- /.menu-item -->
 		</ul>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Agent;
 
+use App\Rules\CheckAgentExceedLimit;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreAgentRequest extends FormRequest
@@ -28,7 +29,11 @@ class StoreAgentRequest extends FormRequest
             'password' => 'required|min:6|max:12',
             'email' => 'required|unique:users,email',
             'placement' =>  'exists:agents,uuid|nullable',
-            'sponsor' =>  'required|exists:agents,uuid'
+            'sponsor' =>  [
+                'required', 
+                'exists:agents,uuid',
+                new CheckAgentExceedLimit()
+            ]
         ];
     }
 }

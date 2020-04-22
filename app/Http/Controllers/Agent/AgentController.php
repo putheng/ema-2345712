@@ -44,8 +44,10 @@ class AgentController extends Controller
 
     public function show(Request $request)
     {
+        $user = $request->user();
         
-    	return new AgentResource($request->user()->agent);
+        // $user = User::find(76);
+    	return new AgentResource($user->agent);
     }
 
     public function members(User $user, Request $request)

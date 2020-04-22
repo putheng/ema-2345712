@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Models\User;
+use App\Models\{User, Transaction, Track};
 use Illuminate\Database\Eloquent\Model;
 
 class Transfer extends Model
@@ -24,6 +24,16 @@ class Transfer extends Model
     public function user()
     {
     	return $this->belongsTo(User::class);
+    }
+
+    public function track()
+    {
+        return $this->morphMany(Track::class, 'trackable');
+    }
+
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class, 'order_id');
     }
 
     public function senderid()

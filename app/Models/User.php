@@ -2,12 +2,14 @@
 
 namespace App\Models;
 
+use App\Order as OrderO;
 use App\Models\Address;
 use App\Models\Wishlist;
 use App\Models\Agent;
 use App\Models\Image;
 use App\Models\PaymentMethod;
 use App\Models\Product;
+use App\Models\Track;
 use App\Models\Store;
 use App\Models\{Transfer, Ticket};
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -125,6 +127,11 @@ class User extends Authenticatable implements JWTSubject
         return $this->hasMany(Order::class);
     }
 
+    public function order()
+    {
+        return $this->hasMany(OrderO::class);
+    }
+
     public function transfers()
     {
         return $this->hasMany(Transfer::class);
@@ -134,6 +141,12 @@ class User extends Authenticatable implements JWTSubject
     {
         return $this->hasMany(PaymentMethod::class);
     }
+
+    public function tracks()
+    {
+        return $this->hasMany(Track::class);
+    }
+
 
     public function image()
     {

@@ -26,7 +26,14 @@ class StoreTransferRequest extends FormRequest
     {
         return [
             'receiver' => 'required|exists:agents,uuid',
-            'amount' => ['required', 'numeric', new UserBalance()],
+            'amount' => ['required', 'min:5', 'numeric', new UserBalance()],
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'amount.min' => 'The :attribute must be at least :min '. auth()->user()->currency .'.',
         ];
     }
 }
