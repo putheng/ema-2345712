@@ -1,8 +1,8 @@
 @extends('layouts.main')
 
 @section('content')
-<section class="px-lg-3 pt-4 container">
-	<div class="px-3 pt-2">
+<section class="px-lg-3 pt-4">
+	<div class="px-3 pt-2 ">
 		@include('home.partials.slider')
 		<section class="pt-4 mb-5">
 			<h2 class="h3 text-center mb-grid-gutter pt-2">How it works?</h2>
@@ -44,10 +44,10 @@
 				</div>
 			</div>
 		</section>
-		<!-- Discounted products (Carousel)-->
-		@include('home.partials.discount')
 		<!-- Bestsellers (Carousel)-->
 		@include('home.partials.best-sale')
+		<!-- Discounted products (Carousel)-->
+		@include('home.partials.discount')
 		<!-- Reviews-->
 		
 		<div class="pb-4"></div>

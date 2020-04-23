@@ -7,6 +7,8 @@ use Illuminate\Support\ServiceProvider;
 use App\ViewComposers\{
     CategoryComposer,
     FooterCategory,
+    DiscountProduct,
+    BestSale
 };
 
 class ViewComposerServicesProvider extends ServiceProvider
@@ -36,6 +38,16 @@ class ViewComposerServicesProvider extends ServiceProvider
         View::composer(
             ['home.partials.footer'], 
             FooterCategory::class
+        );
+
+        View::composer(
+            ['home.partials.best-sale'], 
+            BestSale::class
+        );
+
+        View::composer(
+            ['home.partials.discount'], 
+            DiscountProduct::class
         );
     }
 }
