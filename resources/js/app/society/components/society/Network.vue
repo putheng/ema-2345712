@@ -74,7 +74,19 @@
 								</div>
 							</div>
 						</div>
+						<div class="hv-item-child" v-if="!agents.limitedExceded">
+							<div class="hv-item">
+								<div class="person">
+									<img src="/images/empty-profile-picture.png" alt="">
+									<p class="name" @click.prevent="createAgent(agents)">
+										Create +
+									</p>
+								</div>
+
+							</div>
+						</div>
 					</div>
+
 				</div>
 			</div>
 		</div>
