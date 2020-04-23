@@ -59,7 +59,7 @@
 
 										</div>
 									</div>
-									<div class="hv-item-child" v-if="child.limitedExceded">
+									<div class="hv-item-child" v-if="!child.limitedExceded">
 										<div class="hv-item">
 											<div class="person">
 												<img src="/images/empty-profile-picture.png" alt="">
