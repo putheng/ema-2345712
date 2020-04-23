@@ -11,59 +11,87 @@
 			<!-- /.menu-item -->
 			<!-- .menu-item -->
 
-			<li class="menu-header">Cart</li>
-			<li class="menu-item">
-				<router-link :to="{ name: 'society-cart-order' }" class="menu-link">
-					<span class="menu-text">Order</span>
-				</router-link>
-				<router-link :to="{ name: 'society-cart-wishlist' }" class="menu-link">
-					<span class="menu-text">Wishlist</span>
-				</router-link>
-				<router-link :to="{ name: 'society-cart-tickets' }" class="menu-link">
-					<span class="menu-text">Support tickets</span>
-				</router-link>
+			<li class="menu-item has-child">
+				<a href="#" class="menu-link">
+					<span class="menu-icon fas fa-money-check-alt"></span> 
+					<span class="menu-text">Cart</span>
+				</a>
+				<ul class="menu">
+					<li class="menu-item">
+						<router-link :to="{ name: 'society-cart-order' }" class="menu-link">
+							<span class="menu-text">Order</span>
+						</router-link>
+						<router-link :to="{ name: 'society-cart-wishlist' }" class="menu-link">
+							<span class="menu-text">Wishlist</span>
+						</router-link>
+						<router-link :to="{ name: 'society-cart-tickets' }" class="menu-link">
+							<span class="menu-text">Support tickets</span>
+						</router-link>
+					</li>
+				</ul>
 			</li>
 			
-			<li class="menu-header">E-Wallet</li>
+			<li class="menu-item has-child">
+				<a href="#" class="menu-link">
+					<span class="menu-icon fas fa-money-check-alt"></span>
+					<span class="menu-text">E-Wallet</span>
+				</a>
+				<ul class="menu">
 
-			<li class="menu-item">
-				<router-link class="menu-link" :to="{name: 'society-payments-earning'}">
-					E-Wallet Summary
-				</router-link>
-				<router-link class="menu-link" :to="{name: 'society-payments-transfer'}">
-					Fund Transfter
-				</router-link>
-				<router-link class="menu-link" :to="{name: 'society-payments-transferhistory'}">
-					Transfter History
-				</router-link>
-				<router-link class="menu-link" :to="{name: 'society-payments-transactions'}">
-					All Transactions
-				</router-link>
+					<li class="menu-item">
+						<router-link class="menu-link" :to="{name: 'society-payments-earning'}">
+							E-Wallet Summary
+						</router-link>
+						<router-link class="menu-link" :to="{name: 'society-payments-transfer'}">
+							Fund Transfter
+						</router-link>
+						<router-link class="menu-link" :to="{name: 'society-payments-transferhistory'}">
+							Transfter History
+						</router-link>
+						<router-link class="menu-link" :to="{name: 'society-payments-transactions'}">
+							All Transactions
+						</router-link>
+					</li>
+				</ul>
 			</li>
 
 			<!-- /.menu-item -->
 			<!-- .menu-item -->
-			<li class="menu-header">Society</li>
-			<li class="menu-item">
-				<router-link class="menu-link" :to="{ name:'society-society-network' }">
-					Network
-				</router-link>
-				<router-link class="menu-link" :to="{name: 'society-society-sponsor'}">
-					Sponsor
-				</router-link>
-				<router-link class="menu-link" :to="{name: 'society-society-placement'}">
-					Placement Tree
-				</router-link>
+			<li class="menu-item has-child">
+				<a href="#" class="menu-link">
+					<span class="menu-icon oi oi-people"></span>
+					<span class="menu-text">Society</span>
+				</a> <!-- child menu -->
+				<ul class="menu">
+					<li class="menu-item">
+						<router-link class="menu-link" :to="{ name:'society-society-network' }">
+							Network
+						</router-link>
+						<router-link class="menu-link" :to="{name: 'society-society-sponsor'}">
+							Sponsor
+						</router-link>
+						<router-link class="menu-link" :to="{name: 'society-society-placement'}">
+							Placement Tree
+						</router-link>
+					</li>
+				</ul>
 			</li>
 
-			<li class="menu-header">Settings</li>
-			<li class="menu-item">
-				<router-link class="menu-link" :to="{ name:'society-settings-profile' }">
-					Profile
-				</router-link>
-				<router-link class="menu-link" :to="{ name:'society-settings-password' }">
-					Password
-				</router-link>
+			<li class="menu-item has-child">
+				<a href="#" class="menu-link">
+					<span class="menu-icon fas fa-wrench"></span> 
+					<span class="menu-text">Setting</span>
+				</a> <!-- child menu -->
+				<ul class="menu">
+					<li class="menu-item">
+						<router-link class="menu-link" :to="{ name:'society-settings-profile' }">
+							Profile
+						</router-link>
+						<router-link class="menu-link" :to="{ name:'society-settings-password' }">
+							Password
+						</router-link>
+					</li>
+				</ul>
 			</li>
 			<!-- /.menu-item -->
 		</ul>
