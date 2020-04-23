@@ -63,9 +63,7 @@
 		<!-- Related products-->
 		<section class="pb-5 mb-2 mb-xl-4">
 			<h2 class="h3 pb-2 mb-grid-gutter text-center">You may also like</h2>
-			<div class="cz-carousel cz-controls-static cz-controls-outside cz-dots-enabled">
-				<discount-products endpoint="discounts"/>
-			</div>
+			@include('home.partials.maylike')
 		</section>
 	</div>
 </section>
