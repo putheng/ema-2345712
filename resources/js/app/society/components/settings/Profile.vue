@@ -8,36 +8,47 @@
 				</h4>
 				<div class="card-text col-md-8">
 					<user-avatar sendAs="image" endpoint="account/avatar"/>
-					<app-form action="account/me" method="post">
+					<app-form action="sociaty/account" method="post">
 						
 						<br/><br/>
 						<div class="row">
 							<div class="col-md-6">
-								<app-input name="first_name" label="First name"/>
+								<input-binding v-model="user.first" name="first_name" label="First name"/>
 							</div>
 							<div class="col-md-6">
-								<app-input name="last_name" label="Last name"/>
+								<input-binding v-model="user.last" name="last_name" label="Last name"/>
 							</div>
 						</div>
 
 						<div class="row">
 							<div class="col-md-6">
-								<AppSelect 
-									:options="genders" 
-									label="Gender" name="gener"/>
+								<input-binding v-model="user.phone" name="phone" label="Phone Number"/>
 							</div>
 							<div class="col-md-6">
-								<app-input name="dob" label="Date of birth" type="date"/>
+								<input-binding v-model="user.age" name="age" label="Age" type="number"/>
 							</div>
 						</div>
+
 						<div class="row">
 							<div class="col-md-6">
-								<AppSelect 
-									:options="idTypes" 
+								<select-binding
+									:options="genders" 
+									:selected="user.gender"
+									label="Gender" name="gender"/>
+							</div>
+							<div class="col-md-6">
+								<input-binding v-model="user.dob" name="dob" label="Date of birth" type="date"/>
+							</div>
+						</div>
+						<div class="row" v-if="user.id_type">
+							<div class="col-md-6">
+								<select-binding
+									:options="idTypes"
+									:selected="user.id_type.id"
 									label="ID Type" name="id_type"/>
 							</div>
 							<div class="col-md-6">
-								<app-input name="id_number" label="ID Number" type="number"/>
+								<input-binding v-model="user.id_code" name="id_number" label="ID Number"/>
 							</div>
 						</div>
 						
@@ -60,26 +71,29 @@
 		data(){
 			return {
 				genders: [
-					{name: 'Male', value: 'male'},
-					{name: 'Femal', value: 'femal'}	
+					{name: 'Male', value: '1'},
+					{name: 'Female', value: '2'}	
 				],
 				idTypes: [
 					{name: 'National ID', value: '1'},
 					{name: 'Family Book', value: '2'},
 					{name: 'Driving Licence', value: '3'},
-				]
+				],
+				user: []
 			}
 		},
 		methods: {
-			//
+			async fetch(){
+				let r = await axios.get('sociaty/account')
+
+				this.user = r.data.data
+			}
 		},
 		computed: {
-			...mapGetters({
-        		user: 'userData'
-        	})
+			//
 		},
 		mounted(){
-			//
+			this.fetch()
 		}
 	}
 </script>

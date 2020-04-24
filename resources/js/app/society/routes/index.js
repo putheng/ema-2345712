@@ -16,6 +16,7 @@ import {
 	C15EA0514623B55B,
 	C15EA05152F08A9B,
 	C15EA0515DC0203B,
+	C15EA271901E505B,
 	/****/
 } from '../components'
 
@@ -88,7 +89,7 @@ export default [
 	},
 	{
 		path: '/society',
-		component: C15E79D268967C1B,
+		component: C15EA271901E505B,
 		name: 'society'
 	},
 	{
@@ -110,6 +111,11 @@ export default [
 		path: '/society/cart/wishlist',
 		component: C15EA0515DC0203B,
 		name: 'society-cart-wishlist'
+	},
+	{
+		path: '/society/settings/index',
+		component: C15EA271901E505B,
+		name: 'society-settings'
 	},
 	/**/
 ]

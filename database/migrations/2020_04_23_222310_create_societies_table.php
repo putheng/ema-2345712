@@ -20,8 +20,9 @@ class CreateSocietiesTable extends Migration
             $table->string('last')->nullable();
             $table->string('id_code')->nullable();
             $table->integer('id_code_type')->nullable();
-            $table->integer('gender')->nullable();
+            $table->string('gender')->nullable();
             $table->integer('age')->nullable();
+            $table->string('phone')->nullable();
             $table->string('dob')->nullable();
             $table->string('status')->nullable();
             $table->timestamps();

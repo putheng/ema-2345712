@@ -80,7 +80,7 @@ Route::group(['middleware' => 'auth'], function(){
 
 	Route::group(['prefix' => 'sociaty'], function(){
 
-		Route::resource('account', 'Agent\AccountController@index');
+		Route::resource('account', 'Agent\AccountController');
 
 		Route::get('summary', 'Agent\SummaryController@index');
 

@@ -18,3 +18,4 @@ export const C15EA0513B643BBB = Vue.component('C15EA0513B643BBB', require('./car
 export const C15EA0514623B55B = Vue.component('C15EA0514623B55B', require('./cart/Tickets.vue').default)
 export const C15EA05152F08A9B = Vue.component('C15EA05152F08A9B', require('./cart/Viewticket.vue').default)
 export const C15EA0515DC0203B = Vue.component('C15EA0515DC0203B', require('./cart/Wishlist.vue').default)
+export const C15EA271901E505B = Vue.component('C15EA271901E505B', require('./settings/Index.vue').default)

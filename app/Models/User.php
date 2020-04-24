@@ -10,6 +10,7 @@ use App\Models\Image;
 use App\Models\PaymentMethod;
 use App\Models\Product;
 use App\Models\Track;
+use App\Models\Society;
 use App\Models\Store;
 use App\Models\{Transfer, Ticket};
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -105,6 +106,11 @@ class User extends Authenticatable implements JWTSubject
     public function products()
     {
         return $this->hasMany(Product::class);
+    }
+
+    public function society()
+    {
+        return $this->hasOne(Society::class);
     }
 
     public function tickets()
