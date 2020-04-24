@@ -31,11 +31,16 @@ class CreateAgentProfile
         $parent = Agent::where('uuid', $event->sponsor)->first();
         $parent->increment('child_count');
 
-        Agent::create([
+        $agent = Agent::create([
             'user_id' => $event->agent->id,
             'sponsor_id' => $parent->id,
             'parent_id' => $parent->id,
             'level' => ($parent->level + 1)
+        ]);
+
+        $agent->user->society()->create([
+            'id_code_type' => 1,
+            'status' => 'Pending'
         ]);
     }
 
@@ -46,11 +51,16 @@ class CreateAgentProfile
         $parent = Agent::where('uuid', $event->placement)->first();
         $parent->increment('child_count');
 
-        Agent::create([
+        $agent = Agent::create([
             'user_id' => $event->agent->id,
             'sponsor_id' => $sponsor->id,
             'parent_id' => $parent->id,
             'level' => ($parent->level + 1)
+        ]);
+
+        $agent->user->society()->create([
+            'id_code_type' => 1,
+            'status' => 'Pending'
         ]);
     }
 }
