@@ -19,6 +19,11 @@ class Track extends Model
 		});
 	}
 
+	public function scopeLatest($q)
+	{
+		return $q->orderBy('id', 'desc');
+	}
+
     public function imageable()
     {
         return $this->morphTo();

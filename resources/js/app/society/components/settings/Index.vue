@@ -91,7 +91,7 @@
 											<td>
 												<div>{{ order.products[0].product.name }} </div>
 												<div v-for="(product, i) in order.products">
-													{{i+1}}. {{ product.type }} - {{ product.name }}
+													{{i+1}}. <small>{{ product.type }} - {{ product.name }}</small>
 												</div>
 											</td>
 											<td>{{ order.created_at }}</td>

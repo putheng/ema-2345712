@@ -20,7 +20,7 @@ class AccountSummary extends JsonResource
         return [
             'purchase' => $this->getPurchase(),
             'earning' => $this->currency . ' '. number_format(0, 2),
-            'transactions' => TrackResources::collection($this->tracks()->take(10)->get()),
+            'transactions' => TrackResources::collection($this->tracks()->latest()->take(10)->get()),
             'orders' => OrderResource::collection($this->getOrders())
         ];
     }
