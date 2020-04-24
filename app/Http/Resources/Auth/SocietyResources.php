@@ -26,8 +26,8 @@ class SocietyResources extends JsonResource
             'age' => $this->age,
 
             'id_type' => [
-                'id' => $this->id_type->id,
-                'name' => $this->id_type->name,
+                'id' => optional($this->id_type)->id,
+                'name' => optional($this->id_type)->name,
             ],
         ];
     }
