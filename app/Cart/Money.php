@@ -14,7 +14,7 @@ class Money
 
     public function __construct($value)
     {
-        $this->money = new BaseMoney($value, new Currency('KHR'));
+        $this->money = new BaseMoney($value, new Currency(auth()->user()->currency));
     }
 
     public function amount()
@@ -25,7 +25,7 @@ class Money
     public function formatted()
     {
         $formatter = new IntlMoneyFormatter(
-            new NumberFormatter('KHR', NumberFormatter::CURRENCY),
+            new NumberFormatter(auth()->user()->currency, NumberFormatter::CURRENCY),
             new ISOCurrencies()
         );
 

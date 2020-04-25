@@ -49,10 +49,5 @@ class ViewComposerServicesProvider extends ServiceProvider
             ['home.partials.discount'], 
             DiscountProduct::class
         );
-
-        View::composer(
-            ['home.partials.maylike'], 
-            DiscountProduct::class
-        );
     }
 }

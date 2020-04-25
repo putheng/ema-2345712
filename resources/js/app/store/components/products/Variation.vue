@@ -21,6 +21,77 @@
 			<div class="page-section">
 				<div class="row">
 					<div class="col-md-12">
+						<div class="card card-fluid" v-for="(variation, index) in product.variations">
+							<div class="card-body">
+								<div class="row form-group col-md-3">
+									<label>Name</label>
+
+									<input type="text" class="form-control" v-model="index" :class="{'is-invalid': errors['variations.'+ index +'.name']}" disabled="">
+
+									<div class="invalid-feedback" v-if="errors['variations.'+ index +'.name']">
+							            <i class="fa fa-exclamation-circle fa-fw"></i>
+							            {{ errors['variations.'+ index +'.name'][0] }}
+							        </div>
+								</div>
+								
+								<div class="row" v-for="(option, key) in variation">
+									<div class="col-md-3">
+										<div class="form-group">
+											<label class="control-label">Option</label>
+											<input v-model="option.name" type="text" class="form-control" :class="{'is-invalid': errors['variations.'+ index +'.options.'+ key +'.option']}">
+											
+											<div class="invalid-feedback" v-if="errors['variations.'+ index +'.options.'+ key +'.option']">
+									            <i class="fa fa-exclamation-circle fa-fw"></i>
+									            {{ errors['variations.'+ index +'.options.'+ key +'.option'][0] }}
+									        </div>
+										</div>
+									</div>
+									<div class="col-md-3">
+										<div class="form-group">
+											<label class="control-label">Price</label>
+											<input v-model="option.pricex" type="number" class="form-control" :class="{'is-invalid': errors['variations.'+ index +'.options.'+ key +'.price']}">
+											<div class="invalid-feedback" v-if="errors['variations.'+ index +'.options.'+ key +'.price']">
+									            <i class="fa fa-exclamation-circle fa-fw"></i>
+									            {{ errors['variations.'+ index +'.options.'+ key +'.price'][0] }}
+									        </div>
+										</div>
+									</div>
+									<div class="col-md-2">
+										<div class="form-group">
+											<label class="control-label">Sale Price</label>
+											<input v-model="option.sale_pricex" type="number" class="form-control" :class="{'is-invalid': errors['variations.'+ index +'.options.'+ key +'.sale_price']}">
+											<div class="invalid-feedback" v-if="errors['variations.'+ index +'.options.'+ key +'.sale_price']">
+									            <i class="fa fa-exclamation-circle fa-fw"></i>
+									            {{ errors['variations.'+ index +'.options.'+ key +'.sale_price'][0] }}
+									        </div>
+										</div>
+									</div>
+									<div class="col-md-2">
+										<div class="form-group">
+											<label class="control-label">Weight (g)</label>
+											<input v-model="option.weight" type="number" class="form-control" :class="{'is-invalid': errors['variations.'+ index +'.options.'+ key +'.weight']}">
+											<div class="invalid-feedback" v-if="errors['variations.'+ index +'.options.'+ key +'.weight']">
+									            <i class="fa fa-exclamation-circle fa-fw"></i>
+									            {{ errors['variations.'+ index +'.options.'+ key +'.weight'][0] }}
+									        </div>
+										</div>
+									</div>
+									<div class="col-md-2">
+										<div class="form-group">
+											<label class="control-label">Stock</label>
+											<input v-model="option.stock" type="number" class="form-control" :class="{'is-invalid': errors['variations.'+ index +'.options.'+ key +'.stock']}">
+											<div class="invalid-feedback" v-if="errors['variations.'+ index +'.options.'+ key +'.stock']">
+									            <i class="fa fa-exclamation-circle fa-fw"></i>
+									            {{ errors['variations.'+ index +'.options.'+ key +'.stock'][0] }}
+									        </div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-md-12">
 						<div class="card card-fluid" v-for="(variation, index) in variations">
 							<div class="card-body">
 								<div class="row form-group col-md-3">
@@ -111,6 +182,8 @@
 		data(){
 			return {
 				loading: false,
+				product: [],
+				opt: [],
 				variations: [
 					{
 						name: '',
@@ -159,12 +232,20 @@
 				})
 			},
 
-			saveChange(){
+			async saveChange(){
 				this.loading = true
+
+				if(this.product.variations.length != 0 && this.product.variations.length == undefined){
+					let r = await axios.post(`products/${this.$route.params.slug}/variations/edit`, {
+						variations: this.product.variations
+					})
+				}
+
 				axios.post(`products/${this.$route.params.slug}/variations`, {
 					variations: this.variations
 				})
 					.then((response) => {
+						this.$router.push({name: 'suppliers-product'})
 						this.loading = false
 					})
 					.catch((errors) => {
@@ -178,7 +259,7 @@
 			})
 		},
 		mounted(){
-			// this.fetchProduct(this.$route.params.slug)
+			this.fetchProduct(this.$route.params.slug)
 		}
 	}
 </script>

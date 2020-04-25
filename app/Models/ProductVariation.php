@@ -7,6 +7,7 @@ use App\Models\Collections\ProductVariationCollection;
 use App\Models\Image;
 use App\Models\Order;
 use App\Models\Product;
+use App\Models\Sale;
 use App\Models\ProductVariationType;
 use App\Models\Traits\HasPrice;
 use Illuminate\Database\Eloquent\Model;
@@ -66,6 +67,16 @@ class ProductVariation extends Model
     public function stocks()
     {
         return $this->hasMany(Stock::class);
+    }
+
+    public function sales()
+    {
+        return $this->hasMany(Sale::class);
+    }
+
+    public function sale()
+    {
+        return $this->belongsTo(Sale::class);
     }
 
     public function image()

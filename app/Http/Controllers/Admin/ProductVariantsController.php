@@ -59,4 +59,24 @@ class ProductVariantsController extends Controller
     		'message' => 'Variations update successfully'
     	]);
     }
+
+    public function update(Request $request, Product $product)
+    {
+        collect($request->variations)->each(function($value, $key) use ($product){
+            collect($value)->each(function($val, $k){
+                $vari = ProductVariation::find($val['id']);
+
+                $vari->update([
+                    'name' => $val['name'],
+                    'price' => $val['pricex'],
+                    'weight' => $val['weight'],
+                    'sale_price' => $val['sale_pricex'],
+                ]);
+
+                Stock::where('product_variation_id', $val['id'])->update([
+                    'quantity' => $val['stock']
+                ]);
+            });
+        });
+    }
 }

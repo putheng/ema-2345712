@@ -15,10 +15,10 @@
 						</button>
 						<ul class="dropdown-menu">
 							<li class="dropdown-item">
-								<select class="custom-select custom-select-sm">
-									<option value="usd">$ USD</option>
-									<option value="eur">៛ KHR</option>
-									<option value="ukp">฿ THB</option>
+								<select id="languagex" class="custom-select custom-select-sm">
+									<option value="USD" {{ auth()->user()->currency == 'USD' ? 'selected' : '' }}>$ USD</option>
+									<option value="KHR" {{ auth()->user()->currency == 'KHR' ? 'selected' : '' }}>៛ KHR</option>
+									<option value="THB" {{ auth()->user()->currency == 'THB' ? 'selected' : '' }}>฿ THB</option>
 								</select>
 							</li>
 							<li>
@@ -109,3 +109,13 @@
 		</div>
 	</div>
 </footer>
+
+@section('script')
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#languagex').on('change', function(){
+			window.location = '{{ route('currency') }}?c='+ this.value
+		})
+	})
+</script>
+@endsection

@@ -70,7 +70,7 @@ export default [
 		name: 'store-payments-balance'
 	},
 	{
-		path: '/store/products/:slug/variation',
+		path: '/store/product/:slug/variation',
 		component: C15E896E7217A60B,
 		name: 'store-products-variation'
 	},

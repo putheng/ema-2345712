@@ -39,7 +39,7 @@ export default [
 		name: 'suppliers-account-password'
 	},
 	{
-		path: '/supplier/product/orders',
+		path: '/supplier/cart/order',
 		component: C15E9BE47B0EB2DB,
 		name: 'suppliers-product-orders'
 	},
@@ -54,7 +54,7 @@ export default [
 		name: 'suppliers-product-edit'
 	},
 	{
-		path: '/suppliers/product/:slug/variation',
+		path: '/supplier/product/:slug/variation',
 		component: C15EA2B84CC23C7B,
 		name: 'suppliers-product-variation'
 	},

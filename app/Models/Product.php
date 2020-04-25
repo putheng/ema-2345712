@@ -12,9 +12,12 @@ use App\Models\ProductVariation;
 use App\Models\Traits\CanBeScoped;
 use App\Models\Traits\HasPrice;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Product extends Model
 {
+    use SoftDeletes;
+
     protected $fillable = [
         'name',
         'price',

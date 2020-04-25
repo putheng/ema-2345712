@@ -12,13 +12,13 @@
 						Home
 					</a>
 				</li>
-				<li class="breadcrumb-item text-nowrap active" aria-current="page">{{ $category }}</li>
+				<li class="breadcrumb-item text-nowrap active" aria-current="page">{{ $category->name }}</li>
 			</ol>
 		</nav>
 		<!-- Content-->
 		<!-- Sorting-->
 		<section class="d-md-flex justify-content-between align-items-center mb-4 pb-2">
-			<h1 class="h4 mb-3 mb-md-0 mr-3">{{ $category }}</h1>
+			<h1 class="h4 mb-3 mb-md-0 mr-3">{{ $category->name }}</h1>
 
 			
 		</section>
@@ -35,7 +35,7 @@
 								<img src="{{ $product->thumbnail()->product() }}" alt="Product">
 							</a>
 							<div class="card-body py-2">
-								<a class="product-meta d-block font-size-xs pb-1" href="{{ route('category.filter', $category) }}">{{ $category }}</a>
+								<a class="product-meta d-block font-size-xs pb-1" href="{{ route('category.show', $category) }}">{{ $category->name }}</a>
 								<h3 class="product-title font-size-sm">
 									<a href="{{ route('show.product', $product) }}">{{ $product->name }}</a>
 								</h3>

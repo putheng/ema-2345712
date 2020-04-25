@@ -57,6 +57,7 @@ Route::group(['middleware' => 'auth'], function(){
 
 	Route::group(['prefix' => 'products'], function(){
 		Route::resource('product', 'Admin\ProductController');
+		Route::resource('sale', 'Product\SaleController');
 
 		Route::get('wishlist', 'Api\WishlistController@index');
 		Route::post('wishlist', 'Api\WishlistController@store');
@@ -69,6 +70,7 @@ Route::group(['middleware' => 'auth'], function(){
 		Route::post('upload/image', 'Uploads\ImageController@store');
 
 		Route::post('/{product}/variations', 'Admin\ProductVariantsController@store');
+		Route::post('/{product}/variations/edit', 'Admin\ProductVariantsController@update');
 	});
 
 	Route::group(['prefix' => 'admin'], function(){

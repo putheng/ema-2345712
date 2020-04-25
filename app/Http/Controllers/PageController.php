@@ -12,18 +12,6 @@ class PageController extends Controller
     	return view('home.home');
     }
 
-    public function product(Request $request)
-    {
-    	$product = Product::find(11);
-
-    	return view('home.product', compact('product'));
-    }
-
-    public function show(Request $request, Product $product)
-    {
-    	return view('home.product', compact('product'));
-    }
-
     public function cart()
     {
         return view('home.cart');
@@ -42,6 +30,23 @@ class PageController extends Controller
     public function stores()
     {
         return view('home.stores');
+    }
+
+    public function currency(Request $request)
+    {
+        $array = ['THB', 'KHR', 'USD'];
+
+        if(in_array($request->c, $array)){
+            if(auth()->check()){
+                auth()->user()->update(['currency' => $request->c]);
+
+                return back();
+            }
+
+            return back();
+        }
+
+        return back();
     }
 
 }

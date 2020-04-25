@@ -11,7 +11,7 @@
 						<div class="metric-row">
 							<div class="col">
 								<div class="metric metric-bordered">
-									<h2 class="metric-label text-center"> Earnings (before taxes) </h2>
+									<h2 class="metric-label text-center"> This week orders </h2>
 									<p class="metric-value h1 text-center">
 										<sup>$</sup> <span class="value">1,690.50</span>
 									</p>
@@ -20,7 +20,7 @@
 							</div>
 							<div class="col">
 								<div class="metric metric-bordered">
-									<h2 class="metric-label text-center"> Your balance </h2>
+									<h2 class="metric-label text-center"> This week sale </h2>
 									<p class="metric-value h1 text-center">
 										<sup>$</sup> <span class="value">1,375.00</span>
 									</p>
@@ -29,7 +29,7 @@
 							</div>
 							<div class="col">
 								<div class="metric metric-bordered">
-									<h2 class="metric-label text-center"> Lifetime earnings </h2>
+									<h2 class="metric-label text-center"> Total sale </h2>
 									<p class="metric-value h1 text-center">
 										<sup>$</sup> <span class="value">9,156.74</span>
 									</p>

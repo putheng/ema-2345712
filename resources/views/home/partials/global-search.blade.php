@@ -1,5 +1,5 @@
 <div class="input-group-overlay d-none d-lg-block mx-4">
-	<form action="{{ route('product.filter') }}" method="get">
+	<form action="{{ route('category.filter') }}" method="get">
 		<div class="input-group-prepend-overlay">
 			<span class="input-group-text">
 				<i class="czi-search"></i>
@@ -9,10 +9,10 @@
 			type="text" placeholder="Search for products">
 
 		<div class="input-group-append-overlay">
-			<select class="custom-select">
-				<option>All categories</option>
+			<select class="custom-select" name="category">
+				<option value="">All categories</option>
 				@foreach($categories as $category)
-					<option value="{{ $category->id }}">{{ $category->name }}</option>
+					<option value="{{ $category->slug }}">{{ $category->name }}</option>
 				@endforeach
 			</select>
 		</div>

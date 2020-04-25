@@ -29,6 +29,15 @@ class ProductController extends Controller
         );
     }
 
+    public function destroy(Request $request, Product $product)
+    {
+        $product->delete();
+
+        return ProductIndexResource::collection(
+            $request->user()->products()->with('image', 'category', 'variations')->orderBy('id', 'desc')->paginate(20)
+        );
+    }
+
     public function store(ProductStoreRequest $request)
     {
     	$product = new Product;

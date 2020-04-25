@@ -39,9 +39,9 @@
 												class="btn btn-sm btn-outline-info">
 												<span class="oi oi-pencil mr-1"></span> Edit
 											</router-link>
-											<!-- <button class="btn btn-sm btn-outline-danger">
+											<button @click.prevent="remove(product.slug)" class="btn btn-sm btn-outline-danger">
 												<span class="oi oi-trash mr-1"></span> Remove
-											</button> -->
+											</button>
 										</td>
 									</tr>
 								</tbody>
@@ -67,6 +67,12 @@
 		methods: {
 			async fetchProducts(){
 				let response = await axios.get(`products/product`)
+
+				this.products = response.data.data
+			},
+
+			async remove(slug){
+				let response = await axios.delete(`products/product/${slug}`)
 
 				this.products = response.data.data
 			}
