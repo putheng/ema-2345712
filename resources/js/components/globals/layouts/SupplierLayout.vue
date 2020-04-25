@@ -23,7 +23,7 @@
 	</header>
 	<aside class="app-aside app-aside-expand-md app-aside-light">
 		<div class="aside-content">
-			<left-store-setting></left-store-setting>
+			<left-supplier-setting></left-supplier-setting>
 			<div class="aside-menu overflow-hidden">
 				<!-- <left-menu></left-menu> -->
 			</div>

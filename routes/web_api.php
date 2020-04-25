@@ -36,6 +36,10 @@ Route::group(['middleware' => 'auth'], function(){
 		Route::get('store', 'Api\StoreController@index');
 	});
 
+	Route::group(['prefix' => 'supplier'], function(){
+		Route::resource('orders', 'Supplier\OrdersController');
+	});
+
 	Route::resource('ticket', 'Api\TicketController');
 
 	Route::resource('tick_types', 'Api\TypeController');

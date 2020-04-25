@@ -13,8 +13,9 @@ Route::get('/about', 'PageController@about')->name('about');
 Route::get('/stores', 'PageController@stores')->name('stores');
 
 
-Route::get('/product/{product}/show', 'PageController@show')->name('show.product');
+Route::get('products', 'ProductController@index');
 
+Route::get('/product/{product}/show', 'PageController@show')->name('show.product');
 
 Route::group(['prefix' => 'society', 'middleware' => ['auth']], function(){
 	

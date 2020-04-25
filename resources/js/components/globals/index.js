@@ -16,6 +16,7 @@ export { default as ImagePicker } from './ImagePicker'
 export { default as LeftUserSetting } from './LeftUserSetting'
 export { default as LeftAdminSetting } from './LeftAdminSetting'
 export { default as LeftSocietySetting } from './partials/LeftSocietySetting'
+export { default as LeftSupplierSetting } from './partials/LeftSupplierSetting'
 export { default as LeftStoreSetting } from './LeftStoreSetting'
 
 export { default as HomeSignIn } from './HomeSignIn'

@@ -21,17 +21,13 @@ class Agent extends Model
     {
     	parent::boot();
 
-    	static::creating(function($model){
-    		// $model->setIDParent();
-    	});
-
     	static::created(function($model){
     		$model->setID();
 
-
-            // $model->increment_child();
-    		// $model->setLevel();
-    		// $model->setIDParent();
+            $model->user->society()->create([
+                'id_code_type' => 1,
+                'status' => 'Pending'
+            ]);
 	    });
     }
 
@@ -41,13 +37,6 @@ class Agent extends Model
 
         $this->uuid = 'EMA'. $uuid . $this->id;
         $this->save();
-    }
-
-    protected function setIDParent()
-    {
-    	// if($this->parentExceedsChilLimit()){
-    	// 	$this->parent_id = $this->getChildLessChil()->id;
-    	// }
     }
 
     protected function getChildLessChil()

@@ -37,11 +37,6 @@ class CreateAgentProfile
             'parent_id' => $parent->id,
             'level' => ($parent->level + 1)
         ]);
-
-        $agent->user->society()->create([
-            'id_code_type' => 1,
-            'status' => 'Pending'
-        ]);
     }
 
     protected function ifNotNullPlacement($event)
@@ -56,11 +51,6 @@ class CreateAgentProfile
             'sponsor_id' => $sponsor->id,
             'parent_id' => $parent->id,
             'level' => ($parent->level + 1)
-        ]);
-
-        $agent->user->society()->create([
-            'id_code_type' => 1,
-            'status' => 'Pending'
         ]);
     }
 }

@@ -35,7 +35,7 @@
 				</router-link>
 			</li>
 
-			<li class="menu-header" style="margin-top: 0;">Payment</li>
+			<!-- <li class="menu-header" style="margin-top: 0;">Payment</li>
 			<li class="menu-item">
 				<router-link :to="{ name: 'store-payments-payout' }" class="menu-link">
 					<span class="oi oi-aperture"></span>
@@ -49,7 +49,7 @@
 					<span class="oi oi-dollar"></span>
 					<span class="menu-text">Transactons</span>
 				</router-link>
-			</li>
+			</li> -->
 
 			<li class="menu-header">Account Settings</li>
 			<li class="menu-item">
