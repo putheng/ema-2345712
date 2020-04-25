@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('product.layout')
 
 @section('content')
 <br>

@@ -15,6 +15,6 @@ class DiscountProductController extends Controller
     	->whereIn('id', $ids)
     	->paginate(5);
 
-        return view('home.discount', compact('products'));
+        return view('product.discount', compact('products'));
     }
 }

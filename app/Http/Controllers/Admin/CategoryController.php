@@ -21,7 +21,8 @@ class CategoryController extends Controller
     {
     	$category = Category::create([
             'name' => $request->name,
-            'area' => 1
+            'area' => $request->area,
+            'icon' => $request->icon
         ]);
 
     	return CategoryResource::collection(

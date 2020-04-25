@@ -1,12 +1,6 @@
 <aside class="cz-sidebar cz-sidebar-fixed" id="sideNav" style="padding-top: 5rem;">
   <button class="close" type="button" data-dismiss="sidebar" aria-label="Close"><span class="d-inline-block font-size-xs font-weight-normal align-middle">Close sidebar</span><span class="d-inline-block align-middle ml-2" aria-hidden="true">&times;</span></button>
   <div class="cz-sidebar-inner">
-    <ul class="nav nav-tabs nav-justified mt-2 mt-lg-4 mb-0" role="tablist" style="min-height: 3rem;">
-      <li class="nav-item">
-        <a class="nav-link font-weight-medium active" href="#categories" data-toggle="tab" role="tab">
-        Categories</a>
-      </li>
-    </ul>
     <div class="cz-sidebar-body pt-3 pb-0" data-simplebar>
       <div class="tab-content">
         <!-- Categories-->
