@@ -45,7 +45,7 @@ export default [
 	},
 	{
 		path: '/supplier',
-		component: C15EA2B2FA040AAB,
+		component: C15E9BE43C01B23B,
 		name: 'suppliers-account-summary'
 	},
 	{

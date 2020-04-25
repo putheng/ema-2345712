@@ -16,9 +16,9 @@
 						<ul class="dropdown-menu">
 							<li class="dropdown-item">
 								<select id="languagex" class="custom-select custom-select-sm">
-									<option value="USD" {{ auth()->user()->currency == 'USD' ? 'selected' : '' }}>$ USD</option>
-									<option value="KHR" {{ auth()->user()->currency == 'KHR' ? 'selected' : '' }}>៛ KHR</option>
-									<option value="THB" {{ auth()->user()->currency == 'THB' ? 'selected' : '' }}>฿ THB</option>
+									<option value="USD" {{ optional(auth()->user())->currency == 'USD' ? 'selected' : '' }}>$ USD</option>
+									<option value="KHR" {{ optional(auth()->user())->currency == 'KHR' ? 'selected' : '' }}>៛ KHR</option>
+									<option value="THB" {{ optional(auth()->user())->currency == 'THB' ? 'selected' : '' }}>฿ THB</option>
 								</select>
 							</li>
 							<li>
