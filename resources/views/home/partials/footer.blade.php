@@ -70,10 +70,13 @@
 								<a class="widget-list-link" href="{{ route('contact') }}">Contacts</a>
 							</li>
 							<li class="widget-list-item">
-								<a class="widget-list-link" href="#">Help center</a>
+								<a class="widget-list-link" href="#">Become a vendor</a>
 							</li>
 							<li class="widget-list-item">
-								<a class="widget-list-link" href="#">Actions and News</a>
+								<a class="widget-list-link" href="#">Become a supplier</a>
+							</li>
+							<li class="widget-list-item">
+								<a class="widget-list-link" href="#">Become a society</a>
 							</li>
 						</ul>
 					</div>

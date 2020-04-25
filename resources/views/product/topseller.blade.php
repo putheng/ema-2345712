@@ -8,8 +8,7 @@
 		<nav class="mb-4" aria-label="breadcrumb">
 			<ol class="breadcrumb flex-lg-nowrap">
 				<li class="breadcrumb-item"><a class="text-nowrap" href="{{ route('index') }}"><i class="czi-home"></i>Home</a></li>
-				<li class="breadcrumb-item text-nowrap active" aria-current="page">Bestsellers
- products</li>
+				<li class="breadcrumb-item text-nowrap active" aria-current="page">Bestsellers products</li>
 			</ol>
 		</nav>
 		<!-- Content-->
