@@ -18,7 +18,7 @@ class Category extends Model
         'order',
         'icon',
         'enable',
-        'aread',
+        'area',
     ];
 
     public static function boot()

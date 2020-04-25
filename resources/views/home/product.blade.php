@@ -10,7 +10,8 @@
 				<li class="breadcrumb-item"><a class="text-nowrap" href="{{ url('/') }}">
 		        	<i class="czi-home"></i>Home</a>
 		        </li>
-				<li class="breadcrumb-item text-nowrap"><a href="#">{{ $product->category->name }}</a>
+				<li class="breadcrumb-item text-nowrap">
+					<a href="{{ route('category.show', $product->category) }}">{{ $product->category->name }}</a>
 				</li>
 				<li class="breadcrumb-item text-nowrap active" aria-current="page">{{ $product->name }}</li>
 			</ol>

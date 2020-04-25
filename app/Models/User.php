@@ -11,6 +11,7 @@ use App\Models\PaymentMethod;
 use App\Models\Product;
 use App\Models\Track;
 use App\Models\Society;
+use App\Models\Supplier;
 use App\Models\Store;
 use App\Models\{Transfer, Ticket};
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -111,6 +112,11 @@ class User extends Authenticatable implements JWTSubject
     public function society()
     {
         return $this->hasOne(Society::class);
+    }
+
+    public function supplier()
+    {
+        return $this->hasOne(Supplier::class);
     }
 
     public function tickets()

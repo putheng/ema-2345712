@@ -39,8 +39,10 @@ class ProductController extends Controller
     	$product->description = nl2br($request->description);
     	$product->user()->associate($request->user());
         $product->category()->associate($request->category);
-        
+
     	$product->save();
+
+        $product->categories()->sync([$request->category]);
 
         $this->updateImage($request, $product);
 

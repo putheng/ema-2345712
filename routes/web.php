@@ -13,7 +13,7 @@ Route::get('/stores', 'PageController@stores')->name('stores');
 
 
 Route::get('discount', 'DiscountProductController@show')->name('discount');
-Route::get('categories', 'CategoryController@index')->name('categories');
+Route::get('category/{category}', 'CategoryController@index')->name('category.show');
 Route::get('topseller', 'TopSellController@index')->name('topseller');
 Route::get('products', 'ProductController@product')->name('product');
 

@@ -18,6 +18,7 @@
   <!-- Body-->
   <body class="bg-secondary">
     <!-- Sign in / sign up modal-->
+    @include('home.partials.sign-model')
     <!-- Navbar-->
     @include('product.partials.header')
     <!-- Sidebar menu-->

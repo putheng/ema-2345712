@@ -37,6 +37,7 @@ Route::group(['middleware' => 'auth'], function(){
 	});
 
 	Route::group(['prefix' => 'supplier'], function(){
+		Route::resource('account', 'Supplier\AccountController');
 		Route::resource('orders', 'Supplier\OrdersController');
 	});
 
