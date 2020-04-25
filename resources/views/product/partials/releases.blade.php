@@ -22,9 +22,9 @@
           <div class="card product-card-alt">
             <div class="product-thumb">
               <button class="btn-wishlist btn-sm" type="button"><i class="czi-heart"></i></button>
-              <div class="product-card-actions"><a class="btn btn-light btn-icon btn-shadow font-size-base mx-2" href="marketplace-single.html"><i class="czi-eye"></i></a>
+              <div class="product-card-actions"><a class="btn btn-light btn-icon btn-shadow font-size-base mx-2" href="#"><i class="czi-eye"></i></a>
                 <button class="btn btn-light btn-icon btn-shadow font-size-base mx-2" type="button" data-toggle="toast" data-target="#cart-toast"><i class="czi-cart"></i></button>
-              </div><a class="product-thumb-overlay" href="marketplace-single.html"></a><img src="/dist/img/marketplace/products/01.jpg" alt="Product">
+              </div><a class="product-thumb-overlay" href="#"></a><img src="/dist/img/marketplace/products/01.jpg" alt="Product">
             </div>
             <div class="card-body">
               <div class="d-flex flex-wrap justify-content-between align-items-start pb-2">
@@ -32,7 +32,7 @@
                 <div class="star-rating"><i class="sr-star czi-star-filled active"></i><i class="sr-star czi-star-filled active"></i><i class="sr-star czi-star-filled active"></i><i class="sr-star czi-star-filled active"></i><i class="sr-star czi-star"></i>
                 </div>
               </div>
-              <h3 class="product-title font-size-sm mb-2"><a href="marketplace-single.html">Square Style Mobile UI Kit (Sketch)</a></h3>
+              <h3 class="product-title font-size-sm mb-2"><a href="#">Square Style Mobile UI Kit (Sketch)</a></h3>
               <div class="d-flex flex-wrap justify-content-between align-items-center">
                 <div class="font-size-sm mr-2"><i class="czi-cart text-muted mr-1"></i>153<span class="font-size-xs ml-1">Sales</span></div>
                 <div class="bg-faded-accent text-accent rounded-sm py-1 px-2">$24.<small>00</small></div>
@@ -45,9 +45,9 @@
           <div class="card product-card-alt">
             <div class="product-thumb">
               <button class="btn-wishlist btn-sm" type="button"><i class="czi-heart"></i></button>
-              <div class="product-card-actions"><a class="btn btn-light btn-icon btn-shadow font-size-base mx-2" href="marketplace-single.html"><i class="czi-eye"></i></a>
+              <div class="product-card-actions"><a class="btn btn-light btn-icon btn-shadow font-size-base mx-2" href="#"><i class="czi-eye"></i></a>
                 <button class="btn btn-light btn-icon btn-shadow font-size-base mx-2" type="button" data-toggle="toast" data-target="#cart-toast"><i class="czi-cart"></i></button>
-              </div><a class="product-thumb-overlay" href="marketplace-single.html"></a><img src="/dist/img/marketplace/products/04.jpg" alt="Product">
+              </div><a class="product-thumb-overlay" href="#"></a><img src="/dist/img/marketplace/products/04.jpg" alt="Product">
             </div>
             <div class="card-body">
               <div class="d-flex flex-wrap justify-content-between align-items-start pb-2">
@@ -55,7 +55,7 @@
                 <div class="star-rating"><i class="sr-star czi-star-filled active"></i><i class="sr-star czi-star-filled active"></i><i class="sr-star czi-star-filled active"></i><i class="sr-star czi-star-filled active"></i><i class="sr-star czi-star-filled active"></i>
                 </div>
               </div>
-              <h3 class="product-title font-size-sm mb-2"><a href="marketplace-single.html">Flat-line E-Commerce Icons (AI)</a></h3>
+              <h3 class="product-title font-size-sm mb-2"><a href="#">Flat-line E-Commerce Icons (AI)</a></h3>
               <div class="d-flex flex-wrap justify-content-between align-items-center">
                 <div class="font-size-sm mr-2"><i class="czi-cart text-muted mr-1"></i>26<span class="font-size-xs ml-1">Sales</span></div>
                 <div class="bg-faded-accent text-accent rounded-sm py-1 px-2">$18.<small>00</small></div>
@@ -68,9 +68,9 @@
           <div class="card product-card-alt">
             <div class="product-thumb">
               <button class="btn-wishlist btn-sm" type="button"><i class="czi-heart"></i></button>
-              <div class="product-card-actions"><a class="btn btn-light btn-icon btn-shadow font-size-base mx-2" href="marketplace-single.html"><i class="czi-eye"></i></a>
+              <div class="product-card-actions"><a class="btn btn-light btn-icon btn-shadow font-size-base mx-2" href="#"><i class="czi-eye"></i></a>
                 <button class="btn btn-light btn-icon btn-shadow font-size-base mx-2" type="button" data-toggle="toast" data-target="#cart-toast"><i class="czi-cart"></i></button>
-              </div><a class="product-thumb-overlay" href="marketplace-single.html"></a><img src="/dist/img/marketplace/products/09.jpg" alt="Product">
+              </div><a class="product-thumb-overlay" href="#"></a><img src="/dist/img/marketplace/products/09.jpg" alt="Product">
             </div>
             <div class="card-body">
               <div class="d-flex flex-wrap justify-content-between align-items-start pb-2">
@@ -78,7 +78,7 @@
                 <div class="star-rating"><i class="sr-star czi-star-filled active"></i><i class="sr-star czi-star-filled active"></i><i class="sr-star czi-star-filled active"></i><i class="sr-star czi-star-filled active"></i><i class="sr-star czi-star"></i>
                 </div>
               </div>
-              <h3 class="product-title font-size-sm mb-2"><a href="marketplace-single.html">Isometric Device Mockups (PSD)</a></h3>
+              <h3 class="product-title font-size-sm mb-2"><a href="#">Isometric Device Mockups (PSD)</a></h3>
               <div class="d-flex flex-wrap justify-content-between align-items-center">
                 <div class="font-size-sm mr-2"><i class="czi-cart text-muted mr-1"></i>36<span class="font-size-xs ml-1">Sales</span></div>
                 <div class="bg-faded-accent text-accent rounded-sm py-1 px-2">$16.<small>00</small></div>
@@ -91,9 +91,9 @@
           <div class="card product-card-alt">
             <div class="product-thumb">
               <button class="btn-wishlist btn-sm" type="button"><i class="czi-heart"></i></button>
-              <div class="product-card-actions"><a class="btn btn-light btn-icon btn-shadow font-size-base mx-2" href="marketplace-single.html"><i class="czi-eye"></i></a>
+              <div class="product-card-actions"><a class="btn btn-light btn-icon btn-shadow font-size-base mx-2" href="#"><i class="czi-eye"></i></a>
                 <button class="btn btn-light btn-icon btn-shadow font-size-base mx-2" type="button" data-toggle="toast" data-target="#cart-toast"><i class="czi-cart"></i></button>
-              </div><a class="product-thumb-overlay" href="marketplace-single.html"></a><img src="/dist/img/marketplace/products/10.jpg" alt="Product">
+              </div><a class="product-thumb-overlay" href="#"></a><img src="/dist/img/marketplace/products/10.jpg" alt="Product">
             </div>
             <div class="card-body">
               <div class="d-flex flex-wrap justify-content-between align-items-start pb-2">
@@ -101,7 +101,7 @@
                 <div class="star-rating"><i class="sr-star czi-star-filled active"></i><i class="sr-star czi-star-filled active"></i><i class="sr-star czi-star-filled active"></i><i class="sr-star czi-star-filled active"></i><i class="sr-star czi-star"></i>
                 </div>
               </div>
-              <h3 class="product-title font-size-sm mb-2"><a href="marketplace-single.html">Coffe Paper Cup Mockup</a></h3>
+              <h3 class="product-title font-size-sm mb-2"><a href="#">Coffe Paper Cup Mockup</a></h3>
               <div class="d-flex flex-wrap justify-content-between align-items-center">
                 <div class="font-size-sm mr-2"><i class="czi-cart text-muted mr-1"></i>57<span class="font-size-xs ml-1">Sales</span></div>
                 <div class="bg-faded-accent text-accent rounded-sm py-1 px-2">$10.<small>00</small></div>
@@ -114,9 +114,9 @@
           <div class="card product-card-alt">
             <div class="product-thumb">
               <button class="btn-wishlist btn-sm" type="button"><i class="czi-heart"></i></button>
-              <div class="product-card-actions"><a class="btn btn-light btn-icon btn-shadow font-size-base mx-2" href="marketplace-single.html"><i class="czi-eye"></i></a>
+              <div class="product-card-actions"><a class="btn btn-light btn-icon btn-shadow font-size-base mx-2" href="#"><i class="czi-eye"></i></a>
                 <button class="btn btn-light btn-icon btn-shadow font-size-base mx-2" type="button" data-toggle="toast" data-target="#cart-toast"><i class="czi-cart"></i></button>
-              </div><a class="product-thumb-overlay" href="marketplace-single.html"></a><img src="/dist/img/marketplace/products/06.jpg" alt="Product">
+              </div><a class="product-thumb-overlay" href="#"></a><img src="/dist/img/marketplace/products/06.jpg" alt="Product">
             </div>
             <div class="card-body">
               <div class="d-flex flex-wrap justify-content-between align-items-start pb-2">
@@ -124,7 +124,7 @@
                 <div class="star-rating"><i class="sr-star czi-star-filled active"></i><i class="sr-star czi-star-filled active"></i><i class="sr-star czi-star-filled active"></i><i class="sr-star czi-star-filled active"></i><i class="sr-star czi-star-filled active"></i>
                 </div>
               </div>
-              <h3 class="product-title font-size-sm mb-2"><a href="marketplace-single.html">Travel &amp; Landmark Icon Pack (AI)</a></h3>
+              <h3 class="product-title font-size-sm mb-2"><a href="#">Travel &amp; Landmark Icon Pack (AI)</a></h3>
               <div class="d-flex flex-wrap justify-content-between align-items-center">
                 <div class="font-size-sm mr-2"><i class="czi-cart text-muted mr-1"></i>21<span class="font-size-xs ml-1">Sales</span></div>
                 <div class="bg-faded-accent text-accent rounded-sm py-1 px-2">$17.<small>00</small></div>
@@ -137,9 +137,9 @@
           <div class="card product-card-alt">
             <div class="product-thumb">
               <button class="btn-wishlist btn-sm" type="button"><i class="czi-heart"></i></button>
-              <div class="product-card-actions"><a class="btn btn-light btn-icon btn-shadow font-size-base mx-2" href="marketplace-single.html"><i class="czi-eye"></i></a>
+              <div class="product-card-actions"><a class="btn btn-light btn-icon btn-shadow font-size-base mx-2" href="#"><i class="czi-eye"></i></a>
                 <button class="btn btn-light btn-icon btn-shadow font-size-base mx-2" type="button" data-toggle="toast" data-target="#cart-toast"><i class="czi-cart"></i></button>
-              </div><a class="product-thumb-overlay" href="marketplace-single.html"></a><img src="/dist/img/marketplace/products/05.jpg" alt="Product">
+              </div><a class="product-thumb-overlay" href="#"></a><img src="/dist/img/marketplace/products/05.jpg" alt="Product">
             </div>
             <div class="card-body">
               <div class="d-flex flex-wrap justify-content-between align-items-start pb-2">
@@ -147,7 +147,7 @@
                 <div class="star-rating"><i class="sr-star czi-star-filled active"></i><i class="sr-star czi-star-filled active"></i><i class="sr-star czi-star-filled active"></i><i class="sr-star czi-star-filled active"></i><i class="sr-star czi-star"></i>
                 </div>
               </div>
-              <h3 class="product-title font-size-sm mb-2"><a href="marketplace-single.html">Minimal Mobile App UI Kit (Sketch)</a></h3>
+              <h3 class="product-title font-size-sm mb-2"><a href="#">Minimal Mobile App UI Kit (Sketch)</a></h3>
               <div class="d-flex flex-wrap justify-content-between align-items-center">
                 <div class="font-size-sm mr-2"><i class="czi-cart text-muted mr-1"></i>117<span class="font-size-xs ml-1">Sales</span></div>
                 <div class="bg-faded-accent text-accent rounded-sm py-1 px-2">$23.<small>00</small></div>
@@ -160,9 +160,9 @@
           <div class="card product-card-alt">
             <div class="product-thumb">
               <button class="btn-wishlist btn-sm" type="button"><i class="czi-heart"></i></button>
-              <div class="product-card-actions"><a class="btn btn-light btn-icon btn-shadow font-size-base mx-2" href="marketplace-single.html"><i class="czi-eye"></i></a>
+              <div class="product-card-actions"><a class="btn btn-light btn-icon btn-shadow font-size-base mx-2" href="#"><i class="czi-eye"></i></a>
                 <button class="btn btn-light btn-icon btn-shadow font-size-base mx-2" type="button" data-toggle="toast" data-target="#cart-toast"><i class="czi-cart"></i></button>
-              </div><a class="product-thumb-overlay" href="marketplace-single.html"></a><img src="/dist/img/marketplace/products/11.jpg" alt="Product">
+              </div><a class="product-thumb-overlay" href="#"></a><img src="/dist/img/marketplace/products/11.jpg" alt="Product">
             </div>
             <div class="card-body">
               <div class="d-flex flex-wrap justify-content-between align-items-start pb-2">
@@ -170,7 +170,7 @@
                 <div class="star-rating"><i class="sr-star czi-star-filled active"></i><i class="sr-star czi-star-filled active"></i><i class="sr-star czi-star-filled active"></i><i class="sr-star czi-star-filled active"></i><i class="sr-star czi-star"></i>
                 </div>
               </div>
-              <h3 class="product-title font-size-sm mb-2"><a href="marketplace-single.html">Printed T-Shirt Mockup (PSD)</a></h3>
+              <h3 class="product-title font-size-sm mb-2"><a href="#">Printed T-Shirt Mockup (PSD)</a></h3>
               <div class="d-flex flex-wrap justify-content-between align-items-center">
                 <div class="font-size-sm mr-2"><i class="czi-cart text-muted mr-1"></i>94<span class="font-size-xs ml-1">Sales</span></div>
                 <div class="bg-faded-accent text-accent rounded-sm py-1 px-2">$12.<small>00</small></div>
@@ -183,9 +183,9 @@
           <div class="card product-card-alt">
             <div class="product-thumb">
               <button class="btn-wishlist btn-sm" type="button"><i class="czi-heart"></i></button>
-              <div class="product-card-actions"><a class="btn btn-light btn-icon btn-shadow font-size-base mx-2" href="marketplace-single.html"><i class="czi-eye"></i></a>
+              <div class="product-card-actions"><a class="btn btn-light btn-icon btn-shadow font-size-base mx-2" href="#"><i class="czi-eye"></i></a>
                 <button class="btn btn-light btn-icon btn-shadow font-size-base mx-2" type="button" data-toggle="toast" data-target="#cart-toast"><i class="czi-cart"></i></button>
-              </div><a class="product-thumb-overlay" href="marketplace-single.html"></a><img src="/dist/img/marketplace/products/12.jpg" alt="Product">
+              </div><a class="product-thumb-overlay" href="#"></a><img src="/dist/img/marketplace/products/12.jpg" alt="Product">
             </div>
             <div class="card-body">
               <div class="d-flex flex-wrap justify-content-between align-items-start pb-2">
@@ -193,7 +193,7 @@
                 <div class="star-rating"><i class="sr-star czi-star-filled active"></i><i class="sr-star czi-star-filled active"></i><i class="sr-star czi-star-filled active"></i><i class="sr-star czi-star-filled active"></i><i class="sr-star czi-star"></i>
                 </div>
               </div>
-              <h3 class="product-title font-size-sm mb-2"><a href="marketplace-single.html">Corporate Branding Mockup (PSD)</a></h3>
+              <h3 class="product-title font-size-sm mb-2"><a href="#">Corporate Branding Mockup (PSD)</a></h3>
               <div class="d-flex flex-wrap justify-content-between align-items-center">
                 <div class="font-size-sm mr-2"><i class="czi-cart text-muted mr-1"></i>122<span class="font-size-xs ml-1">Sales</span></div>
                 <div class="bg-faded-accent text-accent rounded-sm py-1 px-2">$18.<small>00</small></div>
