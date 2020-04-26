@@ -76,7 +76,7 @@
 								<a class="widget-list-link" href="#">Become a supplier</a>
 							</li>
 							<li class="widget-list-item">
-								<a class="widget-list-link" href="#">Become a society</a>
+								<a class="widget-list-link" href="{{ url('/auth/login') }}">Become a society</a>
 							</li>
 						</ul>
 					</div>

@@ -9,7 +9,6 @@ import {
 	C15E7838AB2145CB,
 	C15E7838B6920BEB,
 	C15E7864304BEE9B,
-	C15E78C0F5C0B29B,
 	C15E79D1424C5BBB,
 	C15E79D268967C1B,
 	C15EA0513B643BBB,
@@ -71,11 +70,6 @@ export default [
 		path: '/society/create',
 		component: C15E7864304BEE9B,
 		name: 'society-society-create'
-	},
-	{
-		path: '/society/society/networks',
-		component: C15E78C0F5C0B29B,
-		name: 'society-society-networks'
 	},
 	{
 		path: '/society/payments/transfer/history',

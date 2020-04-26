@@ -20,6 +20,7 @@ class AgentsResource extends JsonResource
             'name' => $this->user->name,
             'level' => $this->level,
             'child' => $this->child_count,
+            'status' => $this->status,
             'user_id' => $this->user_id,
             'limitedExceded' => $this->child_count >= (int) get_level($this->level)->value,
             'avatar' => $this->avatar(),

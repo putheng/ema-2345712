@@ -5,13 +5,15 @@
 		</header>
 		<div class="page-section">
 			<div class="row">
-				<div class="col-md-8">
-					<div class="card card-fluid">
-						<div class="card-body">
-							<h3 class="card-title"> Sponsor </h3>
-							<p>Sponsor</p>
-						</div>
-					</div>
+				<div class="col-md-12">
+					<ul>
+					<li>
+						<span>{{ sponsor.name }}</span>
+						<ul v-if="sponsor.parent">
+							<Sponsor :parent="sponsor.parent"/>
+						</ul>
+					</li>
+				</ul>
 				</div>
 			</div>
 		</div>
@@ -21,15 +23,29 @@
 <script>
 	import { mapGetters, mapActions } from 'vuex'
 
+	import Sponsor from './partials/Sponsor'
+
 	export default {
+		data(){
+			return {
+				sponsor: []
+			}
+		},
 		methods: {
-			//
+			async fetch(){
+				let r = await axios.get('sociaty/sponsors')
+
+				this.sponsor = r.data.data
+			}
+		},
+		components: {
+			Sponsor
 		},
 		computed: {
 			//
 		},
 		mounted(){
-			//
+			this.fetch()
 		}
 	}
 </script>

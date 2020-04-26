@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Events\Agent\AgentCreated;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Agent\AgentResource;
+use App\Http\Resources\Agent\SponsorResource;
 use App\Http\Requests\Agent\StoreAgentRequest;
 
 class AgentController extends Controller
@@ -53,5 +54,12 @@ class AgentController extends Controller
     public function members(User $user, Request $request)
     {
         return new AgentResource($user->agent);
+    }
+
+    public function sponsor(Request $request)
+    {
+        $agent = Agent::find(21);
+
+        return new SponsorResource($agent);
     }
 }

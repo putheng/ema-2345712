@@ -99,6 +99,7 @@ Route::group(['middleware' => 'auth'], function(){
 		Route::post('create', 'Agent\AgentController@store');
 		Route::get('show', 'Agent\AgentController@show');
 		Route::get('show/{user}/members', 'Agent\AgentController@members');
+		Route::get('sponsors', 'Agent\AgentController@sponsor');
 
 	});
 	
@@ -106,5 +107,6 @@ Route::group(['middleware' => 'auth'], function(){
 
 Route::group(['prefix' => 'auth', 'middleware' => ['guest']],function(){
 	Route::post('login', 'Api\LoginController@login');
+	Route::post('society', 'Api\SociaryLoginController@login');
 	Route::post('register', 'Api\RegisterController@store');
 });

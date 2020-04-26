@@ -28,7 +28,7 @@
 				<!-- Key component -->
 				<div class="hv-item">
 					<div class="hv-item-parent">
-						<div class="person">
+						<div class="person" :class="agents.status">
 							<img :src="agents.avatar" alt="">
 							<p class="name">
 								{{ agents.name }} <b>/ {{ agents.uuid }}</b>
@@ -40,7 +40,7 @@
 							<!-- Key component -->
 							<div class="hv-item">
 								<div class="hv-item-parent">
-									<div class="person">
+									<div class="person" :class="child.status">
 										<img :src="child.avatar" alt="">
 										<p class="name" @click.prevent="loadMember(child.user_id)">
 											{{ child.name }} <b>/ {{ child.uuid }}</b>
@@ -50,7 +50,7 @@
 								<div class="hv-item-children" v-if="child.children">
 									<div class="hv-item-child" v-for="ch in child.children">
 										<div class="hv-item">
-											<div class="person">
+											<div class="person" :class="ch.status">
 												<img :src="ch.avatar" alt="">
 												<p class="name" @click.prevent="loadMember(ch.user_id)">
 													{{ ch.name }} <b>/ {{ ch.uuid }}</b>
@@ -159,7 +159,7 @@
 		computed: {
 			...mapGetters({
 				networks: 'society/getNetworks'
-			})
+			}),
 		},
 		created(){
 			this.fetch().then((r) => {
@@ -222,6 +222,14 @@ section {
 	}
 }
 
+.person.pending img{
+	border: 3px solid #de1818 !important;
+}
+
+.person.active img{
+	border: 3px solid #00a28a !important;
+}
+
 p.simple-card {
 	margin: 0;
 	background-color: #fff;
@@ -247,12 +255,15 @@ p.simple-card {
 	}
 	.person {
 		text-align: center;
+
 		&>img {
 			height: 70px;
-			border: 2px solid #bbb;
+			border: 3px solid #bbb;
 			border-radius: 50%;
 			overflow: hidden;
 			background-color: #fff;
+			width: 70px;
+    		height: 64px;
 		}
 		&>p.name {
 			background-color: #cacaca;

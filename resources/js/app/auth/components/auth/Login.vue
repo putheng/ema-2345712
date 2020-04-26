@@ -13,16 +13,16 @@
 					<router-link :to="{name:'auth-register'}">Create an Account</router-link>
 				</p>
 				<div class="form-group mb-4">
-					<label class="d-block text-left" for="inputEmail">Email</label>
+					<label class="d-block text-left" for="inputEmail">ID</label>
 					<input 
-						v-model="form.email" type="text" id="inputEmail"
+						v-model="form.id" type="text" id="inputEmail"
 						class="form-control form-control-lg" 
-						:class="{'is-invalid': validation['email']}"
-						@keyup="clearValidation('email')"
+						:class="{'is-invalid': validation['id']}"
+						@keyup="clearValidation('id')"
 					autofocus>
-					<div class="invalid-feedback text-left" v-if="validation['email']">
+					<div class="invalid-feedback text-left" v-if="validation['id']">
 			            <i class="fa fa-exclamation-circle fa-fw"></i>
-			            {{ validation['email'][0] }}
+			            {{ validation['id'][0] }}
 			        </div>
 				</div>
 				<div class="form-group mb-4">
@@ -85,7 +85,7 @@
 			return {
 				loading: false,
 				form: {
-					email: '',
+					id: '',
 					remember: false,
 					password: ''
 				}
@@ -95,16 +95,20 @@
 			submit(){
 				this.loading = true;
 
-				axios.post('auth/login', this.form).then((response) => {
+				axios.post('auth/society', this.form).then((response) => {
+					this.loading = false
+					// console.log(response.data)
 					if(response.data.success){
-						window.location = response.data.redirect
+						window.location = response.data.data.dashboard
 					}
 					
 				}, (error) => {
 					this.loading = false
 
 					return Promise.resolve(response)
-				}).catch(() => {})
+				}).catch((error) => {
+					this.loading = false
+				})
 			},
 			clearValidation(data){
 				this.$store.dispatch('clearValidateFor', data)
