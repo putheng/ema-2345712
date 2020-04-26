@@ -20,6 +20,8 @@ class StoresResources extends JsonResource
             'store' => $this->store->name,
             'address' => $this->store->address,
             'phone' => $this->store->phone,
+            'status' => $this->store->status,
+            'id' => $this->store->id,
         ];
     }
 }

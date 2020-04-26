@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreFormRequest;
 use App\Http\Resources\StoresResources;
 use App\Models\User;
+use App\Models\Store;
 use Illuminate\Http\Request;
 
 class StoreController extends Controller
@@ -80,9 +81,13 @@ class StoreController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Store $store)
     {
-        //
+        $store->update($request->only('status'));
+
+        return StoresResources::collection(
+            User::isStore()->paginate(20)
+        );
     }
 
     /**

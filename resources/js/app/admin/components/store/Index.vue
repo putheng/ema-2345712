@@ -17,19 +17,32 @@
 										<th>Name</th>
 										<th>Contact Person</th>
 										<th>Phone</th>
+										<th>Address</th>
+										<th>Status</th>
 									</thead>
 									<tbody>
-										<tr v-if="stores.data" v-for="(store, key) in stores.data">
+										<tr v-if="stores" v-for="(store, key) in stores">
 											<td>{{ store.store }}</td>
 											<td>{{ store.store }}</td>
 											<td>{{ store.username }}</td>
 											<td>{{ store.phone }}</td>
-											<!-- <td>120</td>
+											<td>{{ store.status }}</td>
 											<td>
-												<a href="#">Deactivate</a> |
-												<a href="#">View</a> |
+												<template v-if="store.status != 'active'">
+													<a href="#" @click.prevent="activate(store.id, 'active')">	
+														Activate
+													</a>
+												</template>
+												<template v-else>
+													<a href="#" @click.prevent="activate(store.id, 'deactivate')">
+														Deactivate
+													</a>	
+												</template>
+												|
+												<a href="#" @click.prevent="topup(store)">Top Up</a>
+												|
 												<a href="#">Impersonate</a>
-											</td> -->
+											</td>
 										</tr>
 										<tr v-else>
 											<td colspan="4">
@@ -44,25 +57,46 @@
 				</div>
 			</div>
 		</div>
+		<StoreTopup :store="store" v-if="isOpen"/>
 	</div>
 </template>
 
 <script>
 	import { mapGetters, mapActions } from 'vuex'
+	import StoreTopup from './partials/StoreTopup'
 
 	export default {
-		methods: {
-			...mapActions({
-				fetch: 'admin/fetchStores'
-			})
+		data(){
+			return {
+				stores: [],
+				isOpen: false,
+				store: []
+			}
 		},
-		computed: {
-			...mapGetters({
-				stores: 'admin/getStores'
-			})
+		methods: {
+			async activate(id, action){
+				let r = await axios.put(`store/store/${id}`, {status: action})
+
+				this.stores = r.data.data
+			},
+			async fetch(){
+				let r = await axios.get('store/store')
+
+				this.stores = r.data.data
+			},
+			topup(store){
+				this.isOpen = true
+				this.store = store
+
+				$('#StoreTopup').modal('show')
+			}
+		},
+		components: {
+			StoreTopup
 		},
 		mounted(){
 			this.fetch()
 		}
 	}
 </script>
+	

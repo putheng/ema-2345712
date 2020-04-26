@@ -29,7 +29,7 @@ class Supplier extends Model
     {
         $uuid = substr('000000', strlen($this->id));
 
-        $this->uuid = 'EMAS'. $uuid . $this->id;
+        $this->uuid = 'SP'. $uuid . $this->id;
         $this->save();
     }
 }
