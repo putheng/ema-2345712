@@ -21,3 +21,7 @@ export const C15E6F40DB82B65B = Vue.component('C15E6F40DB82B65B', require('./soc
 export const C15E6F47B63FF71B = Vue.component('C15E6F47B63FF71B', require('./settings/Impersonate.vue').default)
 export const C15E70CE3479171B = Vue.component('C15E70CE3479171B', require('./settings/Role.vue').default)
 export const C15E70DAA0DE5CDB = Vue.component('C15E70DAA0DE5CDB', require('./settings/Createrole.vue').default)
+export const C15EA54E39519DBB = Vue.component('C15EA54E39519DBB', require('./supplier/Index.vue').default)
+export const C15EA54E479E642B = Vue.component('C15EA54E479E642B', require('./supplier/Create.vue').default)
+export const C15EA54E4FE7F9DB = Vue.component('C15EA54E4FE7F9DB', require('./supplier/Edit.vue').default)
+export const C15EA54E5DA8700B = Vue.component('C15EA54E5DA8700B', require('./store/Edit.vue').default)

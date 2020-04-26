@@ -16,7 +16,7 @@
 								<input-binding v-model="user.name" name="name" label="Name"/>
 							</div>
 							<div class="col-md-6">
-								<input-binding v-model="user.supplier.name" name="username" label="Store name"/>
+								<input-binding v-model="user.supplier.name" name="username" label="Company name"/>
 							</div>
 						</div>
 

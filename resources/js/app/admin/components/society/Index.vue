@@ -1,6 +1,15 @@
 <template>
 <div class="page-inner">
 	<header class="page-title-bar">
+		<nav aria-label="breadcrumb">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item" :class="{'active': i == 0}"
+					v-if="breadcrumb.length" v-for="(b, i) in breadcrumb">
+					<a href="#" @click.prevent="viewMember(b.user_id)">{{ b.name }}</a>
+				</li>
+			</ol>
+		</nav>
+
 		<div class="page-title">
 			<span>Networks</span>
 			<router-link 
@@ -19,7 +28,7 @@
 				<!-- Key component -->
 				<div class="hv-item">
 					<div class="hv-item-parent">
-						<div class="person">
+						<div class="person" :class="agents.status">
 							<img :src="agents.avatar" alt="">
 							<p class="name">
 								{{ agents.name }} <b>/ {{ agents.uuid }}</b>
@@ -31,9 +40,9 @@
 							<!-- Key component -->
 							<div class="hv-item">
 								<div class="hv-item-parent">
-									<div class="person">
+									<div class="person" :class="child.status">
 										<img :src="child.avatar" alt="">
-										<p class="name">
+										<p class="name" @click.prevent="loadMember(child.user_id)">
 											{{ child.name }} <b>/ {{ child.uuid }}</b>
 										</p>
 									</div>
@@ -41,40 +50,68 @@
 								<div class="hv-item-children" v-if="child.children">
 									<div class="hv-item-child" v-for="ch in child.children">
 										<div class="hv-item">
-											<div class="person">
+											<div class="person" :class="ch.status">
 												<img :src="ch.avatar" alt="">
-												<p class="name">
+												<p class="name" @click.prevent="loadMember(ch.user_id)">
 													{{ ch.name }} <b>/ {{ ch.uuid }}</b>
 												</p>
 											</div>
 
 										</div>
 									</div>
+									<div class="hv-item-child" v-if="!child.limitedExceded">
+										<div class="hv-item">
+											<div class="person">
+												<img src="/images/empty-profile-picture.png" alt="">
+												<p class="name" @click.prevent="createAgent(child)">
+													Create +
+												</p>
+											</div>
+
+										</div>
+									</div>
+									
 								</div>
 							</div>
 						</div>
+						<div class="hv-item-child" v-if="!agents.limitedExceded">
+							<div class="hv-item">
+								<div class="person">
+									<img src="/images/empty-profile-picture.png" alt="">
+									<p class="name" @click.prevent="createAgent(agents)">
+										Create +
+									</p>
+								</div>
+
+							</div>
+						</div>
 					</div>
+
 				</div>
 			</div>
 		</div>
 		</section>
 	</div>
+	<CreateAgent :agent="agent" @completed="completed"/>
 </div>
 </template>
 
 <script>
 	import { mapGetters, mapActions } from 'vuex'
 
-	import NetworkChildren from './partials/NetworkChildren'
+	import CreateAgent from './partials/CreateAgent'
 
 	export default {
 		data(){
 			return {
-				agents:[]
+				agents:[],
+				breadcrumb: [],
+				isCreating: false,
+				agent: []
 			}
 		},
 		components: {
-			NetworkChildren
+			CreateAgent
 		},
 		methods: {
 			...mapActions({
@@ -84,15 +121,55 @@
 				let r = await axios.get(`sociaty/show`)
 
 				this.agents = r.data.data
+
+				return r
+			},
+			async viewMember(id){
+				let r = await axios.get(`sociaty/show/${id}/members`)
+				
+				this.agents = r.data.data
+
+				return r
+			},
+			async loadMember(id){
+				let r = await axios.get(`sociaty/show/${id}/members`)
+				
+				this.agents = r.data.data
+
+				this.breadcrumb.push({
+					name: r.data.data.name,
+					user_id: r.data.data.user_id,
+				})
+
+				return r
+			},
+			createAgent(agent){
+				this.isCreating = true
+
+				this.agent = agent
+				$('#createAgentModal').modal('show')
+			},
+			completed(e){
+				this.agent.children.push(e.data.data)
+				
+				$('#createAgentModal').modal('hide')
+				this.isCreating = false
 			}
 		},
 		computed: {
 			...mapGetters({
 				networks: 'society/getNetworks'
-			})
+			}),
 		},
 		created(){
-			this.fetch()
+			this.fetch().then((r) => {
+				this.breadcrumb.push({
+					name: r.data.data.name,
+					user_id: r.data.data.user_id,
+				})
+			})
+
+			
 		}
 	}
 </script>
@@ -145,6 +222,14 @@ section {
 	}
 }
 
+.person.pending img{
+	border: 3px solid #de1818 !important;
+}
+
+.person.active img{
+	border: 3px solid #00a28a !important;
+}
+
 p.simple-card {
 	margin: 0;
 	background-color: #fff;
@@ -170,12 +255,15 @@ p.simple-card {
 	}
 	.person {
 		text-align: center;
+
 		&>img {
 			height: 70px;
-			border: 2px solid #bbb;
+			border: 3px solid #bbb;
 			border-radius: 50%;
 			overflow: hidden;
 			background-color: #fff;
+			width: 70px;
+    		height: 64px;
 		}
 		&>p.name {
 			background-color: #cacaca;
@@ -187,6 +275,7 @@ p.simple-card {
 			margin: 0;
 			position: relative;
 			white-space: nowrap;
+			cursor: pointer;
 			b {
 				color: #ff6500;
 			}

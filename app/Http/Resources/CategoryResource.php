@@ -19,6 +19,8 @@ class CategoryResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'slug' => $this->slug,
+            'icon' => $this->icon,
+            'area' => $this->area,
             'enable' => $this->enable,
             'products' => $this->products->count(),
             'image' => optional($this->image)->url,

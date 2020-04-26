@@ -58,8 +58,8 @@ class AgentController extends Controller
 
     public function sponsor(Request $request)
     {
-        $agent = Agent::find(21);
+        $agent = Agent::where('sponsor_id', $request->user()->agent->id)->get();
 
-        return new SponsorResource($agent);
+        return SponsorResource::collection($agent);
     }
 }

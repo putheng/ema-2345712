@@ -19,6 +19,10 @@ import {
 	C15E6F47B63FF71B,
 	C15E70CE3479171B,
 	C15E70DAA0DE5CDB,
+	C15EA54E39519DBB,
+	C15EA54E479E642B,
+	C15EA54E4FE7F9DB,
+	C15EA54E5DA8700B,
 	/****/
 } from '../components'
 
@@ -123,6 +127,26 @@ export default [
 		path: '/admin/settings/p/role/:id',
 		component: C15E70DAA0DE5CDB,
 		name: 'admin-settings-role-permission'
+	},
+	{
+		path: '/admin/supplier',
+		component: C15EA54E39519DBB,
+		name: 'admin-supplier'
+	},
+	{
+		path: '/admin/supplier/create',
+		component: C15EA54E479E642B,
+		name: 'admin-supplier-create'
+	},
+	{
+		path: '/admin/supplier/edit',
+		component: C15EA54E4FE7F9DB,
+		name: 'admin-supplier-edit'
+	},
+	{
+		path: '/admin/store/edit',
+		component: C15EA54E5DA8700B,
+		name: 'admin-store-edit'
 	},
 	/**/
 ]

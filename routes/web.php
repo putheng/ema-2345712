@@ -11,6 +11,8 @@ Route::get('/contacts', 'PageController@contact')->name('contact');
 Route::get('/about', 'PageController@about')->name('about');
 Route::get('/stores', 'PageController@stores')->name('stores');
 
+Route::get('/icons', 'ProductController@icons')->name('icons');
+
 Route::get('/currency', 'PageController@currency')->name('currency');
 
 

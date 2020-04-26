@@ -23,7 +23,9 @@ class SponsorResource extends JsonResource
             'child' => $this->child_count,
             'user_id' => $this->user_id,
             'avatar' => $this->avatar(),
-            'parent' => new SponsorResource($this->parent)
+            'phone' => '',
+            'email' => '',
+            // 'parent' => new SponsorResource($this->parent)
         ];
     }
 

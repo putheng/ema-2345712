@@ -9,34 +9,35 @@
 				<div class="card card-fluid">
 					<div class="card-body">
 						<h3 class="card-title"> My tickets </h3>
+						<div class="table table-responsive">
+							<table class="table table-hover">
+								<thead>
+									<th>Ticket Subject</th>
+									<th>Date Submitted | Updated</th>
+									<th>Type</th>
+									<th>Priority</th>
+									<th>Status</th>
+								</thead>
 
-						<table class="table table-hover">
-							<thead>
-								<th>Ticket Subject</th>
-								<th>Date Submitted | Updated</th>
-								<th>Type</th>
-								<th>Priority</th>
-								<th>Status</th>
-							</thead>
-
-							<tbody>
-								<tr v-for="(ticket, index) in tickets">
-									<td>
-										<router-link :to="{name: 'society-cart-viewticket', params:{id:ticket.id}}">
-											{{ ticket.subject }}
-										</router-link>
-									</td>
-									<td>{{ ticket.created }} | {{ ticket.updated }}</td>
-									<td>{{ ticket.type }}</td>
-									<td>
-										<span class="badge badge-warning">{{ ticket.priority }}</span>
-									</td>
-									<td>
-										<span class="badge badge-success">{{ ticket.status }}</span>
-									</td>
-								</tr>
-							</tbody>
-						</table>
+								<tbody>
+									<tr v-for="(ticket, index) in tickets">
+										<td>
+											<router-link :to="{name: 'society-cart-viewticket', params:{id:ticket.id}}">
+												{{ ticket.subject }}
+											</router-link>
+										</td>
+										<td>{{ ticket.created }} | {{ ticket.updated }}</td>
+										<td>{{ ticket.type }}</td>
+										<td>
+											<span class="badge badge-warning">{{ ticket.priority }}</span>
+										</td>
+										<td>
+											<span class="badge badge-success">{{ ticket.status }}</span>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
 						
 						<div class="text-right">
 							<button 

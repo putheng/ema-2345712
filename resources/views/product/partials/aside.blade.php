@@ -418,3 +418,9 @@
     </div>
   </div>
 </aside>
+
+<style type="text/css">
+  a.collapsed i{
+    color: #f34670;
+  }
+</style>

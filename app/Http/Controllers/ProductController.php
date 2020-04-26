@@ -23,4 +23,9 @@ class ProductController extends Controller
 
     	return view('home.product', compact('product', 'products'));
     }
+
+    public function icons()
+    {
+        return view('home.icons');
+    }
 }

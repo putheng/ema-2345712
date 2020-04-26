@@ -40,9 +40,15 @@ class CategoryController extends Controller
     	);
     }
 
-    public function update(CategoryStoreRequest $request, Category $category)
+    public function update(Request $request, Category $category)
     {
-    	$category->update($request->only('name'));
+        dd($request->all());
+        $category->name = $request->name;
+        $category->icon = $request->icon;
+        $category->area = $request->area;
+        $category->save();
+
+    	// $category->update($request->only('name', 'icon', 'area'));
 
     	return (new CategoryResource($category->fresh()))
     		->additional(['success' => true, 'message' => 'Category update successfully']);

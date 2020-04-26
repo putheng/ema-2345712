@@ -1,0 +1,16 @@
+1. supplier, store: profile upload company licences
+2. product price calculate base on currency
+3. product price base on individule currency
+4. Admin can disable enable transfer feature
+5.usd sale: $x khr,thb
+6.filter placement tree by id
+7.auto add placement tree id when click create agent
+
+8.admin can on store and supplier
+	- create 
+	- update status
+	- topup balance to store
+
+9.when store order is noti to admin not supplier
+10. payment calculate on request withdraw user
+11. admin can delete role
