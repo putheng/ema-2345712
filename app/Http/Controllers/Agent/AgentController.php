@@ -17,6 +17,7 @@ class AgentController extends Controller
     {
     	$user = User::create($request->only('email', 'name', 'password'));
 
+        $user->update(['type' => 'society']);
         $user->assignRole('society');
 
     	event(new AgentCreated($user, $request->placement, $request->sponsor));

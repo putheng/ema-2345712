@@ -164,7 +164,6 @@ class User extends Authenticatable implements JWTSubject
         return $this->hasMany(Track::class);
     }
 
-
     public function image()
     {
         return $this->morphOne(Image::class, 'imageable');
