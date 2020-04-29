@@ -19,7 +19,7 @@
           <div class="card-body text-center">
             <i class="czi-location h3 mt-2 mb-4 text-primary"></i>
             <h3 class="h6 mb-2">Main store address</h3>
-            <p class="font-size-sm text-muted">396 Lillian Blvd, Holbrook</p>
+            <p class="font-size-sm text-muted">#I07/10 St.598, Sangkat Khmuonh, Khan Sen Sok,Phnom Penh</p>
             <div class="font-size-sm text-primary">Click to see map<i class="czi-arrow-right align-middle ml-1"></i></div>
           </div>
         </a>
@@ -30,8 +30,8 @@
             <i class="czi-time h3 mt-2 mb-4 text-primary"></i>
             <h3 class="h6 mb-3">Working hours</h3>
             <ul class="list-unstyled font-size-sm text-muted mb-0">
-              <li>Mon - Fri: 10AM - 7PM</li>
-              <li class="mb-0">Sta: 11AM - 5PM</li>
+              <li>Mon-Sun </li>
+              <li class="mb-0">8AM-5PM</li>
             </ul>
           </div>
         </div>
@@ -42,8 +42,12 @@
             <i class="czi-phone h3 mt-2 mb-4 text-primary"></i>
             <h3 class="h6 mb-3">Phone numbers</h3>
             <ul class="list-unstyled font-size-sm mb-0">
-              <li><span class="text-muted mr-1">For customers:</span><a class="nav-link-style" href="tel:+108044357260">+1 (080) 44 357 260</a></li>
-              <li class="mb-0"><span class="text-muted mr-1">Tech support:</span><a class="nav-link-style" href="tel:+100331697720">+1 00 33 169 7720</a></li>
+              <li><span class="text-muted mr-1">For customers:</span>
+                <a class="nav-link-style" href="tel:+855085598188">+855 085 598 188</a>
+              </li>
+              <li class="mb-0"><span class="text-muted mr-1">Tech support:</span>
+                <a class="nav-link-style" href="tel:+855087598188">+855 087 598 188</a>
+              </li>
             </ul>
           </div>
         </div>
@@ -54,8 +58,11 @@
             <i class="czi-mail h3 mt-2 mb-4 text-primary"></i>
             <h3 class="h6 mb-3">Email addresses</h3>
             <ul class="list-unstyled font-size-sm mb-0">
-              <li><span class="text-muted mr-1"></span><a class="nav-link-style" href="mailto:+108044357260">customer@example.com</a></li>
-              <li class="mb-0"><span class="text-muted mr-1"></span><a class="nav-link-style" href="mailto:support@example.com">support@example.com</a></li>
+              <li><span class="text-muted mr-1"></span>
+                <a class="nav-link-style" href="mailto:info@emarketasia.com">info@emarketasia.com</a>
+              </li>
+              <li class="mb-0"><span class="text-muted mr-1"></span>
+                <a class="nav-link-style" href="mailto:suport@emarketasia.com">suport@emarketasia.com</a></li>
             </ul>
           </div>
         </div>

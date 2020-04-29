@@ -35,28 +35,28 @@ Route::group(['prefix' => 'society', 'middleware' => ['auth']], function(){
 });
 
 
-Route::group(['prefix' => 'supplier', 'middleware' => ['auth']], function(){
+Route::group(['prefix' => 'supplier', 'middleware' => ['auth', 'role:supplier']], function(){
 	
 	Route::get('/{vue?}', 'HomeController@supplier')
 		->where('vue', '[\/\w\.-]*');
 
 });
 
-Route::group(['prefix' => 'store', 'middleware' => ['auth']], function(){
+Route::group(['prefix' => 'store', 'middleware' => ['auth', 'role:store']], function(){
 	
 	Route::get('/{vue?}', 'HomeController@store')
 		->where('vue', '[\/\w\.-]*');
 
 });
 
-Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
+Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], function(){
 	
 	Route::get('/{vue?}', 'HomeController@admin')
 		->where('vue', '[\/\w\.-]*');
 
 });
 
-Route::group(['prefix' => 'dashboard', 'middleware' => ['auth']], function(){
+Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', 'role:customer']], function(){
 	
 	Route::get('/{vue?}', 'HomeController@dashboard')
 		->where('vue', '[\/\w\.-]*');

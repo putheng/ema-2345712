@@ -14,7 +14,7 @@ class Order extends Model
 {
 
 	protected $appends = [
-		'total'
+		'total', 'status'
 	];
 
 

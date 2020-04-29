@@ -1,7 +1,8 @@
 <template>
 <transition name="fade">
 	<div class="modal modal-alert fade" id="StoreTopup" data-backdrop="static" tabindex="-1" role="dialog"aria-hidden="true">
-		<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-dialog modal-dialog" role="document">
+		<form @submit.prevent="submit">
 			<div class="modal-content">
 				<div class="modal-header">
 					<h5 class="modal-title">
@@ -9,16 +10,14 @@
 					</h5>
 				</div>
 				<div class="modal-body">
-					<app-form action="/">
-						<input-binding v-model="store.store" name="name" label="Store"/>
-						<input-binding v-model="store.id" name="id" label="Store ID"/>
-						<input-binding name="amount" label="Amount"/>
-						<text-area-binding name="note" label="Note"/>
-						<input-binding name="password" label="Password"/>
-					</app-form>
+					<input-binding v-model="store.store" name="name" label="Store"/>
+					<input-binding v-model="store.uuid" name="receiver" label="Store ID"/>
+					<input-binding v-model="form.amount" name="amount" label="Amount"/>
+					<text-area-binding v-model="form.note" name="note" label="Note"/>
+					<input-binding v-model="form.password" name="password" label="Password"/>
 				</div>
 				<div class="modal-footer">
-
+					<app-button type="submit">Send</app-button>
 					<button
 						type="button"
 						@click="resetLoading"
@@ -29,6 +28,7 @@
 					</button>
 				</div>
 			</div>
+		</form>
 		</div>
 	</div>
 </transition>
@@ -39,6 +39,15 @@
 
 	export default {
 		props: ['store'],
+		data(){
+			return {
+				form: {
+					amount: '',
+					note: '',
+					password: '',
+				}
+			}
+		},
 		computed: {
 			...mapGetters({
 				loading: 'getLoading',
@@ -55,6 +64,14 @@
 				this.clearValidationErrors()
 				this.clearMessage()
 				this.clearErrors()
+			},
+			async submit(){
+				let r = await axios.post('admin/transfer', {
+					name: this.store.store,
+					receiver: this.store.uuid,
+					amount: this.form.amount,
+					amount: this.form.amount,
+				})
 			}
 		}
 	}

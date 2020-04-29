@@ -403,14 +403,14 @@
         <i class="czi-support h4 mb-0 font-weight-normal text-primary mt-1 mr-1"></i>
         <div class="pl-2">
           <div class="text-muted font-size-sm">Support</div>
-          <a class="nav-link-style font-size-md" href="tel:+100331697720">+1 (00) 33 169 7720</a>
+          <a class="nav-link-style font-size-md" href="tel:+100331697720">+855 85 598 188</a>
         </div>
       </div>
       <div class="d-flex mb-3">
         <i class="czi-mail h5 mb-0 font-weight-normal text-primary mt-1 mr-1"></i>
         <div class="pl-2">
           <div class="text-muted font-size-sm">Email</div>
-          <a class="nav-link-style font-size-md" href="mailto:customer@example.com">customer@example.com</a>
+          <a class="nav-link-style font-size-md" href="mailto:suport@emarketasia.com">suport@emarketasia.com</a>
         </div>
       </div>
       <h6 class="pt-2 pb-1">Follow us</h6>

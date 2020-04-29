@@ -14,6 +14,7 @@ import {
 	C15E9A8D4D1DD86B,
 	C15E9A8D5B54D26B,
 	C15E9A8D683E323B,
+	C15EA995A476316B,
 	/****/
 } from '../components'
 
@@ -98,6 +99,11 @@ export default [
 		path: '/store/cart/tickets/:id',
 		component: C15E9A8D683E323B,
 		name: 'store-cart-viewticket'
+	},
+	{
+		path: '/store/products/orders',
+		component: C15EA995A476316B,
+		name: 'store-products-orders'
 	},
 	/**/
 ]

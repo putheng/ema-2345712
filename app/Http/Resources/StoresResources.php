@@ -22,6 +22,7 @@ class StoresResources extends JsonResource
             'phone' => $this->store->phone,
             'status' => $this->store->status,
             'id' => $this->store->id,
+            'uuid' => $this->store->uuid,
         ];
     }
 }

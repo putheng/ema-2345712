@@ -21,6 +21,10 @@
 
 			<li class="menu-header">Products</li>
 			<li class="menu-item">
+				<router-link :to="{ name: 'store-products-orders' }" class="menu-link">
+					<span class="oi oi-cart"></span>
+					<span class="menu-text">Orders</span>
+				</router-link>
 				<router-link :to="{ name: 'store-products-sale' }" class="menu-link">
 					<span class="oi oi-graph"></span>
 					<span class="menu-text">Sales</span>

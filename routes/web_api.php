@@ -33,6 +33,7 @@ Route::group(['middleware' => 'auth'], function(){
 
 	Route::group(['prefix' => 'store'], function(){
 		Route::resource('store', 'Api\StoreController');
+		Route::resource('orders', 'Store\OrdersController');
 	});
 
 	Route::group(['prefix' => 'supplier'], function(){
@@ -72,12 +73,14 @@ Route::group(['middleware' => 'auth'], function(){
 		Route::post('/{product}/variations/edit', 'Admin\ProductVariantsController@update');
 	});
 
-	Route::group(['prefix' => 'admin'], function(){
+	Route::group(['prefix' => 'admin', 'middleware' => 'role:admin'], function(){
 		Route::resource('category', 'Admin\CategoryController@store');
 		Route::get('category', 'Admin\CategoryController@index');
 		Route::post('category/{category}', 'Admin\CategoryController@update');
 
 		Route::resource('supplier', 'Admin\SupplierController');
+
+		Route::resource('transfer', 'Admin\TransferController');
 
 		Route::resource('roles', 'Admin\RoleController');
 		Route::resource('permissions', 'Admin\PermissionController');
