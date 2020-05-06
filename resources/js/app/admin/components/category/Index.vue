@@ -11,13 +11,16 @@
 						<div class="card card-fluid">
 							<div class="card-body">
 								<h3 class="card-title"> Create a category</h3>
-								<app-form @created="created" action="admin/category" method="PATCH">
+								<app-form @created="created" action="admin/category">
 									<div class="row">
-										<div class="col-md-5">
+										<div class="col-md-4">
 											<app-input name="name" label="Name"/>
 										</div>
-										<div class="col-md-5">
+										<div class="col-md-4">
 											<app-input name="icon" label="Icon"/>
+										</div>
+										<div class="col-md-2">
+											<app-input name="parent" label="Parent ID"/>
 										</div>
 										<div class="col-md-2">
 											<app-input name="area" label="Area" value="1"/>
@@ -42,7 +45,12 @@
 									<tbody>
 										<tr v-if="categories" v-for="category in categories">
 											<td>{{ category.id }}</td>
-											<td>{{ category.name }}</td>
+											<td>
+												{{ category.name }}
+												<ul v-if="category.children">
+													<li v-for="child in category.children">{{ child.name }}</li>
+												</ul>
+											</td>
 											<td>{{ category.products }}</td>
 											<td>
 												<a href="#" @click.prevent="edit(category)">

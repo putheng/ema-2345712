@@ -74,7 +74,7 @@ Route::group(['middleware' => 'auth'], function(){
 	});
 
 	Route::group(['prefix' => 'admin', 'middleware' => 'role:admin'], function(){
-		Route::resource('category', 'Admin\CategoryController@store');
+		Route::resource('category', 'Admin\CategoryController');
 		Route::get('category', 'Admin\CategoryController@index');
 		Route::post('category/{category}', 'Admin\CategoryController@update');
 

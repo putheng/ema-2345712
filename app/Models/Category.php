@@ -18,6 +18,7 @@ class Category extends Model
         'order',
         'icon',
         'enable',
+        'parent_id',
         'area',
     ];
 

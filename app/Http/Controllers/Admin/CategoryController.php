@@ -13,7 +13,7 @@ class CategoryController extends Controller
 	public function index()
 	{
 		return CategoryResource::collection(
-            Category::ordered()->get()
+            Category::with('children')->ordered()->get()
         );
 	}
 
@@ -22,6 +22,7 @@ class CategoryController extends Controller
     	$category = Category::create([
             'name' => $request->name,
             'area' => $request->area,
+            'parent_id' => $request->parent,
             'icon' => $request->icon
         ]);
 
@@ -42,7 +43,6 @@ class CategoryController extends Controller
 
     public function update(Request $request, Category $category)
     {
-        dd($request->all());
         $category->name = $request->name;
         $category->icon = $request->icon;
         $category->area = $request->area;
