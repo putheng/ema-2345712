@@ -18,10 +18,10 @@
 				<span class="dropdown-icon oi oi-person"></span>
 				Profile
 			</router-link>
-			<router-link :to="{name: 'admin-settings-impersonate'}" class="dropdown-item">
+			<!-- <router-link :to="{name: 'admin-settings-impersonate'}" class="dropdown-item">
 				<span class="dropdown-icon fa fa-power-off"></span>
 				Impersonate
-			</router-link>
+			</router-link> -->
 			<router-link :to="{name: 'admin-payments-wallet'}" class="dropdown-item">
 				<span class="dropdown-icon fa fa-hand-holding-usd"></span>
 				{{ user.balance }}

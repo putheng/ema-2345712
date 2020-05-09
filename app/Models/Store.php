@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Store extends Model
 {
     protected $fillable = [
-    	'user_id', 'name', 'address', 'phone', 'latitude', 'longitude', 'status'
+    	'user_id', 'name', 'address', 'phone',
+        'latitude', 'longitude', 'status', 'commission'
     ];
 
     public static function boot()

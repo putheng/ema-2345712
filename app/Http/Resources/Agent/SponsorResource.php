@@ -17,7 +17,7 @@ class SponsorResource extends JsonResource
         return [
             'id' => $this->id,
             'uuid' => $this->uuid,
-            'name' => $this->user->name,
+            'name' => optional($this->user)->name,
             'level' => $this->level,
             'status' => $this->status,
             'child' => $this->child_count,
@@ -31,7 +31,7 @@ class SponsorResource extends JsonResource
 
     public function avatar()
     {
-        if($this->user->image){
+        if(optional($this->user)->image){
             return $this->user->image->avatar();
         }
 

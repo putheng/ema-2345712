@@ -46,11 +46,26 @@ class CategoryController extends Controller
         $category->name = $request->name;
         $category->icon = $request->icon;
         $category->area = $request->area;
+        $category->parent_id = $request->parent;
         $category->save();
 
-    	// $category->update($request->only('name', 'icon', 'area'));
+        return CategoryResource::collection(
+            Category::with('children')->parents()->ordered()->get()
+        )->additional([
+            'success' => true,
+            'message' => 'Category update successfully'
+        ]);
+    }
 
-    	return (new CategoryResource($category->fresh()))
-    		->additional(['success' => true, 'message' => 'Category update successfully']);
+    public function destroy(Request $request, Category $category)
+    {
+        $category->delete();
+
+        return CategoryResource::collection(
+            Category::with('children')->parents()->ordered()->get()
+        )->additional([
+            'success' => true,
+            'message' => 'Category update successfully'
+        ]);
     }
 }

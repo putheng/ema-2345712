@@ -75,10 +75,17 @@ Route::group(['middleware' => 'auth'], function(){
 
 	Route::group(['prefix' => 'admin', 'middleware' => 'role:admin'], function(){
 		Route::resource('category', 'Admin\CategoryController');
+		
+		Route::get('users', 'Admin\UserController@index');
+		Route::post('users/{user}', 'Admin\UserController@update');
+		Route::delete('users/{user}', 'Admin\UserController@destroy');
+
 		Route::get('category', 'Admin\CategoryController@index');
 		Route::post('category/{category}', 'Admin\CategoryController@update');
+		Route::delete('category/{category}', 'Admin\CategoryController@destroy');
 
 		Route::resource('supplier', 'Admin\SupplierController');
+		Route::post('store/{store}/commission', 'Admin\StoreController@commission');
 
 		Route::resource('transfer', 'Admin\TransferController');
 

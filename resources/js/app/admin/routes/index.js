@@ -23,6 +23,7 @@ import {
 	C15EA54E479E642B,
 	C15EA54E4FE7F9DB,
 	C15EA54E5DA8700B,
+	C15EB2CF11652B0B,
 	/****/
 } from '../components'
 
@@ -147,6 +148,11 @@ export default [
 		path: '/admin/store/edit',
 		component: C15EA54E5DA8700B,
 		name: 'admin-store-edit'
+	},
+	{
+		path: '/admin/settings/users',
+		component: C15EB2CF11652B0B,
+		name: 'admin-settings-users'
 	},
 	/**/
 ]

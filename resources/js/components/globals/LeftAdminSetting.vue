@@ -2,11 +2,18 @@
 	<nav id="stacked-menu" class="stacked-menu">
 		<!-- .menu -->
 		<ul class="menu">
+			<li class="menu-item">
+				<a class="menu-link" href="/">
+					<span class="menu-icon fas fa-home"></span>
+					<span class="menu-text">{{ $t('general.home') }}</span>
+				</a>
+			</li>
+
 			<!-- .menu-item -->
 			<li class="menu-item">
 				<router-link :to="{ name: 'admin-profile' }" class="menu-link">
-					<span class="menu-icon fas fa-home"></span>
-					<span class="menu-text">{{ $t('general.home') }}</span>
+					<span class="menu-icon oi oi-info"></span>
+					<span class="menu-text">Dashboard</span>
 				</router-link>
 				
 			</li>
@@ -32,9 +39,9 @@
 				<a href="#" class="menu-link"><span class="menu-icon far fa-list-alt"></span> <span class="menu-text">Category</span></a> <!-- child menu -->
 				<ul class="menu">
 					<li class="menu-item">
-						<router-link class="menu-link" :to="{name: 'admin-category-create'}">
+						<!-- <router-link class="menu-link" :to="{name: 'admin-category-create'}">
 							Create
-						</router-link>
+						</router-link> -->
 						<router-link class="menu-link" :to="{name: 'admin-category'}">
 							View
 						</router-link>
@@ -122,6 +129,9 @@
 					<li class="menu-item">
 						<router-link class="menu-link" :to="{ name:'admin-settings-profile' }">
 							Profile
+						</router-link>
+						<router-link class="menu-link" :to="{ name:'admin-settings-users' }">
+							Users
 						</router-link>
 						<router-link class="menu-link" :to="{ name:'admin-settings-role' }">
 							Role

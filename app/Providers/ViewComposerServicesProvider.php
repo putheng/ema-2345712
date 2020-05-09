@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 use App\ViewComposers\{
     CategoryComposer,
+    LeftMenuComposer,
     FooterCategory,
     DiscountProduct,
     BestSale
@@ -30,6 +31,11 @@ class ViewComposerServicesProvider extends ServiceProvider
      */
     public function boot()
     {
+        View::composer(
+            ['product.partials.aside'], 
+            LeftMenuComposer::class
+        );
+
         View::composer(
             ['home.partials.global-search'], 
             CategoryComposer::class

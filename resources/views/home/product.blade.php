@@ -47,9 +47,7 @@
 					@if(!$product->inStock())
 						<span class="badge badge-secondary">Out of stock</span>
 					@endif
-					@if(auth()->check() && auth()->id() == $product->user_id)
-						<a href="{{ url(auth()->user()->dashboard() ."/product/$product->slug/variation") }}">Add stock</a>
-					@endif
+					
 					<div class="h2 font-weight-normal text-accent">{{ $product->formattedPrice }}</div>
 
 					<div>

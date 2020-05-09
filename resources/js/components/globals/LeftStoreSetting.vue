@@ -1,7 +1,12 @@
 <template>
 	<nav id="stacked-menu" class="stacked-menu">
 		<ul class="menu">
-			
+			<li class="menu-item">
+				<a class="menu-link">
+					<span class="menu-icon oi oi-cart"></span>
+					<span class="menu-text">Home</span>
+				</a>
+			</li>
 
 			<li class="menu-header">Cart</li>
 			<li class="menu-item">

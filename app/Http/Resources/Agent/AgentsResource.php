@@ -17,7 +17,7 @@ class AgentsResource extends JsonResource
         return [
             'id' => $this->id,
             'uuid' => $this->uuid,
-            'name' => $this->user->name,
+            'name' => optional($this->user)->name,
             'level' => $this->level,
             'child' => $this->child_count,
             'status' => $this->status,
@@ -30,7 +30,7 @@ class AgentsResource extends JsonResource
 
     public function avatar()
     {
-        if($this->user->image){
+        if(optional($this->user)->image){
             return $this->user->image->avatar();
         }
 

@@ -22,8 +22,8 @@ class TransfersResource extends JsonResource
             'mark' => substr($this->mark, 0, 30),
             'amount' => $this->currency .' '. number_format($this->amount),
             'fee' => $this->currency .' '. $this->fee,
-            'sender' => $this->senderid->name,
-            'receiver' => $this->receiverid->name,
+            'sender' => optional($this->senderid)->name,
+            'receiver' => optional($this->receiverid)->name,
         ];
     }
 }

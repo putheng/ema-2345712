@@ -19,6 +19,7 @@
 										<th>Phone</th>
 										<th>Address</th>
 										<th>Status</th>
+										<th>Sale Commission</th>
 									</thead>
 									<tbody>
 										<tr v-if="stores" v-for="(store, key) in stores">
@@ -26,22 +27,28 @@
 											<td>{{ store.store }}</td>
 											<td>{{ store.username }}</td>
 											<td>{{ store.phone }}</td>
+											<td>{{ store.address }}</td>
 											<td>{{ store.status }}</td>
+											<td>{{ store.commission }}%</td>
 											<td>
-												<template v-if="store.status != 'active'">
-													<a href="#" @click.prevent="activate(store.id, 'active')">	
-														Activate
-													</a>
-												</template>
-												<template v-else>
-													<a href="#" @click.prevent="activate(store.id, 'deactivate')">
-														Deactivate
-													</a>	
-												</template>
-												|
-												<a href="#" @click.prevent="topup(store)">Top Up</a>
-												|
-												<a href="#">Impersonate</a>
+												<div>
+													<template v-if="store.status != 'active'">
+														<a href="#" @click.prevent="activate(store.id, 'active')">	
+															Activate
+														</a>
+													</template>
+													<template v-else>
+														<a href="#" @click.prevent="activate(store.id, 'deactivate')">
+															Deactivate
+														</a>	
+													</template>
+												</div>
+												<div>
+													<a href="#" @click.prevent="topup(store)">Top Up</a>
+												</div>
+												<div>
+													<a href="#" @click.prevent="commission(store)">Update Commission</a>
+												</div>
 											</td>
 										</tr>
 										<tr v-else>
@@ -58,18 +65,21 @@
 			</div>
 		</div>
 		<StoreTopup :store="store" v-if="isOpen"/>
+		<UpdateCommission @updated="updated" v-if="isCommission" :store="store"/>
 	</div>
 </template>
 
 <script>
 	import { mapGetters, mapActions } from 'vuex'
 	import StoreTopup from './partials/StoreTopup'
+	import UpdateCommission from './partials/UpdateCommission'
 
 	export default {
 		data(){
 			return {
 				stores: [],
 				isOpen: false,
+				isCommission: false,
 				store: []
 			}
 		},
@@ -84,15 +94,25 @@
 
 				this.stores = r.data.data
 			},
+			updated(e){
+				this.stores = e.data.data
+				$('#updateCommission').modal('hide')
+			},
 			topup(store){
 				this.isOpen = true
 				this.store = store
 
 				$('#StoreTopup').modal('show')
+			},
+			commission(store){
+				this.isCommission = true
+				this.store = store
+				$('#updateCommission').modal('show')
 			}
 		},
 		components: {
-			StoreTopup
+			StoreTopup,
+			UpdateCommission
 		},
 		mounted(){
 			this.fetch()

@@ -23,6 +23,7 @@ class StoresResources extends JsonResource
             'status' => $this->store->status,
             'id' => $this->store->id,
             'uuid' => $this->store->uuid,
+            'commission' => $this->store->commission,
         ];
     }
 }
