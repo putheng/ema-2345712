@@ -8,21 +8,33 @@
 				<div class="col-md-12">
 					
 					<div class="card card-fluid">
-						<div class="list-group list-group-flush list-group-divider">
-
-							<a href="#" class="list-group-item list-group-item-action" v-for="sponsor in sponsors">
-								<div class="list-group-item-figure">
-									<div class="user-avatar user-avatar-lg">
-										<img :src="sponsor.avatar" alt="">
-									</div>
-								</div>
-								<div class="list-group-item-body">
-									<h4 class="list-group-item-title"> {{ sponsor.name }} </h4>
-									<h5 class="list-group-item-subtitle"> {{ sponsor.uuid }} </h5>
-									<div><i class="fa fa-users"></i> Placement Tree {{ sponsor.child }}</div>
-								</div>
-							</a>
-
+						<div class="card-body">
+							<h3 class="card-title"> Placement </h3>
+							<table class="table">
+								<thead>
+									<th># ID</th>
+									<th>Username</th>
+									<th>Phone</th>
+									<th>Status</th>
+									<th>Downline</th>
+								</thead>
+								<tbody>
+									<tr v-if="sponsors" v-for="sponsor in sponsors">
+										<td>
+											{{ sponsor.uuid }}
+										</td>
+										<td>
+											{{ sponsor.name }}
+										</td>
+										<td>{{ sponsor.phone }}</td>
+										<td>{{ sponsor.status }}</td>
+										<td>{{ sponsor.child }} &nbsp;<i class="fa fa-users"></i></td>
+									</tr>
+									<tr v-else>
+										<td colspan="5">There is no any sponser yet</td>
+									</tr>
+								</tbody>
+							</table>
 						</div>
 					</div>
 

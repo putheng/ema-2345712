@@ -1,10 +1,14 @@
 <template>
-<li>
-	<span>{{ agent.name }}</span>
-
-	<ul v-if="agent.children">
-		<Agent :agent="agent" v-for="(agent, i) in agent.children" :key="i"/>
-	</ul>
+<li class="dd-item" data-id="2">
+	<div class="dd-handle">
+		<div>{{ agent.name }}</div>
+		<div class="dd-nodrag btn-group ml-auto">
+        	<span>{{ agent.uuid }}</span>
+        </div>
+	</div>
+	<ol class="dd-list" v-if="agent.children">
+		<Agent :agent="a" v-for="(a, i) in agent.children" :key="i"/>
+	</ol>
 </li>
 </template>
 

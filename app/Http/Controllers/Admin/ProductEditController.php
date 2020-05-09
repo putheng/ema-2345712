@@ -26,6 +26,8 @@ class ProductEditController extends Controller
         
     	$product->save();
 
+        $product->categories()->sync([$request->category]);
+
         $this->updateImage($request, $product);
 
     	return (new ProductIndexResource($product))

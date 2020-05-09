@@ -19,7 +19,9 @@ class OrdersController extends Controller
     	$variation = ProductVariation::whereIn('product_id', $products)->get()->pluck('id');
 
     	
-    	$orders = ProductVariationOrder::whereIn('product_variation_id', $variation)->get();
+    	$orders = ProductVariationOrder::whereIn('product_variation_id', $variation)
+            ->orderBy('created_at', 'desc')
+            ->paginate(20);
 
     	return ProductVariationOrderResource::collection($orders);
     }
@@ -27,5 +29,14 @@ class OrdersController extends Controller
     public function update(Request $request, Order $order)
     {
     	$order->update($request->only('status'));
+
+        $products = $request->user()->products->pluck('id');
+
+        $variation = ProductVariation::whereIn('product_id', $products)->get()->pluck('id');
+
+        
+        $orders = ProductVariationOrder::whereIn('product_variation_id', $variation)->paginate(20);
+
+        return ProductVariationOrderResource::collection($orders);
     }
 }

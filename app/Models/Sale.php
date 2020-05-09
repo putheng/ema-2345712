@@ -7,9 +7,12 @@ use App\Models\{
 	User
 };
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Traits\HasPrice;
 
 class Sale extends Model
 {
+	use HasPrice;
+
     protected $fillable = [
     	'user_id', 'owner_id', 'product_variation_id', 'quantity', 'amount', 'product_id'
     ];
@@ -17,6 +20,11 @@ class Sale extends Model
  	public function user()
  	{
  		return $this->belongsTo(User::class);
+ 	}
+
+ 	public function scopeThisMonth($q)
+ 	{
+ 		$q->whereDate('created_at', '=', date('Y-m-d'));
  	}
 
  	public function owner()

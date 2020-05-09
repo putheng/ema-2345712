@@ -2,8 +2,8 @@
 	<nav id="stacked-menu" class="stacked-menu">
 		<ul class="menu">
 			<li class="menu-item">
-				<a class="menu-link">
-					<span class="menu-icon oi oi-cart"></span>
+				<a class="menu-link" href="/">
+					<span class="menu-icon oi oi-home"></span>
 					<span class="menu-text">Home</span>
 				</a>
 			</li>

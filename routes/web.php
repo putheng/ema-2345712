@@ -19,7 +19,7 @@ Route::get('/currency', 'PageController@currency')->name('currency');
 
 Route::get('discount', 'DiscountProductController@show')->name('discount');
 Route::get('category', 'CategoryController@filter')->name('category.filter');
-Route::get('category/{category}', 'CategoryController@index')->name('category.show');
+Route::get('category/{category}', 'CategoryController@index')->name('categoryshow');
 
 Route::get('topseller', 'TopSellController@index')->name('topseller');
 Route::get('products', 'ProductController@product')->name('product');
@@ -28,7 +28,7 @@ Route::get('vendors/slug/show', 'VendorController@index')->name('vendors.show');
 
 Route::get('/product/{product}/show', 'ProductController@show')->name('show.product');
 
-Route::group(['prefix' => 'society', 'middleware' => ['auth']], function(){
+Route::group(['prefix' => 'society', 'middleware' => ['auth', 'role:society|admin']], function(){
 	
 	Route::get('/{vue?}', 'HomeController@society')
 		->where('vue', '[\/\w\.-]*');
@@ -36,14 +36,14 @@ Route::group(['prefix' => 'society', 'middleware' => ['auth']], function(){
 });
 
 
-Route::group(['prefix' => 'supplier', 'middleware' => ['auth', 'role:supplier']], function(){
+Route::group(['prefix' => 'supplier', 'middleware' => ['auth', 'role:supplier|admin']], function(){
 	
 	Route::get('/{vue?}', 'HomeController@supplier')
 		->where('vue', '[\/\w\.-]*');
 
 });
 
-Route::group(['prefix' => 'store', 'middleware' => ['auth', 'role:store']], function(){
+Route::group(['prefix' => 'store', 'middleware' => ['auth', 'role:store|admin']], function(){
 	
 	Route::get('/{vue?}', 'HomeController@store')
 		->where('vue', '[\/\w\.-]*');
@@ -57,7 +57,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], func
 
 });
 
-Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', 'role:customer']], function(){
+Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', 'role:customer|admin']], function(){
 	
 	Route::get('/{vue?}', 'HomeController@dashboard')
 		->where('vue', '[\/\w\.-]*');

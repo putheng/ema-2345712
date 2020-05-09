@@ -1,20 +1,24 @@
 <template>
 <div class="page-inner">
-	<header class="page-title-bar">
-		<h1 class="page-title">Placement Tree</h1>
-	</header>
 	<div class="page-section">
 		<div class="row">
 			<div class="col-md-12">
 				
-				<ul>
-					<li>
-						<span>{{ agents.name }}</span>
-						<ul v-if="agents.children">
-							<Agent :agent="agent" v-for="(agent, i) in agents.children" :key="i"/>
-						</ul>
-					</li>
-				</ul>
+				<div id="nestable03" class="dd">
+					<ol class="dd-list">
+						<li class="dd-item" data-id="1">
+							<div class="dd-handle">
+								<div>{{ agents.name }}</div>
+								<div class="dd-nodrag btn-group ml-auto">
+						          <span>{{ agents.uuid }}</span>
+						        </div>
+							</div>
+							<ol class="dd-list" v-if="agents.children">
+								<Agent :agent="agent" v-for="(agent, i) in agents.children" :key="i"/>
+							</ol>
+						</li>
+					</ol>
+				</div>
 
 			</div>
 		</div>

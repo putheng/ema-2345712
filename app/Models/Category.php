@@ -46,6 +46,11 @@ class Category extends Model
         return $q->where('enable', true);
     }
 
+    public function scopeIsParent($q)
+    {
+        return $q->where('parent_id', null);
+    }
+
     public function children()
     {
         return $this->hasMany(Category::class, 'parent_id', 'id');

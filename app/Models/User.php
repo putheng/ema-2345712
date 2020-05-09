@@ -173,4 +173,9 @@ class User extends Authenticatable implements JWTSubject
     {
         return $this->hasOne(Store::class);
     }
+
+    public function sales()
+    {
+        return $this->hasMany(Sale::class, 'owner_id');
+    }
 }

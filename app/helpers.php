@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Option;
+use App\Cart\Currency;
 
 if(!function_exists('syt_option')){
 	function syt_option($type = null)
@@ -17,5 +18,12 @@ if(!function_exists('get_level')){
 	function get_level($level)
 	{
 		return syt_option('level_'. $level);
+	}
+}
+
+if(!function_exists('get_currency')){
+	function get_currency($value)
+	{
+		return new Currency($value);
 	}
 }

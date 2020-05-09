@@ -34,6 +34,7 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::group(['prefix' => 'store'], function(){
 		Route::resource('store', 'Api\StoreController');
 		Route::resource('orders', 'Store\OrdersController');
+		Route::resource('sales', 'Store\SaleController');
 	});
 
 	Route::group(['prefix' => 'supplier'], function(){
