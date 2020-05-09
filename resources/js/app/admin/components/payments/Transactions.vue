@@ -1,31 +1,38 @@
 <template>
-	<div class="page">
-		<div class="page-inner">
-			<header class="page-title-bar">
-				<h1 class="page-title">Transactions</h1>
-			</header>
-			<div class="page-section">
-				<div class="row">
-					<div class="col-md-12">
-						<div class="card card-fluid">
-							<div class="card-body">
-								<h3 class="card-title"> Transactions </h3>
-								<table class="table">
+	<div class="page-inner">
+		<header class="page-title-bar">
+			<h1 class="page-title">Transactions</h1>
+		</header>
+		<div class="page-section">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="card card-fluid">
+						<div class="card-body">
+							<h3 class="card-title"> Transaction <strong>History</strong> </h3>
+							
+							<div class="table table-responsive">
+								<table class="table table-hovered table-striped">
 									<thead>
-										<th>#</th>
-										<th>User</th>
-										<th>Amount</th>
-										<th>S</th>
-										<th>Trasaction Code</th>
+										<th>Transaction ID</th>
 										<th>Date</th>
+										<th>Type</th>
+										<th>Status</th>
+										<th>Amount</th>
 									</thead>
+
 									<tbody>
-										<tr>
-											<td>1</td>
-											<td>Putheng</td>
-											<td>$100</td>
-											<td>EMAT00003</td>
-											<td>Tuesday 21st of January 2020 05:45:19 PM</td>
+										<tr v-if="transactions" v-for="tr in transactions">
+											<td>{{ tr.id }}</td>
+											<td>{{ tr.created }}</td>
+											<td>{{ tr.type }}</td>
+											<td>
+												<span class="badge badge-success">
+												Success</span>
+											</td>
+											<td>{{ tr.symbol }} {{ tr.value }}</td>
+										</tr>
+										<tr v-else>
+											<td colspan="5">No transaction</td>
 										</tr>
 									</tbody>
 								</table>
@@ -42,14 +49,23 @@
 	import { mapGetters, mapActions } from 'vuex'
 
 	export default {
+		data(){
+			return {
+				transactions: []
+			}
+		},
 		methods: {
-			//
+			async fetch(){
+				let response = await axios.get('transactions')
+
+				this.transactions = response.data.data
+			}
 		},
 		computed: {
 			//
 		},
 		mounted(){
-			//
+			this.fetch()
 		}
 	}
 </script>

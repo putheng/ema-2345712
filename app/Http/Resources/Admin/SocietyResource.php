@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Resources\Auth;
+namespace App\Http\Resources\Admin;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class SocietyResources extends JsonResource
+class SocietyResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -23,13 +23,6 @@ class SocietyResources extends JsonResource
             'id_code' => $this->id_code,
             'phone' => $this->phone,
             'status' => $this->status,
-            'age' => $this->age,
-            'referal' => url('auth/register?id='. auth()->user()->agent->uuid),
-
-            'id_type' => [
-                'id' => optional($this->id_type)->id,
-                'name' => optional($this->id_type)->name,
-            ],
         ];
     }
 }

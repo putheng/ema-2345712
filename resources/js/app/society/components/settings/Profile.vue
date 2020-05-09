@@ -8,6 +8,7 @@
 				</h4>
 				<div class="card-text col-md-8">
 					<user-avatar sendAs="image" endpoint="account/avatar"/>
+					
 					<app-form action="sociaty/account" method="post">
 						
 						<br/><br/>
@@ -29,11 +30,13 @@
 							</div>
 						</div>
 
+
 						<div class="row">
 							<div class="col-md-6">
 								<select-binding
 									:options="genders" 
 									:selected="user.gender"
+									v-model="user.gender"
 									label="Gender" name="gender"/>
 							</div>
 							<div class="col-md-6">
@@ -45,10 +48,33 @@
 								<select-binding
 									:options="idTypes"
 									:selected="user.id_type.id"
+									v-model="user.id_type.id"
 									label="ID Type" name="id_type"/>
 							</div>
 							<div class="col-md-6">
 								<input-binding v-model="user.id_code" name="id_number" label="ID Number"/>
+							</div>
+							<div class="col-md-12">
+									<label>My referral url</label>
+								<div class="input-group">
+									<input type="text" class="form-control" :value="user.referal" disabled="">
+									<div class="input-group-append">
+										<button 
+											v-clipboard:copy="user.referal"
+											v-clipboard:success="onCopy"
+											class="btn btn-primary" type="button">Copy</button>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<br>
+						<div class="row">
+							<div class="col-md-12">
+								<p>Upload your ID Photo</p>
+							</div>
+							<div class="col-md-3">
+								<image-picker name="photo"/>
 							</div>
 						</div>
 						
@@ -87,7 +113,10 @@
 				let r = await axios.get('sociaty/account')
 
 				this.user = r.data.data
-			}
+			},
+			onCopy(e) {
+		    	alert('You just copied: ' + e.text)
+		    }
 		},
 		computed: {
 			//

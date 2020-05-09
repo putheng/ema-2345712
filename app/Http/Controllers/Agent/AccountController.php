@@ -7,6 +7,8 @@ use App\Http\Requests\StoreSocietyRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Society;
+use App\Models\Image;
+use Storage;
 
 class AccountController extends Controller
 {
@@ -32,8 +34,31 @@ class AccountController extends Controller
     		'status' => 'Pending'
     	]);
 
-    	return new SocietyResources(
+        if($request->photo){
+            $this->uploadImage($request, $request->user()->society);
+        }
+
+    	return (new SocietyResources(
     		$request->user()->society
-    	);
+    	))->additional([
+            'success' => true,
+            'message' => 'Profile updated'
+        ]);
+    }
+
+    protected function uploadImage(Request $request, $society)
+    {
+        $file = $request->file('photo');
+
+        if($file){
+            $path = '/' . uniqid(true).time() . '.png';
+            $imageFile = file_get_contents($file->getRealPath());
+            Storage::disk('public_dir')->put('idphoto'. $path, $imageFile);
+
+            $image = new Image;
+            $image->url = $path;
+            $image->user()->associate($request->user());
+            $society->image()->save($image);
+        }
     }
 }

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\User;
 use App\Models\IDType;
+use App\Models\Image;
 use Illuminate\Database\Eloquent\Model;
 
 class Society extends Model
@@ -20,5 +21,10 @@ class Society extends Model
     public function id_type()
     {
     	return $this->belongsTo(IDType::class, 'id_code_type');
+    }
+
+    public function image()
+    {
+        return $this->morphMany(Image::class, 'imageable');
     }
 }

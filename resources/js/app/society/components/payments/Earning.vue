@@ -1,7 +1,7 @@
 <template>
 	<div class="page-inner">
 		<header class="page-title-bar">
-			<h1 class="page-title">Transactions</h1>
+			<h1 class="page-title">E-Wallet Summary</h1>
 		</header>
 		<div class="page-section">
 			<div class="row">

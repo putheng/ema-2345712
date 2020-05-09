@@ -8,7 +8,7 @@
 					<ol class="dd-list">
 						<li class="dd-item" data-id="1">
 							<div class="dd-handle">
-								<div>{{ agents.name }}</div>
+								<div>{{ agents.level }}. {{ agents.name }}</div>
 								<div class="dd-nodrag btn-group ml-auto">
 						          <span>{{ agents.uuid }}</span>
 						        </div>

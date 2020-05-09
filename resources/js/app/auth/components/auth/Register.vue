@@ -15,14 +15,14 @@
 				<div class="form-group mb-4">
 					<label class="d-block text-left" for="inputUsername">Username</label>
 					<input 
-						v-model="form.username" type="text" id="inputUsername"
+						v-model="form.name" type="text" id="inputUsername"
 						class="form-control form-control-lg" 
-						:class="{'is-invalid': validation['username']}"
-						@keyup="clearValidation('username')"
+						:class="{'is-invalid': validation['name']}"
+						@keyup="clearValidation('name')"
 					autofocus>
-					<div class="invalid-feedback text-left" v-if="validation['username']">
+					<div class="invalid-feedback text-left" v-if="validation['name']">
 			            <i class="fa fa-exclamation-circle fa-fw"></i>
-			            {{ validation['username'] +'' }}
+			            {{ validation['name'] +'' }}
 			        </div>
 				</div>
 				<div class="form-group mb-4">
@@ -50,6 +50,20 @@
 					<div class="invalid-feedback text-left" v-if="validation['password']">
 			            <i class="fa fa-exclamation-circle fa-fw"></i>
 			            {{ validation['password'] +'' }}
+			        </div>
+				</div>
+
+				<div class="form-group mb-4">
+					<label class="d-block text-left" for="password_confirmation">Password again</label>
+					<input 
+						v-model="form.password_confirmation" type="password" id="password_confirmation"
+						class="form-control form-control-lg" 
+						:class="{'is-invalid': validation['password_confirmation']}"
+						@keyup="clearValidation('password_confirmation')"
+					autofocus>
+					<div class="invalid-feedback text-left" v-if="validation['password_confirmation']">
+			            <i class="fa fa-exclamation-circle fa-fw"></i>
+			            {{ validation['password_confirmation'] +'' }}
 			        </div>
 				</div>
 
@@ -102,11 +116,13 @@
 			return {
 				loading: false,
 				form: {
-					username: '',
+					name: '',
 					email: '',
 					password: '',
+					password_confirmation: '',
 					newsletter: false,
-					token: ''
+					token: '',
+					sponsor: ''
 				}
 			}
 		},
@@ -114,7 +130,7 @@
 			submit(){
 				this.loading = true;
 
-				axios.post('', this.form).then((response) => {
+				axios.post('auth/society/register', this.form).then((response) => {
 					if(response.data.success){
 						window.location = response.data.redirect
 					}
@@ -135,6 +151,10 @@
 			})
 		},
 		mounted(){
+			if(this.$route.query.id){
+				this.form.sponsor = this.$route.query.id
+			}
+
 			particlesJS.load('announcements', '/js/particles.json')
 
 			this.form.token = this.$route.query.token

@@ -75,6 +75,8 @@ Route::group(['middleware' => 'auth'], function(){
 	});
 
 	Route::group(['prefix' => 'admin', 'middleware' => 'role:admin'], function(){
+		Route::resource('summary', 'Admin\SummaryController');
+
 		Route::resource('category', 'Admin\CategoryController');
 		
 		Route::get('users', 'Admin\UserController@index');
@@ -120,5 +122,6 @@ Route::group(['middleware' => 'auth'], function(){
 Route::group(['prefix' => 'auth', 'middleware' => ['guest']],function(){
 	Route::post('login', 'Api\LoginController@login');
 	Route::post('society', 'Api\SociaryLoginController@login');
+	Route::post('society/register', 'Api\SociaryRegisterController@store');
 	Route::post('register', 'Api\RegisterController@store');
 });
