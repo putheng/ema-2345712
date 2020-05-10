@@ -19,22 +19,24 @@
 				Profile
 			</router-link>
 
-			<a class="dropdown-item" href="/dashboard">
-				<span class="dropdown-icon oi oi-person"></span>
-				My Customer
-			</a>
-			<a class="dropdown-item" href="/store">
-				<span class="dropdown-icon oi oi-person"></span>
-				My Store
-			</a>
-			<a class="dropdown-item" href="/society">
-				<span class="dropdown-icon oi oi-person"></span>
-				My Society
-			</a>
-			<a class="dropdown-item" href="/supplier">
-				<span class="dropdown-icon oi oi-person"></span>
-				Supplier
-			</a>
+			<template v-if="user.role == 'admin' ">
+				<a class="dropdown-item" href="/dashboard">
+					<span class="dropdown-icon oi oi-person"></span>
+					My Customer
+				</a>
+				<a class="dropdown-item" href="/store">
+					<span class="dropdown-icon oi oi-person"></span>
+					My Store
+				</a>
+				<a class="dropdown-item" href="/society">
+					<span class="dropdown-icon oi oi-person"></span>
+					My Society
+				</a>
+				<a class="dropdown-item" href="/supplier">
+					<span class="dropdown-icon oi oi-person"></span>
+					Supplier
+				</a>
+			</template>
 			<!-- <router-link :to="{name: 'admin-settings-impersonate'}" class="dropdown-item">
 				<span class="dropdown-icon fa fa-power-off"></span>
 				Impersonate
