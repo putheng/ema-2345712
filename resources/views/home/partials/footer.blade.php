@@ -78,6 +78,19 @@
 							<li class="widget-list-item">
 								<a class="widget-list-link" href="{{ url('/auth/login') }}">Become a society</a>
 							</li>
+							@if(auth()->check())
+								<li class="widget-list-item">
+									<a class="widget-list-link" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logoutform').submit();">
+                                        Logout
+                                    </a>
+
+                                    <form id="logoutform" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+								</li>
+							@endif
 						</ul>
 					</div>
 					<div class="widget widget-light pb-2 mb-4">

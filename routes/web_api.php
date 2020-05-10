@@ -53,7 +53,6 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::group(['prefix' => 'payment'], function(){
 		Route::resource('transfer', 'Api\TransferController');
 
-
 		Route::post('transfer/confirm', 'Api\TransferController@confirm');
 	});
 
