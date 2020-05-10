@@ -22,7 +22,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable implements JWTSubject
 {
-    use Notifiable, HasRoles, SoftDeletes;
+    use Notifiable, HasRoles;
 
     /**
      * The attributes that are mass assignable.

@@ -8,6 +8,7 @@ export { default as SupplierLayout } from './layouts/SupplierLayout'
 
 export { default as AppMain } from './AppMain'
 export { default as UserSetting } from './UserSetting'
+export { default as AdminSetting } from './AdminSetting'
 export { default as SocietySetting } from './SocietySetting'
 export { default as StoreSetting } from './StoreSetting'
 export { default as AppLogout } from './AppLogout'

@@ -16,7 +16,7 @@
 				<div class="top-bar-item top-bar-item-right px-0 d-none d-sm-flex">
 					<ul class="header-nav nav">
 					</ul>
-					<user-setting></user-setting>
+					<admin-setting></admin-setting>
 
 				</div>
 			</div>

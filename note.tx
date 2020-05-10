@@ -23,3 +23,10 @@
 - organize user by their role
 - admin can buy product
 - add botton share referal url to social network ...
+- add phone, id card, id type to create society
+- society can edit only email, avatar
+- show placement tree when create society popup
+- update email validation with softdelete
+- supplier upload business licence
+- store not required licence
+- after create suplier, society .. send them email with login credential
