@@ -19,22 +19,22 @@
 				Profile
 			</router-link>
 
-			<router-link class="dropdown-item" :to="{ name:'user-dashboard' }">
+			<a class="dropdown-item" href="/dashboard">
 				<span class="dropdown-icon oi oi-person"></span>
 				My Customer
-			</router-link>
-			<router-link class="dropdown-item" :to="{ name:'store-index' }">
+			</a>
+			<a class="dropdown-item" href="/store">
 				<span class="dropdown-icon oi oi-person"></span>
 				My Store
-			</router-link>
-			<router-link class="dropdown-item" :to="{ name:'society' }">
+			</a>
+			<a class="dropdown-item" href="/society">
 				<span class="dropdown-icon oi oi-person"></span>
 				My Society
-			</router-link>
-			<router-link class="dropdown-item" :to="{ name:'suppliers-account-summary' }">
+			</a>
+			<a class="dropdown-item" href="/supplier">
 				<span class="dropdown-icon oi oi-person"></span>
 				Supplier
-			</router-link>
+			</a>
 			<!-- <router-link :to="{name: 'admin-settings-impersonate'}" class="dropdown-item">
 				<span class="dropdown-icon fa fa-power-off"></span>
 				Impersonate
