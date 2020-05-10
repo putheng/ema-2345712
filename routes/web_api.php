@@ -24,7 +24,7 @@ Route::group(['middleware' => 'auth'], function(){
 		Route::get('me', 'Api\MeController@action');
 		Route::post('me', 'Api\MeController@store');
 		
-		Route::post('logout', 'Api\MeController@logout');
+		Route::post('logout', 'Api\MeController@logout')->name('logout');
 
 		Route::post('avatar', 'Api\AvatarController@store');
 

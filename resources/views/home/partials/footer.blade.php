@@ -80,13 +80,13 @@
 							</li>
 							@if(auth()->check())
 								<li class="widget-list-item">
-									<a class="widget-list-link" href=""
+									<a class="widget-list-link" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logoutform').submit();">
                                         Logout
                                     </a>
 
-                                    <form id="logoutform" action="" method="POST" style="display: none;">
+                                    <form id="logoutform" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
 								</li>
