@@ -23,7 +23,6 @@ class SociaryRegisterController extends Controller
 
         if($request->sponsor){
         	event(new AgentCreated($user, $request->sponsor, $request->sponsor));
-        	// $this->setSponsor($request->sponsor, $user);
         }
 
         $user->update(['type' => 'society']);

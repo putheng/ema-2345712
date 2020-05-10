@@ -17,13 +17,16 @@ class StoresResources extends JsonResource
         return [
             'username' => $this->name,
             'email' => $this->email,
-            'store' => $this->store->name,
-            'address' => $this->store->address,
-            'phone' => $this->store->phone,
-            'status' => $this->store->status,
-            'id' => $this->store->id,
-            'uuid' => $this->store->uuid,
-            'commission' => $this->store->commission,
+            'store' => optional($this->store)->name,
+            'address' => optional($this->store)->address,
+            'phone' => optional($this->store)->phone,
+            'status' => optional($this->store)->status,
+            'id' => optional($this->store)->id,
+            'uuid' => optional($this->store)->uuid,
+            'latitude' => optional($this->store)->latitude,
+            'commission' => optional($this->store)->commission,
+            'longitude' => optional($this->store)->longitude,
+            'approval' => optional($this->store)->approval,
         ];
     }
 }

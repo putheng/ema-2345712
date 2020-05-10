@@ -16,6 +16,7 @@ use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\ServiceProvider;
 use Stripe\Stripe;
 use App\Models\Society;
+use App\Models\Store;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -36,7 +37,8 @@ class AppServiceProvider extends ServiceProvider
             'track' => Track::class,
             'order' => Order::class,
             'transfer' => Transfer::class,
-            'society' => Society::class
+            'society' => Society::class,
+            'store' => Store::class,
         ]);
     }
 

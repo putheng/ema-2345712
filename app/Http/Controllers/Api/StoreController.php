@@ -20,7 +20,10 @@ class StoreController extends Controller
     public function index()
     {
         return StoresResources::collection(
-            User::isStore()->paginate(20)
+            User::with('store')
+                ->orderBy('id', 'desc')
+                ->isStore()
+                ->paginate(20)
         );
     }
 

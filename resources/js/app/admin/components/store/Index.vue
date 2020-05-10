@@ -19,6 +19,7 @@
 										<th>Phone</th>
 										<th>Address</th>
 										<th>Status</th>
+										<th>Approval</th>
 										<th>Sale Commission</th>
 									</thead>
 									<tbody>
@@ -29,25 +30,34 @@
 											<td>{{ store.phone }}</td>
 											<td>{{ store.address }}</td>
 											<td>{{ store.status }}</td>
+											<td>{{ store.approval }}</td>
 											<td>{{ store.commission }}%</td>
 											<td>
-												<div>
-													<template v-if="store.status != 'active'">
-														<a href="#" @click.prevent="activate(store.id, 'active')">	
-															Activate
-														</a>
-													</template>
-													<template v-else>
-														<a href="#" @click.prevent="activate(store.id, 'deactivate')">
-															Deactivate
-														</a>	
-													</template>
-												</div>
-												<div>
-													<a href="#" @click.prevent="topup(store)">Top Up</a>
-												</div>
+												<template v-if="store.status != 'active'">
+													<a href="#" @click.prevent="activate(store.id, 'active')">	
+														Activate
+													</a>
+												</template>
+												<template v-else>
+													<a href="#" @click.prevent="activate(store.id, 'deactivate')">
+														Deactivate
+													</a>	
+												</template>
+												|
+												<a href="#" @click.prevent="topup(store)">Top Up</a>
 												<div>
 													<a href="#" @click.prevent="commission(store)">Update Commission</a>
+													|
+													<template v-if="store.approval != 'approve'">
+													<a href="#" @click.prevent="approve(store.id, 'approve')">	
+														Approve
+													</a>
+												</template>
+												<template v-else>
+													<a href="#" @click.prevent="approve(store.id, 'deactivate')">
+														Deactivate
+													</a>	
+												</template>
 												</div>
 											</td>
 										</tr>
@@ -91,6 +101,11 @@
 			},
 			async fetch(){
 				let r = await axios.get('store/store')
+
+				this.stores = r.data.data
+			},
+			async approve(id, action){
+				let r = await axios.post(`admin/store/${id}/approve`, {status: action})
 
 				this.stores = r.data.data
 			},

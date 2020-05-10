@@ -35,6 +35,7 @@ Route::group(['middleware' => 'auth'], function(){
 		Route::resource('store', 'Api\StoreController');
 		Route::resource('orders', 'Store\OrdersController');
 		Route::resource('sales', 'Store\SaleController');
+		Route::resource('account', 'Store\AccountController');
 	});
 
 	Route::group(['prefix' => 'supplier'], function(){
@@ -88,7 +89,9 @@ Route::group(['middleware' => 'auth'], function(){
 		Route::delete('category/{category}', 'Admin\CategoryController@destroy');
 
 		Route::resource('supplier', 'Admin\SupplierController');
+
 		Route::post('store/{store}/commission', 'Admin\StoreController@commission');
+		Route::post('store/{store}/approve', 'Admin\StoreController@approve');
 
 		Route::resource('transfer', 'Admin\TransferController');
 

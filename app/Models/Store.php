@@ -9,7 +9,7 @@ class Store extends Model
 {
     protected $fillable = [
     	'user_id', 'name', 'address', 'phone',
-        'latitude', 'longitude', 'status', 'commission'
+        'latitude', 'longitude', 'status', 'commission', 'approval'
     ];
 
     public static function boot()
@@ -32,5 +32,10 @@ class Store extends Model
     public function user()
     {
     	return $this->belongsTo(User::class);
+    }
+
+    public function image()
+    {
+        return $this->morphMany(Image::class, 'imageable');
     }
 }

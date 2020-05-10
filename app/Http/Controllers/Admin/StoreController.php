@@ -25,4 +25,16 @@ class StoreController extends Controller
         	'message' => 'Store updated successfully.'
         ]);
     }
+
+    public function approve(Request $request, Store $store)
+    {
+        $store->update(['approval' => $request->status]);
+
+        return StoresResources::collection(
+            User::orderBy('id', 'desc')->isStore()->paginate(20)
+        )->additional([
+            'success' => true,
+            'message' => 'Store updated.'
+        ]);
+    }
 }
