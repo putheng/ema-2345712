@@ -14,3 +14,12 @@
 9.when store order is noti to admin not supplier
 10. payment calculate on request withdraw user
 11. admin can delete role
+
+-------
+- admin seach user by name or email
+- admin can delete role
+- admin can delete product
+- product page count sale or can add to trash
+- organize user by their role
+- admin can buy product
+- add botton share referal url to social network ...

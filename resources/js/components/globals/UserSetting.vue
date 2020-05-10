@@ -18,6 +18,23 @@
 				<span class="dropdown-icon oi oi-person"></span>
 				Profile
 			</router-link>
+
+			<router-link class="dropdown-item" :to="{ name:'user-dashboard' }">
+				<span class="dropdown-icon oi oi-person"></span>
+				My Customer
+			</router-link>
+			<router-link class="dropdown-item" :to="{ name:'store-index' }">
+				<span class="dropdown-icon oi oi-person"></span>
+				My Store
+			</router-link>
+			<router-link class="dropdown-item" :to="{ name:'society' }">
+				<span class="dropdown-icon oi oi-person"></span>
+				My Society
+			</router-link>
+			<router-link class="dropdown-item" :to="{ name:'suppliers-account-summary' }">
+				<span class="dropdown-icon oi oi-person"></span>
+				Supplier
+			</router-link>
 			<!-- <router-link :to="{name: 'admin-settings-impersonate'}" class="dropdown-item">
 				<span class="dropdown-icon fa fa-power-off"></span>
 				Impersonate

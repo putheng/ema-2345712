@@ -7,7 +7,9 @@
 		<div class="row">
 			<div class="col-md-10">
 				<div class="card card-fluid">
-					<!-- <div class="card-header border-bottom-0"> JSON Generation </div> -->
+					<a href="/icons" target="_blank">
+						<div class="card-header border-bottom-0"> Category Icons</div>
+					</a>
 					<div id="nestable03" class="dd">
 						<ol class="dd-list">
 							<li class="dd-item" data-id="4" v-if="categories" v-for="category in categories">
