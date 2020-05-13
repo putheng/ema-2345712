@@ -22,6 +22,7 @@ class CategoryResource extends JsonResource
             'icon' => $this->icon,
             'area' => $this->area,
             'enable' => $this->enable,
+            
             'order' => $this->order,
             'parent' => $this->parent_id,
             'products' => $this->products->count(),
