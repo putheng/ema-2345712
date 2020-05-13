@@ -22,24 +22,24 @@
 										<app-input v-model="price" name="o_price" label="Price ($)"/>
 									</div>
 									<div class="col-md-3">
-										<input-binding v-model="vat" disabled name="price" label="ផល់ចំណេញដែលក្រុមហ៊ុនទទួលបាន"/>
-									</div>
-									<div class="col-md-3">
 										<app-input v-model="sale_price" name="o_sale_price" label="Sale Price ($)"/>
 									</div>
 									<div class="col-md-3">
-										<input-binding v-model="saleVat" disabled name="sale_price" label="Sale Price include VAT 10% ($)"/>
+										<input-binding v-model="saleVat" disabled name="sale_price" label="Sale Price include VAT + 10% ($)"/>
 									</div>
 
-									
+									<div class="col-md-3">
+										<input-binding v-model="comp" disabled name="price" label="Company's Profit"/>
+									</div>
 								</div>
 
 								<div class="row">
 									<div class="col-md-3">
-										<input-binding v-model="comission" name="commission" value="0" label="Commission"/>
+										<input-binding v-model="comission" name="commission" 
+										value="0" label="Total sale Price"/>
 									</div>
 									<div class="form-group">
-										<label for="com" class="col-form-label">ផលចំណេញគិតជាភាគរយ</label> 
+										<label for="com" class="col-form-label">Profit in percent (%)</label> 
 										<input :value="income" disabled name="com" id="com" type="text" class="form-control">
 									</div>
 								</div>
@@ -101,25 +101,28 @@
 			...mapGetters({
 				errors: 'getValidationErrors'
 			}),
+			comp(){
+				return this.sale_price - this.price
+			},
 			vat(){
-				return parseInt(this.price) + (parseInt(this.price) * 0.1)
+				return parseInt(this.sale_price) + (parseInt(this.sale_price) * 0.1)
 			},
 			saleVat(){
 				return parseInt(this.sale_price) + (parseInt(this.sale_price) * 0.1)	
 			},
 			income(){
 
-				let p = (this.comission / this.sale_price)
+				let p = (this.sale_price - this.price) / this.price
+				// let p = (this.comission / this.sale_price)
 
 				let t = p * 100
 
 				return t + '%'
+				// return p
 			}
 		},
 		mounted(){
 			this.fetchCategory()
-
-			console.log(this.income)
 		}
 	}
 </script>

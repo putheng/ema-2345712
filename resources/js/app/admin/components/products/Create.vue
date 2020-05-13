@@ -15,14 +15,32 @@
 
 								<app-text-area name="description" label="Product description"/>
 
-								<app-select name="category" :options="categories" label="Category"/>
+								<app-option-group name="category" :options="categories" label="Category"/>
 
 								<div class="row">
-									<div class="col-md-6">
-										<app-input name="price" label="Price"/>
+									<div class="col-md-3">
+										<app-input v-model="price" name="o_price" label="Price ($)"/>
 									</div>
-									<div class="col-md-6">
-										<app-input name="sale_price" label="Sale Price"/>
+									<div class="col-md-3">
+										<app-input v-model="sale_price" name="o_sale_price" label="Sale Price ($)"/>
+									</div>
+									<div class="col-md-3">
+										<input-binding v-model="saleVat" disabled name="sale_price" label="Sale Price include VAT + 10% ($)"/>
+									</div>
+									
+									<div class="col-md-3">
+										<input-binding v-model="comp" disabled name="price" label="Company's Profit"/>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-md-3">
+										<input-binding v-model="comission" name="commission" 
+										value="0" label="Total sale Price"/>
+									</div>
+									<div class="form-group">
+										<label for="com" class="col-form-label">Profit in percent (%)</label> 
+										<input :value="income" disabled name="com" id="com" type="text" class="form-control">
 									</div>
 								</div>
 
@@ -62,7 +80,10 @@
 	export default {
 		data(){
 			return {
-				categories: []
+				categories: [],
+				price: 0,
+				sale_price: 0,
+				comission: 0
 			}
 		},
 		methods: {
@@ -79,10 +100,31 @@
 		computed: {
 			...mapGetters({
 				errors: 'getValidationErrors'
-			})
+			}),
+			comp(){
+				return this.sale_price - this.price
+			},
+			vat(){
+				return parseInt(this.sale_price) + (parseInt(this.sale_price) * 0.1)
+			},
+			saleVat(){
+				return parseInt(this.sale_price) + (parseInt(this.sale_price) * 0.1)	
+			},
+			income(){
+
+				let p = (this.sale_price - this.price) / this.price
+				// let p = (this.comission / this.sale_price)
+
+				let t = p * 100
+
+				return t + '%'
+				// return p
+			}
 		},
 		mounted(){
 			this.fetchCategory()
+
+			console.log(this.income)
 		}
 	}
 </script>
