@@ -23,6 +23,11 @@ class Currency
 
 	public function amount()
 	{
-		return $this->getCurrencySymbol() . number_format($this->value, 3);
+		return $this->getCurrencySymbol() . $this->value;
+
 	}
+    public function formatted()
+    {
+        return $this->getCurrencySymbol() . number_format($this->value, 3);
+    }
 }

@@ -47,6 +47,8 @@ class StoreController extends Controller
     {
         $user = User::create($request->only('name', 'email', 'password'));
 
+        $user->assignRole('store');
+
         event(new StoreCreated($user, $request));
 
         return response()->json([

@@ -27,6 +27,7 @@ class StoresResources extends JsonResource
             'commission' => optional($this->store)->commission,
             'longitude' => optional($this->store)->longitude,
             'approval' => optional($this->store)->approval,
+            'sponsor' => optional($this->store)->sponsor_id,
         ];
     }
 }

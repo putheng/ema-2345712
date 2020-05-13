@@ -32,6 +32,7 @@ class CreateStoreProfile
         $user->store()->create([
             'name' => $event->request->store,
             'phone' => $event->request->phone,
+            'sponsor_id' => $event->request->sponsor,
         ]);
     }
 }

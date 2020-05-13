@@ -11,6 +11,7 @@
 							<div class="card-body">
 								<h3 class="card-title"> Create store </h3>
 								<app-form action="store/store" redirect="/admin/store">
+									<app-input name="sponsor" label="Sponsor ID"/>
 									<app-input name="store" label="Store Name"/>
 									<app-input name="name" label="Person Name"/>
 									<app-input name="email" label="Email"/>

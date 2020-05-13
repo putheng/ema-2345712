@@ -18,11 +18,21 @@
 								<app-select name="category" :options="categories" label="Category"/>
 
 								<div class="row">
-									<div class="col-md-6">
-										<app-input name="price" label="Price"/>
+									<div class="col-md-2">
+										<app-input v-model="price" name="o_price" label="Price ($)"/>
 									</div>
-									<div class="col-md-6">
-										<app-input name="sale_price" label="Sale Price"/>
+									<div class="col-md-3">
+										<input-binding v-model="vat" disabled name="price" label="Price include VAT 10% ($)"/>
+									</div>
+									<div class="col-md-2">
+										<app-input v-model="sale_price" name="o_sale_price" label="Sale Price ($)"/>
+									</div>
+									<div class="col-md-3">
+										<input-binding v-model="saleVat" disabled name="sale_price" label="Sale Price include VAT 10% ($)"/>
+									</div>
+
+									<div class="col-md-2">
+										<app-input name="commission" value="0" label="Sale commission ($)"/>
 									</div>
 								</div>
 
@@ -62,7 +72,9 @@
 	export default {
 		data(){
 			return {
-				categories: []
+				categories: [],
+				price: 0,
+				sale_price: 0,
 			}
 		},
 		methods: {
@@ -79,7 +91,13 @@
 		computed: {
 			...mapGetters({
 				errors: 'getValidationErrors'
-			})
+			}),
+			vat(){
+				return parseInt(this.price) + (parseInt(this.price) * 0.1)
+			},
+			saleVat(){
+				return parseInt(this.sale_price) + (parseInt(this.sale_price) * 0.1)	
+			}
 		},
 		mounted(){
 			this.fetchCategory()

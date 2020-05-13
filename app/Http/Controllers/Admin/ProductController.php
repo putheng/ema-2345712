@@ -44,6 +44,7 @@ class ProductController extends Controller
 
     	$product->name = $request->name;
         $product->price = $request->price;
+        $product->commission = $request->commission;
     	$product->sale_price = $request->sale_price;
     	$product->description = nl2br($request->description);
     	$product->user()->associate($request->user());

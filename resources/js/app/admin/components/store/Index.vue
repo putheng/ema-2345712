@@ -20,18 +20,18 @@
 										<th>Address</th>
 										<th>Status</th>
 										<th>Approval</th>
-										<th>Sale Commission</th>
+										<th>Sponsor ID</th>
 									</thead>
 									<tbody>
 										<tr v-if="stores" v-for="(store, key) in stores">
-											<td>{{ store.store }}</td>
+											<td>{{ store.uuid }}</td>
 											<td>{{ store.store }}</td>
 											<td>{{ store.username }}</td>
 											<td>{{ store.phone }}</td>
 											<td>{{ store.address }}</td>
 											<td>{{ store.status }}</td>
 											<td>{{ store.approval }}</td>
-											<td>{{ store.commission }}%</td>
+											<td>{{ store.sponsor }}</td>
 											<td>
 												<template v-if="store.status != 'active'">
 													<a href="#" @click.prevent="activate(store.id, 'active')">	
