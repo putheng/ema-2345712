@@ -14,7 +14,7 @@
 					<input-binding v-model="store.uuid" name="receiver" label="Store ID"/>
 					<input-binding v-model="form.amount" name="amount" label="Amount"/>
 					<text-area-binding v-model="form.note" name="note" label="Note"/>
-					<input-binding v-model="form.password" name="password" label="Password"/>
+					<input-binding v-model="form.password" name="password" type="password" label="Password"/>
 				</div>
 				<div class="modal-footer">
 					<app-button type="submit">Send</app-button>
@@ -68,10 +68,13 @@
 			async submit(){
 				let r = await axios.post('admin/transfer', {
 					name: this.store.store,
-					receiver: this.store.uuid,
+					uuid: this.store.uuid,
 					amount: this.form.amount,
-					amount: this.form.amount,
+					password: this.form.password,
+					fee: 0
 				})
+
+				this.$emit('created', r)
 			}
 		}
 	}

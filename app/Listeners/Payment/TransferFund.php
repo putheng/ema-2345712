@@ -20,20 +20,19 @@ class TransferFund
     {
         $request = $event->request;
 
-        if(strpos($request->uuid, 'ST') !== false){
+        $amount = $request->amount;
 
+        if(strpos($request->uuid, 'ST') !== false){
             Store::byUuid($request->uuid)
             ->first()
             ->user()
-            ->increment('balance', $request->amount_unformated);
+            ->increment('balance', $amount);
         } else if(strpos($request->uuid, 'EMA') !== false){
             Agent::byUuid($request->uuid)
             ->first()
             ->user()
-            ->increment('balance', $request->amount_unformated);
+            ->increment('balance', $amount);
         }
-        
-
             
     }
 }

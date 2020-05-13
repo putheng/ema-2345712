@@ -31,10 +31,10 @@ class CreateTransaction
         $transfer->senderid()->associate($sender);
         $transfer->user()->associate($sender);
         $transfer->receiverid()->associate($receiver);
-        $transfer->amount = $request->amount_unformated;
+        $transfer->amount = $request->amount;
         $transfer->mark = $request->mark;
         $transfer->fee = $request->fee;
-        $transfer->currency = $request->currency;
+        $transfer->currency = auth()->user()->currency;
 
         $transfer->save();
 

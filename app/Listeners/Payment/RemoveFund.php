@@ -19,6 +19,6 @@ class RemoveFund
     {
         $request = $event->request;
 
-        auth()->user()->decrement('balance', $request->amount_unformated);
+        auth()->user()->decrement('balance', $request->amount);
     }
 }

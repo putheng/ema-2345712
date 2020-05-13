@@ -74,7 +74,7 @@
 				</div>
 			</div>
 		</div>
-		<StoreTopup :store="store" v-if="isOpen"/>
+		<StoreTopup @created="created" :store="store" v-if="isOpen"/>
 		<UpdateCommission @updated="updated" v-if="isCommission" :store="store"/>
 	</div>
 </template>
@@ -123,6 +123,9 @@
 				this.isCommission = true
 				this.store = store
 				$('#updateCommission').modal('show')
+			},
+			created(){
+				$('#StoreTopup').modal('hide')
 			}
 		},
 		components: {

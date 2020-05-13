@@ -36,6 +36,11 @@ class TransactionResource extends JsonResource
         } else if(strpos($request->receiver, 'EMA') !== false){
             return Agent::byUuid($request->receiver)
             ->first();
+        }if(strpos($request->uuid, 'ST') !== false){
+
+            return Store::byUuid($request->uuid)
+            ->first();
+            
         }
     }
 }

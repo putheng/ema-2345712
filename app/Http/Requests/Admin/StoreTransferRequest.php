@@ -26,7 +26,7 @@ class StoreTransferRequest extends FormRequest
     public function rules()
     {
         return [
-            'receiver' => 'required|exists:stores,uuid',
+            'uuid' => 'required|exists:stores,uuid',
             'amount' => ['required', 'min:5', 'numeric', new UserBalance()],
             'password' => ['required', new CurrentPassword()],
         ];

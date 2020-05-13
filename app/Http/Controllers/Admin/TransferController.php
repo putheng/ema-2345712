@@ -12,8 +12,8 @@ class TransferController extends Controller
 {
     public function store(StoreTransferRequest $request)
     {
-    	return (new TransactionResource($request))
-    		->additional(['status' => 'confirm']);
+    	// return (new TransactionResource($request))
+    	// 	->additional(['status' => 'confirm']);
 
     		event(new TransferCreated($request));
 
