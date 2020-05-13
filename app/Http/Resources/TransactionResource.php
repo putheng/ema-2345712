@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Models\Store;
 use App\Models\Agent;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -27,6 +28,14 @@ class TransactionResource extends JsonResource
 
     protected function getUser($request)
     {
-        return Agent::byUuid(strtoupper($request->receiver))->first();
+        if(strpos($request->receiver, 'ST') !== false){
+
+            return Store::byUuid($request->receiver)
+            ->first();
+            
+        } else if(strpos($request->receiver, 'EMA') !== false){
+            return Agent::byUuid($request->receiver)
+            ->first();
+        }
     }
 }

@@ -5,6 +5,7 @@ namespace App\Listeners\Payment;
 use App\Events\Agent\TransferCreated;
 use App\Models\Agent;
 use App\Models\Track;
+use App\Models\Store;
 use App\Models\Transfer;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
@@ -22,7 +23,8 @@ class CreateTransaction
         $request = $event->request;
 
         $sender = auth()->user();
-        $receiver = Agent::byUuid($request->uuid)->first()->user;
+
+        $receiver = $this->getUser($request)->user;
 
         $transfer = new Transfer;
 
@@ -39,6 +41,19 @@ class CreateTransaction
         $this->createAddTransfer($transfer, $receiver);
         $this->createRemoveTransfer($transfer, $sender);
         
+    }
+
+    protected function getUser($request)
+    {
+        if(strpos($request->uuid, 'ST') !== false){
+
+            return Store::byUuid($request->uuid)
+            ->first();
+            
+        } else if(strpos($request->uuid, 'EMA') !== false){
+            return Agent::byUuid($request->uuid)
+            ->first();
+        }
     }
 
     protected function createAddTransfer($transfer, $user)

@@ -4,6 +4,7 @@ namespace App\Listeners\Payment;
 
 use App\Events\Agent\TransferCreated;
 use App\Models\Agent;
+use App\Models\Store;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 
@@ -19,10 +20,19 @@ class TransferFund
     {
         $request = $event->request;
 
-        Agent::byUuid($request->uuid)
+        if(strpos($request->uuid, 'ST') !== false){
+
+            Store::byUuid($request->uuid)
             ->first()
             ->user()
             ->increment('balance', $request->amount_unformated);
+        } else if(strpos($request->uuid, 'EMA') !== false){
+            Agent::byUuid($request->uuid)
+            ->first()
+            ->user()
+            ->increment('balance', $request->amount_unformated);
+        }
+        
 
             
     }

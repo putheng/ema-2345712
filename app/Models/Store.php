@@ -21,6 +21,11 @@ class Store extends Model
     	});
     }
 
+    public function scopeByUuid($q, $uuid)
+    {
+        return $q->where('uuid', $uuid);
+    }
+
     protected function setID()
     {
         $uuid = substr('000000', strlen($this->id));

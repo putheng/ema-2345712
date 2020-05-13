@@ -25,7 +25,7 @@ class StoreTransferRequest extends FormRequest
     public function rules()
     {
         return [
-            'receiver' => 'required|exists:agents,uuid',
+            'receiver' => 'required',
             'amount' => ['required', 'min:5', 'numeric', new UserBalance()],
         ];
     }
