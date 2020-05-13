@@ -18,21 +18,29 @@
 								<app-select name="category" :options="categories" label="Category"/>
 
 								<div class="row">
-									<div class="col-md-2">
+									<div class="col-md-3">
 										<app-input v-model="price" name="o_price" label="Price ($)"/>
 									</div>
 									<div class="col-md-3">
-										<input-binding v-model="vat" disabled name="price" label="Price include VAT 10% ($)"/>
+										<input-binding v-model="vat" disabled name="price" label="ផល់ចំណេញដែលក្រុមហ៊ុនទទួលបាន"/>
 									</div>
-									<div class="col-md-2">
+									<div class="col-md-3">
 										<app-input v-model="sale_price" name="o_sale_price" label="Sale Price ($)"/>
 									</div>
 									<div class="col-md-3">
 										<input-binding v-model="saleVat" disabled name="sale_price" label="Sale Price include VAT 10% ($)"/>
 									</div>
 
-									<div class="col-md-2">
-										<app-input name="commission" value="0" label="Sale commission ($)"/>
+									
+								</div>
+
+								<div class="row">
+									<div class="col-md-3">
+										<input-binding v-model="comission" name="commission" value="0" label="Commission"/>
+									</div>
+									<div class="form-group">
+										<label for="com" class="col-form-label">ផលចំណេញគិតជាភាគរយ</label> 
+										<input :value="income" disabled name="com" id="com" type="text" class="form-control">
 									</div>
 								</div>
 
@@ -75,6 +83,7 @@
 				categories: [],
 				price: 0,
 				sale_price: 0,
+				comission: 0
 			}
 		},
 		methods: {
@@ -97,10 +106,20 @@
 			},
 			saleVat(){
 				return parseInt(this.sale_price) + (parseInt(this.sale_price) * 0.1)	
+			},
+			income(){
+
+				let p = (this.comission / this.sale_price)
+
+				let t = p * 100
+
+				return t + '%'
 			}
 		},
 		mounted(){
 			this.fetchCategory()
+
+			console.log(this.income)
 		}
 	}
 </script>
