@@ -43,7 +43,8 @@ class Order extends Model
 
     public function total()
     {
-        return $this->subtotal->add($this->shippingMethod->price);
+        return $this->subtotal;
+        // return $this->subtotal->add($this->shippingMethod->price);
     }
 
     public function user()

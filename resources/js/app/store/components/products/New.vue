@@ -15,28 +15,28 @@
 
 								<app-text-area name="description" label="Product description"/>
 
-								<app-select name="category" :options="categories" label="Category"/>
+								<app-option-group name="category" :options="categories" label="Category"/>
 
 								<div class="row">
 									<div class="col-md-3">
-										<app-input v-model="price" name="o_price" label="Price ($)"/>
+										<app-input v-model="price" name="price" label="Price ($)"/>
 									</div>
 									<div class="col-md-3">
-										<app-input v-model="sale_price" name="o_sale_price" label="Sale Price ($)"/>
+										<app-input v-model="sale_price" name="sale_price" label="Sale Price ($)"/>
 									</div>
 									<div class="col-md-3">
-										<input-binding v-model="saleVat" disabled name="sale_price" label="Sale Price include VAT + 10% ($)"/>
+										<input-binding v-model="saleVat" disabled name="o_sale_price" label="Sale Price include VAT + 10% ($)"/>
 									</div>
 
 									<div class="col-md-3">
-										<input-binding v-model="comp" disabled name="price" label="Company's Profit"/>
+										<input-binding v-model="comp" disabled name="commission" label="Company's Profit ($)"/>
 									</div>
 								</div>
 
 								<div class="row">
 									<div class="col-md-3">
-										<input-binding v-model="comission" name="commission" 
-										value="0" label="Total sale Price"/>
+										<input-binding v-model="saleVat" name="sale_price" 
+										value="0" label="Total sale Price ($)"/>
 									</div>
 									<div class="form-group">
 										<label for="com" class="col-form-label">Profit in percent (%)</label> 

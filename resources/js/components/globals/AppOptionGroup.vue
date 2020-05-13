@@ -11,8 +11,8 @@
 		:class="{'is-invalid': validation[inputName]}"
 	>
 		<optgroup :label="option.name" v-for="option in options">
-			<option :value="option.value"value="">All</option>
-			<option v-if="options.children" :value="child.value" v-for="child in options.children"> {{ child.name }} </option>
+			<option :value="option.id" >All</option>
+			<option v-if="option.children" :value="child.id" v-for="child in option.children"> {{ child.name }} </option>
 		</optgroup>
 		
 	</select>

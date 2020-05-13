@@ -13,7 +13,7 @@ class CategoryController extends Controller
 	public function index()
 	{
 		return CategoryResource::collection(
-            Category::with('children')->ordered()->get()
+            Category::with('children')->parents()->ordered()->get()
         );
 	}
 
@@ -23,7 +23,7 @@ class CategoryController extends Controller
             'name' => $request->name,
             'area' => $request->area,
             'parent_id' => $request->parent,
-            'icon' => $request->icon
+            'icon' => $request->icon,
         ]);
 
     	return CategoryResource::collection(
@@ -46,11 +46,15 @@ class CategoryController extends Controller
         $category->name = $request->name;
         $category->icon = $request->icon;
         $category->area = $request->area;
-        $category->parent_id = $request->parent;
+        $category->order = $request->order;
+        if($request->parent != 'null'){
+            $category->parent_id = $request->parent;
+        }
+        
         $category->save();
 
         return CategoryResource::collection(
-            Category::with('children')->parents()->ordered()->get()
+            Category::with('children')->ordered()->get()
         )->additional([
             'success' => true,
             'message' => 'Category update successfully'

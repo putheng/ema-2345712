@@ -22,9 +22,13 @@ class CategoryResource extends JsonResource
             'icon' => $this->icon,
             'area' => $this->area,
             'enable' => $this->enable,
+            'order' => $this->order,
+            'parent' => $this->parent_id,
             'products' => $this->products->count(),
             'image' => optional($this->image)->url,
-            'children' => CategoryResource::collection($this->whenLoaded('children'))
+            'children' => CategoryResource::collection(
+                $this->children()->ordered()->get()
+            )
         ];
     }
 }
