@@ -13,7 +13,7 @@
 		<div class="page-title">
 			<span>Networks</span>
 			<router-link 
-				:to="{name: 'society-society-create'}"
+				:to="{name: 'admin-society-create'}"
 				class="btn btn-primary float-right">
 				Create
 			</router-link>

@@ -24,10 +24,16 @@ class Agent extends Model
     	static::created(function($model){
     		$model->setID();
 
-            $model->user->society()->create([
+            $data = [
                 'id_code_type' => 1,
                 'status' => 'Pending'
-            ]);
+            ];
+
+            if(request()->phone){
+                $data = array_merge($data, ['phone' => request()->phone]);
+            }
+            
+            $model->user->society()->create($data);
 	    });
     }
 

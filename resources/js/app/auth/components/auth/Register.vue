@@ -40,6 +40,20 @@
 				</div>
 
 				<div class="form-group mb-4">
+					<label class="d-block text-left" for="inputPhone">Phone number</label>
+					<input 
+						v-model="form.phone" type="text" id="inputPhone"
+						class="form-control form-control-lg" 
+						:class="{'is-invalid': validation['phone']}"
+						@keyup="clearValidation('phone')"
+					autofocus>
+					<div class="invalid-feedback text-left" v-if="validation['phone']">
+			            <i class="fa fa-exclamation-circle fa-fw"></i>
+			            {{ validation['phone'] +'' }}
+			        </div>
+				</div>
+
+				<div class="form-group mb-4">
 					<label class="d-block text-left" for="inputPassword">Password</label>
 					<input 
 						v-model="form.password" type="password" id="inputPassword"
@@ -119,6 +133,7 @@
 					name: '',
 					email: '',
 					password: '',
+					phone: '',
 					password_confirmation: '',
 					newsletter: false,
 					token: '',

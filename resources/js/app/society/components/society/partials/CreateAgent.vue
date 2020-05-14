@@ -39,6 +39,17 @@
 						</div>
 
 						<div class="form-group">
+							<label for="phone" class="col-form-label">Phone</label>
+							<input :class="{'is-invalid': validation['phone']}"
+								@keyup="clearValidation('phone')"
+								v-model="form.phone" name="phone" id="phone" type="text" class="form-control">
+								<div class="invalid-feedback" v-if="validation['phone']">
+						            <i class="fa fa-exclamation-circle fa-fw"></i>
+						            {{ validation['phone'][0] }}
+						        </div>
+						</div>
+
+						<div class="form-group">
 							<label for="password" class="col-form-label">Password</label>
 							<input :class="{'is-invalid': validation['password']}"
 								@keyup="clearValidation('password')"
@@ -113,6 +124,7 @@
 					name: '',
 					email: '',
 					password: '',
+					phone: '',
 					placement: ''
 				},
 				loading: false
@@ -139,6 +151,7 @@
 					email: this.form.email,
 					password: this.form.password,
 					placement: this.form.placement,
+					phone: this.form.phone,
 					sponsor: this.agent.uuid,
 
 				}).then((response) => {

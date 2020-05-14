@@ -37,6 +37,7 @@ class ProductVariantsController extends Controller
                 $variation->price = $value['price'];
                 $variation->weight = $value['weight'];
                 $variation->sale_price = $value['sale_price'];
+                $variation->commission = $value['sale_price'] - $value['price'];
                 $variation->product_variation_type_id = $type->id;
                 $variation->product()->associate($product);
 
