@@ -18,7 +18,6 @@ class CreateAgentProfile
      */
     public function handle(AgentCreated $event)
     {
-        dd('ok');
         if($event->placement !== null){
             $this->ifNotNullPlacement($event);
         }else{
