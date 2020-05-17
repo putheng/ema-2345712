@@ -16,13 +16,15 @@ class SocietyResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'dob' => $this->dob,
-            'first' => $this->first,
-            'last' => $this->last,
-            'gender' => $this->gender,
-            'id_code' => $this->id_code,
-            'phone' => $this->phone,
-            'status' => $this->status,
+            'uuid' => optional($this->agent)->uuid,
+            'dob' => optional($this->society)->dob,
+            'name' => $this->name,
+            'first' => optional($this->society)->first,
+            'last' => optional($this->society)->last,
+            'gender' => optional($this->society)->gender,
+            'email' => $this->email,
+            'phone' => optional($this->society)->phone,
+            'status' => optional($this->society)->status,
         ];
     }
 }

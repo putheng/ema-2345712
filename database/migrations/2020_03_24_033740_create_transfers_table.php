@@ -15,17 +15,17 @@ class CreateTransfersTable extends Migration
     {
         Schema::create('transfers', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('sender');
-            $table->unsignedBigInteger('receiver');
+            $table->integer('user_id')->unsigned()->index();
+            $table->integer('sender')->unsigned()->index();
+            $table->integer('receiver')->unsigned()->index();
             $table->string('amount');
             $table->string('fee');
             $table->text('mark')->nullable();
             $table->timestamps();
 
-            // $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            // $table->foreign('sender')->references('id')->on('users')->onDelete('cascade');
-            // $table->foreign('receiver')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('sender')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('receiver')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

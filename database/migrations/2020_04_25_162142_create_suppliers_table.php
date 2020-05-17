@@ -15,7 +15,7 @@ class CreateSuppliersTable extends Migration
     {
         Schema::create('suppliers', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('user_id');
+            $table->integer('user_id')->unsigned()->index();
             $table->string('name')->nullable();
             $table->string('address')->nullable();
             $table->string('phone')->nullable();
@@ -23,6 +23,8 @@ class CreateSuppliersTable extends Migration
             $table->string('status')->default('pending');
             $table->string('uuid')->nullable();
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

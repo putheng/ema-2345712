@@ -28,3 +28,5 @@ export const C15EA54E5DA8700B = Vue.component('C15EA54E5DA8700B', require('./sto
 export const C15EB2CF11652B0B = Vue.component('C15EB2CF11652B0B', require('./settings/Users.vue').default)
 export const C15EB69CCFD8E8EB = Vue.component('C15EB69CCFD8E8EB', require('./products/Edit.vue').default)
 export const C15EB69DCEABD2BB = Vue.component('C15EB69DCEABD2BB', require('./products/Variation.vue').default)
+export const C15EC075F148A2CB = Vue.component('C15EC075F148A2CB', require('./society/Users.vue').default)
+export const C15EC075F9A0BA8B = Vue.component('C15EC075F9A0BA8B', require('./store/Users.vue').default)

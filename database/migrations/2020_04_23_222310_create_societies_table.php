@@ -15,7 +15,7 @@ class CreateSocietiesTable extends Migration
     {
         Schema::create('societies', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('user_id');
+            $table->integer('user_id')->unsigned()->index();
             $table->string('first')->nullable();
             $table->string('last')->nullable();
             $table->string('id_code')->nullable();
@@ -26,6 +26,8 @@ class CreateSocietiesTable extends Migration
             $table->string('dob')->nullable();
             $table->string('status')->nullable();
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

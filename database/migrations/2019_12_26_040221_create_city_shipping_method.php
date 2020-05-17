@@ -17,8 +17,8 @@ class CreateCityShippingMethod extends Migration
             $table->integer('city_id')->unsigned()->index();
             $table->integer('shipping_method_id')->unsigned()->index();
 
-            $table->foreign('city_id')->references('id')->on('cities');
-            $table->foreign('shipping_method_id')->references('id')->on('shipping_methods');
+            $table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade');
+            $table->foreign('shipping_method_id')->references('id')->on('shipping_methods')->onDelete('cascade');
         });
     }
 

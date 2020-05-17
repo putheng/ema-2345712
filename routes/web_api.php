@@ -80,6 +80,9 @@ Route::group(['middleware' => 'auth'], function(){
 		Route::resource('category', 'Admin\CategoryController');
 		
 		Route::get('users', 'Admin\UserController@index');
+		Route::get('society', 'Admin\SocietyController@index');
+		Route::delete('society/{user}/delete', 'Admin\SocietyController@destroy');
+
 		Route::post('users/{user}', 'Admin\UserController@update');
 		Route::delete('users/{user}', 'Admin\UserController@destroy');
 

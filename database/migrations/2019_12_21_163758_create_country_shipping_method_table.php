@@ -17,8 +17,8 @@ class CreateCountryShippingMethodTable extends Migration
             $table->integer('country_id')->unsigned()->index();
             $table->integer('shipping_method_id')->unsigned()->index();
 
-            $table->foreign('country_id')->references('id')->on('countries');
-            $table->foreign('shipping_method_id')->references('id')->on('shipping_methods');
+            $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade');
+            $table->foreign('shipping_method_id')->references('id')->on('shipping_methods')->onDelete('cascade');
         });
     }
 

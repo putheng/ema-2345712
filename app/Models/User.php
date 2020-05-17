@@ -61,6 +61,11 @@ class User extends Authenticatable implements JWTSubject
         return $q->where('type', 'supplier');
     }
 
+    public function scopeIsSociety($q)
+    {
+        return $q->where('type', 'society');
+    }
+
     public function dashboard()
     {
         return url($this->type);

@@ -26,6 +26,8 @@ import {
 	C15EB2CF11652B0B,
 	C15EB69CCFD8E8EB,
 	C15EB69DCEABD2BB,
+	C15EC075F148A2CB,
+	C15EC075F9A0BA8B,
 	/****/
 } from '../components'
 
@@ -165,6 +167,16 @@ export default [
 		path: '/admin/products/:slug/variation',
 		component: C15EB69DCEABD2BB,
 		name: 'admin-products-variation'
+	},
+	{
+		path: '/admin/society/users',
+		component: C15EC075F148A2CB,
+		name: 'admin-society-users'
+	},
+	{
+		path: '/admin/store/users',
+		component: C15EC075F9A0BA8B,
+		name: 'admin-store-users'
 	},
 	/**/
 ]

@@ -26,7 +26,7 @@ class AddBaseIdToTickesTable extends Migration
     public function down()
     {
         Schema::table('tickets', function (Blueprint $table) {
-            $table->dripColumn('base_id');
+            $table->dropColumn('base_id');
         });
     }
 }

@@ -46,7 +46,10 @@ class CategoryController extends Controller
         $category->name = $request->name;
         $category->icon = $request->icon;
         $category->area = $request->area;
-        $category->order = $request->order;
+        if($request->order != 'null'){
+            $category->order = $request->order;
+        }
+        
         if($request->parent != 'null'){
             $category->parent_id = $request->parent;
         }

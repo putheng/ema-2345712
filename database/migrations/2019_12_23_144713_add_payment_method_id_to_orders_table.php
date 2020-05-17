@@ -15,7 +15,7 @@ class AddPaymentMethodIdToOrdersTable extends Migration
     {
         Schema::table('orders', function (Blueprint $table) {
             $table->integer('payment_method_id')->unsigned()->index();
-            $table->foreign('payment_method_id')->references('id')->on('payment_methods');
+            $table->foreign('payment_method_id')->references('id')->on('payment_methods')->onDelete('cascade');
         });
     }
 

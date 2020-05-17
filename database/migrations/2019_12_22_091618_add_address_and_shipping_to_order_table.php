@@ -17,8 +17,8 @@ class AddAddressAndShippingToOrderTable extends Migration
             $table->integer('address_id')->unsigned()->index();
             $table->integer('shipping_method_id')->unsigned()->index();
 
-            $table->foreign('address_id')->references('id')->on('addresses');
-            $table->foreign('shipping_method_id')->references('id')->on('shipping_methods');
+            $table->foreign('address_id')->references('id')->on('addresses')->onDelete('cascade');
+            $table->foreign('shipping_method_id')->references('id')->on('shipping_methods')->onDelete('cascade');
         });
     }
 

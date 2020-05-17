@@ -117,6 +117,9 @@
 						<router-link class="menu-link" :to="{name: 'admin-society-placement'}">
 							Placement Tree
 						</router-link>
+						<router-link class="menu-link" :to="{name: 'admin-society-users'}">
+							All
+						</router-link>
 					</li>
 				</ul>
 				<!-- /child menu -->
