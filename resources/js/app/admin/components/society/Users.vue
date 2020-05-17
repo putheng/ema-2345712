@@ -21,11 +21,12 @@
 									<tbody>
 										<tr v-for="user in users">
 											<td>{{ user.uuid }}</td>
-											<td>{{ user.name }}</td>
+											<td>{{ user.first }} {{ user.last }}</td>
 											<td>{{ user.email }}</td>
 											<td>{{ user.phone }}</td>
 											<td>
-												<a href="#" @click.prevent="deletex(user)">Delete</a>
+												<a href="#" @click.prevent="deletex(user)">Delete</a> |
+												<a href="#" @click.prevent="updateUser(user)">Update</a>
 												<div>
 													<a href="#" @click.prevent="openModal(user)">Reset Password</a>
 												</div>
@@ -40,6 +41,7 @@
 			</div>
 		</div>
 		<UserModal @created="created" v-if="isShow" :user="user"/>
+		<Update @updated="updated" v-if="isUpdate" :user="user"/>
 	</div>
 </template>
 
@@ -47,12 +49,14 @@
 	import { mapGetters, mapActions } from 'vuex'
 
 	import UserModal from './partials/UserModal'
+	import Update from './partials/Update'
 
 	export default {
 		data(){
 			return {
 				users: [],
 				isShow: false,
+				isUpdate: false,
 				user: null
 			}
 		},
@@ -79,11 +83,23 @@
 				$('#passwordReset').modal('show')
 			},
 
+			updateUser(user){
+				this.isUpdate = true
+
+				this.user = user
+
+				$('#UpateReset').modal('show')
+			},
+
 			created(){
 				$('#passwordReset').modal('hide')
+			},
+			updated(){
+				$('#UpateReset').modal('hide')
 			}
 		},
 		components: {
+			Update,
 			UserModal
 		},
 		mounted(){

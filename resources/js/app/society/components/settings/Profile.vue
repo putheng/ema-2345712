@@ -74,7 +74,7 @@
 								<p>Upload your ID Photo</p>
 							</div>
 							<div class="col-md-3">
-								<image-picker name="photo"/>
+								<id-image-picker :image="user.id_image" name="photo"/>
 							</div>
 						</div>
 						

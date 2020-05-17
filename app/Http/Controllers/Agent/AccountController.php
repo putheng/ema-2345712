@@ -31,7 +31,8 @@ class AccountController extends Controller
     		'gender' => $request->gender,
     		'age' => $request->age,
     		'phone' => $request->phone,
-    		'status' => 'Pending'
+            'status' => 'Pending',
+    		'approval' => 'waiting',
     	]);
 
         if($request->photo){

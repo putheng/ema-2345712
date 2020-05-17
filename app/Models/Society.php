@@ -10,7 +10,8 @@ use Illuminate\Database\Eloquent\Model;
 class Society extends Model
 {
     protected $fillable = [
-    	'first', 'last', 'id_code', 'id_code_type', 'gender', 'age', 'dob', 'status', 'phone'
+    	'first', 'last', 'id_code', 'id_code_type', 
+        'gender', 'age', 'dob', 'status', 'phone', 'approval'
     ];
 
     public function user()

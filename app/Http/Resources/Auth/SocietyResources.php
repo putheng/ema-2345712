@@ -24,6 +24,7 @@ class SocietyResources extends JsonResource
             'phone' => $this->phone,
             'status' => $this->status,
             'age' => $this->age,
+            'id_image' => $this->getImage(),
             'referal' => url('auth/register?id='. auth()->user()->agent->uuid),
 
             'id_type' => [
@@ -31,5 +32,17 @@ class SocietyResources extends JsonResource
                 'name' => optional($this->id_type)->name,
             ],
         ];
+    }
+
+    protected function getImage()
+    {
+        if($this->image){
+            $img = $this->image()->orderBy('id', 'desc')->first();
+
+            return [
+                'id', $img->id,
+                'url' => url('uploads/idphoto'. $img->url)
+            ];
+        }
     }
 }

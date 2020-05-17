@@ -32,7 +32,7 @@ class StoreSocietyRequest extends FormRequest
             'id_number' => 'required',
             'age' => 'required|numeric',
             // 'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,'. auth()->id()],
-            'phone' => 'required|digits_between:9,10|numeric|unique:societies,phone,'. auth()->id()
+            'phone' => 'required|digits_between:9,10|numeric'
         ];
     }
 

@@ -1,17 +1,19 @@
 <template>
 <transition name="fade">
-	<div class="modal modal-alert fade" id="passwordReset" data-backdrop="static" tabindex="-1" role="dialog"aria-hidden="true">
+	<div class="modal modal-alert fade" id="UpateReset" data-backdrop="static" tabindex="-1" role="dialog"aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered" role="document">
 			<div class="modal-content">
-				<app-form @created="created" :action="'admin/users/'+ user.id">
+				<app-form @created="created" :action="'admin/society/'+ user.id +'/update'">
 					<div class="modal-header">
 						<h5 class="modal-title">
-							{{ user.email }}
+							{{ user.uuid }}
 						</h5>
 					</div>
 					<div class="modal-body">
-						<app-input type="password" name="password" label="New password:"/>
-						<app-input type="password" name="password_confirmation" label="Confirm the new password:"/>
+						<input-binding v-model="user.first" name="first_name" label="First name"/>
+						<input-binding v-model="user.last" name="last_name" label="Last name"/>
+						<input-binding v-model="user.email" name="email" label="Email"/>
+						<input-binding v-model="user.phone" name="phone" label="Phone number"/>
 					</div>
 					<div class="modal-footer">
 						<app-button type="submit">
@@ -57,7 +59,7 @@
 				this.clearErrors()
 			},
 			created(e){
-				this.$emit('created', e)
+				this.$emit('updated', e)
 			}
 		}
 	}

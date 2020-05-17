@@ -19,17 +19,25 @@ class SocietyController extends Controller
     public function update(Request $request, User $user)
     {
     	$this->validate($request, [
-    		'password' => 'required|string|min:6|confirmed',
-            'password_confirmation' => 'required|string|min:6',
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'email' => 'required',
+    		'phone' => 'required',
     	]);
 
+        $user->society()->update([
+            'first' => $request->first_name,
+            'last' => $request->last_name,
+            'phone' => $request->phone,
+        ]);
+
     	$user->update([
-    		'password' => bcrypt($request->password)
+    		'email' => $request->email
     	]);
 
     	return response()->json([
     		'success' => true,
-    		'message' => 'Password update successfully.'
+    		'message' => 'Society updated successfully.'
     	]);
     }
 
