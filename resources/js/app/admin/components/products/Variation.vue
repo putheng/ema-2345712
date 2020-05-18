@@ -23,7 +23,7 @@
 					<div class="col-md-12">
 						<div class="card card-fluid" v-for="(variation, index) in product.variations">
 							<div class="card-body">
-								<div class="row form-group col-md-3">
+								<div class="row form-group col-md-2">
 									<label>Name</label>
 
 									<input type="text" class="form-control" v-model="index" :class="{'is-invalid': errors['variations.'+ index +'.name']}" disabled="">
@@ -35,7 +35,7 @@
 								</div>
 								
 								<div class="row" v-for="(option, key) in variation">
-									<div class="col-md-3">
+									<div class="col-md-2">
 										<div class="form-group">
 											<label class="control-label">Option</label>
 											<input v-model="option.name" type="text" class="form-control" :class="{'is-invalid': errors['variations.'+ index +'.options.'+ key +'.option']}">
@@ -46,7 +46,7 @@
 									        </div>
 										</div>
 									</div>
-									<div class="col-md-3">
+									<div class="col-md-2">
 										<div class="form-group">
 											<label class="control-label">Price</label>
 											<input v-model="option.pricex" type="number" class="form-control" :class="{'is-invalid': errors['variations.'+ index +'.options.'+ key +'.price']}">
@@ -94,7 +94,7 @@
 					<div class="col-md-12">
 						<div class="card card-fluid" v-for="(variation, index) in variations">
 							<div class="card-body">
-								<div class="row form-group col-md-3">
+								<div class="row form-group col-md-2">
 									<label>Name</label>
 									<input type="text" class="form-control" v-model="variation.name" :class="{'is-invalid': errors['variations.'+ index +'.name']}">
 
@@ -105,7 +105,7 @@
 								</div>
 								
 								<div class="row" v-for="(option, key) in variation.options">
-									<div class="col-md-3">
+									<div class="col-md-2">
 										<div class="form-group">
 											<label class="control-label">Option</label>
 											<input v-model="option.option" type="text" class="form-control" :class="{'is-invalid': errors['variations.'+ index +'.options.'+ key +'.option']}">
@@ -116,7 +116,8 @@
 									        </div>
 										</div>
 									</div>
-									<div class="col-md-3">
+
+									<div class="col-md-2">
 										<div class="form-group">
 											<label class="control-label">Price</label>
 											<input v-model="option.price" type="number" class="form-control" :class="{'is-invalid': errors['variations.'+ index +'.options.'+ key +'.price']}">
@@ -126,6 +127,7 @@
 									        </div>
 										</div>
 									</div>
+
 									<div class="col-md-2">
 										<div class="form-group">
 											<label class="control-label">Sale Price</label>
@@ -136,6 +138,63 @@
 									        </div>
 										</div>
 									</div>
+
+									<div class="col-md-2">
+										<div class="form-group">
+											<label class="control-label">Sale Price include VAT + 10% ($)</label>
+											<input 
+											:value="saleVat(option.sale_price)"
+											type="number" 
+											class="form-control" :class="{'is-invalid': errors['variations.'+ index +'.options.'+ key +'.sale_price']}">
+											<div class="invalid-feedback" v-if="errors['variations.'+ index +'.options.'+ key +'.sale_price']">
+									            <i class="fa fa-exclamation-circle fa-fw"></i>
+									            {{ errors['variations.'+ index +'.options.'+ key +'.sale_price'][0] }}
+									        </div>
+										</div>
+									</div>
+
+									<div class="col-md-2">
+										<div class="form-group">
+											<label class="control-label">Company's Profit ($)</label>
+											<input 
+											:value="comp(option.sale_price, option.price)"
+											type="number" 
+											class="form-control" :class="{'is-invalid': errors['variations.'+ index +'.options.'+ key +'.sale_price']}">
+											<div class="invalid-feedback" v-if="errors['variations.'+ index +'.options.'+ key +'.sale_price']">
+									            <i class="fa fa-exclamation-circle fa-fw"></i>
+									            {{ errors['variations.'+ index +'.options.'+ key +'.sale_price'][0] }}
+									        </div>
+										</div>
+									</div>
+
+									<div class="col-md-2">
+										<div class="form-group">
+											<label class="control-label">Total sale Price ($)</label>
+											<input 
+											:value="saleVat(option.sale_price)"
+											type="number" 
+											class="form-control" :class="{'is-invalid': errors['variations.'+ index +'.options.'+ key +'.sale_price']}">
+											<div class="invalid-feedback" v-if="errors['variations.'+ index +'.options.'+ key +'.sale_price']">
+									            <i class="fa fa-exclamation-circle fa-fw"></i>
+									            {{ errors['variations.'+ index +'.options.'+ key +'.sale_price'][0] }}
+									        </div>
+										</div>
+									</div>
+
+									<div class="col-md-2">
+										<div class="form-group">
+											<label class="control-label">Profit in percent (%)</label>
+											<input 
+											:value="income(option.sale_price, option.price)"
+											type="text" 
+											class="form-control" :class="{'is-invalid': errors['variations.'+ index +'.options.'+ key +'.sale_price']}">
+											<div class="invalid-feedback" v-if="errors['variations.'+ index +'.options.'+ key +'.sale_price']">
+									            <i class="fa fa-exclamation-circle fa-fw"></i>
+									            {{ errors['variations.'+ index +'.options.'+ key +'.sale_price'][0] }}
+									        </div>
+										</div>
+									</div>
+
 									<div class="col-md-2">
 										<div class="form-group">
 											<label class="control-label">Weight (g)</label>
@@ -184,6 +243,9 @@
 				loading: false,
 				product: [],
 				opt: [],
+				price: 0,
+				sale_price: 0,
+				comission: 0,
 				variations: [
 					{
 						name: '',
@@ -251,7 +313,21 @@
 					.catch((errors) => {
 						this.loading = false
 					})
-			}
+			},
+			saleVat(sale_price){
+				return parseInt(sale_price) + (parseInt(sale_price) * 0.1)	
+			},
+			comp(sale_price, price){
+				return parseInt(sale_price) - parseInt(price)
+			},
+			income(sale_price, price){
+				
+				let p = (sale_price - price) / price
+
+				let t = p * 100
+
+				return t + '%'
+			},
 		},
 		computed: {
 			...mapGetters({

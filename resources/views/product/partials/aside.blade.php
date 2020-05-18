@@ -50,7 +50,7 @@
         <!-- Menu-->
       </div>
     </div>
-    <div class="px-grid-gutter pt-5 pb-4 mb-2">
+    <div class="px-grid-gutter pt-1 pb-1">
       <div class="d-flex mb-3">
         <i class="czi-support h4 mb-0 font-weight-normal text-primary mt-1 mr-1"></i>
         <div class="pl-2">
