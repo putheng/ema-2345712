@@ -11,45 +11,80 @@
 						<div class="metric-row">
 							<div class="col">
 								<div class="metric metric-bordered">
-									<h2 class="metric-label text-center"> This week orders </h2>
+									<h2 class="metric-label text-center"> Earnings (after taxes) </h2>
 									<p class="metric-value h1 text-center">
-										<sup>$</sup> <span class="value">1,690.50</span>
+										<sup>$</sup> <span class="value">{{ data.thisMonth }}</span>
 									</p>
-									<h2 class="metric-label text-center"> Sales 8/1/2019 - 8/15/2019 </h2>
+									<h2 class="metric-label text-center"> Sales this month </h2>
 								</div>
 							</div>
 							<div class="col">
 								<div class="metric metric-bordered">
-									<h2 class="metric-label text-center"> This week sale </h2>
+									<h2 class="metric-label text-center"> Your balance </h2>
 									<p class="metric-value h1 text-center">
-										<sup>$</sup> <span class="value">1,375.00</span>
+										<sup>$</sup> <span class="value">{{ data.balance }}</span>
 									</p>
-									<h2 class="metric-label text-center"> To be paid on 8/15/2019 </h2>
+									<h2 class="metric-label text-center"> To be paid </h2>
 								</div>
 							</div>
 							<div class="col">
 								<div class="metric metric-bordered">
-									<h2 class="metric-label text-center"> Total sale </h2>
+									<h2 class="metric-label text-center"> Lifetime earnings </h2>
 									<p class="metric-value h1 text-center">
-										<sup>$</sup> <span class="value">9,156.74</span>
+										<sup>$</sup> <span class="value">{{ data.lifetime }}</span>
 									</p>
 									<h2 class="metric-label text-center"> Based on list price </h2>
 								</div>
 							</div>
 						</div>
 
-						<div class="card card-fluid">
+						<!-- <div class="card card-fluid">
 							<div class="card-body">
 								<apexchart type=line height=350 :options="chartOptions" :series="series" />
 							</div>
-						</div>
+						</div> -->
 
 						<div class="card card-fluid">
-							<div class="card-body">
-								<apexchart type=line height=350 :options="chartOptionsb" :series="seriesb" />
-							</div>
-						</div>
+					<div class="card-body">
+						<div class="table-responsive">
+							<table class="table">
+								<thead>
+									<th>Order #</th>
+									<th>Items</th>
+									<th>Date Purchased</th>
+									<th>Status</th>
+									<th>Total</th>
+								</thead>
+								<tbody>
+									<tr v-if="orders.length" v-for="(order, i) in orders">
+										<td>
+											<a href="#" @click.prevent="showModal(order)">
+												EMAO{{ order.order.id }}
+											</a>
+										</td>
+										<td>
+											{{ order.product_variation.product.name }}
+											( {{ order.product_variation.type }}
+											{{ order.product_variation.name }} )
 
+										</td>
+										<td>{{ order.order.created_at }}</td>
+										<td><span class="badge "
+											:class="{
+												'badge-warning': order.order.status == 'Pending',
+												'badge-primary': order.order.status == 'Processing',
+												'badge-danger': order.order.status == 'Payment failed',
+												'badge-success': order.order.status == 'Completed',
+											}"
+											>{{ order.order.status }}</span></td>
+										<td>{{ order.order.total }}</td>
+										
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
 					</div>
 				</div>
 			</div>
@@ -62,18 +97,21 @@
 
 	export default {
 		methods: {
-			//
+			async fetch(){
+				let r = await axios.get('store/sales')
+				let or = await axios.get(`store/orders`)
+
+				this.orders = or.data.data
+
+				this.data = r.data.data
+				this.series = r.data.data.series
+			}
 		},
 		data(){
 			return {
-				series: [{
-					name: "Sales",
-        			data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
-        		}],
-        		seriesb: [{
-					name: "Orders",
-        			data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
-        		}],
+				data:[],
+				orders: [],
+				series: [],
         		chartOptions: {
         			chart: {
         				height: 350,
@@ -88,34 +126,7 @@
         				curve: 'straight'
         			},
         			title: {
-        				text: 'Sales value, USD (Past 2 weeks)',
-        				align: 'left'
-        			},
-        			grid: {
-        				row: {
-        					colors: ['#f3f3f3', 'transparent'],
-        					opacity: 0.5
-        				}
-        			},
-        			xaxis: {
-        				categories: this.category,
-        			}
-        		},
-        		chartOptionsb: {
-        			chart: {
-        				height: 350,
-        				zoom: {
-        					enable: false
-        				}
-        			},
-        			dataLabels: {
-        				enable: false
-        			},
-        			stroke: {
-        				curve: 'straight'
-        			},
-        			title: {
-        				text: 'Order count (Past 2 weeks)',
+        				text: 'Sales value, USD (This month)',
         				align: 'left'
         			},
         			grid: {
@@ -135,7 +146,7 @@
 			category(){
 				let categories = []
 
-				for(let i=0; i<30; i++){
+				for(let i=0; i<31; i++){
 					categories.push(i)
 				}
 
@@ -143,7 +154,7 @@
 			}
 		},
 		mounted(){
-			//
+			this.fetch()
 		}
 	}
 </script>
