@@ -12,11 +12,16 @@ class StoreController extends Controller
 {
     public function commission(Request $request, Store $store)
     {
-    	$this->validate($request, [
-    		'commission' => 'required|numeric'
-    	]);
+    	$store->update([
+            'address' => $request->address,
+            'phone' => $request->phone,
+            'name' => $request->store,
+        ]);
 
-    	$store->update(['commission' => $request->commission]);
+        $store->user()->update([
+            'name' => $request->name,
+            'email' => $request->email,
+        ]);
 
     	return StoresResources::collection(
             User::isStore()->paginate(20)

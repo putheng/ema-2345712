@@ -17,6 +17,7 @@ class StoresResources extends JsonResource
         return [
             'username' => $this->name,
             'email' => $this->email,
+            'userid' => $this->id,
             'store' => optional($this->store)->name,
             'address' => optional($this->store)->address,
             'phone' => optional($this->store)->phone,

@@ -1,26 +1,22 @@
 <template>
 <transition name="fade">
-	<div class="modal modal-alert fade" 
-		id="updateCommission" data-backdrop="static" 
-		tabindex="-1" role="dialog" aria-hidden="true"
-	>
+	<div class="modal modal-alert fade" id="passwordxReset" data-backdrop="static" tabindex="-1" role="dialog"aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered" role="document">
 			<div class="modal-content">
-				<app-form @created="created" :action="'admin/store/'+ store.id +'/commission'">
+				<app-form @created="created" :action="'admin/users/'+ store.userid">
 					<div class="modal-header">
 						<h5 class="modal-title">
-							{{ store.store }}
+							{{ store.username }}
 						</h5>
 					</div>
 					<div class="modal-body">
-						<input-binding v-model="store.store" name="store" label="Store name"/>
-						<input-binding v-model="store.username" name="name" label="Username"/>
-						<input-binding v-model="store.email" name="email" label="email"/>
-						<input-binding v-model="store.phone" name="phone" label="Phone number"/>
-						<input-binding v-model="store.address" name="address" label="Address"/>
+						<app-input type="password" name="password" label="New password:"/>
+						<app-input type="password" name="password_confirmation" label="Confirm the new password:"/>
 					</div>
 					<div class="modal-footer">
-						<app-button type="submit">Update</app-button>
+						<app-button type="submit">
+							Update
+						</app-button>
 						<button
 							type="button"
 							@click="resetLoading"
@@ -49,22 +45,19 @@
 				errors: 'getError'
 			})
 		},
-
 		methods: {
 			...mapActions({
 				clearValidationErrors: 'clearValidationErrors',
 				clearMessage: 'clearMessage',
 				clearErrors: 'clearErrors'
 			}),
-
 			resetLoading(){
 				this.clearValidationErrors()
 				this.clearMessage()
 				this.clearErrors()
 			},
-
 			created(e){
-				this.$emit('updated', e)
+				this.$emit('created', e)
 			}
 		}
 	}

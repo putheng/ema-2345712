@@ -46,7 +46,9 @@
 												|
 												<a href="#" @click.prevent="topup(store)">Top Up</a>
 												<div>
-													<a href="#" @click.prevent="commission(store)">Update Commission</a>
+													<a href="#" @click.prevent="commission(store)">Update</a>
+													|
+													<a href="#" @click.prevent="password(store)">Password</a>
 													|
 													<template v-if="store.approval != 'approve'">
 													<a href="#" @click.prevent="approve(store.id, 'approve')">	
@@ -76,6 +78,7 @@
 		</div>
 		<StoreTopup @created="created" :store="store" v-if="isOpen"/>
 		<UpdateCommission @updated="updated" v-if="isCommission" :store="store"/>
+		<Password @updated="updated" v-if="ispass" :store="store"/>
 	</div>
 </template>
 
@@ -83,6 +86,7 @@
 	import { mapGetters, mapActions } from 'vuex'
 	import StoreTopup from './partials/StoreTopup'
 	import UpdateCommission from './partials/UpdateCommission'
+	import Password from './partials/Password'
 
 	export default {
 		data(){
@@ -90,6 +94,7 @@
 				stores: [],
 				isOpen: false,
 				isCommission: false,
+				ispass: false,
 				store: []
 			}
 		},
@@ -119,6 +124,12 @@
 
 				$('#StoreTopup').modal('show')
 			},
+			password(store){
+				this.ispass = true
+				this.store = store
+
+				$('#passwordxReset').modal('show')
+			},
 			commission(store){
 				this.isCommission = true
 				this.store = store
@@ -129,6 +140,7 @@
 			}
 		},
 		components: {
+			Password,
 			StoreTopup,
 			UpdateCommission
 		},
