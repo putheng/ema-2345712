@@ -142,7 +142,7 @@
 						<router-link class="menu-link" :to="{ name:'admin-profile-password' }">
 							Password
 						</router-link>
-						<a @click="submit" class="menu-link">
+						<a @click.prevent="submit" class="menu-link">
 							<span class="menu-icon oi oi-account-logout"></span>
 							<span class="menu-text">Logout</span>
 
@@ -161,6 +161,15 @@
 </template>
 <script>
 	export default {
-		
+		data(){
+			return {
+				token : document.head.querySelector('meta[name="csrf-token"]').content
+			}
+		},
+		methods : {
+		    submit(){
+		    	document.getElementById("logout-form-b").submit()
+		    }
+		}
 	}
 </script>

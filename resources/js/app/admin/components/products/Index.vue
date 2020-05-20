@@ -31,12 +31,16 @@
 											</h5>
 											<h5 class="text-info">{{ product.formattedPrice }}</h5>
 										</td>
-										<td>
+										<td class="text-center">
 											<router-link 
 												:to="{name: 'admin-products-edit', params:{slug: product.slug}}" 
-												class="btn btn-sm btn-outline-info">
-												<span class="oi oi-pencil mr-1"></span> Edit
+												class="btn btn-sm btn-outline-info">Edit
 											</router-link>
+											<a href="#" @click.prevent="deletePro(product.slug)" 
+												:to="{name: 'admin-products-edit', params:{slug: product.slug}}" 
+												class="btn btn-sm btn-outline-info">
+												Delete
+											</a>
 										</td>
 									</tr>
 								</tbody>
@@ -64,6 +68,13 @@
 				let response = await axios.get(`products/product`)
 
 				this.products = response.data.data
+			},
+			async deletePro(id){
+				if(confirm('Are you sure to delete this product ?')){
+					let r = await axios.delete(`products/product/${id}`)
+
+					this.products = r.data.data
+				}
 			}
 		},
 		computed: {

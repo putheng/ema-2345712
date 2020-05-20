@@ -90,7 +90,7 @@
 						<router-link class="menu-link" :to="{ name:'society-settings-password' }">
 							Password
 						</router-link>
-						<a @click="submit" class="menu-link" href="#">
+						<a @click.prevent="submit" class="menu-link" href="#">
 							<span class="menu-text">Logout</span>
 
 							<form id="logout-form-b" action="/api/v1/account/logout" method="POST" style="display: none;">

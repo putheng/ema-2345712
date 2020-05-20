@@ -15,6 +15,7 @@ export { default as AppLogout } from './AppLogout'
 export { default as ImagePicker } from './ImagePicker'
 export { default as AppOptionGroup } from './AppOptionGroup'
 export { default as IdImagePicker } from './IdImagePicker'
+export { default as AppOptionBinding } from './AppOptionBinding'
 
 export { default as LeftUserSetting } from './LeftUserSetting'
 export { default as LeftAdminSetting } from './LeftAdminSetting'

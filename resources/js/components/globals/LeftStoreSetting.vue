@@ -70,7 +70,7 @@
 					<span class="menu-icon oi oi-key"></span>
 					<span class="menu-text">Password</span>
 				</router-link>
-				<a @click="submit" class="menu-link">
+				<a @click.prevent="submit" class="menu-link">
 					<span class="menu-icon oi oi-account-logout"></span>
 					<span class="menu-text">Logout</span>
 

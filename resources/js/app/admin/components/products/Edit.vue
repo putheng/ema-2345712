@@ -15,8 +15,7 @@
 
 								<text-area-binding v-model="product.description" name="description" label="Product description"/>
 
-								<select-binding :selected="product.category" v-model="product.category" 
-									name="category" :options="categories" label="Category"/>
+								<app-option-binding name="category" :selected="product.category" :options="categories" label="Category"/>
 
 								<div class="row">
 									<div class="col-md-6">
