@@ -24,7 +24,7 @@ class AccountController extends Controller
     	$user->update($request->only('name'));
 
     	$user->store()->update(
-    		$request->only('address', 'phone', 'latitude', 'longitude');
+    		$request->only('address', 'phone', 'latitude', 'longitude')
     	);
 
     	if($request->photo){
