@@ -31,8 +31,8 @@
 						<div class="card product-card card-static pb-3">
 							<button class="btn-wishlist btn-sm" type="button" data-toggle="tooltip" data-placement="left" title="Add to wishlist"><i class="czi-heart"></i>
 							</button>
-							<a class="card-img-top d-block overflow-hidden" href="{{ route('show.product', $product) }}">
-								<img src="{{ $product->thumbnail()->product() }}" alt="Product">
+							<a class="card-img-top d-block overflow-hidden text-center" href="{{ route('show.product', $product) }}">
+								<img style="width: 220px; height: 254px" src="{{ $product->thumbnail()->product() }}" alt="Product">
 							</a>
 							<div class="card-body py-2">
 								<a class="product-meta d-block font-size-xs pb-1" href="{{ route('category.show', $category) }}">{{ $category->name }}</a>

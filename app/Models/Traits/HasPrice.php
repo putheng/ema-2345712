@@ -12,14 +12,14 @@ trait HasPrice
 {
     public function getPriceAttribute($value)
     {
-        // return new Money($value);
-        return get_currency($value);
+        return new Money($value);
+        // return get_currency($value);
     }
 
     public function getSalePriceAttribute($value)
     {
-        // return new Money($value);
-        return get_currency($value);
+        return new Money($value);
+        // return get_currency($value);
     }
 
     public function getFormattedPriceAttribute()

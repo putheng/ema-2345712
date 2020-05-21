@@ -7,6 +7,7 @@ use Money\Currencies\ISOCurrencies;
 use Money\Currency;
 use Money\Formatter\IntlMoneyFormatter;
 use Money\Money as BaseMoney;
+use Money\Parser\IntlMoneyParser;
 
 class Money
 {
@@ -14,7 +15,17 @@ class Money
 
     public function __construct($value)
     {
-        $this->money = new BaseMoney($value, new Currency(auth()->user()->currency));
+        $this->money = new BaseMoney($value, new Currency('USD'));
+    }
+
+    public function convert($value)
+    {
+        $moneyParser = new IntlMoneyParser(
+            new \NumberFormatter('en_US', \NumberFormatter::CURRENCY),
+            new ISOCurrencies()
+        );
+
+        return $moneyParser->parse($value);
     }
 
     public function amount()
@@ -25,7 +36,7 @@ class Money
     public function formatted()
     {
         $formatter = new IntlMoneyFormatter(
-            new NumberFormatter(auth()->user()->currency, NumberFormatter::CURRENCY),
+            new NumberFormatter('USD', NumberFormatter::CURRENCY),
             new ISOCurrencies()
         );
 

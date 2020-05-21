@@ -2,6 +2,8 @@
 
 use App\Models\Option;
 use App\Cart\Currency;
+use Money\Parser\IntlMoneyParser;
+use Money\Currencies\ISOCurrencies;
 
 if(!function_exists('syt_option')){
 	function syt_option($type = null)
@@ -26,4 +28,16 @@ if(!function_exists('get_currency')){
 	{
 		return new Currency($value);
 	}
+}
+
+if(!function_exists('currency_convert')){
+	function currency_convert($value)
+    {
+        $moneyParser = new IntlMoneyParser(
+            new \NumberFormatter('en_US', \NumberFormatter::CURRENCY),
+            new ISOCurrencies()
+        );
+
+        return $moneyParser->parse('$'. $value);
+    }
 }
