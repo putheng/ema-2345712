@@ -22,9 +22,8 @@ class ProductIndexResource extends JsonResource
             'description' => $this->description,
             'in_stock' => $this->inStock(),
             'formattedPrice' => $this->formattedPrice,
-            'price' => $this->price->amount(),
-            // 'price' => $this->price->amount(),
-            'sale_price' => $this->sale_price->amount(),
+            'price' => currency_format($this->price->amount()),
+            'sale_price' => currency_format($this->sale_price->amount()),
             'category' => optional($this->category()->first())->id,
             'publish' => (bool) $this->publish,
             'images' => ImageResource::collection($this->image)

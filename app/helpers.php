@@ -1,9 +1,12 @@
 <?php
 
+use Money\Money;
+use Money\Currency as BaseCurrency;
 use App\Models\Option;
 use App\Cart\Currency;
 use Money\Parser\IntlMoneyParser;
 use Money\Currencies\ISOCurrencies;
+use Money\Formatter\DecimalMoneyFormatter;
 
 if(!function_exists('syt_option')){
 	function syt_option($type = null)
@@ -40,4 +43,13 @@ if(!function_exists('currency_convert')){
 
         return $moneyParser->parse('$'. $value);
     }
+}
+
+if(!function_exists('currency_format')){
+	function currency_format($value){
+		return (new DecimalMoneyFormatter(new ISOCurrencies()))
+		->format(
+			new Money($value, new BaseCurrency('USD'))
+		);
+	}
 }

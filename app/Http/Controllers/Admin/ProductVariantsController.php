@@ -16,7 +16,7 @@ class ProductVariantsController extends Controller
     public function show(Request $request, Product $product)
     {
     	$product->load(['variations.type', 'variations.stock', 'variations.product']);
-
+        
     	return new ProductResource(
     		$product
     	);
