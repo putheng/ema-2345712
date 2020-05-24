@@ -20,13 +20,22 @@ trait HasPrice
         return new Money($value);
     }
 
+    public function getTaxPriceAttribute($value)
+    {
+        return new Money($value);
+    }
+
     public function getFormattedPriceAttribute()
     {
         return $this->price->formatted();
     }
 
-    public function getFormattedSalePriceAttribute()
+    public function getFormattedTaxPriceAttribute()
     {
+        if($this->tax_price->amount() != 0){
+            return $this->tax_price->formatted();
+        }
+
         return $this->sale_price->formatted();
     }
 }

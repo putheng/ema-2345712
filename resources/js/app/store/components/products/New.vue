@@ -35,7 +35,7 @@
 
 								<div class="row">
 									<div class="col-md-3">
-										<input-binding v-model="saleVat" name="sale_price" 
+										<input-binding v-model="saleVat" name="vat_price" 
 										value="0" label="Total sale Price ($)"/>
 									</div>
 									<div class="form-group">

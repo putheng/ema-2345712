@@ -48,7 +48,7 @@
 						<span class="badge badge-secondary">Out of stock</span>
 					@endif
 					
-					<div class="h2 font-weight-normal text-accent">{{ $product->formattedPrice }}</div>
+					<div class="h2 font-weight-normal text-accent">{{ $product->formattedTaxPrice }}</div>
 
 					<div>
 						<br>

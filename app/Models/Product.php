@@ -23,7 +23,8 @@ class Product extends Model
         'price',
         'description',
         'user_id',
-        'publish'
+        'publish',
+        'sale_price'
     ];
 
     use CanBeScoped, HasPrice;
@@ -33,8 +34,15 @@ class Product extends Model
         parent::boot();
 
         static::creating(function($model){
-            $model->slug = str_slug($model->name) .'-'. time();
+            $model->tax_price = self::getVatPrice($model->sale_price->amount());
+
+            $model->slug = str_slug($model->name) .'-'. time() .'.html';
         });
+    }
+
+    protected static function getVatPrice($price)
+    {
+        return $price + currency_convert(($price * 0.1))->getAmount();
     }
 
     public function getRouteKeyName()
