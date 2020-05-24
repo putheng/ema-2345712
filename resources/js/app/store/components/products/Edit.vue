@@ -98,7 +98,7 @@
 			},
 
 			onSuccess(response){
-				this.$router.push({name: 'admin-products-variation', params: {slug: response.data.data.slug}})
+				this.$router.push({name: 'store-products-variation', params: {slug: response.data.data.slug}})
 			},
 			saleVat(sale_price){
 				console.log(parseInt(sale_price) + (parseInt(sale_price) * 0.1)	)
