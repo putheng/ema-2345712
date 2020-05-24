@@ -38,6 +38,10 @@ class Product extends Model
 
             $model->slug = str_slug($model->name) .'-'. time() .'.html';
         });
+
+        static::updating(function($model){
+            $model->tax_price = self::getVatPrice($model->sale_price->amount());
+        });
     }
 
     protected static function getVatPrice($price)

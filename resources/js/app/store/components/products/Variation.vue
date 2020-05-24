@@ -358,6 +358,8 @@
 			async saveChange(){
 				this.loading = true
 
+				console.log(this.product.variations);
+
 				if(this.product.variations.length != 0 && this.product.variations.length == undefined){
 					let r = await axios.post(`products/${this.$route.params.slug}/variations/edit`, {
 						variations: this.product.variations
@@ -368,7 +370,7 @@
 					variations: this.variations
 				})
 					.then((response) => {
-						this.$router.push({name: 'suppliers-product'})
+						this.$router.push({name: 'store-product'})
 						this.loading = false
 					})
 					.catch((errors) => {

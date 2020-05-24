@@ -53,7 +53,7 @@
 					<div>
 						<br>
 						<h6>Product description</h6>
-						<p>{{ $product->description }}</p>
+						<p>{!! $product->description !!}</p>
 						<br>
 					</div>	
 

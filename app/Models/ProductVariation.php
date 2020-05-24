@@ -20,6 +20,23 @@ class ProductVariation extends Model
         'name', 'price', 'sale_price', 'weight'
     ];
 
+    public static function boot(){
+        parent::boot();
+
+        static::creating(function($model){
+            $model->tax_price = self::getVatPrice($model->sale_price->amount());
+        });
+
+        static::updating(function($model){
+            $model->tax_price = self::getVatPrice($model->sale_price->amount());
+        });
+    }
+
+    protected static function getVatPrice($price)
+    {
+        return $price + ($price * 0.1);
+    }
+
     public function getPriceAttribute($value)
     {
         if ($value === null) {

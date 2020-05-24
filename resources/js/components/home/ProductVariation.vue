@@ -13,8 +13,8 @@
           >
             {{ v.name }}
 
-            <template v-if="v.sale_price">
-              ({{ v.sale_price }})
+            <template v-if="v.sale_pricex">
+              ({{ v.sale_pricex }})
             </template>
 
 
