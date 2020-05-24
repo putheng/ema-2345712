@@ -42,7 +42,6 @@ export default {
 		},
 		selected: {
 			required: false,
-			type: String
 		}
 
 	},

@@ -18,8 +18,8 @@ class ProductEditController extends Controller
     public function store(ProductEditRequest $request, Product $product)
     {
     	$product->name = $request->name;
-        $product->price = $request->price;
-    	$product->sale_price = $request->sale_price;
+        $product->price = currency_convert($request->price)->getAmount();
+    	$product->sale_price = currency_convert($request->sale_price)->getAmount();
     	$product->description = nl2br($request->description);
     	$product->user()->associate($request->user());
         $product->category_id = $request->category;
