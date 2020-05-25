@@ -35,7 +35,7 @@
 
 								<div class="row">
 									<div class="col-md-3">
-										<input-binding v-model="saleVat" name="sale_price" 
+										<input-binding v-model="saleVat" name="vat_price" 
 										value="0" label="Total sale Price ($)"/>
 									</div>
 									<div class="form-group">
@@ -94,7 +94,7 @@
 			},
 
 			onSuccess(response){
-				this.$router.push({name: 'store-products-variation', params: {slug: response.data.data.slug}})
+				this.$router.push({name: 'admin-products-variation', params: {slug: response.data.data.slug}})
 			}
 		},
 		computed: {
@@ -108,17 +108,18 @@
 				return parseInt(this.sale_price) + (parseInt(this.sale_price) * 0.1)
 			},
 			saleVat(){
-				return parseInt(this.sale_price) + (parseInt(this.sale_price) * 0.1)	
+				return Number(this.sale_price) + (Number(this.sale_price) * 0.1)
 			},
 			income(){
 
-				let p = (this.sale_price - this.price) / this.price
-				// let p = (this.comission / this.sale_price)
+				if(this.sale_price != 0){
+					let p = (Number(this.sale_price) - Number(this.price)) / Number(this.price)
 
-				let t = p * 100
+					let t = p * 100
 
-				return t + '%'
-				// return p
+					return t + '%'
+				}
+				return '0%'
 			}
 		},
 		mounted(){
