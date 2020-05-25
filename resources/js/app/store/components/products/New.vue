@@ -108,7 +108,7 @@
 				return parseInt(this.sale_price) + (parseInt(this.sale_price) * 0.1)
 			},
 			saleVat(){
-				return parseInt(this.sale_price) + (parseInt(this.sale_price) * 0.1)	
+				return Number(this.sale_price) + (Number(this.sale_price) * 0.1)
 			},
 			income(){
 
