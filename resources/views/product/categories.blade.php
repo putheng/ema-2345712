@@ -40,7 +40,7 @@
 									<a href="{{ route('show.product', $product) }}">{{ $product->name }}</a>
 								</h3>
 								<div class="product-price">
-									<span class="text-accent">{{ $product->formattedSalePrice }}</span>
+									<span class="text-accent">{{ $product->formattedTaxPrice }}</span>
 								</div>
 							</div>
 							<div class="product-floating-btn">
