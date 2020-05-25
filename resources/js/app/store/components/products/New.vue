@@ -112,13 +112,14 @@
 			},
 			income(){
 
-				let p = (this.sale_price - this.price) / this.price
-				// let p = (this.comission / this.sale_price)
+				if(this.sale_price != 0){
+					let p = (Number(this.sale_price) - Number(this.price)) / Number(this.price)
 
-				let t = p * 100
+					let t = p * 100
 
-				return t + '%'
-				// return p
+					return t + '%'
+				}
+				return '0%'
 			}
 		},
 		mounted(){
