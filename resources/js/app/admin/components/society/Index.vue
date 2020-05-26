@@ -21,7 +21,15 @@
 
 	</header>
 	<div class="page-section">
-		
+		<div class="row">
+			<div class="col-md-2">
+				<div class="form-group">
+					<label>Search</label>
+					<input v-model="q" type="text" class="form-control" placeholder="EMA0000">
+				</div>
+				<button @click.prevent="search" class="btn btn-primary">Search</button>
+			</div>
+		</div>
 		<section class="management-hierarchy">
 		<div class="hv-container">
 			<div class="hv-wrapper">
@@ -123,6 +131,11 @@
 				this.agents = r.data.data
 
 				return r
+			},
+			async search(){
+				let r = await axios.get(`sociaty/show/members?q=${this.q}`)
+
+				this.agents = r.data.data
 			},
 			async viewMember(id){
 				let r = await axios.get(`sociaty/show/${id}/members`)
