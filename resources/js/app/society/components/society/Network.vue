@@ -22,6 +22,15 @@
 	</header>
 	<div class="page-section">
 		
+		<div class="row">
+			<div class="col-md-2">
+				<div class="form-group">
+					<label>Search</label>
+					<input v-model="q" type="text" class="form-control" placeholder="EMA0000">
+				</div>
+				<button @click.prevent="search" class="btn btn-primary">Search</button>
+			</div>
+		</div>
 		<section class="management-hierarchy">
 		<div class="hv-container">
 			<div class="hv-wrapper">
@@ -107,7 +116,8 @@
 				agents:[],
 				breadcrumb: [],
 				isCreating: false,
-				agent: []
+				agent: [],
+				q: 'EMA0000'
 			}
 		},
 		components: {
@@ -117,6 +127,13 @@
 			...mapActions({
 				fetchNetworks: 'society/fetchNetworks'
 			}),
+
+			async search(){
+				let r = await axios.get(`sociaty/show/members?q=${this.q}`)
+
+				this.agents = r.data.data
+			},
+
 			async fetch(){
 				let r = await axios.get(`sociaty/show`)
 

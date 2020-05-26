@@ -57,6 +57,15 @@ class AgentController extends Controller
         return new AgentResource($user->agent);
     }
 
+    public function agentsuuid(Request $request)
+    {
+        $agent = Agent::where('uuid', strtoupper($request->get('q', '')));
+
+        if($agent->count()){
+            return new AgentResource($agent->first());
+        }
+    }
+
     public function sponsor(Request $request)
     {
         $agent = Agent::where('sponsor_id', $request->user()->agent->id)->get();

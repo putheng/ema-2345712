@@ -119,6 +119,7 @@ Route::group(['middleware' => 'auth'], function(){
 
 		Route::post('create', 'Agent\AgentController@store');
 		Route::get('show', 'Agent\AgentController@show');
+		Route::get('show/members', 'Agent\AgentController@agentsuuid');
 		Route::get('show/{user}/members', 'Agent\AgentController@members');
 		Route::get('sponsors', 'Agent\AgentController@sponsor');
 
