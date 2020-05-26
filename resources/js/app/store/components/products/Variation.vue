@@ -8,17 +8,18 @@
 					<div class="float-right">
 						<button 
 							class="btn btn-success btn-lg" 
-							@click.prevent="updateChange"
+							@click.prevent="saveChange"
 							:disabled="loading"
 						>
 							<span v-if="loading" 
 								class="spinner-border spinner-border-sm"
 								role="status" aria-hidden="true"></span>
-							Update
+							Create Now
 						</button>
 
-						<button @click.prevent="saveChange" class="btn btn-success btn-lg">
-							Create Now
+						<button @click.prevent="updateChange" class="btn btn-success btn-lg">
+							
+							Update
 						</button>
 					</div>
 				</h1>
