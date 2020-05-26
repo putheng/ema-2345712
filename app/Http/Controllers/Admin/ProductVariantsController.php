@@ -79,5 +79,10 @@ class ProductVariantsController extends Controller
                 ]);
             });
         });
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Variations update successfully'
+        ]);
     }
 }

@@ -5,16 +5,22 @@
 				<h1 class="page-title">
 					<span>Product Variation</span>
 
-					<button 
-						class="btn btn-success btn-lg float-right" 
-						@click.prevent="saveChange"
-						:disabled="loading"
-					>
-						<span v-if="loading" 
-							class="spinner-border spinner-border-sm"
-							role="status" aria-hidden="true"></span>
-						Save Changes
-					</button>
+					<div class="float-right">
+						<button 
+							class="btn btn-success btn-lg" 
+							@click.prevent="updateChange"
+							:disabled="loading"
+						>
+							<span v-if="loading" 
+								class="spinner-border spinner-border-sm"
+								role="status" aria-hidden="true"></span>
+							Update
+						</button>
+
+						<button @click.prevent="saveChange" class="btn btn-success btn-lg">
+							Create Now
+						</button>
+					</div>
 				</h1>
 				
 			</header>
@@ -358,13 +364,11 @@
 			async saveChange(){
 				this.loading = true
 
-				console.log(this.product.variations);
-
-				if(this.product.variations.length != 0 && this.product.variations.length == undefined){
-					let r = await axios.post(`products/${this.$route.params.slug}/variations/edit`, {
-						variations: this.product.variations
-					})
-				}
+				// if(this.product.variations.length != 0 && this.product.variations.length == undefined){
+				// 	let r = await axios.post(`products/${this.$route.params.slug}/variations/edit`, {
+				// 		variations: this.product.variations
+				// 	})
+				// }
 
 				axios.post(`products/${this.$route.params.slug}/variations`, {
 					variations: this.variations
@@ -376,6 +380,11 @@
 					.catch((errors) => {
 						this.loading = false
 					})
+			},
+			async updateChange(){
+				let r = await axios.post(`products/${this.$route.params.slug}/variations/edit`, {
+					variations: this.product.variations
+				})
 			},
 			saleVat(sale_price){
 				return parseInt(sale_price) + (parseInt(sale_price) * 0.1)	
