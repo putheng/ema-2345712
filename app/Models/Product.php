@@ -40,7 +40,10 @@ class Product extends Model
         });
 
         static::updating(function($model){
-            $model->tax_price = self::getVatPrice($model->sale_price->amount());
+            $price = $model->sale_price->amount();
+
+            // $model->tax_price = self::getVatPrice($model->sale_price->amount());
+            $model->tax_price = $price + ($price * 0.1); 
         });
     }
 

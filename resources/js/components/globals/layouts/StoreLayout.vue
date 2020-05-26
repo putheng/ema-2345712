@@ -1,7 +1,7 @@
 <template>
 <div>
 	<app-alert></app-alert>
-	<header class="app-header app-header-dark">
+	<!-- <header class="app-header app-header-dark">
 		<div class="top-bar">
 			<div class="top-bar-brand">
 				<a href="/" target="_blank" style="margin: auto;">
@@ -20,14 +20,14 @@
 				</div>
 			</div>
 		</div>
-	</header>
+	</header> -->
 	<aside class="app-aside app-aside-expand-md app-aside-light">
 		<div class="aside-content">
-			<left-store-setting></left-store-setting>
+			<!-- <left-store-setting></left-store-setting> -->
 			<div class="aside-menu overflow-hidden">
 				<!-- <left-menu></left-menu> -->
 			</div>
-			<main-footer></main-footer>
+			<!-- <main-footer></main-footer> -->
 		</div>
 	</aside>
 	<app-main></app-main>

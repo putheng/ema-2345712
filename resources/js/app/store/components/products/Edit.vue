@@ -101,20 +101,22 @@
 				this.$router.push({name: 'store-products-variation', params: {slug: response.data.data.slug}})
 			},
 			saleVat(sale_price){
-				console.log(parseInt(sale_price) + (parseInt(sale_price) * 0.1)	)
 
-				return parseInt(sale_price) + (parseInt(sale_price) * 0.1)	
+				return Number(sale_price) + (Number(sale_price) * 0.1)	
 			},
 			comp(sale_price, price){
-				return parseInt(sale_price) - parseInt(price)
+				return Number(sale_price) - Number(price)
 			},
 			income(sale_price, price){
 				
-				let p = (sale_price - price) / price
+				if(sale_price != 0){
+					let p = (Number(sale_price) - Number(price)) / Number(price)
 
-				let t = p * 100
+					let t = p * 100
 
-				return t + '%'
+					return t + '%'
+				}
+				return '0%'
 			},
 		},
 		computed: {
