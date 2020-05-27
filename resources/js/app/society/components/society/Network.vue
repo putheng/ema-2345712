@@ -12,11 +12,15 @@
 
 		<div class="page-title">
 			<span>Networks</span>
-			<router-link 
-				:to="{name: 'society-society-create'}"
-				class="btn btn-primary float-right">
-				Create
-			</router-link>
+			<div class="float-right">
+				<button class="btn btn-primary" @click.prevent="zoomIn">Zoom +</button>
+				<button class="btn btn-primary" @click.prevent="zoomOut">Zoom -</button>
+				<router-link 
+					:to="{name: 'society-society-create'}"
+					class="btn btn-primary">
+					Create
+				</router-link>
+			</div>
 		</div>
 
 	</header>
@@ -33,7 +37,7 @@
 		</div>
 		<section class="management-hierarchy">
 		<div class="hv-container">
-			<div class="hv-wrapper">
+			<div class="hv-wrapper" :style="{'transform': 'scale('+ scal +')'}">
 				<!-- Key component -->
 				<div class="hv-item">
 					<div class="hv-item-parent">
@@ -117,7 +121,8 @@
 				breadcrumb: [],
 				isCreating: false,
 				agent: [],
-				q: 'EMA0000'
+				q: 'EMA0000',
+				scal: 1
 			}
 		},
 		components: {
@@ -132,6 +137,14 @@
 				let r = await axios.get(`sociaty/show/members?q=${this.q}`)
 
 				this.agents = r.data.data
+			},
+
+			zoomOut(){
+				this.scal = Number(this.scal) - 0.1
+			},
+
+			zoomIn(){
+				this.scal = Number(this.scal) + 0.1
 			},
 
 			async fetch(){
