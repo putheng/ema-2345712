@@ -34,7 +34,10 @@ class Product extends Model
         parent::boot();
 
         static::creating(function($model){
-            $model->tax_price = self::getVatPrice($model->sale_price->amount());
+            $price = $model->sale_price->amount();
+
+            // $model->tax_price = self::getVatPrice($model->sale_price->amount());
+            $model->tax_price = $price + ($price * 0.1);
 
             $model->slug = str_slug($model->name) .'-'. time() .'.html';
         });

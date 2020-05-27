@@ -83,7 +83,7 @@ class Cart
     public function subtotal()
     {
         $subtotal = $this->user->cart->sum(function ($product) {
-            return $product->sale_price->amount() * $product->pivot->quantity;
+            return $product->tax_price->amount() * $product->pivot->quantity;
         });
 
         return new Money($subtotal);
