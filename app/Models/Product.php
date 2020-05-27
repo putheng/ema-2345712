@@ -35,8 +35,6 @@ class Product extends Model
 
         static::creating(function($model){
             $price = $model->sale_price->amount();
-
-            // $model->tax_price = self::getVatPrice($model->sale_price->amount());
             $model->tax_price = $price + ($price * 0.1);
 
             $model->slug = str_slug($model->name) .'-'. time() .'.html';
@@ -44,8 +42,6 @@ class Product extends Model
 
         static::updating(function($model){
             $price = $model->sale_price->amount();
-
-            // $model->tax_price = self::getVatPrice($model->sale_price->amount());
             $model->tax_price = $price + ($price * 0.1); 
         });
     }

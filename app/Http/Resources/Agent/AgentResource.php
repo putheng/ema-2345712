@@ -22,7 +22,7 @@ class AgentResource extends JsonResource
             'level' => $this->level,
             'status' => $this->status,
             'child' => $this->child_count,
-            'limitedExceded' => $this->child_count == (int) optional(get_level($this->level))->value,
+            'limitedExceded' => $this->child_count >= (int) optional(get_level($this->level))->value,
             'user_id' => $this->user_id,
             'avatar' => $this->avatar(),
             'children' => AgentsResource::collection($this->children)
