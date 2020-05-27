@@ -375,7 +375,7 @@
 					variations: this.variations
 				})
 					.then((response) => {
-						this.$router.push({name: 'store-product'})
+						this.$router.push({name: 'store-products'})
 						this.loading = false
 					})
 					.catch((errors) => {

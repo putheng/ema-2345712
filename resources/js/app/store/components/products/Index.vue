@@ -29,7 +29,11 @@
 											<h5>
 												<a :href="'/product/'+ product.slug +'/show'" target="_blank">{{ product.name }}</a>
 											</h5>
-											<h5 class="text-info">{{ product.formattedPrice }}</h5>
+											<h6 class="text-info">
+												<span>{{ product.price }}</span> |
+												<span>{{ product.sale_price }}</span> |
+												<span>{{ product.tax_price }}</span>
+											</h6>
 										</td>
 										<td>
 											<router-link 
