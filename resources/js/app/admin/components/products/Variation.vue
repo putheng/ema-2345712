@@ -5,16 +5,23 @@
 				<h1 class="page-title">
 					<span>Product Variation</span>
 
-					<button 
-						class="btn btn-success btn-lg float-right" 
-						@click.prevent="saveChange"
-						:disabled="loading"
-					>
-						<span v-if="loading" 
-							class="spinner-border spinner-border-sm"
-							role="status" aria-hidden="true"></span>
-						Save Changes
-					</button>
+					<div class="float-right">
+						<button 
+							class="btn btn-success btn-lg" 
+							@click.prevent="saveChange"
+							:disabled="loading"
+						>
+							<span v-if="loading" 
+								class="spinner-border spinner-border-sm"
+								role="status" aria-hidden="true"></span>
+							Create Now
+						</button>
+
+						<button @click.prevent="updateChange" class="btn btn-success btn-lg">
+							
+							Update
+						</button>
+					</div>
 				</h1>
 				
 			</header>
@@ -358,36 +365,44 @@
 			async saveChange(){
 				this.loading = true
 
-				if(this.product.variations.length != 0 && this.product.variations.length == undefined){
-					let r = await axios.post(`products/${this.$route.params.slug}/variations/edit`, {
-						variations: this.product.variations
-					})
-				}
+				// if(this.product.variations.length != 0 && this.product.variations.length == undefined){
+				// 	let r = await axios.post(`products/${this.$route.params.slug}/variations/edit`, {
+				// 		variations: this.product.variations
+				// 	})
+				// }
 
 				axios.post(`products/${this.$route.params.slug}/variations`, {
 					variations: this.variations
 				})
 					.then((response) => {
-						this.$router.push({name: 'suppliers-product'})
+						this.$router.push({name: 'admin-products'})
 						this.loading = false
 					})
 					.catch((errors) => {
 						this.loading = false
 					})
 			},
+			async updateChange(){
+				let r = await axios.post(`products/${this.$route.params.slug}/variations/edit`, {
+					variations: this.product.variations
+				})
+			},
 			saleVat(sale_price){
-				return parseInt(sale_price) + (parseInt(sale_price) * 0.1)	
+				return Number(sale_price) + (Number(sale_price) * 0.1)	
 			},
 			comp(sale_price, price){
-				return parseInt(sale_price) - parseInt(price)
+				return Number(sale_price) - Number(price)
 			},
-			income(sale_price, price){
-				
-				let p = (sale_price - price) / price
+			income(sale_price, price)
+			{
+				if(sale_price != 0){
+					let p = (Number(sale_price) - Number(price)) / Number(price)
 
-				let t = p * 100
+					let t = p * 100
 
-				return t + '%'
+					return t + '%'
+				}
+				return '0%'
 			},
 		},
 		computed: {

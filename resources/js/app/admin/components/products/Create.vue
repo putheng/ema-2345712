@@ -102,10 +102,10 @@
 				errors: 'getValidationErrors'
 			}),
 			comp(){
-				return this.sale_price - this.price
+				return Number(this.sale_price) - Number(this.price)
 			},
 			vat(){
-				return parseInt(this.sale_price) + (parseInt(this.sale_price) * 0.1)
+				return Number(this.sale_price) + (Number(this.sale_price) * 0.1)
 			},
 			saleVat(){
 				return Number(this.sale_price) + (Number(this.sale_price) * 0.1)

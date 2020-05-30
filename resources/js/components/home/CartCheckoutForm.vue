@@ -30,7 +30,7 @@
 					</li>
 					<li class="d-flex justify-content-between align-items-center">
 						<span class="mr-2">Delivery:</span>
-						<span class="text-right font-weight-medium">$7.<small>00</small></span>
+						<span class="text-right font-weight-medium">$0.<small>00</small></span>
 					</li>
 				</ul>
 				<h3 class="font-weight-normal text-center my-4 py-2">

@@ -21,7 +21,7 @@ class ProductIndexResource extends JsonResource
             'in_wishlist' => $this->inWishlist(),
             'description' => $this->description,
             'price' => $this->formattedPrice,
-            'sale_price' => $this->formattedSalePrice,
+            'sale_price' => $this->formattedTaxPrice,
             'stock_count' => $this->stockCount(),
             'in_stock' => $this->inStock(),
             'images' => ImageResource::collection($this->image)
