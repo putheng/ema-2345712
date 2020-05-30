@@ -16,7 +16,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Product extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, CanBeScoped, HasPrice;
     
     protected $fillable = [
         'name',
@@ -26,8 +26,6 @@ class Product extends Model
         'publish',
         'sale_price'
     ];
-
-    use CanBeScoped, HasPrice;
 
     public static function boot()
     {
@@ -44,6 +42,16 @@ class Product extends Model
             $price = $model->sale_price->amount();
             $model->tax_price = $price + ($price * 0.1); 
         });
+    }
+
+    public function scopeIsNotBlock($q)
+    {
+        return $q->where('publish', '!=', 3);
+    }
+
+    public function scopeIsBlock($q)
+    {
+        return $q->where('publish', 3);
     }
 
     protected static function getVatPrice($price)

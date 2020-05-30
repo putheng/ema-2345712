@@ -94,6 +94,7 @@ Route::group(['middleware' => 'auth'], function(){
 		Route::delete('category/{category}', 'Admin\CategoryController@destroy');
 
 		Route::resource('supplier', 'Admin\SupplierController');
+		Route::resource('products', 'Admin\ProductsController');
 
 		Route::post('store/{store}/commission', 'Admin\StoreController@commission');
 		Route::post('store/{store}/approve', 'Admin\StoreController@approve');

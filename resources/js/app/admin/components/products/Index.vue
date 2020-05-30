@@ -20,8 +20,8 @@
 								<tbody>
 									<tr v-if="products.length" v-for="product in products">
 										<td>
-											<template v-if="product.images.length">
-												<img width="100" :src="product.images[0].url">	
+											<template v-if="product.image">
+												<img width="100" :src="product.image">	
 											</template>
 											
 										</td>
@@ -29,7 +29,11 @@
 											<h5>
 												<a :href="'/product/'+ product.slug +'/show'" target="_blank">{{ product.name }}</a>
 											</h5>
-											<h5 class="text-info">{{ product.formattedPrice }}</h5>
+											<h6 class="text-info">
+												<span>{{ product.price }}</span> |
+												<span>{{ product.sale_price }}</span> |
+												<span>{{ product.tax_price }}</span>
+											</h6>
 										</td>
 										<td class="text-center">
 											<router-link 
@@ -65,13 +69,13 @@
 		},
 		methods: {
 			async fetchProducts(){
-				let response = await axios.get(`products/product`)
+				let response = await axios.get(`admin/products`)
 
 				this.products = response.data.data
 			},
 			async deletePro(id){
 				if(confirm('Are you sure to delete this product ?')){
-					let r = await axios.delete(`products/product/${id}`)
+					let r = await axios.delete(`admin/products/${id}`)
 
 					this.products = r.data.data
 				}
