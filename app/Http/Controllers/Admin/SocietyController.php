@@ -6,6 +6,7 @@ use App\Http\Resources\Admin\SocietyResource;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Agent;
 
 class SocietyController extends Controller
 {
@@ -14,6 +15,21 @@ class SocietyController extends Controller
     	return SocietyResource::collection(
     		User::isSociety()->paginate(30)
     	);
+    }
+
+    public function filter(Request $request)
+    {
+        $agent = Agent::where('uuid', strtoupper($request->get('q', '')));
+
+        if($agent->count()){
+            return SocietyResource::collection(
+                User::where('id', $agent->first()->user_id)->get()
+            );
+        }
+
+        return SocietyResource::collection(
+            User::isSociety()->paginate(30)
+        );
     }
 
     public function update(Request $request, User $user)

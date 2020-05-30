@@ -81,6 +81,7 @@ Route::group(['middleware' => 'auth'], function(){
 		
 		Route::get('users', 'Admin\UserController@index');
 		Route::get('society', 'Admin\SocietyController@index');
+		Route::get('society/filter', 'Admin\SocietyController@filter');
 
 		Route::delete('society/{user}/delete', 'Admin\SocietyController@destroy');
 		Route::post('society/{user}/update', 'Admin\SocietyController@update');

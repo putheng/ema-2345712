@@ -6,6 +6,18 @@
 			</header>
 			<div class="page-section">
 				<div class="row">
+					<div class="col-md-2">
+						<div class="input-group mb-3">
+							<input v-model="q" type="text" class="form-control">
+							<div class="input-group-append">
+							<button 
+							@click.prevent="search"
+							class="btn btn-primary" 
+							type="button">Search</button>
+							</div>
+						</div>
+					</div>
+
 					<div class="col-md-12">
 						<div class="card card-fluid">
 							<div class="card-body">
@@ -57,7 +69,8 @@
 				users: [],
 				isShow: false,
 				isUpdate: false,
-				user: null
+				user: null,
+				q: 'EMA0000'
 			}
 		},
 		methods: {
@@ -73,6 +86,12 @@
 
 					this.users = r.data.data
 				}
+			},
+
+			async search(){
+				let r = await axios.get(`admin/society/filter?q=${this.q}`)
+
+				this.users = r.data.data
 			},
 
 			openModal(user){
