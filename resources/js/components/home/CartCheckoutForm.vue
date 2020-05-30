@@ -30,7 +30,12 @@
 					</li>
 					<li class="d-flex justify-content-between align-items-center">
 						<span class="mr-2">Delivery:</span>
-						<span class="text-right font-weight-medium">$0.<small>00</small></span>
+						<span class="text-right font-weight-medium" v-if="shippingMethods.length">
+							{{ shippingMethods[0].price }}
+						</span>
+						<span class="text-right font-weight-medium" v-else>
+							Please select a shipping address
+						</span>
 					</li>
 				</ul>
 				<h3 class="font-weight-normal text-center my-4 py-2">
@@ -96,6 +101,8 @@ export default {
 
 	watch: {
 		'form.address_id' (addressId) {
+			console.log(addressId)
+
 			this.getShippingMethodsForAddress(addressId).then(() => {
 			  this.setShipping(this.shippingMethods[0])
 			})
@@ -136,7 +143,7 @@ export default {
 					this.getCart()
 					this.submitting = false
 
-					window.location = r.data.data.dashboard + '/cart/order'
+					// window.location = r.data.data.dashboard + '/cart/order'
 				})
 
 	        } catch (e) {

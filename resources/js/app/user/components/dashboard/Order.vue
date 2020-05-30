@@ -13,8 +13,10 @@
 							<thead>
 								<th>Order #</th>
 								<th>Date Purchased</th>
-								<th>Status</th>
+								<th>Subtotal</th>
+								<th>Shipping</th>
 								<th>Total</th>
+								<th>Status</th>
 							</thead>
 							<tbody>
 								<tr v-if="orders.length" v-for="(order, i) in orders">
@@ -24,6 +26,10 @@
 										</a>
 									</td>
 									<td>{{ order.created_at }}</td>
+									<td>{{ order.subtotal }}</td>
+									<td>{{ order.shippingMethod.price }}</td>
+									<td>{{ order.total }}</td>
+
 									<td><span class="badge "
 										:class="{
 											'badge-warning': order.status == 'pending',
@@ -31,8 +37,8 @@
 											'badge-danger': order.status == 'payment_failed',
 											'badge-success': order.status == 'completed',
 										}"
-										>{{ order.status }}</span></td>
-									<td>{{ order.total }}</td>
+										>{{ order.status }}</span>
+									</td>
 								</tr>
 							</tbody>
 						</table>

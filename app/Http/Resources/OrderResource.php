@@ -20,7 +20,7 @@ class OrderResource extends JsonResource
             'status' => $this->status,
             'created_at' => $this->created_at->toDateTimeString(),
             'subtotal' => $this->subtotal->formatted(),
-            'total' => $this->total()->formatted(),
+            'total' => $this->total()->add($this->shippingMethod->price)->formatted(),
             'dashboard' => auth()->user()->dashboard(),
             
             'products' => ProductVariationOrderResource::collection(
