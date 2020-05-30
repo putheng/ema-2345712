@@ -6,19 +6,10 @@
 					<span>Product Variation</span>
 
 					<div class="float-right">
-						<button 
-							class="btn btn-success btn-lg" 
-							@click.prevent="saveChange"
-							:disabled="loading"
-						>
-							<span v-if="loading" 
+						<button @click.prevent="updateChange" class="btn btn-success btn-lg">
+							<span v-if="createLoading" 
 								class="spinner-border spinner-border-sm"
 								role="status" aria-hidden="true"></span>
-							Create Now
-						</button>
-
-						<button @click.prevent="updateChange" class="btn btn-success btn-lg">
-							
 							Update
 						</button>
 					</div>
@@ -159,6 +150,15 @@
 						</div>
 					</div>
 
+
+					<div class="col-md-12 text-right">
+						<button class="btn btn-success btn-lg"  @click.prevent="saveChange" :disabled="loading">
+							<span v-if="loading" 
+								class="spinner-border spinner-border-sm"
+								role="status" aria-hidden="true"></span>
+							Create
+						</button>
+					</div>
 					<div class="col-md-12">
 						<div class="card card-fluid" v-for="(variation, index) in variations">
 							<div class="card-body">

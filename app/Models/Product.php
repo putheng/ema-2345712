@@ -16,7 +16,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Product extends Model
 {
-    use SoftDeletes, CanBeScoped, HasPrice;
+    use CanBeScoped, HasPrice;
     
     protected $fillable = [
         'name',
