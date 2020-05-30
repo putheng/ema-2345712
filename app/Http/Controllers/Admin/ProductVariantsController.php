@@ -61,6 +61,11 @@ class ProductVariantsController extends Controller
     	]);
     }
 
+    protected function getVatPrice($price)
+    {
+        return $price + ($price * 0.1);
+    }
+
     public function update(Request $request, Product $product)
     {
         collect($request->variations)->each(function($value, $key) use ($product){
@@ -72,6 +77,7 @@ class ProductVariantsController extends Controller
                     'price' => currency_convert($val['pricex'])->getAmount(),
                     'weight' => $val['weight'],
                     'sale_price' => currency_convert($val['sale_pricex'])->getAmount(),
+                    'tax_price' => currency_convert($this->getVatPrice($val['sale_pricex']))->getAmount(),
                 ]);
 
                 Stock::where('product_variation_id', $val['id'])->update([

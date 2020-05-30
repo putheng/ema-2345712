@@ -17,7 +17,7 @@ class ProductVariation extends Model
     use HasPrice;
 
     protected $fillable = [
-        'name', 'price', 'sale_price', 'weight'
+        'name', 'price', 'sale_price', 'weight', 'tax_price'
     ];
 
     public static function boot(){
@@ -27,9 +27,9 @@ class ProductVariation extends Model
             $model->tax_price = self::getVatPrice($model->sale_price->amount());
         });
 
-        static::updating(function($model){
-            $model->tax_price = self::getVatPrice($model->sale_price->amount());
-        });
+        // static::updating(function($model){
+        //     $model->tax_price = self::getVatPrice($model->sale_price->amount());
+        // });
     }
 
     protected static function getVatPrice($price)
