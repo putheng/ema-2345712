@@ -39,9 +39,10 @@ class ProductVariation extends Model
 
     public function getPriceAttribute($value)
     {
-        if ($value === null) {
-            return $this->product->price;
-        }
+        // dd($value);
+        // if ($value === null) {
+        //     return $this->product->price;
+        // }
 
         return new Money($value);
     }
