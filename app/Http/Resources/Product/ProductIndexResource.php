@@ -22,9 +22,9 @@ class ProductIndexResource extends JsonResource
             'description' => strip_tags($this->description),
             'in_stock' => $this->inStock(),
             'formattedPrice' => $this->formattedPrice,
-            'price' => '$'. currency_format($this->price->amount()),
-            'sale_price' => '$'. currency_format($this->sale_price->amount()),
-            'tax_price' => '$'. currency_format($this->tax_price->amount()),
+            'price' => currency_format($this->price->amount()),
+            'sale_price' => currency_format($this->sale_price->amount()),
+            'tax_price' => currency_format($this->tax_price->amount()),
             'category' => optional($this->category()->first())->id,
             'publish' => (bool) $this->publish,
             'images' => ImageResource::collection($this->image)
