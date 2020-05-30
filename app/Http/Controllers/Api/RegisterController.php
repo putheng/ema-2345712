@@ -17,6 +17,10 @@ class RegisterController extends Controller
     {
         $user = User::create($request->only('email', 'name', 'password'));
 
+        $user->customer()->create([
+            'phone' => $request->phone
+        ]);
+
         $this->guard()->login($user);
 
         $user->update(['type' => 'dashboard']);
