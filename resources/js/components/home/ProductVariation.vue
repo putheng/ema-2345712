@@ -14,7 +14,7 @@
             {{ v.name }}
 
             <template v-if="v.tax_price">
-              ({{ v.tax_price }})
+              ({{ v.sale_price }})
             </template>
 
 
