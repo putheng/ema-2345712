@@ -10,7 +10,7 @@
 						<div class="card card-fluid">
 							<div class="card-body">
 								<h3 class="card-title"> Add Shipping Method</h3>
-								<app-form action="admin/shipping">
+								<app-form @created="created" action="admin/shipping">
 									<div class="row">
 										<div class="col-md-4">
 											<app-input name="name" label="Name" />		
@@ -39,12 +39,16 @@
 										<thead>
 											<th>#</th>
 											<th>Name</th>
+											<th>Price</th>
+											<th>Place</th>
 											<th>Action</th>
 										</thead>
 										<tbody>
 											<tr v-for="shipping in shippings">
 												<td>{{ shipping.id }}</td>
 												<td>{{ shipping.name }}</td>
+												<td>{{ shipping.price }}</td>
+												<td>{{ shipping.place }}</td>
 												<td>
 													<a href="#">Edit</a> |
 													<a @click.prevent="deleteShipping(shipping.id)" href="#">Delete</a>
@@ -81,7 +85,7 @@
 				this.shippings = s.data.data
 			},
 			created(r){
-				this.cities = r.data.data
+				this.shippings = r.data.data
 			},
 			async deleteShipping(id){
 				if(confirm('Are sure to delete this Shipping?')){

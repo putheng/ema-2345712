@@ -21,7 +21,7 @@
 									<tbody>
 										<tr v-for="user in users">
 											<td>{{ user.uuid }}</td>
-											<td>{{ user.first }} {{ user.last }}</td>
+											<td>{{ user.name }}</td>
 											<td>{{ user.email }}</td>
 											<td>{{ user.phone }}</td>
 											<td>
