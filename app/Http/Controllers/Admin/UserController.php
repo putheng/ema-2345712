@@ -12,7 +12,7 @@ class UserController extends Controller
     public function index()
     {
     	return UserResource::collection(
-    		User::paginate(30)
+    		User::isCustomer()->paginate(30)
     	);
     }
 
@@ -38,9 +38,10 @@ class UserController extends Controller
     	$user->delete();
 
     	return UserResource::collection(
-    		User::paginate(30)
+    		User::isCustomer()->paginate(30)
     	)->additional([
     		'success' => true,
+            'message' => 'User deleted.'
     	]);
     }
 }

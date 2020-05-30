@@ -115,7 +115,8 @@
 				agents:[],
 				breadcrumb: [],
 				isCreating: false,
-				agent: []
+				agent: [],
+				q: ''
 			}
 		},
 		components: {

@@ -15,7 +15,7 @@
 										<th>#</th>
 										<th>Name</th>
 										<th>Email</th>
-										<th>UUID</th>
+										<th>Phone</th>
 										<th>Action</th>
 									</thead>
 									<tbody>
@@ -23,7 +23,7 @@
 											<td>{{ user.id }}</td>
 											<td>{{ user.name }}</td>
 											<td>{{ user.email }}</td>
-											<td>{{ user.uuid }}</td>
+											<td>{{ user.phone }}</td>
 											<td>
 												<a href="#" @click.prevent="deletex(user)">Delete</a>
 												<div>

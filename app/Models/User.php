@@ -11,6 +11,7 @@ use App\Models\PaymentMethod;
 use App\Models\Product;
 use App\Models\Track;
 use App\Models\Society;
+use App\Models\Customer;
 use App\Models\Supplier;
 use App\Models\Store;
 use App\Models\{Transfer, Ticket};
@@ -54,6 +55,11 @@ class User extends Authenticatable implements JWTSubject
     public function scopeIsStore($q)
     {
         return $q->where('type', 'store');
+    }
+
+    public function scopeIsCustomer($q)
+    {
+        return $q->where('type', 'dashboard');
     }
 
     public function scopeIsSupplier($q)
@@ -132,6 +138,11 @@ class User extends Authenticatable implements JWTSubject
     public function tickets()
     {
         return $this->hasMany(Ticket::class);
+    }
+
+    public function customer()
+    {
+        return $this->hasOne(Customer::class);
     }
 
     public function variations()

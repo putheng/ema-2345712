@@ -22,16 +22,18 @@ class SociaryRegisterController extends Controller
         $this->guard()->login($user);
 
         if($request->sponsor){
+            $user->update(['type' => 'society']);
+            $user->assignRole('society');
+
         	event(new AgentCreated($user, $request->sponsor, $request->sponsor));
         }else{
-            Agent::create([
-                'user_id' => $user->id,
-                'level' => 1
+            $user->customer()->create([
+                'phone' => $request->phone
             ]);
-        }
 
-        $user->update(['type' => 'society']);
-        $user->assignRole('society');
+            $user->update(['type' => 'dashboard']);
+            $user->assignRole('customer');
+        }
 
         return (new PrivateUserResource($user))
         	->additional([
