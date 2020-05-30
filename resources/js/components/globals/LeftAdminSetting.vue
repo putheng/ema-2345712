@@ -29,6 +29,12 @@
 						<router-link class="menu-link" :to="{name: 'admin-products'}">
 							View
 						</router-link>
+						<router-link class="menu-link" :to="{name: 'admin-products-shipping'}">
+							Shipping Method
+						</router-link>
+						<router-link class="menu-link" :to="{name: 'admin-products-shippingplace'}">
+							Shipping Place
+						</router-link>
 					</li>
 				</ul>
 				<!-- /child menu -->
@@ -142,8 +148,7 @@
 						<router-link class="menu-link" :to="{ name:'admin-profile-password' }">
 							Password
 						</router-link>
-						<a @click.prevent="submit" class="menu-link">
-							<span class="menu-icon oi oi-account-logout"></span>
+						<a href="#" @click.prevent="submit" class="menu-link">
 							<span class="menu-text">Logout</span>
 
 							<form id="logout-form-b" action="/api/v1/account/logout" method="POST" style="display: none;">

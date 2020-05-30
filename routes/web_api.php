@@ -99,6 +99,9 @@ Route::group(['middleware' => 'auth'], function(){
 
 		Route::resource('transfer', 'Admin\TransferController');
 
+		Route::resource('shipping', 'Admin\ShippingController');
+		Route::resource('city', 'Admin\PlaceController');
+
 		Route::resource('roles', 'Admin\RoleController');
 		Route::resource('permissions', 'Admin\PermissionController');
 
