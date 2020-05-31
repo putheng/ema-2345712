@@ -28,11 +28,14 @@ class StoreAgentRequest extends FormRequest
             'name' => 'required',
             'password' => 'required|min:6|max:12',
             'email' => 'required|unique:users,email',
-            'placement' =>  'exists:agents,uuid|nullable',
+            'placement' =>  [
+                'exists:agents,uuid',
+                'nullable',
+                new CheckAgentExceedLimit()
+            ],
             'sponsor' =>  [
                 'required', 
-                'exists:agents,uuid',
-                new CheckAgentExceedLimit()
+                'exists:agents,uuid'
             ]
         ];
     }
