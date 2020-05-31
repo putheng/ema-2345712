@@ -52,7 +52,12 @@
 
 					<div class="form-group">
 						<label for="placement" class="col-form-label">Placement Tree</label>
-						<input v-model="form.placement" name="placement" id="placement" type="text" class="form-control">
+						<input :class="{'is-invalid': validation['placement']}"
+							v-model="form.placement" name="placement" id="placement" type="text" class="form-control">
+						<div class="invalid-feedback" v-if="validation['placement']">
+				            <i class="fa fa-exclamation-circle fa-fw"></i>
+				            {{ validation['placement'][0] }}
+				        </div>
 					</div>
 
 					<div class="row">
