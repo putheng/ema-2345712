@@ -8,6 +8,7 @@ use App\ViewComposers\{
     CategoryComposer,
     LeftMenuComposer,
     FooterCategory,
+    RecentReleases,
     DiscountProduct,
     BestSale
 };
@@ -34,6 +35,11 @@ class ViewComposerServicesProvider extends ServiceProvider
         View::composer(
             ['product.partials.aside'], 
             LeftMenuComposer::class
+        );
+
+        View::composer(
+            ['product.partials.releases'], 
+            RecentReleases::class
         );
 
         View::composer(
