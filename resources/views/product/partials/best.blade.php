@@ -20,7 +20,7 @@
               <img style="width: 220px; height: 254px" src="{{ $product->image->first()->product() }}" alt="Product">
             </a>
             <div class="card-body py-2">
-              <a class="product-meta d-block font-size-xs pb-1" href="#">{{ $product->category->name }}</a>
+              <a class="product-meta d-block font-size-xs pb-1" href="{{ route('show.product', $product) }}">{{ $product->category->name }}</a>
               <h3 class="product-title font-size-sm">
                 <a href="{{ route('show.product', $product) }}">{{ $product->name }}</a>
               </h3>
