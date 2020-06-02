@@ -14,10 +14,10 @@
 						<br/><br/>
 						<div class="row">
 							<div class="col-md-6">
-								<input-binding disabled v-model="user.first" name="first_name" label="First name"/>
+								<input-binding v-model="user.first" name="first_name" label="First name"/>
 							</div>
 							<div class="col-md-6">
-								<input-binding disabled v-model="user.last" name="last_name" label="Last name"/>
+								<input-binding v-model="user.last" name="last_name" label="Last name"/>
 							</div>
 						</div>
 

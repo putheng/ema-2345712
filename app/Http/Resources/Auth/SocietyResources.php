@@ -36,7 +36,7 @@ class SocietyResources extends JsonResource
 
     protected function getImage()
     {
-        if($this->image){
+        if($this->image->count()){
             $img = $this->image()->orderBy('id', 'desc')->first();
 
             return [
