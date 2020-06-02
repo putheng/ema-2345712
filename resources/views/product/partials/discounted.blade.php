@@ -20,7 +20,7 @@
               <i class="czi-heart"></i>
             </button> --}}
             <a class="card-img-top d-block overflow-hidden" href="{{ route('show.product', $product) }}">
-              <img src="{{ $product->image->first()->product() }}" alt="Product">
+              <img style="width: 220px; height: 254px" src="{{ $product->image->first()->product() }}" alt="Product">
             </a>
             <div class="card-body py-2">
               <a class="product-meta d-block font-size-xs pb-1" href="#">{{ $product->category->name }}</a>
@@ -40,7 +40,7 @@
         </div>
       @endforeach
 
-      
+
     </div>
   </div>
 </section>
