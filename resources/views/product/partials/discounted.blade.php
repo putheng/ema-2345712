@@ -29,8 +29,8 @@
               </h3>
 
               <div class="product-price">
-                <span class="text-accent">{{ $product->formattedPrice }}</span>
-                <del class="font-size-sm text-muted">{{ $product->formattedTaxPrice }}</del>
+                <span class="text-accent">{{ $product->formattedTaxPrice }}</span>
+                {{-- <del class="font-size-sm text-muted">{{ $product->formattedTaxPrice }}</del> --}}
               </div>
             </div>
             {{-- <div class="product-floating-btn">
