@@ -35,7 +35,7 @@
 								<a href="grocery-single.html">{{ $product->name }}</a>
 							</h3>
 							<div class="product-price">
-								<span class="text-accent">{{ $product->formattedSalePrice }}</span>
+								<span class="text-accent">{{ $product->formattedTaxPrice }}</span>
 							</div>
 						</div>
 					</div>
