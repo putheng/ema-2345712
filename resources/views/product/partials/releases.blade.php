@@ -44,13 +44,13 @@
                     </a>
                   </div>
 
-                  <div class="star-rating">
+                  {{-- <div class="star-rating">
                     <i class="sr-star czi-star-filled active"></i>
                     <i class="sr-star czi-star-filled active"></i>
                     <i class="sr-star czi-star-filled active"></i>
                     <i class="sr-star czi-star-filled active"></i>
                     <i class="sr-star czi-star-filled active"></i>
-                  </div>
+                  </div> --}}
                 </div>
                 <h3 class="product-title font-size-sm mb-2">
                   <a href="{{ route('show.product', $product) }}">{{ $product->name }}</a>
