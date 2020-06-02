@@ -1,7 +1,7 @@
 <template>
 <div class="page-inner">
 	<header class="page-title-bar">
-		<h1 class="page-title">Sales</h1>
+		<h1 class="page-title">Orders</h1>
 	</header>
 	<div class="page-section">
 		<div class="row">

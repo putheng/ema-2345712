@@ -52,7 +52,7 @@ class ViewComposerServicesProvider extends ServiceProvider
         );
 
         View::composer(
-            ['home.partials.discount'], 
+            ['product.partials.discounted'], 
             DiscountProduct::class
         );
     }

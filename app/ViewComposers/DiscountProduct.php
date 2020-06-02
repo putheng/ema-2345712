@@ -9,7 +9,10 @@ class DiscountProduct
 {
     public function compose(View $view)
     {
-    	$products = Product::with('image', 'category')->whereIn('id', [20, 21, 22, 23, 24, 25, 26])->get();
+    	$products = Product::with('category')
+    		->inRandomOrder()
+		    ->limit(10)
+		    ->get();
 
         $view->with('products', $products);
     }
