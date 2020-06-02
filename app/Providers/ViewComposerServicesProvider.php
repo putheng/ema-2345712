@@ -47,7 +47,7 @@ class ViewComposerServicesProvider extends ServiceProvider
         );
 
         View::composer(
-            ['home.partials.best-sale'], 
+            ['product.partials.best'], 
             BestSale::class
         );
 
