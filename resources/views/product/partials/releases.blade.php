@@ -1,6 +1,6 @@
 <section class="pb-5 mb-lg-3">
       <!-- Heading-->
-      <div class="d-flex flex-wrap justify-content-between align-items-center pt-1 border-bottom pb-4 mb-4">
+      {{-- <div class="d-flex flex-wrap justify-content-between align-items-center pt-1 border-bottom pb-4 mb-4">
         <h2 class="h3 mb-0 pt-3 mr-2">The most recent releases</h2>
         <div class="pt-3">
           <select class="custom-select">
@@ -13,7 +13,7 @@
             <option>Add-Ons</option>
           </select>
         </div>
-      </div>
+      </div> --}}
       <!-- Grid-->
       <div class="row pt-2 mx-n2">
         <!-- Product-->
