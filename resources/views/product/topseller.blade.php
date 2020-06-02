@@ -32,7 +32,7 @@
 								{{ $product->category->name }}
 							</a>
 							<h3 class="product-title font-size-sm">
-								<a href="grocery-single.html">{{ $product->name }}</a>
+								<a href="{{ route('show.product', $product) }}">{{ $product->name }}</a>
 							</h3>
 							<div class="product-price">
 								<span class="text-accent">{{ $product->formattedTaxPrice }}</span>
