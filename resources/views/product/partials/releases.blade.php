@@ -66,6 +66,9 @@
                   </div> --}}
                   <div class="bg-faded-accent text-accent rounded-sm py-1 px-2">
                     {{ $product->formattedTaxPrice }}
+                    @if($product->formattedMarketPrice)
+                      <del class="font-size-sm text-muted">{{ $product->formattedMarketPrice }}</del>
+                    @endif
                   </div>
                 </div>
               </div>
