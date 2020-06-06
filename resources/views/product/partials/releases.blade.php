@@ -37,7 +37,7 @@
                 <div class="d-flex flex-wrap justify-content-between align-items-start pb-2">
                   <div class="text-muted font-size-xs mr-1">
                     by <a class="product-meta font-weight-medium" href="#">
-                      {{ $product->user->name }}
+                      {{ $product->ownerName }}
                     </a>in 
                     <a class="product-meta font-weight-medium" href="#">
                       {{ $product->category->name }}

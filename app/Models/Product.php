@@ -49,6 +49,15 @@ class Product extends Model
         return $q->where('publish', '!=', 3);
     }
 
+    public function getOwnerNameAttribute()
+    {
+        if($this->user->type == 'store'){
+            return $this->user->store->name;
+        }
+
+        return 'E-Market Asia Store';
+    }
+
     public function scopeIsBlock($q)
     {
         return $q->where('publish', 3);
