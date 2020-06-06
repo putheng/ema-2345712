@@ -19,7 +19,7 @@
         <!-- Product-->
 
         @foreach($products as $product)
-          <div class="col-lg-3 col-md-4 col-sm-6 px-2 mb-grid-gutter">
+          <div class="col-lg-3 col-md-3 col-sm-6 px-2 mb-grid-gutter">
             <div class="card product-card-alt">
               <div class="product-thumb">
                 {{-- <button class="btn-wishlist btn-sm" type="button"><i class="czi-heart"></i></button>
@@ -32,7 +32,7 @@
                 </div> --}}
 
                   <a class="product-thumb-overlay" href="{{ route('show.product', $product) }}"></a>
-                    <img style="width: 332px; height: 303px" src="{{ $product->image->first()->product() }}" alt="Product">
+                    <img style="width: 220px; height: 224px; margin: auto;" src="{{ $product->image->first()->product() }}" alt="Product">
 
                 </div>
               <div class="card-body">
