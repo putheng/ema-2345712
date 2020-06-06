@@ -5,8 +5,8 @@
 				<h1 class="page-title">
 					<span>Product Variation</span>
 
-					<div class="float-right" v-if="product.variations && product.variations.length">
-						<button @click.prevent="updateChange" class="btn btn-success btn-lg">
+					<div class="float-right" v-if="product.variations">
+						<button @click.prevent="updateChange" class="btn btn-success btn-lg" v-if="product.variations.length != 0">
 							<span v-if="createLoading" 
 								class="spinner-border spinner-border-sm"
 								role="status" aria-hidden="true"></span>
