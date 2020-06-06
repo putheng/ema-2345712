@@ -18,8 +18,9 @@
 	<body class="bg-secondary">
 		<div id="app">
 			@include('home.partials.sign-model')
-			@include('home.partials.header')
-			<main style="padding-top: 4rem;">
+			@include('product.partials.header')
+			@include('product.partials.aside')
+			<main class="sidebar-fixed-enabled" style="padding-top: 5rem;">
 				@yield('content')
 				@include('home.partials.footer')
 			</main>

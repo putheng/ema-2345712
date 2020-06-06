@@ -80,9 +80,18 @@ class ProductVariantsController extends Controller
                     'tax_price' => currency_convert($this->getVatPrice($val['sale_pricex']))->getAmount(),
                 ]);
 
-                Stock::where('product_variation_id', $val['id'])->update([
-                    'quantity' => $val['stock']
-                ]);
+                $stock = Stock::where('product_variation_id', $val['id'])->first();
+
+                if($stock){
+                    $stock->update([
+                        'quantity' => $val['stock']
+                    ]);
+                }else{
+                    $vari->stocks()->create([
+                        'quantity' => $val['stock']
+                    ]);
+                }
+
             });
         });
 

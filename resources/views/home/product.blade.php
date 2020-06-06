@@ -1,4 +1,4 @@
-@extends('product.layout')
+@extends('layouts.main')
 
 @section('content')
 <section class="px-lg-3 pt-4">
@@ -12,7 +12,9 @@
 				<li class="breadcrumb-item text-nowrap">
 					<a href="{{ route('categoryshow', $product->category) }}">{{ $product->category->name }}</a>
 				</li>
-				<li class="breadcrumb-item text-nowrap active" aria-current="page">{{ $product->name }}</li>
+				<li class="breadcrumb-item text-nowrap active" aria-current="page">
+					{{ $product->name }}
+				</li>
 			</ol>
 		</nav>
 		<!-- Content-->
@@ -39,7 +41,7 @@
 				</div>
 			</div>
 
-			<div class="col-xl-5 px-2 mb-3">
+			<div class="col-xl-5 px-2 mb-3" id="app">
 				<div class="h-100 bg-light rounded-lg py-5 px-4 px-sm-5">
 					<a class="product-meta d-block font-size-sm pb-2" 
 						href="{{ route('categoryshow', $product->category) }}">
@@ -59,7 +61,16 @@
 						<br>
 					</div>	
 
-					<product-variations slug="{!! $product->slug !!}"/>
+					@if(auth()->check())
+						<product-variations slug="{!! $product->slug !!}"/>
+					@else
+						<a href="#signin-modal" data-toggle="modal" class="btn btn-link">
+							Login
+						</a>
+						<div>to buy this product</div>
+					@endif
+
+					
 
 				</div>
 			</div>
