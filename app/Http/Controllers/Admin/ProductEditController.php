@@ -22,7 +22,7 @@ class ProductEditController extends Controller
         $product->sale_price = currency_convert($request->sale_price)->getAmount();
     	$product->market_price = currency_convert($request->market_price)->getAmount();
     	$product->description = nl2br(strip_tags($request->description));
-    	$product->user()->associate($request->user());
+    	// $product->user()->associate($request->user());
         $product->category_id = $request->category;
         
     	$product->save();
