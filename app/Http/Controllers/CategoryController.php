@@ -27,7 +27,7 @@ class CategoryController extends Controller
 
     public function filter(Request $request)
     {
-        $products = Product::with(['variations.stock'])
+        $products = Product::with(['variations.stock', 'category', 'image'])
             ->withScopes($this->scopes())->paginate(20);
 
         $category = $request->category;
@@ -38,7 +38,7 @@ class CategoryController extends Controller
     protected function scopes()
     {
         return [
-            'category' => new CategoryScope()
+            'category' => new CategoryScope(),
         ];
     }
 }
