@@ -14,13 +14,13 @@
       
       @foreach($products as $product)
         <div>
-          <div class="card product-card card-static pb-3">
+          <div class="card product-card card-static pb-3 text-center">
             {{-- <span class="badge badge-danger badge-shadow">Sale</span>
             <button class="btn-wishlist btn-sm" type="button" data-toggle="tooltip" data-placement="left" title="Add to wishlist">
               <i class="czi-heart"></i>
             </button> --}}
             <a class="card-img-top d-block overflow-hidden" href="{{ route('show.product', $product) }}">
-              <img style="width: 220px; height: 254px" src="{{ $product->image->first()->product() }}" alt="Product">
+              <img style="width: 220px; height: 254px; margin: auto;" src="{{ $product->image->first()->product() }}" alt="Product">
             </a>
             <div class="card-body py-2">
               <a class="product-meta d-block font-size-xs pb-1" href="{{ route('show.product', $product) }}">{{ $product->category->name }}</a>
