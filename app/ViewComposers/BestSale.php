@@ -9,7 +9,9 @@ class BestSale
 {
     public function compose(View $view)
     {
-    	$products = Product::with('image', 'category')->whereIn('id', [13, 14, 15, 16, 17, 18, 19])->get();
+    	$products = Product::with('image', 'category')
+    		->whereIn('id', [13, 14, 15, 16, 17, 18, 19])
+    		->get();
 
         $view->with('products', $products);
     }

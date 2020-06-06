@@ -43,9 +43,9 @@
 									<span class="text-accent">{{ $product->formattedTaxPrice }}</span>
 								</div>
 							</div>
-							<div class="product-floating-btn">
+							{{-- <div class="product-floating-btn">
 								<button class="btn btn-primary btn-shadow btn-sm" type="button" data-toggle="toast" data-target="#cart-toast">+<i class="czi-cart font-size-base ml-1"></i></button>
-							</div>
+							</div> --}}
 						</div>
 					</div>
 				@endforeach
@@ -56,7 +56,7 @@
 		<div class="pt-4 pb-5 mb-4">
 			<!-- Pagination-->
 			<nav class="d-flex justify-content-between pt-2" aria-label="Page navigation">
-				{{ $products->appends(['category' => request()->category])->links() }}
+				{{ $products->links() }}
 			</nav>
 		</div>
 		<!-- Toast: Added to Cart-->

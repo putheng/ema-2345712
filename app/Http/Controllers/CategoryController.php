@@ -12,7 +12,15 @@ class CategoryController extends Controller
 {
     public function index(Request $request, Category $category)
     {
-    	$products = $category->products()->paginate(10);
+        $products = $category->products()->paginate(20);
+
+        if($category->parent_id == null){
+            $ids = $category->children->pluck('id');
+
+            $products = Product::whereIn('category_id', $ids)
+                ->with('category')
+                ->paginate(10);
+        }
 
     	return view('product.category', compact('products', 'category'));
     }
@@ -20,7 +28,7 @@ class CategoryController extends Controller
     public function filter(Request $request)
     {
         $products = Product::with(['variations.stock'])
-            ->withScopes($this->scopes())->paginate(10);
+            ->withScopes($this->scopes())->paginate(20);
 
         $category = $request->category;
 

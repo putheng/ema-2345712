@@ -35,7 +35,7 @@
 								<img style="width: 220px; height: 254px" src="{{ optional($product->thumbnail())->product() }}" alt="Product">
 							</a>
 							<div class="card-body py-2">
-								<a class="product-meta d-block font-size-xs pb-1" href="{{ route('category.filter', $category) }}">{{ $category }}</a>
+								<a class="product-meta d-block font-size-xs pb-1" href="{{ route('categoryshow', $product->category) }}">{{ $product->category->name }}</a>
 								<h3 class="product-title font-size-sm">
 									<a href="{{ route('show.product', $product) }}">{{ $product->name }}</a>
 								</h3>
@@ -43,9 +43,9 @@
 									<span class="text-accent">{{ $product->formattedTaxPrice }}</span>
 								</div>
 							</div>
-							<div class="product-floating-btn">
+							{{-- <div class="product-floating-btn">
 								<button class="btn btn-primary btn-shadow btn-sm" type="button" data-toggle="toast" data-target="#cart-toast">+<i class="czi-cart font-size-base ml-1"></i></button>
-							</div>
+							</div> --}}
 						</div>
 					</div>
 				@endforeach
