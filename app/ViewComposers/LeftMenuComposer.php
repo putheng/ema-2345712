@@ -9,6 +9,8 @@ class LeftMenuComposer
 {
     public function compose(View $view)
     {
-        $view->with('categories', Category::area(1)->isParent()->isEnable()->get());
+    	$categories = Category::with('children')->area(1)->isParent()->isEnable()->get();
+
+        $view->with('categories', $categories);
     }
 }

@@ -21,6 +21,11 @@ class Store extends Model
     	});
     }
 
+    public function getRouteKeyName()
+    {
+        return 'uuid';
+    }
+
     public function scopeByUuid($q, $uuid)
     {
         return $q->where('uuid', $uuid);

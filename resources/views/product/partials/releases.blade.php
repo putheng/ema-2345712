@@ -22,22 +22,26 @@
           <div class="col-lg-3 col-md-4 col-sm-6 px-2 mb-grid-gutter">
             <div class="card product-card-alt">
               <div class="product-thumb">
-                <button class="btn-wishlist btn-sm" type="button"><i class="czi-heart"></i></button>
+                {{-- <button class="btn-wishlist btn-sm" type="button"><i class="czi-heart"></i></button>
 
                 <div class="product-card-actions">
                   <a class="btn btn-light btn-icon btn-shadow font-size-base mx-2" href="#"><i class="czi-eye"></i></a>
 
                   <button class="btn btn-light btn-icon btn-shadow font-size-base mx-2" type="button" data-toggle="toast" data-target="#cart-toast"><i class="czi-cart"></i></button>
 
-                </div>
+                </div> --}}
+
                   <a class="product-thumb-overlay" href="{{ route('show.product', $product) }}"></a>
                     <img style="width: 332px; height: 223px" src="{{ $product->image->first()->product() }}" alt="Product">
+
                 </div>
               <div class="card-body">
                 <div class="d-flex flex-wrap justify-content-between align-items-start pb-2">
                   <div class="text-muted font-size-xs mr-1">
-                    by <a class="product-meta font-weight-medium" href="#">
+
+                    by <a class="product-meta font-weight-medium" href="{{ route('vendors.show', $product->user->store) }}">
                       {{ $product->ownerName }}
+
                     </a>in 
                     <a class="product-meta font-weight-medium" href="#">
                       {{ $product->category->name }}

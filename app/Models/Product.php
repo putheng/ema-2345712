@@ -85,6 +85,11 @@ class Product extends Model
         });
     }
 
+    public function store()
+    {
+        return $this->user->store;
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);

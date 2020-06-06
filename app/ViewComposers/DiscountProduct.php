@@ -9,7 +9,7 @@ class DiscountProduct
 {
     public function compose(View $view)
     {
-    	$products = Product::with('category')
+    	$products = Product::with('category', 'image')
     		->inRandomOrder()
 		    ->limit(10)
 		    ->get();

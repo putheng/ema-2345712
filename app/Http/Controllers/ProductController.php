@@ -19,7 +19,7 @@ class ProductController extends Controller
 
     public function show(Request $request, Product $product)
     {
-    	$products = $product->category->products()->paginate(10);
+    	$products = $product->category->products()->with('image', 'category')->paginate(10);
 
     	return view('home.product', compact('product', 'products'));
     }

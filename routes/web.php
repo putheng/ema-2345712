@@ -24,7 +24,7 @@ Route::get('category/{category}', 'CategoryController@index')->name('categorysho
 Route::get('topseller', 'TopSellController@index')->name('topseller');
 Route::get('products', 'ProductController@product')->name('product');
 
-Route::get('vendors/slug/show', 'VendorController@index')->name('vendors.show');
+Route::get('vendors/{store}/show', 'VendorController@index')->name('vendors.show');
 
 Route::get('/product/{product}/show', 'ProductController@show')->name('show.product');
 
