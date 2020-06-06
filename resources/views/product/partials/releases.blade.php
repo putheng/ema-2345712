@@ -64,7 +64,9 @@
                     <i class="czi-cart text-muted mr-1"></i>
                     21<span class="font-size-xs ml-1">Sales</span>
                   </div> --}}
-                  <div class="bg-faded-accent text-accent rounded-sm py-1 px-2">{{ $product->formattedTaxPrice }}</div>
+                  <div class="bg-faded-accent text-accent rounded-sm py-1 px-2">
+                    {{ $product->formattedTaxPrice }}
+                  </div>
                 </div>
               </div>
             </div>

@@ -5,7 +5,7 @@
 				<h1 class="page-title">
 					<span>Product Variation</span>
 
-					<div class="float-right">
+					<div class="float-right" v-if="product.variations && product.variations.length">
 						<button @click.prevent="updateChange" class="btn btn-success btn-lg">
 							<span v-if="createLoading" 
 								class="spinner-border spinner-border-sm"
@@ -150,9 +150,8 @@
 						</div>
 					</div>
 
-
 					<div class="col-md-12 text-right">
-						<button class="btn btn-success btn-lg"  @click.prevent="saveChange" :disabled="loading">
+						<button class="btn btn-success btn-lg mb-2"  @click.prevent="saveChange" :disabled="loading">
 							<span v-if="loading" 
 								class="spinner-border spinner-border-sm"
 								role="status" aria-hidden="true"></span>
@@ -253,9 +252,10 @@
 										<div class="form-group">
 											<label class="control-label">Profit in percent (%)</label>
 											<input 
-											:value="income(option.sale_price, option.price)"
+											@keyup="recalculate($event, index, key, option.sale_price)"
 											type="text" 
 											class="form-control" :class="{'is-invalid': errors['variations.'+ index +'.options.'+ key +'.sale_price']}">
+
 											<div class="invalid-feedback" v-if="errors['variations.'+ index +'.options.'+ key +'.sale_price']">
 									            <i class="fa fa-exclamation-circle fa-fw"></i>
 									            {{ errors['variations.'+ index +'.options.'+ key +'.sale_price'][0] }}
@@ -309,6 +309,7 @@
 		data(){
 			return {
 				loading: false,
+				createLoading: false,
 				product: [],
 				opt: [],
 				price: 0,
@@ -347,6 +348,17 @@
 				})
 			},
 
+			recalculate(e, index, key, sale_price){
+				let v = e.target.value
+				let s = Number(sale_price)
+
+				let t = s - (s * v) / 100
+				
+				this.variations[index].options[key].price = t
+
+				
+			},
+
 			addVariant(){
 				this.variations.push({
 					name: '',
@@ -383,9 +395,13 @@
 					})
 			},
 			async updateChange(){
+				this.createLoading = true;
+
 				let r = await axios.post(`products/${this.$route.params.slug}/variations/edit`, {
 					variations: this.product.variations
 				})
+
+				this.createLoading = false;
 			},
 			saleVat(sale_price){
 				return Number(sale_price) + (Number(sale_price) * 0.1)	
@@ -408,7 +424,15 @@
 		computed: {
 			...mapGetters({
 				errors: 'getValidationErrors'
-			})
+			}),
+			newValue:{
+				get(n){
+					console.log(n)
+				},
+				set(n){
+					console.log(n);
+				}
+			}
 		},
 		mounted(){
 			this.fetchProduct(this.$route.params.slug)

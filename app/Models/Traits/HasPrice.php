@@ -20,6 +20,11 @@ trait HasPrice
         return new Money($value);
     }
 
+    public function getMarketPriceAttribute($value)
+    {
+        return new Money($value);
+    }
+
     public function getTaxPriceAttribute($value)
     {
         return new Money($value);
@@ -28,6 +33,15 @@ trait HasPrice
     public function getFormattedPriceAttribute()
     {
         return $this->price->formatted();
+    }
+
+    public function getFormattedMarketPriceAttribute()
+    {
+        if($this->market_price->amount() == 0){
+            return false;
+        }
+
+        return $this->market_price->formatted();
     }
 
     public function getFormattedTaxPriceAttribute()

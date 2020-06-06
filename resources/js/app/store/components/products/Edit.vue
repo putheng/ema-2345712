@@ -42,9 +42,14 @@
 											type="text" disabled="" :value="saleVat(product.sale_price)">
 									</div>
 
-									<div class="form-group">
-										<label for="com" class="col-form-label">Profit in percent (%)</label> 
-										<input :value="income(product.sale_price, product.price)" disabled name="com" id="com" type="text" class="form-control">
+									<div class="col-md-3">
+										<div class="form-group">
+											<label for="com" class="col-form-label">Profit in percent (%)</label> 
+											<input :value="income(product.sale_price, product.price)" disabled name="com" id="com" type="text" class="form-control">
+										</div>
+									</div>
+									<div class="col-md-3">
+										<app-input name="market_price" label="Market Price"/>
 									</div>
 								</div>
 

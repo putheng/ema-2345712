@@ -47,6 +47,7 @@ class ProductController extends Controller
         $product->price = currency_convert($request->price)->getAmount();
         $product->commission = currency_convert($request->commission)->getAmount();
         $product->sale_price = currency_convert($request->sale_price)->getAmount();
+        $product->market_price = currency_convert($request->market_price)->getAmount();
 
     	$product->description = nl2br($request->description);
     	$product->user()->associate($request->user());
