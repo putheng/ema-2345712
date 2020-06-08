@@ -34,12 +34,12 @@
 											<td>{{ store.sponsor }}</td>
 											<td>
 												<template v-if="store.status != 'active'">
-													<a href="#" @click.prevent="activate(store.id, 'active')">	
+													<a href="#" @click.prevent="activate(store.uuid, 'active')">	
 														Activate
 													</a>
 												</template>
 												<template v-else>
-													<a href="#" @click.prevent="activate(store.id, 'deactivate')">
+													<a href="#" @click.prevent="activate(store.uuid, 'deactivate')">
 														Deactivate
 													</a>	
 												</template>
@@ -50,13 +50,13 @@
 													|
 													<a href="#" @click.prevent="password(store)">Password</a>
 													|
-													<template v-if="store.approval != 'approve'">
-													<a href="#" @click.prevent="approve(store.id, 'approve')">	
+												<template v-if="store.approval != 'approve'">
+													<a href="#" @click.prevent="approve(store.uuid, 'approve')">	
 														Approve
 													</a>
 												</template>
 												<template v-else>
-													<a href="#" @click.prevent="approve(store.id, 'deactivate')">
+													<a href="#" @click.prevent="approve(store.uuid, 'deactivate')">
 														Deactivate
 													</a>	
 												</template>
