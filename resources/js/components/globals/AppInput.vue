@@ -55,8 +55,9 @@ export default {
 		}
 	},
 	methods: {
-		clearValidation(){
-			this.$store.dispatch('clearValidateFor', this.inputName)
+		clearValidation(e){
+		  	this.$emit('keyup', e)
+	 		this.$store.dispatch('clearValidateFor', this.inputName)
 		},
 		formtedInputType(){
 			return this.type == 'email' ? 'text' : this.type

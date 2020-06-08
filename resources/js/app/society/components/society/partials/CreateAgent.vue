@@ -60,14 +60,25 @@
 						        </div>
 						</div>
 
-						<div class="form-group">
-							<label for="placement" class="col-form-label">Placement Tree</label>
-							<input :class="{'is-invalid': validation['placement']}"
-								v-model="form.placement" name="placement" id="placement" type="text" class="form-control">
-							<div class="invalid-feedback" v-if="validation['placement']">
-					            <i class="fa fa-exclamation-circle fa-fw"></i>
-					            {{ validation['placement'][0] }}
-					        </div>
+						<div class="row">
+							<div class="col-md-7">
+								<div class="form-group">
+									<label for="placement" class="col-form-label">Placement Tree</label>
+									<input :class="{'is-invalid': validation['placement']}"
+										v-model="form.placement" name="placement" id="placement" type="text" class="form-control">
+									<div class="invalid-feedback" v-if="validation['placement']">
+							            <i class="fa fa-exclamation-circle fa-fw"></i>
+							            {{ validation['placement'][0] }}
+							        </div>
+								</div>
+								
+							</div>
+							<div class="col-md-5">
+								<div class="form-group">
+									<label for="sponsor" class="col-form-label">Placement Name</label>
+									<input v-model="placeName" name="sponsor" id="placeName" type="texta" disabled="" class="form-control">
+								</div>
+							</div>
 						</div>
 
 						<div class="row">
@@ -132,7 +143,8 @@
 					phone: '',
 					placement: ''
 				},
-				loading: false
+				loading: false,
+				placeName: ''
 			}
 		},
 		methods: {
