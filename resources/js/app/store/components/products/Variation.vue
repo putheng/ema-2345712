@@ -5,7 +5,7 @@
 				<h1 class="page-title">
 					<span>Product Variation</span>
 
-					<div class="float-right" v-if="product.variations && product.variations.length">
+					<div class="float-right">
 						<button @click.prevent="updateChange" class="btn btn-success btn-lg">
 							<span v-if="createLoading" 
 								class="spinner-border spinner-border-sm"
