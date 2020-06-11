@@ -45,6 +45,10 @@
 												class="btn btn-sm btn-outline-info">
 												Delete
 											</a>
+											<a href="#" @click.prevent="updateOwner(product)"
+												class="btn btn-sm btn-outline-info">
+												Change Owner
+											</a>
 										</td>
 									</tr>
 								</tbody>
@@ -55,16 +59,20 @@
 			</div>
 		</div>
 	</div>
+	<ChangeOwner v-if="isUpdating" :product="product" @updated="updated"/>
 </div>
 </template>
 
 <script>
 	import { mapGetters, mapActions } from 'vuex'
+	import ChangeOwner from './partials/ChangeOwner'
 
 	export default {
 		data(){
 			return {
-				products: []
+				products: [],
+				isUpdating: false,
+				product: null
 			}
 		},
 		methods: {
@@ -79,10 +87,24 @@
 
 					this.products = r.data.data
 				}
+			},
+
+			updated(e){
+				if(e.data.success){
+					$('#UpateOwner').modal('show')
+				}
+			},
+
+			updateOwner(product){
+				this.product = product
+				this.isUpdating = true
+
+				$('#UpateOwner').modal('show')
 			}
+
 		},
-		computed: {
-			//
+		components: {
+			ChangeOwner
 		},
 		mounted(){
 			this.fetchProducts()

@@ -24,6 +24,7 @@ class Product extends Model
         'description',
         'user_id',
         'publish',
+        'user_id',
         'sale_price'
     ];
 

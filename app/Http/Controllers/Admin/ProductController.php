@@ -9,6 +9,7 @@ use App\Models\Product;
 use App\Models\ProductVariation;
 use App\Models\ProductVariationType;
 use App\Models\Stock;
+use App\Models\Store;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Image;
@@ -21,6 +22,20 @@ class ProductController extends Controller
         return ProductIndexResource::collection(
             $request->user()->products()->with('image', 'category', 'variations')->orderBy('id', 'desc')->paginate(20)
         );
+    }
+
+    public function owner(Request $request, Product $product)
+    {
+        $store = Store::byUuid($request->store);
+
+        if($store->count()){
+            $product->update([
+                'user_id' => $store->first()->id
+            ]);
+
+            return response()
+                ->json(['success' => true, 'message' => 'Product updated!']);
+        }
     }
 
     public function show(Request $request, Product $product)
