@@ -57,10 +57,9 @@
 
 									<tbody>
 										<tr v-if="summary.society" v-for="tr in summary.society.society">
-											<td>{{ tr.first }} {{ tr.last }}</td>
+											<td>{{ tr.name }}</td>
 											<td>
-												<span v-if="tr.gender == 1">Male</span>
-												<span v-else>Female</span>
+												<span>{{ tr.gender }}</span>
 											</td>
 											<td>{{ tr.phone }}</td>
 											<td>{{ tr.status }}</td>

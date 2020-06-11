@@ -14,6 +14,20 @@ class Society extends Model
         'gender', 'age', 'dob', 'status', 'phone', 'approval'
     ];
 
+    public function getGenderAttribute($value)
+    {
+        if(empty($value)){
+            return 'Not set';
+        }
+        if($value == 1){
+            return 'Male';
+        }
+
+        if($value == 2){
+            return 'Female';
+        }
+    }
+
     public function user()
     {
     	return $this->belongsTo(User::class);

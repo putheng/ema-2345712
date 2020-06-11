@@ -5,10 +5,10 @@ namespace App\Http\Resources;
 use App\Http\Resources\Admin\{
     SupplierResource,
     TransferResource,
-    SocietyResource,
     StoreResource,
     SaleResource,
 };
+use App\Http\Resources\Summary\SocietyResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 use App\Models\{
     Product,
