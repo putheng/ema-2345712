@@ -5,16 +5,14 @@
 				<h1 class="page-title">
 					<span>Product Variation</span>
 
-					<button 
-						class="btn btn-success btn-lg float-right" 
-						@click.prevent="saveChange"
-						:disabled="loading"
-					>
-						<span v-if="loading" 
-							class="spinner-border spinner-border-sm"
-							role="status" aria-hidden="true"></span>
-						Save Changes
-					</button>
+					<div class="float-right">
+						<button @click.prevent="updateChange" class="btn btn-success btn-lg">
+							<span v-if="createLoading" 
+								class="spinner-border spinner-border-sm"
+								role="status" aria-hidden="true"></span>
+							Update
+						</button>
+					</div>
 				</h1>
 				
 			</header>
@@ -23,6 +21,7 @@
 					<div class="col-md-12">
 						<div class="card card-fluid" v-for="(variation, index) in product.variations">
 							<div class="card-body">
+
 								<div class="row form-group col-md-2">
 									<label>Name</label>
 
@@ -46,6 +45,7 @@
 									        </div>
 										</div>
 									</div>
+
 									<div class="col-md-2">
 										<div class="form-group">
 											<label class="control-label">Price</label>
@@ -56,6 +56,7 @@
 									        </div>
 										</div>
 									</div>
+
 									<div class="col-md-2">
 										<div class="form-group">
 											<label class="control-label">Sale Price</label>
@@ -66,6 +67,63 @@
 									        </div>
 										</div>
 									</div>
+
+									<div class="col-md-2">
+										<div class="form-group">
+											<label class="control-label">Sale Price include VAT + 10% ($)</label>
+											<input 
+											:value="saleVat(option.sale_pricex)"
+											type="number" 
+											class="form-control" :class="{'is-invalid': errors['variations.'+ index +'.options.'+ key +'.sale_price']}">
+											<div class="invalid-feedback" v-if="errors['variations.'+ index +'.options.'+ key +'.sale_price']">
+									            <i class="fa fa-exclamation-circle fa-fw"></i>
+									            {{ errors['variations.'+ index +'.options.'+ key +'.sale_price'][0] }}
+									        </div>
+										</div>
+									</div>
+
+									<div class="col-md-2">
+										<div class="form-group">
+											<label class="control-label">Company's Profit ($)</label>
+											<input 
+											:value="comp(option.sale_pricex, option.pricex)"
+											type="number" 
+											class="form-control" :class="{'is-invalid': errors['variations.'+ index +'.options.'+ key +'.sale_price']}">
+											<div class="invalid-feedback" v-if="errors['variations.'+ index +'.options.'+ key +'.sale_price']">
+									            <i class="fa fa-exclamation-circle fa-fw"></i>
+									            {{ errors['variations.'+ index +'.options.'+ key +'.sale_price'][0] }}
+									        </div>
+										</div>
+									</div>
+
+									<div class="col-md-2">
+										<div class="form-group">
+											<label class="control-label">Total sale Price ($)</label>
+											<input 
+											:value="saleVat(option.sale_pricex)"
+											type="number" 
+											class="form-control" :class="{'is-invalid': errors['variations.'+ index +'.options.'+ key +'.sale_price']}">
+											<div class="invalid-feedback" v-if="errors['variations.'+ index +'.options.'+ key +'.sale_price']">
+									            <i class="fa fa-exclamation-circle fa-fw"></i>
+									            {{ errors['variations.'+ index +'.options.'+ key +'.sale_price'][0] }}
+									        </div>
+										</div>
+									</div>
+
+									<div class="col-md-2">
+										<div class="form-group">
+											<label class="control-label">Profit in percent (%)</label>
+											<input 
+											:value="income(option.sale_pricex, option.pricex)"
+											type="text" 
+											class="form-control" :class="{'is-invalid': errors['variations.'+ index +'.options.'+ key +'.sale_price']}">
+											<div class="invalid-feedback" v-if="errors['variations.'+ index +'.options.'+ key +'.sale_price']">
+									            <i class="fa fa-exclamation-circle fa-fw"></i>
+									            {{ errors['variations.'+ index +'.options.'+ key +'.sale_price'][0] }}
+									        </div>
+										</div>
+									</div>
+
 									<div class="col-md-2">
 										<div class="form-group">
 											<label class="control-label">Weight (g)</label>
@@ -76,6 +134,7 @@
 									        </div>
 										</div>
 									</div>
+
 									<div class="col-md-2">
 										<div class="form-group">
 											<label class="control-label">Stock</label>
@@ -91,6 +150,14 @@
 						</div>
 					</div>
 
+					<div class="col-md-12 text-right">
+						<button class="btn btn-success btn-lg mb-2"  @click.prevent="saveChange" :disabled="loading">
+							<span v-if="loading" 
+								class="spinner-border spinner-border-sm"
+								role="status" aria-hidden="true"></span>
+							Create
+						</button>
+					</div>
 					<div class="col-md-12">
 						<div class="card card-fluid" v-for="(variation, index) in variations">
 							<div class="card-body">
@@ -185,9 +252,10 @@
 										<div class="form-group">
 											<label class="control-label">Profit in percent (%)</label>
 											<input 
-											:value="income(option.sale_price, option.price)"
+											@keyup="recalculate($event, index, key, option.sale_price)"
 											type="text" 
 											class="form-control" :class="{'is-invalid': errors['variations.'+ index +'.options.'+ key +'.sale_price']}">
+
 											<div class="invalid-feedback" v-if="errors['variations.'+ index +'.options.'+ key +'.sale_price']">
 									            <i class="fa fa-exclamation-circle fa-fw"></i>
 									            {{ errors['variations.'+ index +'.options.'+ key +'.sale_price'][0] }}
@@ -241,6 +309,7 @@
 		data(){
 			return {
 				loading: false,
+				createLoading: false,
 				product: [],
 				opt: [],
 				price: 0,
@@ -279,6 +348,17 @@
 				})
 			},
 
+			recalculate(e, index, key, sale_price){
+				let v = e.target.value
+				let s = Number(sale_price)
+
+				let t = s - (s * v) / 100
+				
+				this.variations[index].options[key].price = t
+
+				
+			},
+
 			addVariant(){
 				this.variations.push({
 					name: '',
@@ -297,42 +377,62 @@
 			async saveChange(){
 				this.loading = true
 
-				if(this.product.variations.length != 0 && this.product.variations.length == undefined){
-					let r = await axios.post(`products/${this.$route.params.slug}/variations/edit`, {
-						variations: this.product.variations
-					})
-				}
+				// if(this.product.variations.length != 0 && this.product.variations.length == undefined){
+				// 	let r = await axios.post(`products/${this.$route.params.slug}/variations/edit`, {
+				// 		variations: this.product.variations
+				// 	})
+				// }
 
 				axios.post(`products/${this.$route.params.slug}/variations`, {
 					variations: this.variations
 				})
 					.then((response) => {
-						this.$router.push({name: 'suppliers-product'})
+						this.$router.push({name: 'suppliers-products'})
 						this.loading = false
 					})
 					.catch((errors) => {
 						this.loading = false
 					})
 			},
+			async updateChange(){
+				this.createLoading = true;
+
+				let r = await axios.post(`products/${this.$route.params.slug}/variations/edit`, {
+					variations: this.product.variations
+				})
+
+				this.createLoading = false;
+			},
 			saleVat(sale_price){
-				return parseInt(sale_price) + (parseInt(sale_price) * 0.1)	
+				return Number(sale_price) + (Number(sale_price) * 0.1)	
 			},
 			comp(sale_price, price){
-				return parseInt(sale_price) - parseInt(price)
+				return Number(sale_price) - Number(price)
 			},
-			income(sale_price, price){
-				
-				let p = (sale_price - price) / price
+			income(sale_price, price)
+			{
+				if(sale_price != 0){
+					let p = (Number(sale_price) - Number(price)) / Number(price)
 
-				let t = p * 100
+					let t = p * 100
 
-				return t + '%'
+					return t + '%'
+				}
+				return '0%'
 			},
 		},
 		computed: {
 			...mapGetters({
 				errors: 'getValidationErrors'
-			})
+			}),
+			newValue:{
+				get(n){
+					console.log(n)
+				},
+				set(n){
+					console.log(n);
+				}
+			}
 		},
 		mounted(){
 			this.fetchProduct(this.$route.params.slug)

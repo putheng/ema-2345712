@@ -19,7 +19,7 @@
 
 								<div class="row">
 									<div class="col-md-3">
-										<app-input v-model="price" name="price" label="Price ($)"/>
+										<input-binding v-model="price" name="price" label="Price ($)"/>
 									</div>
 									<div class="col-md-3">
 										<app-input v-model="sale_price" name="sale_price" label="Sale Price ($)"/>
@@ -35,12 +35,17 @@
 
 								<div class="row">
 									<div class="col-md-3">
-										<input-binding v-model="saleVat" name="sale_price" 
+										<input-binding v-model="saleVat" name="vat_price" 
 										value="0" label="Total sale Price ($)"/>
 									</div>
-									<div class="form-group">
-										<label for="com" class="col-form-label">Profit in percent (%)</label> 
-										<input :value="income" disabled name="com" id="com" type="text" class="form-control">
+									<div class="col-md-3">
+										<div class="form-group">
+											<label for="com" class="col-form-label">Profit in percent (%)</label> 
+											<input @keyup="recalculate"  name="com" id="com" type="text" class="form-control">
+										</div>
+									</div>
+									<div class="col-md-3">
+										<app-input name="market_price" label="Market Price"/>
 									</div>
 								</div>
 
@@ -94,7 +99,17 @@
 			},
 
 			onSuccess(response){
-				this.$router.push({name: 'store-products-variation', params: {slug: response.data.data.slug}})
+				this.$router.push({name: 'suppliers-products-variation', params: {slug: response.data.data.slug}})
+			},
+
+			recalculate(e){
+				let v = Number(e.target.value.replace('%', ''))
+				let s = Number(this.sale_price)
+
+				let t = s - (s * v) / 100 
+
+				this.price = t
+				
 			}
 		},
 		computed: {
@@ -102,23 +117,24 @@
 				errors: 'getValidationErrors'
 			}),
 			comp(){
-				return this.sale_price - this.price
+				return Number(this.sale_price) - Number(this.price)
 			},
 			vat(){
-				return parseInt(this.sale_price) + (parseInt(this.sale_price) * 0.1)
+				return Number(this.sale_price) + (Number(this.sale_price) * 0.1)
 			},
 			saleVat(){
-				return parseInt(this.sale_price) + (parseInt(this.sale_price) * 0.1)	
+				return Number(this.sale_price) + (Number(this.sale_price) * 0.1)
 			},
 			income(){
 
-				let p = (this.sale_price - this.price) / this.price
-				// let p = (this.comission / this.sale_price)
+				// if(this.sale_price != 0){
+				// 	let p = (Number(this.sale_price) - Number(this.price)) / Number(this.price)
 
-				let t = p * 100
+				// 	let t = p * 100
 
-				return t + '%'
-				// return p
+				// 	return t
+				// }
+				// return '0'
 			}
 		},
 		mounted(){

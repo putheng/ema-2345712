@@ -29,19 +29,24 @@
 											<h5>
 												<a :href="'/product/'+ product.slug +'/show'" target="_blank">{{ product.name }}</a>
 											</h5>
-											<!-- <div>Sales: <strong>26</strong></div>
-											<div>Earnings: <strong>$327.60</strong></div> -->
-											<h5 class="text-info">{{ product.formattedPrice }}</h5>
+											<h6 class="text-info">
+												<span>{{ product.price }}</span> |
+												<span>{{ product.sale_price }}</span> |
+												<span>{{ product.tax_price }}</span>
+											</h6>
 										</td>
 										<td>
 											<router-link 
-												:to="{name: 'suppliers-product-edit', params:{slug: product.slug}}" 
+												:to="{name: 'store-products-edit', params:{slug: product.slug}}" 
 												class="btn btn-sm btn-outline-info">
 												<span class="oi oi-pencil mr-1"></span> Edit
 											</router-link>
-											<button @click.prevent="remove(product.slug)" class="btn btn-sm btn-outline-danger">
-												<span class="oi oi-trash mr-1"></span> Remove
-											</button>
+
+											<a href="#" @click.prevent="deletePro(product.slug)" 
+												:to="{name: 'admin-products-edit', params:{slug: product.slug}}" 
+												class="btn btn-sm btn-outline-info">
+												Delete
+											</a>
 										</td>
 									</tr>
 								</tbody>
@@ -70,17 +75,18 @@
 
 				this.products = response.data.data
 			},
+			async deletePro(id){
+				if(confirm('Are you sure to delete this product ?')){
+					let r = await axios.delete(`products/product/${id}`)
 
-			async remove(slug){
-				let response = await axios.delete(`products/product/${slug}`)
-
-				this.products = response.data.data
+					this.products = r.data.data
+				}
 			}
 		},
 		computed: {
 			//
 		},
-		created(){
+		mounted(){
 			this.fetchProducts()
 		}
 	}

@@ -11,25 +11,25 @@
 						<div class="metric-row">
 							<div class="col">
 								<div class="metric metric-bordered">
-									<h2 class="metric-label text-center"> Earnings (after taxes) </h2>
+									<h2 class="metric-label text-center"> Orders </h2>
 									<p class="metric-value h1 text-center">
 										<sup>$</sup> <span class="value">{{ data.thisMonth }}</span>
+									</p>
+									<h2 class="metric-label text-center"> Orders this month </h2>
+								</div>
+							</div>
+							<div class="col">
+								<div class="metric metric-bordered">
+									<h2 class="metric-label text-center"> Sales </h2>
+									<p class="metric-value h1 text-center">
+										<sup>$</sup> <span class="value">{{ data.balance }}</span>
 									</p>
 									<h2 class="metric-label text-center"> Sales this month </h2>
 								</div>
 							</div>
 							<div class="col">
 								<div class="metric metric-bordered">
-									<h2 class="metric-label text-center"> Your balance </h2>
-									<p class="metric-value h1 text-center">
-										<sup>$</sup> <span class="value">{{ data.balance }}</span>
-									</p>
-									<h2 class="metric-label text-center"> To be paid </h2>
-								</div>
-							</div>
-							<div class="col">
-								<div class="metric metric-bordered">
-									<h2 class="metric-label text-center"> Lifetime earnings </h2>
+									<h2 class="metric-label text-center"> Lifetime sales </h2>
 									<p class="metric-value h1 text-center">
 										<sup>$</sup> <span class="value">{{ data.lifetime }}</span>
 									</p>

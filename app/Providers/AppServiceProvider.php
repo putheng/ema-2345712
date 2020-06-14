@@ -17,6 +17,7 @@ use Illuminate\Support\ServiceProvider;
 use Stripe\Stripe;
 use App\Models\Society;
 use App\Models\Store;
+use App\Models\TopSale;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -39,6 +40,7 @@ class AppServiceProvider extends ServiceProvider
             'transfer' => Transfer::class,
             'society' => Society::class,
             'store' => Store::class,
+            'top_sale' => TopSale::class,
         ]);
     }
 

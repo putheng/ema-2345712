@@ -15,14 +15,42 @@
 
 								<text-area-binding v-model="product.description" name="description" label="Product description"/>
 
-								<select-binding :selected="product.category" v-model="product.category" name="category" :options="categories" label="Category"/>
+								<app-option-binding name="category" :selected="product.category" :options="categories" label="Category"/>
 
 								<div class="row">
-									<div class="col-md-6">
-										<input-binding v-model="product.price" name="price" label="Price"/>
+									<div class="col-md-3">
+										<input-binding v-model="product.price" name="price" label="Price ($)"/>
 									</div>
-									<div class="col-md-6">
-										<input-binding v-model="product.sale_price" name="sale_price" label="Sale Price"/>
+									<div class="col-md-3">
+										<input-binding v-model="product.sale_price" name="sale_price" label="Sale Price ($)"/>
+									</div><div class="col-md-3">
+
+										<div class="form-group">
+											<label class="col-form-label">Sale Price include VAT + 10% ($)</label>
+											<input class="form-control" type="text" disabled="" :value="saleVat(product.sale_price)">
+										</div>
+									</div>
+
+									<div class="col-md-3">
+										<input-binding :value="comp(product.sale_price, product.price)" disabled name="commission" label="Company's Profit ($)"/>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-3">
+										<label class="col-form-label">Total sale Price ($)</label>
+										<input class="form-control" 
+											type="text" disabled="" :value="saleVat(product.sale_price)">
+									</div>
+
+									<div class="col-md-3">
+										<div class="form-group">
+											<label for="com" class="col-form-label">Profit in percent (%)</label> 
+											<input :value="income(product.sale_price, product.price)" disabled name="com" id="com" type="text" class="form-control">
+										</div>
+									</div>
+
+									<div class="col-md-3">
+										<input-binding v-model="product.market_price" name="market_price" label="Market Price"/>
 									</div>
 								</div>
 
@@ -76,8 +104,26 @@
 			},
 
 			onSuccess(response){
-				this.$router.push({name: 'suppliers-product-variation', params: {slug: response.data.data.slug}})
-			}
+				this.$router.push({name: 'suppliers-products-variation', params: {slug: response.data.data.slug}})
+			},
+			saleVat(sale_price){
+
+				return Number(sale_price) + (Number(sale_price) * 0.1)	
+			},
+			comp(sale_price, price){
+				return Number(sale_price) - Number(price)
+			},
+			income(sale_price, price){
+				
+				if(sale_price != 0){
+					let p = (Number(sale_price) - Number(price)) / Number(price)
+
+					let t = p * 100
+
+					return t + '%'
+				}
+				return '0%'
+			},
 		},
 		computed: {
 			...mapGetters({

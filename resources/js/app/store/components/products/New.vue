@@ -44,7 +44,6 @@
 											<input @keyup="recalculate"  name="com" id="com" type="text" class="form-control">
 										</div>
 									</div>
-
 									<div class="col-md-3">
 										<app-input name="market_price" label="Market Price"/>
 									</div>

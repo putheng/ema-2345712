@@ -8,7 +8,7 @@
 			<div class="col-md-12">
 				<div class="card card-fluid">
 					<div class="card-body">
-						<h3 class="card-title"> My tickets </h3>
+						<h3 class="card-title"> My tickets</h3>
 
 						<table class="table table-hover">
 							<thead>
@@ -20,7 +20,7 @@
 							</thead>
 
 							<tbody>
-								<tr v-for="(ticket, index) in tickets">
+								<tr v-if="tickets.length > 0" v-for="(ticket, index) in tickets" >
 									<td>
 										<router-link :to="{name: 'store-cart-viewticket', params:{id:ticket.id}}">
 											{{ ticket.subject }}
@@ -35,10 +35,13 @@
 										<span class="badge badge-success">{{ ticket.status }}</span>
 									</td>
 								</tr>
+								<tr v-else>
+									<td colspan="5">No any ticket</td>
+								</tr>
 							</tbody>
 						</table>
 						
-						<div class="text-right">
+						<!-- <div class="text-right">
 							<button 
 								class="btn btn-info"
 								data-toggle="modal" 
@@ -46,7 +49,7 @@
 								>
 								Submit new ticket
 							</button>
-						</div>
+						</div> -->
 					</div>
 				</div>
 			</div>

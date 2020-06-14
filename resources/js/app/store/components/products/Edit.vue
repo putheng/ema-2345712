@@ -48,8 +48,9 @@
 											<input :value="income(product.sale_price, product.price)" disabled name="com" id="com" type="text" class="form-control">
 										</div>
 									</div>
+
 									<div class="col-md-3">
-										<app-input name="market_price" label="Market Price"/>
+										<input-binding v-model="product.market_price" name="market_price" label="Market Price"/>
 									</div>
 								</div>
 

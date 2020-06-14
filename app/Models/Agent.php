@@ -86,7 +86,7 @@ class Agent extends Model
         return $q->where('uuid', $uuid);
     }
 
-    public function pa()
+    public function parentx()
     {
         return $this->belongsTo(self::class, 'parent_id', 'id');
     }
