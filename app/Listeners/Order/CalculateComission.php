@@ -31,41 +31,48 @@ class CalculateComission
     public function handle(OrderPaid $event)
     {
         $order = $event->order;
-        $remain_earning = 0;
-        $calcul = array();
 
-        $order->products->each(function($variation) use ($remain_earning, $order, $calcul){
+        $order->products->each(function($variation) use ($order){
             $commission = $variation->commission;
+            $remain_earning = 0;
+            $calcul = array();
 
+            $company_rate = (int) syt_option('company_earning')->cal_value;
+            $company_earning = ($company_rate / 100) * $commission; //ok
+
+            
             $shared_rate = (int) syt_option('society_commission')->cal_value;
-
             $shared = ($shared_rate / 100) * $commission;
-            $company_earning = $commission - $shared;
             
             $calcul['comission'] = $commission;
-            $calcul['share'] = $shared;
+            
             $calcul['company'] = $company_earning;
 
+            $top_sale = $this->top_sale($commission); // ok
+            $calcul['top_sale'] = $top_sale;
+            $remain_earning = $commission - $top_sale;
+
+            $store_sponsor = $this->store_sponsor($commission, $order); // ok
+            $calcul['store_sponsor'] = $store_sponsor;
+            $remain_earning = $remain_earning - $store_sponsor;
+
             if(auth()->user()->type == 'society'){
-                $top_sale = $this->top_sale($shared);
 
-                $remain_earning = $shared - $top_sale;
+                $calcul['share'] = $shared;
 
-                $calcul['top_sale'] = $top_sale;
-
-                $cash_back = $this->cash_back($remain_earning, $order);
+                $cash_back = $this->cash_back($shared, $order);
 
                 $calcul['cash_back'] = $cash_back;
 
-                $remain_earning = ($remain_earning - $cash_back);
+                $remain_earning = ($shared - $cash_back);
 
-                $sponsor = $this->sponsor($remain_earning, $order);
+                $sponsor = $this->sponsor($shared, $order);
 
                 $remain_earning = ($remain_earning - $sponsor);
 
                 $calcul['sponsor'] = $sponsor;
 
-                $society = $this->society($remain_earning, $order);
+                $society = $this->society($shared, $order, $remain_earning);
 
                 // $remain_earning = ($remain_earning + $society);
 
@@ -75,11 +82,13 @@ class CalculateComission
             
             $this->company_sale($company_earning, $order);
 
+            return $calcul;
+
         });
         
     }
 
-    protected function society($commission, $order)
+    protected function society($commission, $order, $remain_earning)
     {
         $agent = auth()->user()->agent;
         
@@ -88,17 +97,20 @@ class CalculateComission
 
         if($agent->parentx && $agent->parent_id != null){
 
-            $amount = $this->placement($agent->parentx, $commission, $order);
+            $amount = $this->placement($agent->parentx, $commission, $order, $remain_earning);
+
         }
+
+        return $amount;
     }
 
-    protected function placement($agent, $commission, $order)
+    protected function placement($agent, $commission, $order, $remain_earning)
     {
         $user = User::find($agent->user_id);
         $rate = 3;
         $amount = ($rate / 100) * $commission;
 
-        $remain = $commission - $amount;
+        $remain = $remain_earning - $amount;
 
 if($user){
 $user->increment('earning', $amount);
@@ -209,7 +221,7 @@ if($user->agent && $user->agent->parent_id != null){
                                                             // dump(15);
                                                             $userp->increment('earning', $amount);
                                                             $this->saveTracking($amount, $userp, $order);
-                                                            $remain = $remain - $amount;
+                                                            // $remain = $remain - $amount;
 
                                                         }
                                                     }
@@ -304,6 +316,22 @@ if($user->agent && $user->agent->parent_id != null){
 
             $order->track()->save($track);
         }
+
+        return $amount;
+    }
+
+    protected function store_sponsor($commission, $order)
+    {
+        $rate = (int) syt_option('top_sale')->cal_value;
+
+        $amount = ($rate / 100) * $commission;
+
+        $track = new Track;
+        $track->symbol = '+ Store Sponsor';
+        $track->value = $amount;
+        $track->user()->associate(auth()->user());
+
+        $order->track()->save($track);
 
         return $amount;
     }

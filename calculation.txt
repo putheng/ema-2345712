@@ -18,3 +18,34 @@ remain - Placement
 90.2488125 - 16.45
 
 73.7988125
+
+=====
+1/. Commission = 470$
+
+2/. Company = 30% = 141$
+
+3/. Network = 70% = 329$
+
+	- Sponsor Store = 5% = 23.5$
+
+	- Top Sale = 5% = 23.5$
+
+ 	 => 60% => 282$ => 100%
+										               329$ = 70%
+	- Cash Back Own A/C = 30% = 84.6$
+
+	- Sponsor = 25% = 70.5$				 282$ = 60%
+
+	- Placement = 3% = 8.46$ * 15 = 126.9$
+65.988
+array:8 [
+  "comission" => "470"
+  "company" => 141.0
+  "top_sale" => 23.5
+  "store_sponsor" => 23.5
+  "share" => 282.0
+  
+  "cash_back" => 84.6
+  "sponsor" => 70.5
+  "remain" => 126.9
+]
