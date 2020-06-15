@@ -2,9 +2,16 @@
 	<nav id="stacked-menu" class="stacked-menu">
 		<ul class="menu">
 			<li class="menu-item">
-				<router-link :to="{ name: 'society' }" class="menu-link">
+				<a class="menu-link" href="/">
 					<span class="menu-icon fas fa-home"></span>
 					<span class="menu-text">{{ $t('general.home') }}</span>
+				</a>
+				
+			</li>
+			<li class="menu-item">
+				<router-link :to="{ name: 'society' }" class="menu-link">
+					<span class="menu-icon oi oi-info"></span>
+					<span class="menu-text">Dashboard</span>
 				</router-link>
 				
 			</li>

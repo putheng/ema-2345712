@@ -38,10 +38,7 @@
               <div class="card-body">
                 <div class="d-flex flex-wrap justify-content-between align-items-start pb-2">
                   <div class="text-muted font-size-xs mr-1">
-
-                    by <a class="product-meta font-weight-medium" 
-                      link-data="{{$product->user->toJson()}}"
-                      href="#" 
+                    by <a class="product-meta font-weight-medium" href="#" 
                       {{-- href="{{ route('vendors.show', $product->user->store) }}" --}}
                     >
                       {{ $product->ownerName }}
