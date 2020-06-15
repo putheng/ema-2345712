@@ -1,12 +1,17 @@
 <template>
 	<nav id="stacked-menu" class="stacked-menu">
 		<ul class="menu">
-			<li class="menu-header" style="margin-top: 0;">Dashboard</li>
 			<li class="menu-item">
+				<a href="/" class="menu-link">
+					<span class="menu-icon fas fa-home"></span>
+					<span class="menu-text">{{ $t('general.home') }}</span>
+				</a>
+
 				<router-link :to="{ name: 'user-dashboard-order' }" class="menu-link">
 					<span class="menu-icon oi oi-cart"></span>
 					<span class="menu-text">Order</span>
 				</router-link>
+
 				<router-link :to="{ name: 'user-dashboard-wishlist' }" class="menu-link">
 					<span class="menu-icon oi oi-heart"></span>
 					<span class="menu-text">Wishlist</span>
@@ -19,14 +24,6 @@
 
 			<li class="menu-header">Payments</li>
 			<li class="menu-item">
-				<!-- <router-link :to="{ name: 'user-payments-balance' }" class="menu-link">
-					<span class="menu-icon oi oi-dollar"></span>
-					<span class="menu-text">Balance</span>
-				</router-link> -->
-				<!-- <router-link :to="{ name: 'user-payments-withdraw' }" class="menu-link">
-					<span class="menu-icon oi oi-share-boxed"></span>
-					<span class="menu-text">Withdraw</span>
-				</router-link> -->
 				<router-link :to="{ name: 'user-payments-transactions' }" class="menu-link">
 					<span class="menu-icon oi oi-align-left"></span>
 					<span class="menu-text">Transactions</span>

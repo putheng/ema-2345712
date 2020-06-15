@@ -13,7 +13,6 @@
 					<span class="menu-icon oi oi-info"></span>
 					<span class="menu-text">Dashboard</span>
 				</router-link>
-				
 			</li>
 			<!-- /.menu-item -->
 			<!-- .menu-item -->
