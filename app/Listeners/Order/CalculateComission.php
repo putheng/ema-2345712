@@ -82,6 +82,8 @@ class CalculateComission
             
             $this->company_sale($company_earning, $order);
 
+            dd($calcul);
+
             return $calcul;
 
         });
