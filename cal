@@ -14,3 +14,32 @@ AC OW 30% = 4.32
 Sponsor 25 = 3.6
 
 Society 3% = 0.432 X 15 = 6.48
+
+array:8 [
+  "comission" => "1100"
+  
+  "company" => 330.0
+  "top_sale" => 55.0
+  "store_sponsor" => 55.0
+
+  "share" => 770.0 should be 60% = 660
+  "cash_back" => 231.0
+  "sponsor" => 192.5
+
+  "remain" => 346.5
+]
+
+
+array:8 [
+  "comission" => "1100"
+  "company" => 330.0
+  "top_sale" => 55.0
+  "store_sponsor" => 55.0
+
+  "share" => 660.0
+  "cash_back" => 198.0
+  "sponsor" => 165.0
+  "remain" => 297.0
+
+  X 1 = 19.8
+]

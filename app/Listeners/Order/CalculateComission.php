@@ -42,7 +42,6 @@ class CalculateComission
 
             
             $shared_rate = (int) syt_option('society_commission')->cal_value;
-            $shared = ($shared_rate / 100) * $commission;
             
             $calcul['comission'] = $commission;
             
@@ -55,6 +54,8 @@ class CalculateComission
             $store_sponsor = $this->store_sponsor($commission, $order); // ok
             $calcul['store_sponsor'] = $store_sponsor;
             $remain_earning = $remain_earning - $store_sponsor;
+
+            $shared = ($shared_rate / 100) * $commission;
 
             if(auth()->user()->type == 'society'){
 
@@ -81,8 +82,6 @@ class CalculateComission
             }
             
             $this->company_sale($company_earning, $order);
-
-            dd($calcul);
 
             return $calcul;
 
@@ -255,6 +254,8 @@ if($user->agent && $user->agent->parent_id != null){
         $track->user()->associate($user);
 
         $order->track()->save($track);
+
+        dump($amount);
     }
 
     protected function sponsor($commission, $order)
