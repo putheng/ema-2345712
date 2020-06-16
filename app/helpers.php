@@ -27,7 +27,7 @@ if(!function_exists('get_level')){
 }
 
 if(!function_exists('get_currency')){
-	function get_currency($value)
+	function get_currency($value = 'USD')
 	{
 		return new Currency($value);
 	}
@@ -46,10 +46,10 @@ if(!function_exists('currency_convert')){
 }
 
 if(!function_exists('currency_format')){
-	function currency_format($value){
+	function currency_format($value, $currency = 'USD'){
 		return (new DecimalMoneyFormatter(new ISOCurrencies()))
 		->format(
-			new Money($value, new BaseCurrency('USD'))
+			new Money($value, new BaseCurrency($currency))
 		);
 	}
 }

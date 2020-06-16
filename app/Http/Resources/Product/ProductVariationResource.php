@@ -24,6 +24,7 @@ class ProductVariationResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'price' => $this->formattedPrice,
+            'currency' => $this->currency,
             'sale_price' => $this->formattedTaxPrice,
             'weight' => $this->weight,
             'pricex' => currency_format($this->price->amount()),

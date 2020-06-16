@@ -19,25 +19,25 @@
 
 								<div class="row">
 									<div class="col-md-3">
-										<input-binding v-model="product.price" name="price" label="Price ($)"/>
+										<input-binding v-model="product.price" name="price" :label="'Price ('+ product.currency +')'"/>
 									</div>
 									<div class="col-md-3">
-										<input-binding v-model="product.sale_price" name="sale_price" label="Sale Price ($)"/>
+										<input-binding v-model="product.sale_price" name="sale_price" :label="'Sale Price ('+ product.currency +')'"/>
 									</div><div class="col-md-3">
 
 										<div class="form-group">
-											<label class="col-form-label">Sale Price include VAT + 10% ($)</label>
+											<label class="col-form-label">Sale Price include VAT + 10% ({{ product.currency }})</label>
 											<input class="form-control" type="text" disabled="" :value="saleVat(product.sale_price)">
 										</div>
 									</div>
 
 									<div class="col-md-3">
-										<input-binding :value="comp(product.sale_price, product.price)" disabled name="commission" label="Company's Profit ($)"/>
+										<input-binding :value="comp(product.sale_price, product.price)" disabled name="commission" :label="'Company\'s Profit ('+ user.currency +')'"/>
 									</div>
 								</div>
 								<div class="row">
 									<div class="col-md-3">
-										<label class="col-form-label">Total sale Price ($)</label>
+										<label class="col-form-label">Total sale Price ({{ product.currency }})</label>
 										<input class="form-control" 
 											type="text" disabled="" :value="saleVat(product.sale_price)">
 									</div>
@@ -50,7 +50,7 @@
 									</div>
 
 									<div class="col-md-3">
-										<input-binding v-model="product.market_price" name="market_price" label="Market Price"/>
+										<input-binding v-model="product.market_price" name="market_price" :label="'Market Price ('+ product.currency +')'"/>
 									</div>
 								</div>
 
@@ -127,7 +127,8 @@
 		},
 		computed: {
 			...mapGetters({
-				errors: 'getValidationErrors'
+				errors: 'getValidationErrors',
+				user: 'userData'
 			})
 		},
 		mounted(){

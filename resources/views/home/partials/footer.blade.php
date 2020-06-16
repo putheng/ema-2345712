@@ -1,3 +1,4 @@
+<div class="sidebar-fixed-enabled"> 
 <footer class="bg-dark pt-5">
 	<div class="px-lg-3 pt-2 pb-4">
 		<div class="mx-auto px-3" style="max-width: 80rem;">
@@ -11,7 +12,8 @@
 					</div>
 					<div class="btn-group dropdown disable-autohide">
 						<button class="btn btn-outline-light border-light btn-sm dropdown-toggle px-2" type="button" data-toggle="dropdown">
-							<img class="mr-2" width="20" src="/images/products/en.png" alt="English"/>Eng / $
+							<img class="mr-2" width="20" src="/images/products/en.png" alt="English"/>
+							Eng / {{ get_currency()->current() }}
 						</button>
 						<ul class="dropdown-menu">
 							<li class="dropdown-item">
@@ -122,7 +124,7 @@
 		</div>
 	</div>
 </footer>
-
+</div>
 @section('script')
 <script type="text/javascript">
 	$(document).ready(function(){

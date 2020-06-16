@@ -25,6 +25,7 @@ class ProductVariation extends Model
 
         static::creating(function($model){
             $model->tax_price = self::getVatPrice($model->sale_price->amount());
+            $model->currency = get_currency()->current();
         });
 
         // static::updating(function($model){

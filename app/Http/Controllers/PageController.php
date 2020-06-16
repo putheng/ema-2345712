@@ -43,6 +43,8 @@ class PageController extends Controller
                 return back();
             }
 
+            session()->put('currency', $request->c);
+
             return back();
         }
 

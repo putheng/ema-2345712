@@ -16,7 +16,6 @@ Route::get('/icons', 'ProductController@icons')->name('icons');
 
 Route::get('/currency', 'PageController@currency')->name('currency');
 
-
 Route::get('discount', 'DiscountProductController@show')->name('discount');
 Route::get('category', 'CategoryController@filter')->name('category.filter');
 Route::get('category/{category}', 'CategoryController@index')->name('categoryshow');

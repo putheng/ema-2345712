@@ -37,6 +37,8 @@ class Product extends Model
             $model->tax_price = $price + ($price * 0.1);
 
             $model->slug = str_slug($model->name) .'-'. time() .'.html';
+
+            $model->currency = get_currency()->current();
         });
 
         static::updating(function($model){

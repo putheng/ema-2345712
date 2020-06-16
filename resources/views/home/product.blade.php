@@ -2,7 +2,7 @@
 
 @section('content')
 <section class="px-lg-3 pt-4">
-	<div class="px-3 pt-2">
+	<div class="px-3 pt-2" id="app">
 		<!-- Page title + breadcrumb-->
 		<nav class="mb-4" aria-label="breadcrumb">
 			<ol class="breadcrumb flex-lg-nowrap">

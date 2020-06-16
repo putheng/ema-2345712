@@ -21,6 +21,7 @@ class PrivateUserResource extends JsonResource
             'name' => $this->name,
             'dashboard' => $this->dashboard(),
             'avatar' => $this->avatar(),
+            'currency' => get_currency()->current(),
             'uuid' => optional($this->agent)->uuid,
             'role' => $this->getRoleNames()->first(),
             'permissions' => $this->formatedPermission()

@@ -1,7 +1,8 @@
-<header class="bg-light box-shadow-sm fixed-top" id="app">
+<header class="bg-light box-shadow-sm fixed-top">
 	<div class="navbar navbar-expand-lg navbar-light">
 		<div class="container">
-			<a class="navbar-brand d-none d-sm-block mr-3 mr-xl-4 flex-shrink-0" href="{{ url('/') }}" style="min-width: 7rem;"><img width="142" src="/images/logo-50.png" alt="Cartzilla"/></a><a class="navbar-brand d-sm-none mr-2" href="index.html" style="min-width: 4.625rem;"><img width="74" src="/images/logo-50.png" alt="Cartzilla"/></a>
+			<a class="navbar-brand d-none d-sm-block mr-3 mr-xl-4 flex-shrink-0" href="{{ url('/') }}" style="min-width: 7rem;"><img width="142" src="/images/logo-50.png" alt="Cartzilla"/></a>
+			<a class="navbar-brand d-sm-none mr-2" href="{{ url('/') }}" style="min-width: 4.625rem;"><img width="74" src="/images/logo-50.png" alt="Cartzilla"/></a>
 			<!-- Search-->
 			@include('home.partials.global-search')
 			<!-- Toolbar-->

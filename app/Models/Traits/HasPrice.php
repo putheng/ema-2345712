@@ -32,6 +32,10 @@ trait HasPrice
 
     public function getFormattedPriceAttribute()
     {
+        if($this->currency == 'KHR'){
+            return 'KHR ' .currency_format($this->price->amount(), 'KHR');
+        }
+        
         return $this->price->formatted();
     }
 
@@ -41,15 +45,24 @@ trait HasPrice
             return false;
         }
 
+        if($this->currency == 'KHR'){
+            return 'KHR ' .currency_format($this->market_price->amount(), 'KHR');
+        }
+
         return $this->market_price->formatted();
     }
 
     public function getFormattedTaxPriceAttribute()
     {
         if($this->tax_price->amount() != 0){
+            
+            if($this->currency == 'KHR'){
+                return 'KHR ' .currency_format($this->tax_price->amount(), 'KHR');
+            }
+
             return $this->tax_price->formatted();
         }
 
-        return $this->sale_price->formatted();
+        return $this->sale_price->amount();
     }
 }

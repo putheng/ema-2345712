@@ -19,24 +19,24 @@
 
 								<div class="row">
 									<div class="col-md-3">
-										<input-binding v-model="price" name="price" label="Price ($)"/>
+										<input-binding v-model="price" name="price" :label="'Price ('+ user.currency +')'"/>
 									</div>
 									<div class="col-md-3">
-										<app-input v-model="sale_price" name="sale_price" label="Sale Price ($)"/>
+										<app-input v-model="sale_price" name="sale_price" :label="'Sale Price ('+ user.currency +')'"/>
 									</div>
 									<div class="col-md-3">
-										<input-binding v-model="saleVat" disabled name="o_sale_price" label="Sale Price include VAT + 10% ($)"/>
+										<input-binding v-model="saleVat" disabled name="o_sale_price" :label="'Sale Price include VAT + 10% ('+ user.currency +')'"/>
 									</div>
 
 									<div class="col-md-3">
-										<input-binding v-model="comp" disabled name="commission" label="Company's Profit ($)"/>
+										<input-binding v-model="comp" disabled name="commission" :label="'Company\'s Profit ('+ user.currency +')'"/>
 									</div>
 								</div>
 
 								<div class="row">
 									<div class="col-md-3">
 										<input-binding v-model="saleVat" name="vat_price" 
-										value="0" label="Total sale Price ($)"/>
+										value="0" :label="'Total sale Price ('+ user.currency +')'"/>
 									</div>
 									<div class="col-md-3">
 										<div class="form-group">
@@ -45,7 +45,7 @@
 										</div>
 									</div>
 									<div class="col-md-3">
-										<app-input name="market_price" label="Market Price"/>
+										<app-input name="market_price" :label="'Market Price ('+ user.currency +')'"/>
 									</div>
 								</div>
 
@@ -114,7 +114,8 @@
 		},
 		computed: {
 			...mapGetters({
-				errors: 'getValidationErrors'
+				errors: 'getValidationErrors',
+				user: 'userData'
 			}),
 			comp(){
 				return Number(this.sale_price) - Number(this.price)
