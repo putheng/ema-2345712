@@ -254,8 +254,6 @@ if($user->agent && $user->agent->parent_id != null){
         $track->user()->associate($user);
 
         $order->track()->save($track);
-
-        dump($amount);
     }
 
     protected function sponsor($commission, $order)
