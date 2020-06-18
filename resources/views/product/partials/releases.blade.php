@@ -19,7 +19,7 @@
         <!-- Product-->
 
         @foreach($products as $product)
-          <div class="col-lg-3 col-md-3 col-sm-6 px-2 mb-grid-gutter">
+          <div class="col-lg-2 col-md-2 col-sm-6 px-2 mb-grid-gutter">
             <div class="card product-card-alt">
               <div class="product-thumb">
                 {{-- <button class="btn-wishlist btn-sm" type="button"><i class="czi-heart"></i></button>
