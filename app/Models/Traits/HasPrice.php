@@ -46,7 +46,7 @@ trait HasPrice
         }
 
         if($this->currency == 'KHR'){
-            return 'KHR ' .currency_format($this->market_price->amount(), 'KHR');
+            return currency_format($this->market_price->amount(), 'KHR').'៛';
         }
 
         return $this->market_price->formatted();
@@ -54,15 +54,35 @@ trait HasPrice
 
     public function getFormattedTaxPriceAttribute()
     {
+
         if($this->tax_price->amount() != 0){
             
-            if($this->currency == 'KHR'){
-                return 'KHR ' .currency_format($this->tax_price->amount(), 'KHR');
+            if($this->currency != get_currency()->current()){
+                return $this->switchCurrency();
+            }else{
+                if($this->currency == 'KHR'){
+                    return currency_format($this->tax_price->amount(), 'KHR').'៛';
+                }else{
+                    return $this->tax_price->formatted();
+                }
             }
-
-            return $this->tax_price->formatted();
         }
 
         return $this->sale_price->amount();
+    }
+
+    protected function switchCurrency()
+    {
+        if($this->currency == 'USD' && get_currency()->current() == 'KHR'){
+            $price = currency_format($this->tax_price->amount());
+
+            return number_format($price * syt_option('c_usd_rate')->cal_value, 2) .'៛';
+        }
+
+        if($this->currency == 'KHR' && get_currency()->current() == 'USD'){
+            $price = currency_format($this->tax_price->amount());
+
+            return number_format($price / syt_option('c_usd_rate')->cal_value, 2).'$';
+        }
     }
 }
