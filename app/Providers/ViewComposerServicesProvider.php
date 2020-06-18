@@ -48,7 +48,7 @@ class ViewComposerServicesProvider extends ServiceProvider
         );
 
         View::composer(
-            ['home.partials.footer'], 
+            ['home.partials.footer', 'product.partials.footer'], 
             FooterCategory::class
         );
 
