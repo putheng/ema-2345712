@@ -79,6 +79,7 @@
 				</div>
 			</div>
 		</div>
+		<PaymentModal :url="payment_url" v-show="showModal" />
 	</div>
 </form>
 </template>
@@ -86,17 +87,25 @@
 <script>
 import { mapGetters, mapActions } from 'vuex'
 
+import PaymentModal from './partials/PaymentModal'
+
 export default {
 	data(){
 		return {
         	shippingMethods: [],
         	submitting: false,
+        	showModal: false,
+        	payment_url: '',
         	addresses: [],
         	form: {
 	          address_id: null,
 	          payment_method_id: 1,
 	        }
 		}
+	},
+
+	components: {
+		PaymentModal
 	},
 
 	watch: {
@@ -143,6 +152,11 @@ export default {
 					this.getCart()
 					this.submitting = false
 
+					this.showModal = true
+
+					this.payment_url = r.data.payment_url
+
+					$('#modalLarge').modal('show')
 					// window.location = r.data.data.dashboard + '/cart/order'
 				})
 

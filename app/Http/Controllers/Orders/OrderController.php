@@ -49,12 +49,13 @@ class OrderController extends Controller
         $order->products()->sync($cart->products()->forSyncing());
 
         // event(new OrderCreated($order));
-        
-        $response = $this->sendPayment();
 
-        dd($response);
-
-        return new OrderResource($order);
+        if($response = $this->sendPayment()){
+            return (new OrderResource($order)
+            )->additional([
+                'payment_url' => $response->data->payment_url
+            ]);
+        }
     }
 
     protected function sendPayment()
@@ -76,19 +77,23 @@ class OrderController extends Controller
             "callback_url" => "https://marketasia.com/checkout/callback"
         ];
    
-        $request = $client->post(env('B24_API'), [
-            'form_params' => $data,
-            'headers' => [
-                // 'Accept' => 'application/json',
-                'Content-Type' => 'application/json',
-                'token' => env('B24_KEY')
-            ]
-        ]);
+        try {
 
-        $response = $request->send();
-      
-        dd($response);
-
+            $request = $client->post(env('B24_API'), [
+                'json' => $data,
+                'headers' => [
+                    // 'Accept' => 'application/json',
+                    'Content-Type' => 'application/json',
+                    'token' => env('B24_KEY')
+                ]
+            ]);
+          
+            if($request->getStatusCode() == 200){
+                return json_decode($request->getBody()->getContents());
+            }
+        }catch(Exception $e){
+            return false;
+        }
 
     }
 
