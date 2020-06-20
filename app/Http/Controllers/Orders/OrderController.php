@@ -60,7 +60,6 @@ class OrderController extends Controller
     protected function sendPayment()
     {
         $client = new Client();
-        $client->setDefaultOption('verify', '/etc/nginx/ssl/ca.homestead.homestead.crt');
 
         $data = [
             "customer_email" => "info@emarketasia.com",
