@@ -16,6 +16,10 @@
       <!-- Reviews-->
       @include('product.partials.releases')
 
+      {{-- @include('product.partials.most-release') --}}
+      {{-- @include('product.partials.most-but') --}}
+      {{-- @include('product.partials.most-cloth') --}}
+
       <div class="pb-4"></div>
       <!-- Toast: Added to Cart-->
       <div class="toast-container toast-bottom-center">

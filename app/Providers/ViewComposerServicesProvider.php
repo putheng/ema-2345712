@@ -61,5 +61,20 @@ class ViewComposerServicesProvider extends ServiceProvider
             ['product.partials.discounted'], 
             DiscountProduct::class
         );
+
+        View::composer(
+            ['product.partials.most-release'], 
+            DiscountProduct::class
+        );
+
+        View::composer(
+            ['product.partials.most-but'], 
+            DiscountProduct::class
+        );
+
+        View::composer(
+            ['product.partials.most-cloth'], 
+            DiscountProduct::class
+        );
     }
 }
