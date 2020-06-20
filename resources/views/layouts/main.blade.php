@@ -22,7 +22,7 @@
 			@include('product.partials.aside')
 			<main class="sidebar-fixed-enabled" style="padding-top: 5rem;">
 				@yield('content')
-				@include('home.partials.footer')
+				@include('product.partials.footer')
 			</main>
 			<a class="btn-scroll-top" href="#top" data-scroll>
 				<span class="btn-scroll-top-tooltip text-muted font-size-sm mr-2">Top</span>

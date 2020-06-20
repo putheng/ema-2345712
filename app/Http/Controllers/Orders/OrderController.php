@@ -10,6 +10,9 @@ use App\Http\Resources\OrderResource;
 use App\Models\ProductVariation;
 use Illuminate\Http\Request;
 
+use GuzzleHttp\Client;
+
+
 class OrderController extends Controller
 {
     protected $cart;
@@ -45,9 +48,49 @@ class OrderController extends Controller
 
         $order->products()->sync($cart->products()->forSyncing());
 
-        event(new OrderCreated($order));
+        // event(new OrderCreated($order));
+        
+        $response = $this->sendPayment();
+
+        dd($response);
 
         return new OrderResource($order);
+    }
+
+    protected function sendPayment()
+    {
+        $client = new Client();
+        $client->setDefaultOption('verify', '/etc/nginx/ssl/ca.homestead.homestead.crt');
+
+        $data = [
+            "customer_email" => "info@emarketasia.com",
+            "description" => "Buy the food",
+            "customer_phone" => "077977794",
+            "pay_later_url" => "https://marketasia.com/checkout/pay-later",
+            "currency" => "USD",
+            "reference_id" => "869718501",
+            "customer_name" => "Putheng",
+            "language" => "km",
+            "cancel_url" => "https://marketasia.com/checkout/cancel",
+            "amount" => 200,
+            "webview" => false,
+            "callback_url" => "https://marketasia.com/checkout/callback"
+        ];
+   
+        $request = $client->post(env('B24_API'), [
+            'form_params' => $data,
+            'headers' => [
+                // 'Accept' => 'application/json',
+                'Content-Type' => 'application/json',
+                'token' => env('B24_KEY')
+            ]
+        ]);
+
+        $response = $request->send();
+      
+        dd($response);
+
+
     }
 
     protected function createOrder(Request $request, Cart $cart)

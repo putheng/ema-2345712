@@ -6,6 +6,9 @@ Route::resource('cart', 'Cart\CartController', [
         'cart' => 'productVariation'
     ]
 ]);
+
+Route::post('webhook/incomming', 'Webhook\IncommingController@store');
+
 Route::resource('payment-methods', 'PaymentMethods\PaymentMethodController');
 Route::resource('orders', 'Orders\OrderController');
 Route::resource('addresses', 'Addresses\AddressController');
