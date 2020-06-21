@@ -8,6 +8,8 @@ Route::resource('cart', 'Cart\CartController', [
 ]);
 
 Route::post('webhook/incomming', 'Webhook\IncommingController@store');
+Route::get('content', 'Webhook\IncommingController@content');
+Route::get('content/continue', 'Webhook\IncommingController@continue')->name('continue');
 
 Route::resource('payment-methods', 'PaymentMethods\PaymentMethodController');
 Route::resource('orders', 'Orders\OrderController');

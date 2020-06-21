@@ -53,7 +53,7 @@ class OrderController extends Controller
         if($response = $this->sendPayment()){
             return (new OrderResource($order)
             )->additional([
-                'payment_url' => $response->data->payment_url
+                'payment_url' => url('api/v1/content?url=') . $response->data->payment_url 
             ]);
         }
     }
@@ -63,18 +63,18 @@ class OrderController extends Controller
         $client = new Client();
 
         $data = [
-            "customer_email" => "info@emarketasia.com",
+            "customer_email" => "mony@emarketasia.com",
             "description" => "Buy the food",
             "customer_phone" => "077977794",
-            "pay_later_url" => "https://marketasia.com/checkout/pay-later",
+            "pay_later_url" => "https://marketasia.com",
             "currency" => "USD",
             "reference_id" => "869718501",
-            "customer_name" => "Putheng",
+            "customer_name" => "Sambath Mony",
             "language" => "km",
-            "cancel_url" => "https://marketasia.com/checkout/cancel",
-            "amount" => 200,
-            "webview" => false,
-            "callback_url" => "https://marketasia.com/checkout/callback"
+            "cancel_url" => "https://marketasia.com",
+            "amount" => 20,
+            "webview" => true,
+            "callback_url" => "https://marketasia.com"
         ];
    
         try {
