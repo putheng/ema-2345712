@@ -1,6 +1,6 @@
 <template>
 <div class="navbar-tool dropdown ml-3">
-	<a class="navbar-tool-icon-box bg-secondary dropdown-toggle" href="#">
+	<a class="navbar-tool-icon-box bg-secondary dropdown-toggle" href="/cart/checkout">
 		<span class="navbar-tool-label">{{ cartCount }}</span><i class="navbar-tool-icon czi-cart"></i>
 	</a>
 	<a class="navbar-tool-text" href="/cart/checkout">
