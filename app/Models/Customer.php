@@ -8,7 +8,7 @@ use App\Models\User;
 class Customer extends Model
 {
     protected $fillable = [
-    	'phone', 'address', 'gender'
+    	'phone', 'address', 'gender', 'first_name', 'last_name'
     ];
 
     public function user()

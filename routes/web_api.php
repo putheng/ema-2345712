@@ -36,14 +36,18 @@ Route::group(['middleware' => 'auth'], function(){
 		Route::post('password', 'Api\PasswordController@store');
 	});
 
-	Route::group(['prefix' => 'store'], function(){
+	Route::group(['prefix' => 'customer', 'middleware' => 'role:customer'], function(){
+		Route::resource('profile', 'Api\CustomerController');
+	});
+
+	Route::group(['prefix' => 'store', 'middleware' => 'role:store'], function(){
 		Route::resource('store', 'Api\StoreController');
 		Route::resource('orders', 'Store\OrdersController');
 		Route::resource('sales', 'Store\SaleController');
 		Route::resource('account', 'Store\AccountController');
 	});
 
-	Route::group(['prefix' => 'supplier'], function(){
+	Route::group(['prefix' => 'supplier', 'middleware' => 'role:supplier'], function(){
 		Route::resource('account', 'Supplier\AccountController');
 		Route::resource('orders', 'Supplier\OrdersController');
 	});
@@ -61,7 +65,7 @@ Route::group(['middleware' => 'auth'], function(){
 		Route::post('transfer/confirm', 'Api\TransferController@confirm');
 	});
 
-	Route::group(['prefix' => 'products'], function(){
+	Route::group(['prefix' => 'products', 'middleware' => 'role:store|admin|supplier'], function(){
 		Route::resource('product', 'Admin\ProductController');
 		Route::resource('sale', 'Product\SaleController');
 
@@ -118,7 +122,7 @@ Route::group(['middleware' => 'auth'], function(){
 		Route::post('roles/{role}/permission', 'Admin\RolePermissionController@update');
 	});
 
-	Route::group(['prefix' => 'sociaty'], function(){
+	Route::group(['prefix' => 'sociaty', 'middleware' => 'role:society|admin'], function(){
 
 		Route::resource('account', 'Agent\AccountController');
 

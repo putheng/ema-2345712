@@ -28,10 +28,10 @@
 					<span class="menu-icon oi oi-align-left"></span>
 					<span class="menu-text">Transactions</span>
 				</router-link>
-				<router-link :to="{ name: 'user-settings-payment' }" class="menu-link">
+				<!-- <router-link :to="{ name: 'user-settings-payment' }" class="menu-link">
 					<span class="menu-icon oi oi-credit-card"></span>
 					<span class="menu-text">Payments methods</span>
-				</router-link>
+				</router-link> -->
 			</li>
 
 			<li class="menu-header">Account Settings</li>
