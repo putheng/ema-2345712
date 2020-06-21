@@ -7,13 +7,6 @@
 					<span class="menu-text">{{ $t('general.home') }}</span>
 				</a>
 			</li>
-			<li class="menu-item">
-				<router-link :to="{ name: 'suppliers-account-summary' }" class="menu-link">
-					<span class="menu-icon oi oi-info"></span>
-					<span class="menu-text">Dashboard</span>
-				</router-link>
-				
-			</li>
 
 			<li class="menu-header">Products</li>
 			<li class="menu-item">

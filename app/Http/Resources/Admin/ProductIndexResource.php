@@ -22,6 +22,8 @@ class ProductIndexResource extends JsonResource
             'description' => strip_tags($this->description),
             'in_stock' => $this->inStock(),
             'formattedPrice' => $this->formattedPrice,
+            'formattedSalePrice' => $this->formattedSalePrice,
+            'formattedTaxPrice' => $this->formattedTaxPrice,
             'price' => currency_format($this->price->amount()),
             'sale_price' => currency_format($this->sale_price->amount()),
             'tax_price' => currency_format($this->tax_price->amount()),

@@ -30,9 +30,9 @@
 												<a :href="'/product/'+ product.slug +'/show'" target="_blank">{{ product.name }}</a>
 											</h5>
 											<h6 class="text-info">
-												<span>{{ product.price }}</span> |
-												<span>{{ product.sale_price }}</span> |
-												<span>{{ product.tax_price }}</span>
+												<span>{{ product.formattedPrice }}</span> |
+												<span>{{ product.formattedSalePrice }}</span> |
+												<span>{{ product.formattedTaxPrice }}</span>
 											</h6>
 										</td>
 										<td>
@@ -43,7 +43,7 @@
 											</router-link>
 
 											<a href="#" @click.prevent="deletePro(product.slug)" 
-												:to="{name: 'admin-products-edit', params:{slug: product.slug}}" 
+												
 												class="btn btn-sm btn-outline-info">
 												Delete
 											</a>

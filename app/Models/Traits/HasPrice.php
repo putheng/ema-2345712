@@ -32,11 +32,36 @@ trait HasPrice
 
     public function getFormattedPriceAttribute()
     {
-        if($this->currency == 'KHR'){
-            return 'KHR ' .currency_format($this->price->amount(), 'KHR');
+        if($this->price->amount() == 0){
+            return false;
         }
-        
-        return $this->price->formatted();
+
+        if($this->currency != get_currency()->current()){
+            return $this->switchCurrency($this->price);
+        }else{
+            if($this->currency == 'KHR'){
+                return currency_format($this->price->amount(), 'KHR').'៛';
+            }else{
+                return $this->price->formatted();
+            }
+        }
+    }
+
+    public function getFormattedSalePriceAttribute()
+    {
+        if($this->sale_price->amount() == 0){
+            return false;
+        }
+
+        if($this->currency != get_currency()->current()){
+            return $this->switchCurrency($this->sale_price);
+        }else{
+            if($this->currency == 'KHR'){
+                return currency_format($this->sale_price->amount(), 'KHR').'៛';
+            }else{
+                return $this->sale_price->formatted();
+            }
+        }
     }
 
     public function getFormattedMarketPriceAttribute()
@@ -86,7 +111,16 @@ trait HasPrice
         if($this->currency == 'KHR' && get_currency()->current() == 'USD'){
             $price = currency_format($price->amount());
 
-            return number_format($price / syt_option('c_usd_rate')->cal_value, 2).'$';
+            $number = number_format($price / syt_option('c_usd_rate')->cal_value, 2);
+
+            if($number < 1){
+                $number = number_format($price / syt_option('c_usd_rate')->cal_value, 3);
+                if($number < 1){
+                    $number = number_format($price / syt_option('c_usd_rate')->cal_value, 4);
+                }
+            }
+
+            return $number .'$';
         }
     }
 }
