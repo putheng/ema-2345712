@@ -34,4 +34,24 @@ class AddressController extends Controller
             $address
         );
     }
+
+    public function destroy(Request $request, Address $address)
+    {
+        $address->delete();
+
+        $addresses = $request->user()->addresses()->get();
+
+        $this->setDefaultAddress($addresses);
+
+        return AddressResource::collection(
+            $addresses
+        );
+    }
+
+    protected function setDefaultAddress($addresses)
+    {
+        if($addresses->where('default', true)->count() == 0){
+            $addresses->first()->update(['default' => true]);
+        }
+    }
 }

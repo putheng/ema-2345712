@@ -4,10 +4,11 @@ namespace App\Models;
 
 use App\Models\Traits\CanBeDefault;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Address extends Model
 {
-    use CanBeDefault;
+    use CanBeDefault, SoftDeletes;
     
     protected $fillable = [
         'name',
