@@ -72,6 +72,22 @@ class User extends Authenticatable implements JWTSubject
         return $q->where('type', 'society');
     }
 
+    public function getPhoneAttribute()
+    {
+        if($this->type == 'customer'){
+            return $this->customer->phone;
+            
+        }else if($this->type == 'store'){
+            return $this->store->phone;
+
+        }else if($this->type == 'supplier'){
+            return $this->supplier->phone;
+
+        }else if($this->type == 'admin'){
+            return '+855085598188';
+        }
+    }
+
     public function dashboard()
     {
         return url($this->type);

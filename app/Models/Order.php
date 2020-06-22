@@ -34,6 +34,18 @@ class Order extends Model
         static::creating(function ($order) {
             $order->status = self::PENDING;
         });
+
+        static::created(function($model){
+            $model->setID();
+        });
+    }
+
+    public function setID()
+    {
+        $uuid = substr('000000', strlen($this->id));
+
+        $this->uuid = 'EOT'. $uuid . $this->id;
+        $this->save();
     }
 
     public function getSubtotalAttribute($subtotal)

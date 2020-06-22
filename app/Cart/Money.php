@@ -43,6 +43,40 @@ class Money
         return $formatter->format($this->money);
     }
 
+    public function formattedCart()
+    {
+        if(get_currency()->current() == 'KHR'){
+            $price = currency_format($this->amount());
+
+            return number_format($price * syt_option('c_usd_rate')->cal_value, 2) .'៛';
+        }
+
+
+        $formatter = new IntlMoneyFormatter(
+            new NumberFormatter('USD', NumberFormatter::CURRENCY),
+            new ISOCurrencies()
+        );
+
+        return $formatter->format($this->money);
+    }
+
+    public function unformattedCart()
+    {
+        if(get_currency()->current() == 'KHR'){
+            $price = currency_format($this->amount());
+
+            return $price * syt_option('c_usd_rate')->cal_value;
+        }
+
+
+        $formatter = new IntlMoneyFormatter(
+            new NumberFormatter('USD', NumberFormatter::CURRENCY),
+            new ISOCurrencies()
+        );
+
+        return currency_format($this->amount());
+    }
+
     public function add(Money $money)
     {
         $this->money = $this->money->add($money->instance());

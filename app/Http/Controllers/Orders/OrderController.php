@@ -46,11 +46,13 @@ class OrderController extends Controller
     {
         $order = $this->createOrder($request, $cart);
 
+        $total = $cart->withShipping($order->shipping_method_id)->total()->unformattedCart();
+
         $order->products()->sync($cart->products()->forSyncing());
 
         // event(new OrderCreated($order));
 
-        if($response = $this->sendPayment()){
+        if($response = $this->sendPayment($order, $total)){
             return (new OrderResource($order)
             )->additional([
                 'payment_url' => url('api/v1/content?url=') . $response->data->payment_url 
@@ -58,21 +60,21 @@ class OrderController extends Controller
         }
     }
 
-    protected function sendPayment()
+    protected function sendPayment($order, $total)
     {
         $client = new Client();
 
         $data = [
-            "customer_email" => "mony@emarketasia.com",
-            "description" => "Buy the food",
-            "customer_phone" => "077977794",
+            "customer_email" => auth()->user()->email,
+            "description" => "",
+            "customer_phone" => auth()->user()->phone,
             "pay_later_url" => "https://marketasia.com",
-            "currency" => "USD",
-            "reference_id" => "869718501",
-            "customer_name" => "Sambath Mony",
+            "currency" => get_currency()->current(),
+            "reference_id" => $order->uuid,
+            "customer_name" => auth()->user()->name,
             "language" => "km",
             "cancel_url" => "https://marketasia.com",
-            "amount" => 20,
+            "amount" => $total,
             "webview" => true,
             "callback_url" => "https://marketasia.com"
         ];

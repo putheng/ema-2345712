@@ -41,7 +41,7 @@
 				<h3 class="font-weight-normal text-center my-4 py-2">
 					<small>Total :</small> {{ totalPrice }}
 				</h3>
-				<div class="accordion box-shadow-sm mb-4" id="payment-methods">
+				<!-- <div class="accordion box-shadow-sm mb-4" id="payment-methods">
 					<div class="card">
 						<div class="card-header py-3 px-3">
 							<div class="custom-control custom-radio">
@@ -63,7 +63,7 @@
 							</div>
 						</div>
 					</div>
-				</div>
+				</div> -->
 				<div class="pt-2">
 					<button 
 						class="btn btn-primary btn-block"

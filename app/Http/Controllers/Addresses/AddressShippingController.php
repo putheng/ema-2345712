@@ -20,7 +20,7 @@ class AddressShippingController extends Controller
 
         
         return ShippingMethodResource::collection(
-            // City shipping method
+            
             $address->city->shippingMethods
 
             // $address->country->shippingMethods for country shipping 
