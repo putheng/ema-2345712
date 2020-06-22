@@ -40,7 +40,7 @@ Route::group(['middleware' => 'auth'], function(){
 		Route::resource('profile', 'Api\CustomerController');
 	});
 
-	Route::group(['prefix' => 'store', 'middleware' => 'role:store'], function(){
+	Route::group(['prefix' => 'store', 'middleware' => 'role:store|admin'], function(){
 		Route::resource('store', 'Api\StoreController');
 		Route::resource('orders', 'Store\OrdersController');
 		Route::resource('sales', 'Store\SaleController');
