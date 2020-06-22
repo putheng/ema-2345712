@@ -16,43 +16,45 @@
 								All Product 
 								<small class="badge badge-subtle badge-info">{{ products.length }}</small>
 							</h3>
-							<table class="table">
-								<tbody>
-									<tr v-if="products.length" v-for="product in products">
-										<td>
-											<template v-if="product.image">
-												<img width="100" :src="product.image">	
-											</template>
-											
-										</td>
-										<td>
-											<h5>
-												<a :href="'/product/'+ product.slug +'/show'" target="_blank">{{ product.name }}</a>
-											</h5>
-											<h6 class="text-info">
-												<span>{{ product.formattedPrice }}</span> |
-												<span>{{ product.formattedSalePrice }}</span> |
-												<span>{{ product.formattedTaxPrice }}</span>
-											</h6>
-										</td>
-										<td class="text-center">
-											<router-link 
-												:to="{name: 'admin-products-edit', params:{slug: product.slug}}" 
-												class="btn btn-sm btn-outline-info">Edit
-											</router-link>
-											<a href="#" @click.prevent="deletePro(product.slug)" 
-												:to="{name: 'admin-products-edit', params:{slug: product.slug}}" 
-												class="btn btn-sm btn-outline-info">
-												Delete
-											</a>
-											<a href="#" @click.prevent="updateOwner(product)"
-												class="btn btn-sm btn-outline-info">
-												Change Owner
-											</a>
-										</td>
-									</tr>
-								</tbody>
-							</table>
+							<div class="table-responsive">
+								<table class="table">
+									<tbody>
+										<tr v-if="products.length" v-for="product in products">
+											<td>
+												<template v-if="product.image">
+													<img width="100" :src="product.image">	
+												</template>
+												
+											</td>
+											<td>
+												<h5>
+													<a :href="'/product/'+ product.slug +'/show'" target="_blank">{{ product.name }}</a>
+												</h5>
+												<h6 class="text-info">
+													<span>{{ product.formattedPrice }}</span> |
+													<span>{{ product.formattedSalePrice }}</span> |
+													<span>{{ product.formattedTaxPrice }}</span>
+												</h6>
+											</td>
+											<td class="text-center">
+												<router-link 
+													:to="{name: 'admin-products-edit', params:{slug: product.slug}}" 
+													class="btn btn-sm btn-outline-info">Edit
+												</router-link>
+												<a href="#" @click.prevent="deletePro(product.slug)" 
+													:to="{name: 'admin-products-edit', params:{slug: product.slug}}" 
+													class="btn btn-sm btn-outline-info">
+													Delete
+												</a>
+												<a href="#" @click.prevent="updateOwner(product)"
+													class="btn btn-sm btn-outline-info">
+													Change Owner
+												</a>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
 						</div>
 					</div>
 				</div>

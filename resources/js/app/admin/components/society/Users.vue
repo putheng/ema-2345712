@@ -22,30 +22,32 @@
 						<div class="card card-fluid">
 							<div class="card-body">
 								<h3 class="card-title"> Users </h3>
-								<table class="table">
-									<thead>
-										<th>UUID</th>
-										<th>Name</th>
-										<th>Email</th>
-										<th>Phone</th>
-										<th>Action</th>
-									</thead>
-									<tbody>
-										<tr v-for="user in users">
-											<td>{{ user.uuid }}</td>
-											<td>{{ user.name }}</td>
-											<td>{{ user.email }}</td>
-											<td>{{ user.phone }}</td>
-											<td>
-												<a href="#" @click.prevent="deletex(user)">Delete</a> |
-												<a href="#" @click.prevent="updateUser(user)">Update</a>
-												<div>
-													<a href="#" @click.prevent="openModal(user)">Reset Password</a>
-												</div>
-											</td>
-										</tr>
-									</tbody>
-								</table>
+								<div class="table-responsive">
+									<table class="table">
+										<thead>
+											<th>UUID</th>
+											<th>Name</th>
+											<th>Email</th>
+											<th>Phone</th>
+											<th>Action</th>
+										</thead>
+										<tbody>
+											<tr v-for="user in users">
+												<td>{{ user.uuid }}</td>
+												<td>{{ user.name }}</td>
+												<td>{{ user.email }}</td>
+												<td>{{ user.phone }}</td>
+												<td>
+													<a href="#" @click.prevent="deletex(user)">Delete</a> |
+													<a href="#" @click.prevent="updateUser(user)">Update</a>
+													<div>
+														<a href="#" @click.prevent="openModal(user)">Reset Password</a>
+													</div>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
 							</div>
 						</div>
 					</div>

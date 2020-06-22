@@ -10,66 +10,67 @@
 						<div class="card card-fluid">
 							<div class="card-body">
 								<h3 class="card-title"> Store List </h3>
-								
-								<table class="table">
-									<thead>
-										<th>#</th>
-										<th>Name</th>
-										<th>Contact Person</th>
-										<th>Phone</th>
-										<th>Address</th>
-										<th>Status</th>
-										<th>Approval</th>
-										<th>Sponsor ID</th>
-									</thead>
-									<tbody>
-										<tr v-if="stores" v-for="(store, key) in stores">
-											<td>{{ store.uuid }}</td>
-											<td>{{ store.store }}</td>
-											<td>{{ store.username }}</td>
-											<td>{{ store.phone }}</td>
-											<td>{{ store.address }}</td>
-											<td>{{ store.status }}</td>
-											<td>{{ store.approval }}</td>
-											<td>{{ store.sponsor }}</td>
-											<td>
-												<template v-if="store.status != 'active'">
-													<a href="#" @click.prevent="activate(store.uuid, 'active')">	
-														Activate
-													</a>
-												</template>
-												<template v-else>
-													<a href="#" @click.prevent="activate(store.uuid, 'deactivate')">
-														Deactivate
-													</a>	
-												</template>
-												|
-												<a href="#" @click.prevent="topup(store)">Top Up</a>
-												<div>
-													<a href="#" @click.prevent="commission(store)">Update</a>
+								<div class="table-responsive">
+									<table class="table">
+										<thead>
+											<th>#</th>
+											<th>Name</th>
+											<th>Contact Person</th>
+											<th>Phone</th>
+											<th>Address</th>
+											<th>Status</th>
+											<th>Approval</th>
+											<th>Sponsor ID</th>
+										</thead>
+										<tbody>
+											<tr v-if="stores" v-for="(store, key) in stores">
+												<td>{{ store.uuid }}</td>
+												<td>{{ store.store }}</td>
+												<td>{{ store.username }}</td>
+												<td>{{ store.phone }}</td>
+												<td>{{ store.address }}</td>
+												<td>{{ store.status }}</td>
+												<td>{{ store.approval }}</td>
+												<td>{{ store.sponsor }}</td>
+												<td>
+													<template v-if="store.status != 'active'">
+														<a href="#" @click.prevent="activate(store.uuid, 'active')">	
+															Activate
+														</a>
+													</template>
+													<template v-else>
+														<a href="#" @click.prevent="activate(store.uuid, 'deactivate')">
+															Deactivate
+														</a>	
+													</template>
 													|
-													<a href="#" @click.prevent="password(store)">Password</a>
-													|
-												<template v-if="store.approval != 'approve'">
-													<a href="#" @click.prevent="approve(store.uuid, 'approve')">	
-														Approve
-													</a>
-												</template>
-												<template v-else>
-													<a href="#" @click.prevent="approve(store.uuid, 'deactivate')">
-														Deactivate
-													</a>	
-												</template>
-												</div>
-											</td>
-										</tr>
-										<tr v-else>
-											<td colspan="4">
-												<p>There is no store.</p>
-											</td>
-										</tr>
-									</tbody>
-								</table>
+													<a href="#" @click.prevent="topup(store)">Top Up</a>
+													<div>
+														<a href="#" @click.prevent="commission(store)">Update</a>
+														|
+														<a href="#" @click.prevent="password(store)">Password</a>
+														|
+													<template v-if="store.approval != 'approve'">
+														<a href="#" @click.prevent="approve(store.uuid, 'approve')">	
+															Approve
+														</a>
+													</template>
+													<template v-else>
+														<a href="#" @click.prevent="approve(store.uuid, 'deactivate')">
+															Deactivate
+														</a>	
+													</template>
+													</div>
+												</td>
+											</tr>
+											<tr v-else>
+												<td colspan="4">
+													<p>There is no store.</p>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
 							</div>
 						</div>
 					</div>
