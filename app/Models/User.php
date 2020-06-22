@@ -80,6 +80,9 @@ class User extends Authenticatable implements JWTSubject
         }else if($this->type == 'store'){
             return $this->store->phone;
 
+        }else if($this->type == 'society'){
+            return $this->society->phone;
+
         }else if($this->type == 'supplier'){
             return $this->supplier->phone;
 
