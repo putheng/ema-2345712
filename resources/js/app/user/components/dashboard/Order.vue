@@ -8,40 +8,41 @@
 			<div class="col-md-12">
 				<div class="card card-fluid">
 					<div class="card-body">
+						<div class="table-responsive">
+							<table class="table">
+								<thead>
+									<th>Order #</th>
+									<th>Date Purchased</th>
+									<th>Subtotal</th>
+									<th>Shipping</th>
+									<th>Total</th>
+									<th>Status</th>
+								</thead>
+								<tbody>
+									<tr v-if="orders.length" v-for="(order, i) in orders">
+										<td>
+											<a href="#" @click.prevent="showModal(order)">
+												EMAO{{ order.id }}
+											</a>
+										</td>
+										<td>{{ order.created_at }}</td>
+										<td>{{ order.subtotal }}</td>
+										<td>{{ order.shippingMethod.price }}</td>
+										<td>{{ order.total }}</td>
 
-						<table class="table">
-							<thead>
-								<th>Order #</th>
-								<th>Date Purchased</th>
-								<th>Subtotal</th>
-								<th>Shipping</th>
-								<th>Total</th>
-								<th>Status</th>
-							</thead>
-							<tbody>
-								<tr v-if="orders.length" v-for="(order, i) in orders">
-									<td>
-										<a href="#" @click.prevent="showModal(order)">
-											EMAO{{ order.id }}
-										</a>
-									</td>
-									<td>{{ order.created_at }}</td>
-									<td>{{ order.subtotal }}</td>
-									<td>{{ order.shippingMethod.price }}</td>
-									<td>{{ order.total }}</td>
-
-									<td><span class="badge "
-										:class="{
-											'badge-warning': order.status == 'pending',
-											'badge-primary': order.status == 'processing',
-											'badge-danger': order.status == 'payment_failed',
-											'badge-success': order.status == 'completed',
-										}"
-										>{{ order.status }}</span>
-									</td>
-								</tr>
-							</tbody>
-						</table>
+										<td><span class="badge "
+											:class="{
+												'badge-warning': order.status == 'pending',
+												'badge-primary': order.status == 'processing',
+												'badge-danger': order.status == 'payment_failed',
+												'badge-success': order.status == 'completed',
+											}"
+											>{{ order.status }}</span>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
 					</div>
 				</div>
 			</div>
