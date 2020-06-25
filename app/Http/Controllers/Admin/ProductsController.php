@@ -15,7 +15,7 @@ class ProductsController extends Controller
             Product::isNotBlock()
             	->with('image', 'category', 'variations')
             	->orderBy('id', 'desc')
-            	->paginate(30)
+            	->paginate(50)
         );
     }
 
@@ -27,7 +27,7 @@ class ProductsController extends Controller
             Product::isNotBlock()
             	->with('image', 'category', 'variations')
             	->orderBy('id', 'desc')
-            	->paginate(30)
+            	->paginate(50)
         );
     }
 }
