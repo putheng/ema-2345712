@@ -68,15 +68,15 @@ class OrderController extends Controller
             "customer_email" => auth()->user()->email,
             "description" => "",
             "customer_phone" => auth()->user()->phone,
-            "pay_later_url" => "https://emarketasia.com/",
+            "pay_later_url" => "https://emarketasia.com/cart/checkout/redirect",
             "currency" => get_currency()->current(),
             "reference_id" => $order->uuid,
             "customer_name" => auth()->user()->name,
             "language" => "km",
-            "cancel_url" => "https://emarketasia.com/",
+            "cancel_url" => "https://emarketasia.com/cart/checkout/redirect",
             "amount" => $total,
             "webview" => false,
-            "callback_url" => "https://emarketasia.com/"
+            "callback_url" => "https://emarketasia.com/cart/checkout/redirect"
         ];
    
         try {

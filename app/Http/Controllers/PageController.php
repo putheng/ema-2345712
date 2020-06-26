@@ -28,6 +28,11 @@ class PageController extends Controller
         return view('home.about');
     }
 
+    public function redirect()
+    {
+        return redirect()->route('index');
+    }
+
     public function stores()
     {
         $stores = Store::get();

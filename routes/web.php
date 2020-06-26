@@ -5,6 +5,7 @@ Route::get('/', 'ProductController@index')->name('index');
 Route::get('/filter', 'Products\ProductController@index')->name('product.filter');
 
 Route::get('/cart/checkout', 'PageController@cart')->name('checkout');
+Route::get('/cart/checkout/redirect', 'PageController@redirect')->name('redirect');
 
 response()->json();
 
