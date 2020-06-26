@@ -75,7 +75,7 @@ class OrderController extends Controller
             "language" => "km",
             "cancel_url" => "https://marketasia.com",
             "amount" => $total,
-            "webview" => true,
+            "webview" => false,
             "callback_url" => "https://marketasia.com"
         ];
    
