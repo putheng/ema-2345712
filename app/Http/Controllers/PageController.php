@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Store;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -29,7 +30,9 @@ class PageController extends Controller
 
     public function stores()
     {
-        return view('home.stores');
+        $stores = Store::get();
+
+        return view('home.stores', compact('stores'));
     }
 
     public function currency(Request $request)
