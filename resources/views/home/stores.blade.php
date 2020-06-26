@@ -26,7 +26,7 @@
                 <ul class="list-unstyled mb-0">
                   <li class="media pb-3 border-bottom">
                     <i class="czi-location font-size-lg mt-2 mb-0 text-primary"></i>
-                    <div class="media-body pl-3"><span class="font-size-ms text-muted">Find us</span><a class="d-block text-heading font-size-sm" href="">{{ $store->address }}</a></div>
+                    <div class="media-body pl-3"><span class="font-size-ms text-muted">Address</span><a class="d-block text-heading font-size-sm" href="">{{ $store->address }}</a></div>
                   </li>
                   <li class="media pt-2 pb-3 border-bottom">
                     <i class="czi-phone font-size-lg mt-2 mb-0 text-primary"></i>
