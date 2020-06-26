@@ -82,7 +82,7 @@
       </div>
       <!-- More button-->
       <div class="text-center">
-        <a class="btn btn-outline-accent" href="#">
+        <a class="btn btn-outline-accent" href="{{ url('/category') }}">
           View more products<i class="czi-arrow-right font-size-ms ml-1"></i>
         </a>
       </div>
