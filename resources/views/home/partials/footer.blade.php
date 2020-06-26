@@ -72,12 +72,6 @@
 								<a class="widget-list-link" href="{{ route('contact') }}">Contacts</a>
 							</li>
 							<li class="widget-list-item">
-								<a class="widget-list-link" href="#">Become a vendor</a>
-							</li>
-							<li class="widget-list-item">
-								<a class="widget-list-link" href="#">Become a supplier</a>
-							</li>
-							<li class="widget-list-item">
 								<a class="widget-list-link" href="{{ url('/auth/login') }}">Become a society</a>
 							</li>
 							@if(auth()->check())

@@ -14,23 +14,20 @@
         <div class="btn-group dropdown d-block mx-auto mb-3">
           <button class="btn btn-outline-light border-light dropdown-toggle" type="button" data-toggle="dropdown">Categories</button>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Photos</a></li>
-            <li><a class="dropdown-item" href="#">Graphics</a></li>
-            <li><a class="dropdown-item" href="#">UI Design</a></li>
-            <li><a class="dropdown-item" href="#">Web Themes</a></li>
-            <li><a class="dropdown-item" href="#">Fonts</a></li>
-            <li><a class="dropdown-item" href="#">Add-Ons</a></li>
+            @foreach($categories as $category)
+              <li><a class="dropdown-item" href="#">{{ $category->name }}</a></li>
+            @endforeach
           </ul>
         </div>
+
         <div class="btn-group dropdown d-block mx-auto">
-          <button class="btn btn-outline-light border-light dropdown-toggle" type="button" data-toggle="dropdown">For members</button>
+          <button class="btn btn-outline-light border-light dropdown-toggle" type="button" data-toggle="dropdown">
+          Company</button>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Licenses</a></li>
-            <li><a class="dropdown-item" href="#">Return policy</a></li>
-            <li><a class="dropdown-item" href="#">Payment methods</a></li>
-            <li><a class="dropdown-item" href="#">Become a vendor</a></li>
-            <li><a class="dropdown-item" href="#">Become a supplier</a></li>
-            <li><a class="dropdown-item" href="#">Become a society</a></li>
+            <li><a class="dropdown-item" href="{{ route('about') }}">About us</a>
+            <li><a class="dropdown-item" href="{{ route('stores') }}">Store locator</a>
+            <li><a class="dropdown-item" href="{{ route('contact') }}">Contacts</a>
+            <li><a class="dropdown-item" href="{{ url('/auth/login') }}">Become a society</a>
           </ul>
         </div>
       </div>
@@ -39,26 +36,43 @@
         <div class="widget widget-links widget-light pb-2">
           <h3 class="widget-title text-light">Categories</h3>
           <ul class="widget-list">
-            <li class="widget-list-item"><a class="widget-list-link" href="#">Photos</a></li>
-            <li class="widget-list-item"><a class="widget-list-link" href="#">Graphics</a></li>
-            <li class="widget-list-item"><a class="widget-list-link" href="#">UI Design</a></li>
-            <li class="widget-list-item"><a class="widget-list-link" href="#">Web Themes</a></li>
-            <li class="widget-list-item"><a class="widget-list-link" href="#">Fonts</a></li>
-            <li class="widget-list-item"><a class="widget-list-link" href="#">Add-Ons</a></li>
+            @foreach($categories as $category)
+              <li class="widget-list-item"><a class="widget-list-link" href="#">{{ $category->name }}</a></li>
+            @endforeach
           </ul>
         </div>
       </div>
       <div class="col-md-3 d-none d-md-block text-center text-md-left mb-4">
         <div class="widget widget-links widget-light pb-2">
-          <h3 class="widget-title text-light">For members</h3>
+          <h3 class="widget-title text-light">Company</h3>
           <ul class="widget-list">
-            <li class="widget-list-item"><a class="widget-list-link" href="#">Licenses</a></li>
-            <li class="widget-list-item"><a class="widget-list-link" href="#">Return policy</a></li>
-            <li class="widget-list-item"><a class="widget-list-link" href="#">Payment methods</a></li>
-            <li class="widget-list-item"><a class="widget-list-link" href="#">Become a vendor</a></li>
-            <li class="widget-list-item"><a class="widget-list-link" href="#">Become a supplier</a></li>
-            <li class="widget-list-item"><a class="widget-list-link" href="#">Become a society</a></li>
-          </ul>
+              <li class="widget-list-item">
+                <a class="widget-list-link" href="{{ route('about') }}">About us</a>
+              </li>
+              <li class="widget-list-item">
+                <a class="widget-list-link" href="{{ route('stores') }}">Store locator</a>
+              </li>
+
+              <li class="widget-list-item">
+                <a class="widget-list-link" href="{{ route('contact') }}">Contacts</a>
+              </li>
+              <li class="widget-list-item">
+                <a class="widget-list-link" href="{{ url('/auth/login') }}">Become a society</a>
+              </li>
+              @if(auth()->check())
+                <li class="widget-list-item">
+                  <a class="widget-list-link" href="{{ route('logout') }}"
+                     onclick="event.preventDefault();
+                                   document.getElementById('logoutform').submit();">
+                      Logout
+                  </a>
+
+                  <form id="logoutform" action="{{ route('logout') }}" method="POST" style="display: none;">
+                      @csrf
+                  </form>
+                </li>
+              @endif
+            </ul>
         </div>
       </div>
     </div>
