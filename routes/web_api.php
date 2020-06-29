@@ -65,13 +65,14 @@ Route::group(['middleware' => 'auth'], function(){
 		Route::post('transfer/confirm', 'Api\TransferController@confirm');
 	});
 
-	Route::group(['prefix' => 'products', 'middleware' => 'role:store|admin|supplier'], function(){
-		Route::resource('product', 'Admin\ProductController');
-		Route::resource('sale', 'Product\SaleController');
-
+	Route::group(['prefix' => 'products'], function(){
 		Route::get('wishlist', 'Api\WishlistController@index');
 		Route::post('wishlist', 'Api\WishlistController@store');
 		Route::post('wishlist/remove', 'Api\WishlistController@destroy');
+	});
+	Route::group(['prefix' => 'products', 'middleware' => 'role:store|admin|supplier'], function(){
+		Route::resource('product', 'Admin\ProductController');
+		Route::resource('sale', 'Product\SaleController');
 
 		Route::post('product/{product}/edit', 'Admin\ProductEditController@store');
 		Route::post('image/remove', 'Admin\ImageController@destroy');
