@@ -110,7 +110,7 @@
           </div>
         </div>
         <div class="row mt-2 p-2">
-          <div class="col mr-1">
+          <div class="col">
             <div class="card product-card card-static pb-3 text-center"><a href="https://emarketasia.com/product/divine-noni-1590809204.html/show" class="card-img-top d-block overflow-hidden"><img src="https://emarketasia.com/uploads/products/15ed1d27458e071590809204.png" alt="Product" style="margin: auto;" class="loaded tns-complete"></a> <div class="card-body py-2 text-left"><h3 class="product-title font-size-sm"><a href="https://emarketasia.com/product/divine-noni-1590809204.html/show">ទឹកញ Divine Noni</a></h3> <div class="product-price"><span class="text-accent">$&nbsp;40.00</span> <del class="font-size-sm text-muted">$&nbsp;45.00</del></div></div></div>
           </div>
 
@@ -120,7 +120,7 @@
         </div>
 
         <div class="row mt-2 p-2">
-          <div class="col mr-1">
+          <div class="col">
             <div class="card product-card card-static pb-3 text-center"><a href="https://emarketasia.com/product/divine-noni-1590809204.html/show" class="card-img-top d-block overflow-hidden"><img src="https://emarketasia.com/uploads/products/15ed1d27458e071590809204.png" alt="Product" style="margin: auto;" class="loaded tns-complete"></a> <div class="card-body py-2 text-left"><h3 class="product-title font-size-sm"><a href="https://emarketasia.com/product/divine-noni-1590809204.html/show">ទឹកញ Divine Noni</a></h3> <div class="product-price"><span class="text-accent">$&nbsp;40.00</span> <del class="font-size-sm text-muted">$&nbsp;45.00</del></div></div></div>
           </div>
 
