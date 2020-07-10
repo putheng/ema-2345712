@@ -101,6 +101,26 @@
           </div>
         </div>
 
+        <div class="row mt-3">
+          <div class="col  d-flex justify-content-between">
+            <p class="mb-0 pb-0">
+              Must Sell
+            </p>
+            <small><a href="#">View All</a></small>
+          </div>
+        </div>
+        <div class="row mt-2 p-2">
+          <div class="col border">
+            <img src="https://emarketasia.com/uploads/products/15ef1e17328c371592910195.png" class="img-fluid">
+            <p><strong>ស្ពៃស</strong></p>
+          </div>
+
+          <div class="col border">
+            <img src="https://emarketasia.com/uploads/products/15ef1e17328c371592910195.png" class="img-fluid">
+            <p><strong>ស្ពៃស</strong></p>
+          </div>
+        </div>
+
       <br><br><br>
       <div class="pb-4"></div>
       <!-- Toast: Added to Cart-->
