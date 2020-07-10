@@ -101,6 +101,17 @@
           </div>
         </div>
 
+        <div class="row">
+          <div class="col">
+            <div>
+              <img src="https://emarketasia.com/uploads/products/15f05961355f631594201619.png">
+            </div>
+            <div>
+              <img src="https://emarketasia.com/uploads/products/15f05961355f631594201619.png">
+            </div>
+          </div>
+        </div>
+
       <br><br><br>
       <div class="pb-4"></div>
       <!-- Toast: Added to Cart-->
