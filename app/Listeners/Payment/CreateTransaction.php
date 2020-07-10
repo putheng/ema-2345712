@@ -21,8 +21,9 @@ class CreateTransaction
     public function handle(TransferCreated $event)
     {
         $request = $event->request;
+        $user = auth()->user() != null auth()->user() : auth('api')->user();
 
-        $sender = auth()->user();
+        $sender = $user;
 
         $receiver = $this->getUser($request)->user;
 
@@ -34,7 +35,7 @@ class CreateTransaction
         $transfer->amount = $request->amount;
         $transfer->mark = $request->mark;
         $transfer->fee = $request->fee;
-        $transfer->currency = auth()->user()->currency;
+        $transfer->currency = $sender->currency;
 
         $transfer->save();
 

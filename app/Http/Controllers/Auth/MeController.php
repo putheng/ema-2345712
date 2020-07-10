@@ -15,12 +15,12 @@ class MeController extends Controller
 
     public function action(Request $request)
     {
-        return new PrivateUserResource($request->user());
+        return new PrivateUserResource(auth('api')->user());
     }
 
     public function logout()
     {
-        auth()->logout();
+        auth('api')->logout();
 
         return response()->json(['message' => 'Successfully logged out']);
     }

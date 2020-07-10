@@ -1,6 +1,7 @@
 <?php
 
 Route::get('/', 'ProductController@index')->name('index');
+Route::get('/home', 'ProductController@home')->name('index.home');
 
 Route::get('/filter', 'Products\ProductController@index')->name('product.filter');
 

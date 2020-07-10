@@ -7,6 +7,8 @@ Route::resource('cart', 'Cart\CartController', [
     ]
 ]);
 
+Route::get('categories', 'Api\CategoryController@index');
+
 Route::post('webhook/incomming', 'Webhook\IncommingController@store');
 Route::get('content', 'Webhook\IncommingController@content');
 Route::get('content/continue', 'Webhook\IncommingController@continue')->name('continue');
@@ -150,3 +152,4 @@ Route::group(['prefix' => 'auth', 'middleware' => ['guest']],function(){
 	Route::post('society/register', 'Api\SociaryRegisterController@store');
 	Route::post('register', 'Api\RegisterController@store');
 });
+

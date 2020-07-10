@@ -14,7 +14,7 @@ class PrivateUserResource extends JsonResource
      */
     public function toArray($request)
     {
-        return [
+        $data = [
             'id' => $this->id,
             'email' => $this->email,
             'balance' => '$'. number_format($this->balance, 2),
@@ -26,6 +26,8 @@ class PrivateUserResource extends JsonResource
             'role' => $this->getRoleNames()->first(),
             'permissions' => $this->formatedPermission()
         ];
+
+        return $data;
     }
 
     protected function formatedPermission()

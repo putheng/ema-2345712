@@ -21,13 +21,14 @@
         "resolve-url-loader": "^2.3.1",
         "sass": "^1.20.1",
         "sass-loader": "^7.1.0",
-        "vue": "^2.5.17",
-        "vue-template-compiler": "^2.6.10",
+        "vue": "^2.6.11",
+        "vue-template-compiler": "^2.6.11",
         "webpack": "^4.42.0"
     },
     "dependencies": {
         "@casl/ability": "^3.4.0",
         "@casl/vue": "^0.5.1",
+        "@chenfengyuan/vue-carousel": "^1.0.5",
         "apexcharts": "^3.17.1",
         "css-loader": "^3.4.2",
         "laravel-mix-alias": "^1.0.2",

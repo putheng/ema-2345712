@@ -22,6 +22,7 @@ export { default as LeftAdminSetting } from './LeftAdminSetting'
 export { default as LeftSocietySetting } from './partials/LeftSocietySetting'
 export { default as LeftSupplierSetting } from './partials/LeftSupplierSetting'
 export { default as LeftStoreSetting } from './LeftStoreSetting'
+export { default as HomeCarosel } from './HomeCarosel'
 
 export { default as HomeSignIn } from './HomeSignIn'
 export { default as AppForm } from './AppForm'

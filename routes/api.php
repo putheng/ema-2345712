@@ -43,7 +43,7 @@ Route::resource('payment-methods', 'PaymentMethods\PaymentMethodController');
 Route::get('addresses/{address}/shipping', 'Addresses\AddressShippingController@action');
 
 Route::group(['prefix' => 'auth'], function () {
-    Route::post('register', 'Auth\RegisterController@action');
+    Route::post('register', 'Api\RegisterController@store');
     Route::post('login', 'Auth\LoginController@action');
     
     Route::post('logout', 'Auth\MeController@logout');
@@ -66,5 +66,7 @@ Route::get('test', function(){
 
     dd($category->image);
 });
+
+// 
 
 

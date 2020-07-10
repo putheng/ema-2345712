@@ -11,7 +11,7 @@ class LoginController extends Controller
 {
     public function action(LoginRequest $request)
     {
-        if (!$token = auth()->attempt($request->only('email', 'password'))) {
+        if (!$token = auth('api')->attempt($request->only('email', 'password'))) {
             return response()->json([
                 'errors' => [
                     'email' => ['Could not sign you in with those details.']
@@ -19,7 +19,7 @@ class LoginController extends Controller
             ], 422);
         }
 
-        return (new PrivateUserResource($request->user()))
+        return (new PrivateUserResource(auth('api')->user()))
             ->additional([
                 'meta' => [
                     'token' => $token
