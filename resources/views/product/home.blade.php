@@ -9,7 +9,7 @@
           </div>
         </div>
 
-        <div class="row">
+        <div class="row mt-2">
           <div class="col  d-flex justify-content-between">
             <p class="mb-0 pb-0">
               PROMOTIONS
@@ -35,7 +35,7 @@
           </div>
         </div>
 
-        <div class="row mt-3">
+        <div class="row mt-5">
           <div class="col  d-flex justify-content-between">
             <p class="mb-0 pb-0">
               CATEGORIES
@@ -101,7 +101,7 @@
           </div>
         </div>
 
-        <div class="row mt-3">
+        <div class="row mt-5">
           <div class="col  d-flex justify-content-between">
             <p class="mb-0 pb-0">
               Must Sell
