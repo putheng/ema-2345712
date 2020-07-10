@@ -72,7 +72,7 @@
           </div>
         </div>
 
-        <div class="row mt-2">
+        <div class="row mt-4">
           <div class="col">
             <a href="#">
               <img src="/images/categories/pizza.png">
