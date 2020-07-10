@@ -20,17 +20,17 @@
         <div class="row">
           <div class="col">
             <a href="#">
-              <img src="http://homestead.local/uploads/products/15ed202f9cefab1590821625.png">
+              <img src="https://emarketasia.com/uploads/products/15ed1d27458e071590809204.png">
             </a>
           </div>
           <div class="col">
             <a href="#">
-              <img src="http://homestead.local/uploads/products/15ece599fdc3051590581663.png">
+              <img src="https://emarketasia.com/uploads/products/15eedb43c759171592636476.png">
             </a>
           </div>
           <div class="col">
             <a href="#">
-              <img src="http://homestead.local/uploads/products/15ed0cacf030161590741711.png">
+              <img src="https://emarketasia.com/uploads/products/15f05961355f631594201619.png">
             </a>
           </div>
         </div>
