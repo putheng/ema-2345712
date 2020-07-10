@@ -20,17 +20,17 @@
         <div class="row">
           <div class="col">
             <a href="#">
-              <img src="https://emarketasia.com/uploads/products/15ed1d27458e071590809204.png">
+              <img src="/images/banners/1.png">
             </a>
           </div>
           <div class="col">
             <a href="#">
-              <img src="https://emarketasia.com/uploads/products/15eedb43c759171592636476.png">
+              <img src="/images/banners/2.png">
             </a>
           </div>
           <div class="col">
             <a href="#">
-              <img src="https://emarketasia.com/uploads/products/15f05961355f631594201619.png">
+              <img src="/images/banners/3.png">
             </a>
           </div>
         </div>
@@ -98,17 +98,6 @@
             <a href="#">
               <img src="/images/categories/beef.png">
             </a>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col">
-            <div>
-              <img src="https://emarketasia.com/uploads/products/15f05961355f631594201619.png">
-            </div>
-            <div>
-              <img src="https://emarketasia.com/uploads/products/15f05961355f631594201619.png">
-            </div>
           </div>
         </div>
 
