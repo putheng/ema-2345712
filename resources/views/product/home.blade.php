@@ -57,10 +57,10 @@
         <div class="row mt-4">
           @foreach($categoriesb as $categoryb)
             <div class="col">
-              <a href="{{ route('app.category', $category) }}">
-                <img src="/app/category/{{ $category->image }}">
+              <a href="{{ route('app.category', $categoryb) }}">
+                <img src="/app/category/{{ $categoryb->image }}">
               </a>
-              <small>{{ $category->name }}</small>
+              <small>{{ $categoryb->name }}</small>
             </div>
           @endforeach
         </div>
