@@ -29,7 +29,7 @@ class ProductIndexResource extends JsonResource
             'tax_price' => currency_format($this->tax_price->amount()),
             'category' => optional($this->category()->first())->id,
             'publish' => (bool) $this->publish,
-            'image' => url('uploads/products'. $this->image->first()->url)
+            'image' => secure_asset('uploads/products'. $this->image->first()->url)
         ];
     }
 }
