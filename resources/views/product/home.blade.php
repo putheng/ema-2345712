@@ -20,17 +20,17 @@
         <div class="row">
           <div class="col">
             <a href="#">
-              <img src="/app/p1.png">
+              <img src="/app/p1.jpg">
             </a>
           </div>
           <div class="col">
             <a href="#">
-              <img src="/app/p2.png">
+              <img src="/app/p2.jpg">
             </a>
           </div>
           <div class="col">
             <a href="#">
-              <img src="/app/p3.png">
+              <img src="/app/p3.jpg">
             </a>
           </div>
         </div>
