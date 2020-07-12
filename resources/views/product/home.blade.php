@@ -65,6 +65,8 @@
         
         @include('app.partials.discounted')
 
+        @include('app.partials.best-sale')
+
       <br>
       <div class="pb-4"></div>
       <!-- Toast: Added to Cart-->
