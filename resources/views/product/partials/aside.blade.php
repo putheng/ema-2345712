@@ -15,7 +15,9 @@
                     <h3 class="accordion-heading font-size-base px-grid-gutter">
                       <a class="collapsed py-3" href="#{{ $category->slug }}" role="button" data-toggle="collapse" aria-expanded="false" aria-controls="fish">
                         <span class="d-flex align-items-center">
-                          @if($category->icon != null)
+                          @if($category->image != null)
+                            <img src="/app/category/{{ $category->image }}" style="width: 28px; height: 26px;" class="mr-1">
+                          @elseif($category->icon != null)
                             <i class="{{ $category->icon }} font-size-lg opacity-60 mr-2"></i>
                           @endif
                         {{ $category->name }}</span>
