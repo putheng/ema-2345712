@@ -35,6 +35,6 @@ class AgentResource extends JsonResource
             return $this->user->image->avatar();
         }
 
-        return url('/images/empty-profile-picture.png');
+        return secure_asset('/images/empty-profile-picture.png');
     }
 }

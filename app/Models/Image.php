@@ -33,12 +33,12 @@ class Image extends Model
 
     public function avatar()
     {
-        return url('uploads/avatar'. $this->url);
+        return secure_asset('uploads/avatar'. $this->url);
     }
 
     public function product()
     {
-        return url('uploads/products'. $this->url);
+        return secure_asset('uploads/products'. $this->url);
     }
 
     public function user()
