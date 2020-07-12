@@ -9,9 +9,10 @@ class BestSale
 {
     public function compose(View $view)
     {
-    	$products = Product::with('image', 'category')
-    		->whereIn('id', [54, 55, 56, 57, 58, 59])
-    		->get();
+    	$products = Product::with('category', 'image')
+    		->inRandomOrder()
+		    ->limit(10)
+		    ->get();
 
         $view->with('products', $products);
     }
