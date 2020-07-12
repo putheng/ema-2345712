@@ -16,7 +16,7 @@
                       <a class="collapsed py-3" href="#{{ $category->slug }}" role="button" data-toggle="collapse" aria-expanded="false" aria-controls="fish">
                         <span class="d-flex align-items-center">
                           @if($category->image != null)
-                            <img src="/app/category/{{ $category->image }}" style="width: 35px; height: 34px;" class="mr-1">
+                            <img src="/app/category/{{ $category->image }}" style="width: 45px; height: 44px;" class="mr-1">
                           @elseif($category->icon != null)
                             <i class="{{ $category->icon }} font-size-lg opacity-60 mr-2"></i>
                           @endif
