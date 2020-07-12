@@ -14,9 +14,6 @@
 					<img style="width: 157px; height: 157px;margin: auto;" src="{{ $product->image->first()->product() }}" alt="Product">
 				</a>
 				<div class="card-body py-2">
-					<a class="product-meta d-block font-size-xs pb-1" href="{{ route('show.product', $product) }}">
-						{{ $product->category->name }}
-					</a>
 					<h3 class="product-title font-size-sm">
 						<a href="grocery-single.html">{{ $product->name }}</a>
 					</h3>
