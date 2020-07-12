@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('product.app')
 
 @section('content')
 <section class="px-lg-3 pt-4">
