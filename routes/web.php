@@ -36,7 +36,8 @@ Route::group(['prefix' => 'society', 'middleware' => ['auth', 'role:society|admi
 
 
 // App
-Route::get('/app/{product}/show', 'AppProductController@show')->name('app.show');
+Route::get('/app/product/{product}/show', 'AppProductController@show')->name('app.show');
+Route::get('/app/category/{category}', 'AppProductController@category')->name('app.category');
 
 
 Route::group(['prefix' => 'supplier', 'middleware' => ['auth', 'role:supplier|admin']], function(){
