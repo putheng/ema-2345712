@@ -69,7 +69,7 @@ class ViewComposerServicesProvider extends ServiceProvider
         );
 
         View::composer(
-            ['product.partials.best', 'app.partials.best-sale'], 
+            ['product.partials.best', 'app.partials.best-sale', 'app.partials.maylike'], 
             BestSale::class
         );
 

@@ -37,6 +37,10 @@ Route::group(['prefix' => 'society', 'middleware' => ['auth', 'role:society|admi
 });
 
 
+// App
+Route::get('/app/{product}/show', 'AppProductController@show')->name('app.show');
+
+
 Route::group(['prefix' => 'supplier', 'middleware' => ['auth', 'role:supplier|admin']], function(){
 	
 	Route::get('/{vue?}', 'HomeController@supplier')

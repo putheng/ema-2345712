@@ -10,7 +10,7 @@
 	@foreach($products as $product)
 		<div class="col-6 mb-3">
 			<div class="card product-card card-static pb-3 text-center">
-				<a class="card-img-top d-block overflow-hidden" href="{{ route('show.product', $product) }}">
+				<a class="card-img-top d-block overflow-hidden" href="{{ route('app.show', $product) }}">
 					<img style="width: 157px; height: 157px;margin: auto;" src="{{ $product->image->first()->product() }}" alt="Product">
 				</a>
 				<div class="card-body py-2">

@@ -1,12 +1,6 @@
-<div class="row mt-5">
-	<div class="col  d-flex justify-content-between">
-		<p class="mb-0 pb-0">
-			BEST SELLERS
-		</p>
-		<small><a href="#">View All</a></small>
-	</div>
-</div>
-<div class="row mt-2 p-2">
+<h2 class="h3 pb-2 mb-grid-gutter text-center">You may also like</h2>
+
+<div class="row p-2">
 	@foreach($products as $product)
 		<div class="col-6 mb-3">
 			<div class="card product-card card-static pb-3 text-center">
