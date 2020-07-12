@@ -74,7 +74,10 @@ class ViewComposerServicesProvider extends ServiceProvider
         );
 
         View::composer(
-            ['product.partials.discounted'], 
+            [
+                'product.partials.discounted',
+                'app.partials.discounted',
+            ], 
             DiscountProduct::class
         );
 
