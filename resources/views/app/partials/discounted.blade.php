@@ -18,8 +18,11 @@
 						<a href="grocery-single.html">{{ $product->name }}</a>
 					</h3>
 					<div class="product-price">
-						<span class="text-accent">{{ $product->formattedSalePrice }}</span>
-					</div>
+		                <span class="text-accent">{{ $product->formattedTaxPrice }}</span>
+		                @if($product->formattedMarketPrice)
+		                  <del class="font-size-sm text-muted">{{ $product->formattedMarketPrice }}</del>
+		                @endif
+		            </div>
 				</div>
 			</div>
 		</div>
