@@ -5,6 +5,7 @@ public/uploads
 /storage/*.key
 /vendor
 .env
+run.py
 .env.backup
 .phpunit.result.cache
 Homestead.json
