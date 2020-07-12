@@ -24,7 +24,7 @@
     @include('product.partials.header')
 
     <!-- Sidebar menu-->
-    @include('product.partials.aside')
+    @include('app.partials.aside')
     <!-- Page-->
     <main class="sidebar-fixed-enabled" style="padding-top: 3rem;">
       
