@@ -46,7 +46,7 @@
         <div class="row mt-1">
           @foreach($categories as $category)
             <div class="col">
-              <a href="#">
+              <a href="{{ route('categoryshow', $category) }}">
                 <img src="/app/category/{{ $category->image }}">
               </a>
             </div>
