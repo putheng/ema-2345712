@@ -12,6 +12,7 @@ use App\ViewComposers\{
     DiscountProduct,
     BestSale,
     AppHomeCategory,
+    AppHomeCategoryNext
 };
 
 class ViewComposerServicesProvider extends ServiceProvider
@@ -36,6 +37,11 @@ class ViewComposerServicesProvider extends ServiceProvider
         View::composer(
             ['product.home'], 
             AppHomeCategory::class
+        );
+
+        View::composer(
+            ['product.home'], 
+            AppHomeCategoryNext::class
         );
 
         View::composer(

@@ -9,7 +9,7 @@ class AppHomeCategory
 {
 	public function compose(View $view)
     {
-    	$categories = Category::whereNotNull('image')->take(4)->get();
+    	$categories = Category::whereNotNull('image')->skip(0)->take(4)->get();
 
         $view->with('categories', $categories);
     }

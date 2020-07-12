@@ -54,32 +54,13 @@
         </div>
 
         <div class="row mt-4">
-          <div class="col">
-            <a href="#">
-              <img src="/images/categories/pizza.png">
-            </a>
-          </div>
-          <div class="col">
-            <a href="#">
-              <img src="/images/categories/sausage.png">
-            </a>
-          </div>
-          <div class="col">
-            <a href="#">
-              <img src="/images/categories/settings.png">
-            </a>
-          </div>
-          <div class="col">
-            <a href="#">
-              <img src="/images/categories/clothes.png">
-            </a>
-          </div>
-
-          <div class="col">
-            <a href="#">
-              <img src="/images/categories/beef.png">
-            </a>
-          </div>
+          @foreach($categoriesb as $categoryb)
+            <div class="col">
+              <a href="#">
+                <img src="/app/category/{{ $categoryb->image }}">
+              </a>
+            </div>
+          @endforeach
         </div>
 
         <div class="row mt-4">
