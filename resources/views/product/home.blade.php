@@ -60,7 +60,7 @@
               <a href="{{ route('app.category', $categoryb) }}">
                 <img src="/app/category/{{ $categoryb->image }}">
               </a>
-              <small>{{ explode('&', $category->name)[0] }}</small>
+              <small>{{ explode('&', $categoryb->name)[0] }}</small>
             </div>
           @endforeach
         </div>
