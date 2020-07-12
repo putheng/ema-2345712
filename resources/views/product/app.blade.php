@@ -35,7 +35,7 @@
     <!-- Back To Top Button--><a class="btn-scroll-top" href="#top" data-scroll><span class="btn-scroll-top-tooltip text-muted font-size-sm mr-2">Top</span><i class="btn-scroll-top-icon czi-arrow-up">   </i></a>
     </div>
     <!-- JavaScript libraries, plugins and custom scripts-->
-    <script src="{{ asset('js/app.js?v='. time()) }}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/vendor.min.js') }}"></script>
     <script src="{{ asset('js/theme.min.js') }}"></script>
     @yield('script')
