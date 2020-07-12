@@ -45,7 +45,7 @@ class ViewComposerServicesProvider extends ServiceProvider
         );
 
         View::composer(
-            ['product.partials.aside'], 
+            ['product.partials.aside', 'app.partials.aside'], 
             LeftMenuComposer::class
         );
 
