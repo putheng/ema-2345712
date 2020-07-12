@@ -49,6 +49,7 @@
               <a href="{{ route('app.category', $category) }}">
                 <img src="/app/category/{{ $category->image }}">
               </a>
+              <small>{{ $category->name }}</small>
             </div>
           @endforeach
         </div>
