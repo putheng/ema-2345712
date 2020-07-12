@@ -45,11 +45,11 @@
         </div>
         <div class="row mt-1">
           @foreach($categories as $category)
-            <div class="col">
+            <div class="col text-center">
               <a href="{{ route('app.category', $category) }}">
                 <img src="/app/category/{{ $category->image }}">
               </a>
-              <small>{{ $category->name }}</small>
+              <small>{{ explode('&', $category->name)[0] }}</small>
             </div>
           @endforeach
         </div>
