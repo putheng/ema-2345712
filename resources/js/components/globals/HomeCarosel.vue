@@ -7,8 +7,9 @@
     data() {
       return {
         data: [
-          '<div class="example-slide"><img src="/images/banners/slide1.png"/></div>',
-          '<div class="example-slide"><img src="/images/banners/slide2.png"/></div>',
+          '<div class="example-slide"><img src="/app/b1.jpg"/></div>',
+          '<div class="example-slide"><img src="/app/b2.jpg"/></div>',
+          '<div class="example-slide"><img src="/app/b3.jpg"/></div>',
         ],
       };
     },
