@@ -1,4 +1,4 @@
-<div class="row mt-4">
+<div class="row mt-5">
 	<div class="col  d-flex justify-content-between">
 		<p class="mb-0 pb-0">
 			Discounted products
@@ -8,7 +8,7 @@
 </div>
 <div class="row mt-2 p-2">
 	@foreach($products as $product)
-		<div class="col-6 mt-3">
+		<div class="col-6 mb-3">
 			<div class="card product-card card-static pb-3 text-center">
 				<a class="card-img-top d-block overflow-hidden" href="{{ route('show.product', $product) }}">
 					<img style="width: 157px; height: 157px;margin: auto;" src="{{ $product->image->first()->product() }}" alt="Product">
