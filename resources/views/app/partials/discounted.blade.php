@@ -1,7 +1,7 @@
 <div class="row mt-5">
 	<div class="col  d-flex justify-content-between">
 		<p class="mb-0 pb-0">
-			Discounted products
+			DISCOUNTED
 		</p>
 		<small><a href="#">View All</a></small>
 	</div>
