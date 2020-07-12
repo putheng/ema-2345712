@@ -10,7 +10,8 @@ use App\ViewComposers\{
     FooterCategory,
     RecentReleases,
     DiscountProduct,
-    BestSale
+    BestSale,
+    AppHomeCategory,
 };
 
 class ViewComposerServicesProvider extends ServiceProvider
@@ -32,6 +33,11 @@ class ViewComposerServicesProvider extends ServiceProvider
      */
     public function boot()
     {
+        View::composer(
+            ['product.home'], 
+            AppHomeCategory::class
+        );
+
         View::composer(
             ['product.partials.aside'], 
             LeftMenuComposer::class

@@ -44,32 +44,13 @@
           </div>
         </div>
         <div class="row mt-1">
-          <div class="col">
-            <a href="#">
-              <img src="/images/categories/beef.png">
-            </a>
-          </div>
-          <div class="col">
-            <a href="#">
-              <img src="/images/categories/chicken.png">
-            </a>
-          </div>
-          <div class="col">
-            <a href="#">
-              <img src="/images/categories/clothes.png">
-            </a>
-          </div>
-          <div class="col">
-            <a href="#">
-              <img src="/images/categories/fried-chicken.png">
-            </a>
-          </div>
-
-          <div class="col">
-            <a href="#">
-              <img src="/images/categories/hamburger.png">
-            </a>
-          </div>
+          @foreach($categories as $category)
+            <div class="col">
+              <a href="#">
+                <img src="/app/category/{{ $category->image }}">
+              </a>
+            </div>
+          @endforeach
         </div>
 
         <div class="row mt-4">
