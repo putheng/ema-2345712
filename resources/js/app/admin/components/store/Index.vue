@@ -50,16 +50,28 @@
 														|
 														<a href="#" @click.prevent="password(store)">Password</a>
 														|
-													<template v-if="store.approval != 'approve'">
-														<a href="#" @click.prevent="approve(store.uuid, 'approve')">	
-															Approve
-														</a>
-													</template>
-													<template v-else>
-														<a href="#" @click.prevent="approve(store.uuid, 'deactivate')">
-															Deactivate
-														</a>	
-													</template>
+														<template v-if="store.approval != 'approve'">
+															<a href="#" @click.prevent="approve(store.uuid, 'approve')">	
+																Approve
+															</a>
+														</template>
+														<template v-else>
+															<a href="#" @click.prevent="approve(store.uuid, 'deactivate')">
+																Deactivate
+															</a>	
+														</template>
+
+														|
+														<template v-if="store.vat">
+															<a href="#" @click.prevent="updateVat(store.uuid, false)">	
+																Deactivate Vat
+															</a>
+														</template>
+														<template v-else>
+															<a href="#" @click.prevent="updateVat(store.uuid, true)">
+																Activate Vat
+															</a>	
+														</template>
 													</div>
 												</td>
 											</tr>
@@ -112,6 +124,11 @@
 			},
 			async approve(id, action){
 				let r = await axios.post(`admin/store/${id}/approve`, {status: action})
+
+				this.stores = r.data.data
+			},
+			async updateVat(id, status){
+				let r = await axios.put(`store/store/${id}`, {vat: status})
 
 				this.stores = r.data.data
 			},

@@ -24,7 +24,7 @@
 									<div class="col-md-3">
 										<app-input v-model="sale_price" name="sale_price" :label="'Sale Price ('+ user.currency +')'"/>
 									</div>
-									<div class="col-md-3">
+									<div class="col-md-3" v-show="isVat">
 										<input-binding v-model="saleVat" disabled name="o_sale_price" :label="'Sale Price include VAT + 10% ('+ user.currency +')'"/>
 									</div>
 
@@ -88,11 +88,15 @@
 				categories: [],
 				price: 0,
 				sale_price: 0,
-				comission: 0
+				comission: 0,
+				isVat: false
 			}
 		},
 		methods: {
 			async fetchCategory(){
+				let r = await axios.get(`store/store/vat`)
+				this.isVat = r.data.vat
+
 				let response = await axios.get(`products/categories`)
 
 				this.categories = response.data.data
@@ -121,10 +125,18 @@
 				return Number(this.sale_price) - Number(this.price)
 			},
 			vat(){
-				return Number(this.sale_price) + (Number(this.sale_price) * 0.1)
+				if(this.isVat){
+					return Number(this.sale_price) + (Number(this.sale_price) * 0.1)
+				}
+
+				return this.sale_price
 			},
 			saleVat(){
-				return Number(this.sale_price) + (Number(this.sale_price) * 0.1)
+				if(this.isVat){
+					return Number(this.sale_price) + (Number(this.sale_price) * 0.1)
+				}
+
+				return this.sale_price
 			},
 			income(){
 

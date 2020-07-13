@@ -9,7 +9,7 @@ class Store extends Model
 {
     protected $fillable = [
     	'user_id', 'name', 'address', 'phone', 'sponsor_id',
-        'latitude', 'longitude', 'status', 'commission', 'approval'
+        'latitude', 'longitude', 'status', 'commission', 'approval', 'vat'
     ];
 
     public static function boot()

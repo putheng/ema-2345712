@@ -206,7 +206,7 @@
 										</div>
 									</div>
 
-									<div class="col-md-2">
+									<div class="col-md-2" v-show="isVat">
 										<div class="form-group">
 											<label class="control-label">Sale Price include VAT + 10% ({{ user.currency }})</label>
 											<input 
@@ -315,6 +315,7 @@
 				price: 0,
 				sale_price: 0,
 				comission: 0,
+				isVat: false,
 				variations: [
 					{
 						name: '',
@@ -333,8 +334,10 @@
 		},
 		methods: {
 			async fetchProduct(slug){
-				let response = await axios.get(`products/${slug}/variations`)
+				let r = await axios.get(`store/store/vat`)
+				this.isVat = r.data.vat
 
+				let response = await axios.get(`products/${slug}/variations`)
 				this.product = response.data.data
 			},
 
@@ -404,7 +407,11 @@
 				this.createLoading = false;
 			},
 			saleVat(sale_price){
-				return Number(sale_price) + (Number(sale_price) * 0.1)	
+				if(this.isVat){
+					return Number(sale_price) + (Number(sale_price) * 0.1)
+				}
+
+				return Number(sale_price)
 			},
 			comp(sale_price, price){
 				return Number(sale_price) - Number(price)

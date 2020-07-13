@@ -34,7 +34,12 @@ class Product extends Model
 
         static::creating(function($model){
             $price = $model->sale_price->amount();
-            $model->tax_price = $price + ($price * 0.1);
+
+            if(auth()->user()->type == 'store' && (boolean) auth()->user()->store->vat){
+                $model->tax_price = $price + ($price * 0.1);
+            }else{
+                $model->tax_price = $price;
+            }
 
             $model->slug = str_slug($model->name) .'-'. time() .'.html';
 

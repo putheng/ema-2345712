@@ -29,6 +29,7 @@ class StoresResources extends JsonResource
             'longitude' => optional($this->store)->longitude,
             'approval' => optional($this->store)->approval,
             'sponsor' => optional($this->store)->sponsor_id,
+            'vat' => (boolean) optional($this->store)->vat,
         ];
     }
 }

@@ -44,6 +44,9 @@ Route::group(['middleware' => 'auth'], function(){
 
 	Route::group(['prefix' => 'store', 'middleware' => 'role:store|admin'], function(){
 		Route::resource('store', 'Api\StoreController');
+		
+		Route::resource('store/vat', 'Api\StoreController@show');
+
 		Route::resource('orders', 'Store\OrdersController');
 		Route::resource('sales', 'Store\SaleController');
 		Route::resource('account', 'Store\AccountController');
@@ -72,6 +75,7 @@ Route::group(['middleware' => 'auth'], function(){
 		Route::post('wishlist', 'Api\WishlistController@store');
 		Route::post('wishlist/remove', 'Api\WishlistController@destroy');
 	});
+
 	Route::group(['prefix' => 'products', 'middleware' => 'role:store|admin|supplier'], function(){
 		Route::resource('product', 'Admin\ProductController');
 		Route::resource('sale', 'Product\SaleController');

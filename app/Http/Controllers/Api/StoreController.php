@@ -63,9 +63,11 @@ class StoreController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        return response()->json([
+            'vat' => (boolean) auth()->user()->store->vat
+        ]);
     }
 
     /**
@@ -88,10 +90,19 @@ class StoreController extends Controller
      */
     public function update(Request $request, Store $store)
     {
-        $store->update($request->only('status'));
+        if(isset($request->status)){
+            $store->update($request->only('status'));
+        }
+
+        if(isset($request->vat)){
+            $store->update($request->only('vat'));
+        }
 
         return StoresResources::collection(
-            User::isStore()->paginate(20)
+            User::with('store')
+                ->orderBy('id', 'desc')
+                ->isStore()
+                ->paginate(20)
         );
     }
 
