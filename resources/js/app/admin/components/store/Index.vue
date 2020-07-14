@@ -69,7 +69,7 @@
 														</template>
 														<template v-else>
 															<a href="#" @click.prevent="updateVat(store.uuid, true)">
-																Activate Vat
+																Activate VAT
 															</a>	
 														</template>
 													</div>
