@@ -68,7 +68,7 @@
 										</div>
 									</div>
 
-									<div class="col-md-2">
+									<div class="col-md-2" v-show="isVat">
 										<div class="form-group">
 											<label class="control-label">Sale Price include VAT + 10% ({{ option.currency }})</label>
 											<input 
@@ -158,6 +158,7 @@
 							Create
 						</button>
 					</div>
+
 					<div class="col-md-12">
 						<div class="card card-fluid" v-for="(variation, index) in variations">
 							<div class="card-body">
