@@ -23,7 +23,8 @@
 									</div>
 									<div class="col-md-3">
 										<input-binding v-model="product.sale_price" name="sale_price" :label="'Sale Price ('+ product.currency +')'"/>
-									</div><div class="col-md-3">
+									</div>
+									<div class="col-md-3" v-show="isVat">
 
 										<div class="form-group">
 											<label class="col-form-label">Sale Price include VAT + 10% ({{ product.currency }})</label>
@@ -91,11 +92,15 @@
 		data(){
 			return {
 				categories: [],
-				product: []
+				product: [],
+				isVat: false
 			}
 		},
 		methods: {
 			async fetchCategory(slug){
+				let r = await axios.get(`store/store/vat`)
+				this.isVat = r.data.vat
+
 				let ca = await axios.get(`products/categories`)
 				let pr = await axios.get(`products/${slug}/variations`)
 
@@ -107,8 +112,11 @@
 				this.$router.push({name: 'store-products-variation', params: {slug: response.data.data.slug}})
 			},
 			saleVat(sale_price){
+				if(this.isVat){
+					return Number(sale_price) + (Number(sale_price) * 0.1)
+				}
 
-				return Number(sale_price) + (Number(sale_price) * 0.1)	
+				return sale_price
 			},
 			comp(sale_price, price){
 				return Number(sale_price) - Number(price)
