@@ -17,7 +17,7 @@ class SaleResource extends JsonResource
         return [
             'id' => $this->id,
             'quantity' => $this->quantity,
-            'product' => $this->products->name,
+            'product' => optional($this->products)->name,
             'amount' => get_currency($this->amount)->amount(),
         ];
     }
