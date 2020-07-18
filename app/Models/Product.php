@@ -66,7 +66,7 @@ class Product extends Model
     public function getOwnerNameAttribute()
     {
         if($this->user->type == 'store'){
-            return $this->user->store->name;
+            return optional($this->user->store)->name;
         }
 
         return 'E-Market Asia Store';

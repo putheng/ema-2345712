@@ -22,7 +22,7 @@
 			</div>
 		</div>
 	</header>
-	<aside class="app-aside app-aside-expand-md app-aside-light">
+	<aside id="appMenu" class="app-aside app-aside-expand-md app-aside-light">
 		<div class="aside-content">
 			<left-admin-setting></left-admin-setting>
 			<div class="aside-menu overflow-hidden">
@@ -44,6 +44,21 @@
 				fetchUser: 'fetchUser'
 			})
 		},
+
+		watch: {
+          '$route' () {
+                const element = document.querySelector("#appMenu")
+                let isShown = element.classList.contains("show")
+
+                if(isShown){
+                    $('#appMenu').removeClass('show')
+                    $('.aside-backdrop').removeClass('show')
+                    $('.hamburger.hamburger-squeeze').removeClass('active')
+                }
+
+                
+            }
+        },
 
 		created(){
 			this.fetchUser()

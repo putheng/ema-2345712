@@ -171,6 +171,7 @@
 				token : document.head.querySelector('meta[name="csrf-token"]').content
 			}
 		},
+        
 		methods : {
 		    submit(){
 		    	document.getElementById("logout-form-b").submit()
