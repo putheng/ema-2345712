@@ -28,18 +28,17 @@ class ProductVariation extends Model
             $model->currency = get_currency()->current();
         });
 
-        // static::updating(function($model){
-        //     $model->tax_price = self::getVatPrice($model->sale_price->amount());
-        // });
-    }
 
-    protected static function getVatPrice($price)
-    {
-        if(auth()->user()->type == 'store' && (boolean) auth()->user()->store->vat){
-            return $price + ($price * 0.1);
-        }else{
-            return $price;
-        }
+        static::updating(function($model){
+            $price = $model->sale_price->amount();
+
+            if(auth()->user()->type == 'store' && (boolean) auth()->user()->store->vat){
+                $model->tax_price = $price + ($price * 0.1);
+            }else{
+                $model->tax_price = $price;
+            }
+            
+        });
     }
 
     public function getPriceAttribute($value)
