@@ -13,6 +13,7 @@ Route::get('/about', 'PageController@about')->name('about');
 Route::get('/stores', 'PageController@stores')->name('stores');
 
 Route::get('/icons', 'ProductController@icons')->name('icons');
+Route::get('/privacy', 'PrivacyController@index')->name('privacy');
 
 Route::get('/currency', 'PageController@currency')->name('currency');
 
