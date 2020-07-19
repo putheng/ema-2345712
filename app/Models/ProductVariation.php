@@ -41,6 +41,15 @@ class ProductVariation extends Model
         });
     }
 
+    protected static function getVatPrice($price)
+    {
+        if(auth()->user()->type == 'store' && (boolean) auth()->user()->store->vat){
+            return $price + ($price * 0.1);
+        }else{
+            return $price;
+        }
+    }
+
     public function getPriceAttribute($value)
     {
         if ($value === null) {
