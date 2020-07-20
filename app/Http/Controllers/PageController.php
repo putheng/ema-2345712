@@ -30,7 +30,7 @@ class PageController extends Controller
 
     public function redirect()
     {
-        return redirect()->route('index');
+        // return redirect()->route('index');
     }
 
     public function stores()

@@ -6,7 +6,6 @@ Route::get('/home', 'ProductController@home')->name('index.home');
 Route::get('/filter', 'Products\ProductController@index')->name('product.filter');
 
 Route::get('/cart/checkout', 'PageController@cart')->name('checkout');
-Route::get('/cart/checkout/redirect', 'PageController@redirect')->name('redirect');
 
 Route::get('/contacts', 'PageController@contact')->name('contact');
 Route::get('/about', 'PageController@about')->name('about');
@@ -34,6 +33,12 @@ Route::group(['prefix' => 'society', 'middleware' => ['auth', 'role:society|admi
 		->where('vue', '[\/\w\.-]*');
 
 });
+
+//
+
+Route::get('/cart/checkout/success', 'CheckoutController@success')->name('success');
+Route::get('/cart/checkout/cancel', 'CheckoutController@cancel_order')->name('cancel');
+Route::get('/cart/checkout/later', 'CheckoutController@pay_later')->name('later');
 
 
 // App
