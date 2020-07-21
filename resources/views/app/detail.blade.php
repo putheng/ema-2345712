@@ -10,7 +10,7 @@
 		        	<i class="czi-home"></i>Home</a>
 		        </li>
 				<li class="breadcrumb-item text-nowrap">
-					<a href="{{ route('categoryshow', $product->category) }}">{{ $product->category->name }}</a>
+					<a href="{{ route('app.category', $product->category) }}">{{ $product->category->name }}</a>
 				</li>
 				<li class="breadcrumb-item text-nowrap active" aria-current="page">
 					{{ $product->name }}
