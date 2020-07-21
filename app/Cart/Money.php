@@ -50,7 +50,8 @@ class Money
         if(get_currency()->current() == 'KHR'){
             $price = currency_format($this->amount());
 
-            return number_format($price * syt_option('c_usd_rate')->cal_value, 2) .'៛';
+            // return number_format($price * syt_option('c_usd_rate')->cal_value, 2) .'៛';
+            return number_format($price, 2) .'៛';
         }
 
 
