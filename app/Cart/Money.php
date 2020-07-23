@@ -37,6 +37,11 @@ class Money
 
     public function formatted()
     {
+        if(get_currency()->current() == 'KHR'){
+            $price = currency_format($this->amount());
+            return number_format($price, 2) .'៛';
+        }
+
         $formatter = new IntlMoneyFormatter(
             new NumberFormatter('USD', NumberFormatter::CURRENCY),
             new ISOCurrencies()
@@ -66,11 +71,9 @@ class Money
     public function unformattedCart()
     {
         if(get_currency()->current() == 'KHR'){
-            $price = currency_format($this->amount());
+            return currency_format($this->amount());
 
-            return $price * syt_option('c_usd_rate')->cal_value;
         }
-
 
         $formatter = new IntlMoneyFormatter(
             new NumberFormatter('USD', NumberFormatter::CURRENCY),

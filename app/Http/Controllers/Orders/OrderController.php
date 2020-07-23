@@ -46,7 +46,7 @@ class OrderController extends Controller
     {
         $order = $this->createOrder($request, $cart);
 
-        $total = $cart->withShipping($order->shipping_method_id)->total()->unformattedCart();
+        $total = $cart->withShipping($order->shipping_method_id)->total()->amount();
 
         $order->products()->sync($cart->products()->forSyncing());
 

@@ -59,14 +59,14 @@ class ProductVariation extends Model
         return new Money($value);
     }
 
-    public function getTaxPriceAttribute($value)
-    {
-        if ($value === null) {
-            return $this->product->price;
-        }
+    // public function getTaxPriceAttribute($value)
+    // {
+    //     if ($value === null) {
+    //         return $this->product->price;
+    //     }
 
-        return new Money($value);
-    }
+    //     return new Money($value);
+    // }
 
     public function minStock($count)
     {

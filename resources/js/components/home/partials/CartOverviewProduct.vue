@@ -15,6 +15,7 @@
 				<div>
 					<span class="text-accent mr-2">{{ product.sale_price }}</span>
 					<span class="text-muted">x {{ product.quantity }}</span>
+					<span class="text-accent mr-2">= {{ product.total }}</span>
 				</div>
 
 				<div>

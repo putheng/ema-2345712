@@ -8,6 +8,9 @@ use Money\Currency;
 use Money\Formatter\IntlMoneyFormatter;
 use NumberFormatter;
 
+use App\Models\Product;
+use App\Models\ProductVariation;
+
 trait HasPrice
 {
     public function getPriceAttribute($value)
@@ -27,6 +30,14 @@ trait HasPrice
 
     public function getTaxPriceAttribute($value)
     {
+        if(get_currency()->current() == 'KHR' && $this->currency == 'USD'){
+            $value = (int) ($value * syt_option('c_usd_rate')->cal_value);
+        }
+
+        if(get_currency()->current() == 'USD' && $this->currency == 'KHR'){
+            $value = (int) ($value / syt_option('c_usd_rate')->cal_value);
+        }
+
         return new Money($value);
     }
 
@@ -83,18 +94,8 @@ trait HasPrice
 
     public function getFormattedTaxPriceAttribute()
     {
-
         if($this->tax_price->amount() != 0){
-            
-            if($this->currency != get_currency()->current()){
-                return $this->switchCurrency($this->tax_price);
-            }else{
-                if($this->currency == 'KHR'){
-                    return currency_format($this->tax_price->amount(), 'KHR').'៛';
-                }else{
-                    return $this->tax_price->formatted();
-                }
-            }
+            return $this->tax_price->formatted();
         }
 
         return $this->sale_price->amount();
