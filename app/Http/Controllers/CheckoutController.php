@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Order;
 use Illuminate\Http\Request;
 
@@ -48,12 +49,12 @@ class CheckoutController extends Controller
 
             $data = json_decode($request->data);
 
-            // dd($data);
+            $date = Carbon::parse($data->bill_date)->format('d-m-Y');
 
             $order = Order::where('uuid', $data->reference_id)->first();
             $products = $order->products;
 
-            return view('payment.pay-later', compact('data', 'order', 'products'));
+            return view('payment.pay-later', compact('data', 'order', 'products', 'date'));
 
         }
     }
