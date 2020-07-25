@@ -35,6 +35,15 @@ class Money
         return $this->money->getAmount();
     }
 
+    public function totalAmount()
+    {
+        if(get_currency()->current() == 'USD'){
+            return currency_format($this->amount());
+        }
+        
+        return $this->money->getAmount();
+    }
+
     public function formatted()
     {
         if(get_currency()->current() == 'KHR'){
