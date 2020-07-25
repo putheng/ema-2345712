@@ -73,7 +73,7 @@
 				</div>
 
 				<div class="rounded-lg border py-2 px-3 mb-4">
-					<h2 class="h5 mb-0">Your order</h2>
+					<h2 class="h5 mb-0">ទំនិញដែលអ្នកបានបញ្ជារទិញ</h2>
 
 					@foreach($products as $product)
 						<div class="media align-items-center py-2">

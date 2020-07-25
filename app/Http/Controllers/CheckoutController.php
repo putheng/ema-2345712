@@ -19,7 +19,9 @@ class CheckoutController extends Controller
     		$order = Order::where('uuid', $data->reference_id)->first();
     		$products = $order->products;
 
-    		return view('payment.success', compact('data', 'order', 'products'));	
+            $date = Carbon::parse($data->tran_date)->format('d-m-Y');
+
+    		return view('payment.success', compact('data', 'order', 'products', 'date'));	
     	}
 
     }

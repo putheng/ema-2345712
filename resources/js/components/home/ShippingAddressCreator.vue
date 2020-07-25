@@ -3,7 +3,7 @@
 	<div class="row">
 		<div class="col-sm-6">
 			<div class="form-group">
-				<label for="co-fn">Name <span class='text-danger'>*</span></label>
+				<label for="co-fn">Location Name <span class='text-danger'>*</span></label>
 				<input class="form-control" type="text" id="co-fn" v-model="form.name" 
 					:class="{'is-invalid': validation['name']}">
 			</div>
