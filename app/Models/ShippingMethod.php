@@ -27,17 +27,15 @@ class ShippingMethod extends Model
 
     public function getPriceAttribute($value)
     {
+        if(get_currency()->current() == 'KHR'){
+            $value = (int) ($value * syt_option('c_usd_rate')->cal_value);
+        }
+
         return new Money($value);
     }
 
     public function getFormattedPriceAttribute()
     {
-        if(get_currency()->current() == 'KHR'){
-            $price = currency_format($this->price->amount());
-
-            return number_format($price * syt_option('c_usd_rate')->cal_value, 2) .'៛';
-        }
-
         return $this->price->formatted();
     }
 }
