@@ -17,7 +17,7 @@
 		</h2>
 		<div class="row pt-2">
 		    @foreach($products as $product)
-	          <div class="col-sm-6 mb-grid-gutter">
+	          <div class="col-sm-4 mb-grid-gutter">
 	            <div class="card product-card-alt">
 	              <div class="product-thumb">
 
