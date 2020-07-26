@@ -29,7 +29,7 @@ class CategoryController extends Controller
     public function filter(Request $request)
     {
         $products = Product::with(['variations.stock', 'category', 'image'])
-            ->withScopes($this->scopes())->paginate(20);
+            ->withScopes($this->scopes())->orderBy('id', 'desc')->paginate(20);
 
         $category = $request->category;
 
