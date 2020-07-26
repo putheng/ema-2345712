@@ -97,8 +97,8 @@
 		data(){
 			return {
 				genders: [
-					{name: 'Male', value: '1'},
-					{name: 'Female', value: '2'}	
+					{name: 'Male', value: 'Male'},
+					{name: 'Female', value: 'Female'}	
 				],
 				idTypes: [
 					{name: 'National ID', value: '1'},
