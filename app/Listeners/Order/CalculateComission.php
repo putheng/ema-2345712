@@ -114,84 +114,84 @@ class CalculateComission
         $remain = $remain_earning - $amount;
 
 if($user){
-$user->increment('earning', $amount);
+$user->incrementIncome('earning', $amount);
 
 $this->saveTracking($amount, $user, $order);
 
 if($user->agent && $user->agent->parent_id != null){
     $userb = $user->agent->parentx->user;
 
-    $userb->increment('earning', $amount);
+    $userb->incrementIncome('earning', $amount);
     $this->saveTracking($amount, $userb, $order);
     $remain = $remain - $amount;
 
     if($userb->agent && $userb->agent->parent_id != null){
         $userc = $userb->agent->parentx->user;
         // dump(2);
-        $userc->increment('earning', $amount);
+        $userc->incrementIncome('earning', $amount);
         $this->saveTracking($amount, $userc, $order);
         $remain = $remain - $amount;
 
         if($userc->agent && $userc->agent->parent_id != null){
             $userd = $userc->agent->parentx->user;
             // dump(3);
-            $userd->increment('earning', $amount);
+            $userd->incrementIncome('earning', $amount);
             $this->saveTracking($amount, $userd, $order);
             $remain = $remain - $amount;
 
             if($userd->agent && $userd->agent->parent_id != null){
                 $usere = $userd->agent->parentx->user;
                 // dump(4);
-                $usere->increment('earning', $amount);
+                $usere->incrementIncome('earning', $amount);
                 $this->saveTracking($amount, $usere, $order);
                 $remain = $remain - $amount;
 
                 if($usere->agent && $usere->agent->parent_id != null){
                     $userf = $usere->agent->parentx->user;
                     // dump(5);
-                    $userf->increment('earning', $amount);
+                    $userf->incrementIncome('earning', $amount);
                     $this->saveTracking($amount, $userf, $order);
                     $remain = $remain - $amount;
 
                     if($userf->agent && $userf->agent->parent_id != null){
                         $userg = $userf->agent->parentx->user;
                         // dump(6);
-                        $userg->increment('earning', $amount);
+                        $userg->incrementIncome('earning', $amount);
                         $this->saveTracking($amount, $userg, $order);
                         $remain = $remain - $amount;
 
                         if($userg->agent && $userg->agent->parent_id != null){
                             $userh = $userg->agent->parentx->user;
                             // dump(7);
-                            $userh->increment('earning', $amount);
+                            $userh->incrementIncome('earning', $amount);
                             $this->saveTracking($amount, $userh, $order);
                             $remain = $remain - $amount;
 
                             if($userh->agent && $userh->agent->parent_id != null){
                                 $useri = $userh->agent->parentx->user;
                                 // dump(8);
-                                $useri->increment('earning', $amount);
+                                $useri->incrementIncome('earning', $amount);
                                 $this->saveTracking($amount, $useri, $order);
                                 $remain = $remain - $amount;
 
                                 if($useri->agent && $useri->agent->parent_id != null){
                                     $userj = $useri->agent->parentx->user;
                                     // dump(9);
-                                    $userj->increment('earning', $amount);
+                                    $userj->incrementIncome('earning', $amount);
                                     $this->saveTracking($amount, $userj, $order);
                                     $remain = $remain - $amount;
 
                                     if($userj->agent && $userj->agent->parent_id != null){
                                         $userk = $userj->agent->parentx->user;
                                         // dump(10);
-                                        $userk->increment('earning', $amount);
+                                        $userk->incrementIncome('earning', $amount);
                                         $this->saveTracking($amount, $userk, $order);
                                         $remain = $remain - $amount;
 
                                         if($userk->agent && $userk->agent->parent_id != null){
                                             $userl = $userk->agent->parentx->user;
                                             // dump(11);
-                                            $userl->increment('earning', $amount);
+                                            $userl->incrementIncome('earning', $amount);
                                             $this->saveTracking($amount, $userl, $order);
                                             $remain = $remain - $amount;
 
@@ -199,28 +199,28 @@ if($user->agent && $user->agent->parent_id != null){
                                             if($userk->agent && $userk->agent->parent_id != null){
                                                 $userm = $userk->agent->parentx->user;
                                                 // dump(12);
-                                                $userm->increment('earning', $amount);
+                                                $userm->incrementIncome('earning', $amount);
                                                 $this->saveTracking($amount, $userm, $order);
                                                 $remain = $remain - $amount;
 
                                                 if($userm->agent && $userm->agent->parent_id != null){
                                                     $usern = $userm->agent->parentx->user;
                                                     // dump(13);
-                                                    $usern->increment('earning', $amount);
+                                                    $usern->incrementIncome('earning', $amount);
                                                     $this->saveTracking($amount, $usern, $order);
                                                     $remain = $remain - $amount;
 
                                                     if($usern->agent && $usern->agent->parent_id != null){
                                                         $usero = $usern->agent->parentx->user;
                                                         // dump(14);
-                                                        $usero->increment('earning', $amount);
+                                                        $usero->incrementIncome('earning', $amount);
                                                         $this->saveTracking($amount, $usero, $order);
                                                         $remain = $remain - $amount;
 
                                                         if($usero->agent && $usero->agent->parent_id != null){
                                                             $userp = $usero->agent->parentx->user;
                                                             // dump(15);
-                                                            $userp->increment('earning', $amount);
+                                                            $userp->incrementIncome('earning', $amount);
                                                             $this->saveTracking($amount, $userp, $order);
                                                             // $remain = $remain - $amount;
 
@@ -266,7 +266,7 @@ if($user->agent && $user->agent->parent_id != null){
             $amount = ($rate / 100) * $commission;
 
             if($sponsor){
-                $sponsor->increment('earning', $amount);
+                $sponsor->incrementIncome('earning', $amount);
 
                 $track = new Track;
                 $track->symbol = '+ Sponsor commission';
@@ -288,7 +288,7 @@ if($user->agent && $user->agent->parent_id != null){
         $user = auth()->user();
 
         if($user){
-            $user->increment('earning', $amount);
+            $user->incrementIncome('earning', $amount);
 
             $track = new Track;
             $track->symbol = '+ Cash back';
