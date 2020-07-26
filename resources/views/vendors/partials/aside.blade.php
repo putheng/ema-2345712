@@ -15,7 +15,7 @@
           {{ $store->address }}
         </a>
       </li>
-    </ul><a class="social-btn sb-facebook sb-outline sb-sm mr-2 mb-2" href="#"><i class="czi-facebook"></i></a><a class="social-btn sb-twitter sb-outline sb-sm mr-2 mb-2" href="#"><i class="czi-twitter"></i></a><a class="social-btn sb-dribbble sb-outline sb-sm mr-2 mb-2" href="#"><i class="czi-dribbble"></i></a><a class="social-btn sb-behance sb-outline sb-sm mr-2 mb-2" href="#"><i class="czi-behance"></i></a>
+    </ul>
     <hr class="my-4">
     <h6 class="pb-1">Send message</h6>
     <form class="needs-validation pb-2" method="post" novalidate>
