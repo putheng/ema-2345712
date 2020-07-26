@@ -22,7 +22,7 @@
 	              <div class="product-thumb">
 
 	                  <a class="product-thumb-overlay" href="{{ route('show.product', $product) }}"></a>
-	                    <img style="width: 332px; height: 303px" src="{{ $product->image->first()->product() }}" alt="Product">
+	                    <img style="width: 332px;" src="{{ $product->image->first()->product() }}" alt="Product">
 
 	                </div>
 	              <div class="card-body">
