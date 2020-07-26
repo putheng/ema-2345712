@@ -15,6 +15,7 @@ import {
 	C15E9A8D5B54D26B,
 	C15E9A8D683E323B,
 	C15EA995A476316B,
+	C15F1CC2DF26B9FB,
 	/****/
 } from '../components'
 
@@ -104,6 +105,11 @@ export default [
 		path: '/store/products/orders',
 		component: C15EA995A476316B,
 		name: 'store-products-orders'
+	},
+	{
+		path: '/store/products/cashier',
+		component: C15F1CC2DF26B9FB,
+		name: 'store-products-cashier'
 	},
 	/**/
 ]
