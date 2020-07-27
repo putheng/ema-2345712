@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
-<main class="mt-2">
+<main class="container">
   <section class="px-lg-3">
     <div class="pt-2">
       <!-- Page title + breadcrumb-->
