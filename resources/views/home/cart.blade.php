@@ -1,8 +1,8 @@
 @extends('layouts.main')
 
 @section('content')
-<main class="container pt-4">
-  <section class="px-lg-3 pt-4">
+<main class="mt-2">
+  <section class="px-lg-3">
     <div class="pt-2">
       <!-- Page title + breadcrumb-->
       <nav class="mb-4" aria-label="breadcrumb">
