@@ -8,7 +8,11 @@
       <nav class="mb-4" aria-label="breadcrumb">
         <ol class="breadcrumb flex-lg-nowrap">
           <li class="breadcrumb-item">
-            <a class="text-nowrap" href="{{ url('/') }}">
+            <a class="text-nowrap d-none d-sm-block" href="{{ url('/') }}">
+              <i class="czi-home"></i>
+              Home
+            </a>
+            <a class="text-nowrap d-sm-none" href="{{ url('/home') }}">
               <i class="czi-home"></i>
               Home
             </a>
