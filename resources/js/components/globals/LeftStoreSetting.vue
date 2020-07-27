@@ -78,11 +78,18 @@
 					<span class="menu-icon oi oi-key"></span>
 					<span class="menu-text">Password</span>
 				</router-link>
-				<a @click.prevent="submit" class="menu-link">
-					<span class="menu-icon oi oi-account-logout"></span>
+				<a @click.prevent="submit" class="menu-link d-none d-sm-block" href="#">
 					<span class="menu-text">Logout</span>
 
 					<form id="logout-form-b" action="/api/v1/account/logout" method="POST" style="display: none;">
+						<input type="hidden" :value="token" name="_token">
+			    	</form>
+				</a>
+
+				<a @click.prevent="submitApp" class="menu-link d-sm-none" href="#">
+					<span class="menu-text">Logout</span>
+
+					<form id="logout-form-app" action="/logout" method="POST" style="display: none;">
 						<input type="hidden" :value="token" name="_token">
 			    	</form>
 				</a>
@@ -100,6 +107,9 @@
 		methods : {
 		    submit(){
 		    	document.getElementById("logout-form-b").submit()
+		    },
+		    submitApp(){
+		    	document.getElementById("logout-form-app").submit()
 		    }
 		}
 	}
