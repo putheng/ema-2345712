@@ -2,7 +2,11 @@
 	<nav id="stacked-menu" class="stacked-menu">
 		<ul class="menu">
 			<li class="menu-item">
-				<a class="menu-link" href="/">
+				<a class="menu-link d-none d-sm-block" href="/">
+					<span class="menu-icon fas fa-home"></span>
+					<span class="menu-text">{{ $t('general.home') }}</span>
+				</a>
+				<a class="menu-link d-sm-none" href="/home">
 					<span class="menu-icon fas fa-home"></span>
 					<span class="menu-text">{{ $t('general.home') }}</span>
 				</a>
