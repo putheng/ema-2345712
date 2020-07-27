@@ -9,7 +9,7 @@
 				</a>
 				<div class="card-body py-2">
 					<h3 class="product-title font-size-sm">
-						<a href="grocery-single.html">{{ $product->name }}</a>
+						<a href="{{ route('app.show', $product) }}">{{ $product->name }}</a>
 					</h3>
 					<div class="product-price">
 		                <span class="text-accent">{{ $product->formattedTaxPrice }}</span>
