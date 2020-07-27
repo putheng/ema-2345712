@@ -84,13 +84,23 @@
 						</li>
 						@if(auth()->check())
 							<li class="widget-list-item">
-								<a class="widget-list-link" href="{{ route('logout') }}"
+								<a class="widget-list-link d-none d-sm-block" href="#"
                                    onclick="event.preventDefault();
                                                  document.getElementById('logoutform').submit();">
                                     Logout
                                 </a>
 
+                                <a class="widget-list-link d-sm-none" href="#"
+                                   onclick="event.preventDefault();
+                                                 document.getElementById('applogoutform').submit();">
+                                    Logout
+                                </a>
+
                                 <form id="logoutform" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
+
+                                <form id="applogoutform" action="{{ route('applogout') }}" method="POST" style="display: none;">
                                     @csrf
                                 </form>
 							</li>

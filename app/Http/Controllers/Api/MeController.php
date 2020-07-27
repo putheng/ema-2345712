@@ -36,4 +36,11 @@ class MeController extends Controller
 
         return redirect('/');
     }
+
+    public function applogout()
+    {
+        auth()->logout();
+
+        return redirect('/home');
+    }
 }

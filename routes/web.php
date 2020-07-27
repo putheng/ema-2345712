@@ -37,6 +37,9 @@ Route::group(['prefix' => 'society', 'middleware' => ['auth', 'role:society|admi
 
 //
 
+Route::post('logout', 'Api\MeController@applogout')->name('applogout');
+
+//
 Route::get('/cart/checkout/success', 'CheckoutController@success')->name('success');
 Route::get('/cart/checkout/cancel', 'CheckoutController@cancel_order')->name('cancel');
 Route::get('/cart/checkout/later', 'CheckoutController@pay_later')->name('later');
