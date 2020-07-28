@@ -19,7 +19,7 @@ Route::get('/currency', 'PageController@currency')->name('currency');
 Route::get('discount', 'DiscountProductController@show')->name('discount');
 Route::get('category', 'CategoryController@filter')->name('category.filter');
 Route::get('category/{category}', 'CategoryController@index')->name('categoryshow');
-Route::get('app/category/{category}', 'CategoryController@index')->name('app.categoryshow');
+// Route::get('app/category/{category}', 'CategoryController@index')->name('app.categoryshow');
 
 Route::get('topseller', 'TopSellController@index')->name('topseller');
 Route::get('products', 'ProductController@product')->name('product');
