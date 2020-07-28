@@ -15,7 +15,9 @@ class CategoryController extends Controller
         $products = $category->products()->orderBy('id', 'desc')->paginate(20);
 
         if($category->parent_id == null){
-            $ids = $category->children->pluck('id');
+            $ids = $category->children->pluck('id')->toArray();
+
+            $ids = array_merge($ids, [$category->id]);
 
             $products = Product::whereIn('category_id', $ids)
                 ->with('category')
