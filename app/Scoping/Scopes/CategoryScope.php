@@ -18,6 +18,7 @@ class CategoryScope implements Scope
 
     	if($category->parent_id == null){
             $ids = $category->children->pluck('id');
+            $ids = array_merge($ids, $category->id);
 
             return $builder->whereHas('categories', function ($builder) use ($ids) {
 	            $builder->whereIn('id', $ids);

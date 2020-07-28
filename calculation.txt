@@ -1,6 +1,5 @@
 user
-
-$2y$10$Uk.95EL8cNoIhlv2CHflduA/064QeVLOVxKGCWP7m9D.vo7HU9kmy
+$2y$10$iCNQv3Zceuf7rSq7Jx/nOO4PL.gSPRkIgnO7id/KM9NLeubKJf.fC
 
 admin
 $2y$10$GViglupscfgIbzRKqnrUtu2n6zJdIwP76MbT2NHpCD/wncIotgZku
