@@ -13,7 +13,7 @@ class SocietyController extends Controller
     public function index()
     {
     	return SocietyResource::collection(
-    		User::isSociety()->paginate(30)
+    		User::isSociety()->paginate(130)
     	);
     }
 
