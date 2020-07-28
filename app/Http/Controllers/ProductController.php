@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -12,8 +13,12 @@ class ProductController extends Controller
     	return view('product.index');
     }
 
-    public function home()
+    public function home(Request $request)
     {
+        if(auth()->check() && $request->token){
+            auth()->user()->update(['gateway_customer_id' => $request->token]);
+        }
+
         return view('product.home');
     }
 

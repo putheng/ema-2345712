@@ -1,7 +1,7 @@
-@extends('product.app')
+{{-- @extends('product.app') --}}
 
 @section('content')
-<section class="px-lg-3 pt-1">
+{{-- <section class="px-lg-3 pt-1">
     <div class="px-2">
         <div class="row">
           <div class="col-md-12">
@@ -82,5 +82,5 @@
         </div>
       </div>
     </div>
-  </section>
+  </section> --}}
 @endsection
