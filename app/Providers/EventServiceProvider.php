@@ -30,7 +30,8 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\Order\OrderPaid' => [
             'App\Listeners\Order\CreateTransaction',
             'App\Listeners\Order\MarkOrderProcessing',
-            'App\Listeners\Order\CalculateComission',
+            // 'App\Listeners\Order\CalculateComission',
+            'App\Listeners\Order\EmptyCart',
         ],
 
         'App\Events\Agent\AgentCreated' => [

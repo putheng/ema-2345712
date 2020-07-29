@@ -23,6 +23,11 @@ class Order extends Model
 		return $this->subtotal + $this->shippingMethod->price->amount();
 	}
 
+    public function scopeUuid($q, $uuid)
+    {
+        return $q->where('uuid', $uuid)->first();
+    }
+
 	public function user()
     {
         return $this->belongsTo(User::class);

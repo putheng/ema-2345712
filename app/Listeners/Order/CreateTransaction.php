@@ -20,16 +20,17 @@ class CreateTransaction
     {
         $amount = $event->order->total()->amount();
 
-        $event->order->transactions()->create([
+
+        $in = $event->order->transactions()->create([
             'total' => $amount,
             'type' => 'Purchase',
             'symbol' => '-'
         ]);
 
-        $event->order->products->each(function($variation, $key) use ($amount){
+        $event->order->products->each(function($variation, $key) use ($amount, $event){
             $variation->sale()->create([
                 'amount' => $amount,
-                'user_id' => auth()->id() != null auth()->id() : auth('api')->id(),
+                'user_id' => $event->order->user->id,
                 'product_variation_id' => $variation->id,
                 'product_id' => $variation->product_id,
                 'owner_id' => $variation->product->user->id,
@@ -37,12 +38,12 @@ class CreateTransaction
             ]);
         });
 
-        $user = auth()->user() != null ? auth()->user() : auth('api')->user();
+        $user = $event->order->user;
 
         $track = new Track;
         $track->symbol = '-';
         $track->value = $amount;
-        $track->user()->associate($user);
+        $track->user_id = $user->id;
 
         $event->order->track()->save($track);
 

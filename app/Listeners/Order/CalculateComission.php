@@ -32,6 +32,8 @@ class CalculateComission
     {
         $order = $event->order;
 
+        dd($order);
+
         $order->products->each(function($variation) use ($order){
             $commission = $variation->commission;
             $remain_earning = 0;
@@ -108,6 +110,7 @@ class CalculateComission
     protected function placement($agent, $commission, $order, $remain_earning)
     {
         $user = User::find($agent->user_id);
+
         $rate = 3;
         $amount = ($rate / 100) * $commission;
 

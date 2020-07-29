@@ -40,6 +40,11 @@ class Order extends Model
         });
     }
 
+    public function scopeUuid($q, $uuid)
+    {
+        return $q->where('uuid', $uuid)->first();
+    }
+
     public function setID()
     {
         $uuid = substr('000000', strlen($this->id));

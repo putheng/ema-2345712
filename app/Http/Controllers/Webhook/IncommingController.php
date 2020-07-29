@@ -2,14 +2,31 @@
 
 namespace App\Http\Controllers\Webhook;
 
-use App\Http\Controllers\Controller;
+
+use App\Models\Order;
 use Illuminate\Http\Request;
+use App\Events\Order\OrderPaid;
+use App\Http\Controllers\Controller;
+use App\Exceptions\PaymentFailedException;
 
 class IncommingController extends Controller
 {
     public function store(Request $request)
     {
-    	file_put_contents('log', json_encode($request->all()));
+    	if($request->paid_by){
+            $id = $request->checkout_ref;
+
+            $order = Order::uuid($id);
+
+            try {
+
+                event(new OrderPaid($order));
+                
+            } catch (PaymentFailedException $e) {
+
+                // event(new OrderPaymentFailed($order));
+            }
+        }
     }
 
     public function content(Request $request)
