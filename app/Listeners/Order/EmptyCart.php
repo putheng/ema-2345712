@@ -9,16 +9,16 @@ use Illuminate\Queue\InteractsWithQueue;
 
 class EmptyCart
 {
-    protected $cart;
+    // protected $cart;
 
     /**
      * Create the event listener.
      *
      * @return void
      */
-    public function __construct(Cart $cart)
+    public function __construct()
     {
-        $this->cart = $cart;
+        // $this->cart = $cart;
     }
 
     /**
@@ -27,8 +27,9 @@ class EmptyCart
      * @param  OrderCreated  $event
      * @return void
      */
-    public function handle()
+    public function handle($even)
     {
-        $this->cart->empty();
+        // $this->cart->empty();
+        (new Cart($even->order->user))->empty();
     }
 }

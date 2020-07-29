@@ -13,10 +13,10 @@ class IncommingController extends Controller
 {
     public function store(Request $request)
     {
-    	if($request->paid_by){
-            $id = $request->checkout_ref;
+    	// if($request->paid_by){
+            // $id = $request->checkout_ref;
 
-            $order = Order::uuid($id);
+            $order = Order::uuid('EOT000048');
 
             try {
 
@@ -26,7 +26,7 @@ class IncommingController extends Controller
 
                 // event(new OrderPaymentFailed($order));
             }
-        }
+        // }
     }
 
     public function content(Request $request)

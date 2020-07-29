@@ -32,8 +32,6 @@ class CalculateComission
     {
         $order = $event->order;
 
-        dd($order);
-
         $order->products->each(function($variation) use ($order){
             $commission = $variation->commission;
             $remain_earning = 0;
