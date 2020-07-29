@@ -4,7 +4,7 @@
 			type="file"
 			:id="'vpc02'+ inputName"
 			class="d-none"
-			accept=".png, .jpg, .jpeg"
+			accept="image/*"
 			@change="readURL"
 		>
 		<label v-if="onSelected"
