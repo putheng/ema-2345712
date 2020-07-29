@@ -24,7 +24,7 @@ class StoreController extends Controller
         ]);
 
     	return StoresResources::collection(
-            User::isStore()->paginate(20)
+            User::isStore()->paginate(200)
         )->additional([
         	'success' => true,
         	'message' => 'Store updated successfully.'
@@ -36,7 +36,7 @@ class StoreController extends Controller
         $store->update(['approval' => $request->status]);
 
         return StoresResources::collection(
-            User::orderBy('id', 'desc')->isStore()->paginate(20)
+            User::orderBy('id', 'desc')->isStore()->paginate(200)
         )->additional([
             'success' => true,
             'message' => 'Store updated.'

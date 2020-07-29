@@ -23,7 +23,7 @@ class ProductController extends Controller
             $request->user()->products()
                 ->with('image', 'category', 'variations')
                 ->orderBy('id', 'desc')
-                ->paginate(20)
+                ->paginate(200)
         );
     }
 

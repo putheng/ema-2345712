@@ -23,7 +23,7 @@ class StoreController extends Controller
             User::with('store')
                 ->orderBy('id', 'desc')
                 ->isStore()
-                ->paginate(20)
+                ->paginate(200)
         );
     }
 
@@ -102,7 +102,7 @@ class StoreController extends Controller
             User::with('store')
                 ->orderBy('id', 'desc')
                 ->isStore()
-                ->paginate(20)
+                ->paginate(200)
         );
     }
 
