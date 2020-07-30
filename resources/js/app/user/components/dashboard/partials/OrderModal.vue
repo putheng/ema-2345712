@@ -7,8 +7,10 @@
 					<h5 class="modal-title">
 						Order No - EMAO{{ order.id }}
 					</h5>
+
 				</div>
 				<div class="modal-body">
+					
 					<div class="table-responsive">
 						<table class="table">
 							<tbody>
@@ -33,7 +35,11 @@
 									<td>Shipping: <div><b>{{ order.shippingMethod.price }}</b></div> </td>
 									<!-- <td>Tax: <div><b>$9.50</b></div> </td> -->
 									<td>Total: <div><h6>{{ order.total }}</h6></div> </td>
-									<td v-if="order.bank">{{ order.bank_name }}: <div><h6>{{ order.bank_ref }}</h6></div> </td>
+								</tr>
+								<tr>
+									<td colspan="3">
+										<div v-if="order.bank">{{ order.bank.bank_name }}: {{ order.bank.bank_ref }}</div>
+									</td>
 								</tr>
 							</tbody>
 						</table>
