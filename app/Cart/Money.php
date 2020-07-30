@@ -37,11 +37,7 @@ class Money
 
     public function totalAmount()
     {
-        if(get_currency()->current() == 'USD'){
-            return currency_format($this->amount());
-        }
-        
-        return $this->money->getAmount();
+        return currency_format($this->amount());
     }
 
     public function formatted()

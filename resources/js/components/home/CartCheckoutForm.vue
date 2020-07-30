@@ -155,9 +155,7 @@ export default {
 					this.showModal = true
 
 					this.payment_url = r.data.payment_url
-
-					// $('#modalLarge').modal('show')
-					// window.location = r.data.payment_url
+					
 					window.location.href = r.data.payment_url
 				})
 
