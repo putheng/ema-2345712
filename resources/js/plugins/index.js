@@ -9,5 +9,5 @@ require('./VueCarousel')
 
 require('./vue-select')
 
-Vue.component('pagination', require('laravel-vue-pagination'))
+require('./pagination')
 // require('./permission')
