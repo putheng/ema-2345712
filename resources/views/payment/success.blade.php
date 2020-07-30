@@ -9,7 +9,7 @@
 			<ol class="breadcrumb flex-lg-nowrap">
 				<li class="breadcrumb-item">
 					<a class="text-nowrap d-none d-sm-block" href="{{ route('index') }}"><i class="czi-home"></i>Home</a>
-					<a class="text-nowrap d-none d-sm-none" href="{{ route('index') }}/home"><i class="czi-home"></i>Home</a>
+					<a class="text-nowrap d-sm-none" href="{{ route('index') }}/home"><i class="czi-home"></i>Home</a>
 				</li>
 				<li class="breadcrumb-item text-nowrap active" aria-current="page">Complete</li>
 			</ol>
