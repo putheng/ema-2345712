@@ -21,6 +21,7 @@ class OrderResource extends JsonResource
             'created_at' => $this->created_at->toDateTimeString(),
             'subtotal' => $this->subtotal->formatted(),
             'total' => $this->total()->add($this->shippingMethod->price)->formatted(),
+            'bank' => $this->banks,
             'dashboard' => auth()->user()->dashboard(),
             
             'products' => ProductVariationOrderResource::collection(

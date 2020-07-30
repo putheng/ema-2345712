@@ -35,7 +35,8 @@ class OrderController extends Controller
                 'products.product.variations',
                 'products.product.variations.stock',
                 'address',
-                'shippingMethod'
+                'shippingMethod',
+                'banks'
             ])
             ->latest()
             ->paginate(10);

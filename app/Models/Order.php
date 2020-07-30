@@ -104,6 +104,6 @@ class Order extends Model
 
     public function banks()
     {
-        return $this->hasMany(Bankref::class);
+        return $this->hasOne(Bankref::class);
     }
 }
