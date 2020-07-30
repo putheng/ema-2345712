@@ -62,7 +62,7 @@
 											- លេខទូរស័ព្ទប្រើ App របស់អ្នក
 										</div>
 										<div>
-											- លេខវិក្កយបត្រ <strong>{{ $data->bill_code }}</strong>
+											- លេខសំរាប់បង់ប្រាក់ <strong>{{ $data->bill_code }}</strong>
 										</div>
 									</div>
 								</div>
