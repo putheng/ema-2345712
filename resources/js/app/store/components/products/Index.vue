@@ -16,41 +16,46 @@
 								All Product 
 								<small class="badge badge-subtle badge-info">{{ products.length }}</small>
 							</h3>
-							<table class="table">
-								<tbody>
-									<tr v-if="products.length" v-for="product in products">
-										<td>
-											<template v-if="product.images.length">
-												<img width="100" :src="product.images[0].url">	
-											</template>
-											
-										</td>
-										<td>
-											<h5>
-												<a :href="'/product/'+ product.slug +'/show'" target="_blank">{{ product.name }}</a>
-											</h5>
-											<h6 class="text-info">
-												<span>{{ product.formattedPrice }}</span> |
-												<span>{{ product.formattedSalePrice }}</span> |
-												<span>{{ product.formattedTaxPrice }}</span>
-											</h6>
-										</td>
-										<td>
-											<router-link 
-												:to="{name: 'store-products-edit', params:{slug: product.slug}}" 
-												class="btn btn-sm btn-outline-info">
-												<span class="oi oi-pencil mr-1"></span> Edit
-											</router-link>
 
-											<a href="#" @click.prevent="deletePro(product.slug)" 
+							<div class="table-responsive">
+								<table class="table">
+									<tbody>
+										<tr v-if="products.length" v-for="product in products">
+											<td>
+												<template v-if="product.images.length">
+													<img width="100" :src="product.images[0].url">	
+												</template>
 												
-												class="btn btn-sm btn-outline-info">
-												Delete
-											</a>
-										</td>
-									</tr>
-								</tbody>
-							</table>
+											</td>
+											<td>
+												<h5>
+													<a :href="'/product/'+ product.slug +'/show'" target="_blank">{{ product.name }}</a>
+												</h5>
+												<h6 class="text-info">
+													<span>{{ product.formattedPrice }}</span> |
+													<span>{{ product.formattedSalePrice }}</span> |
+													<span>{{ product.formattedTaxPrice }}</span>
+												</h6>
+											</td>
+											<td>
+												<router-link 
+													:to="{name: 'store-products-edit', params:{slug: product.slug}}" 
+													class="btn btn-sm btn-outline-info">
+													<span class="oi oi-pencil mr-1"></span> Edit
+												</router-link>
+
+												<a href="#" @click.prevent="deletePro(product.slug)" 
+													
+													class="btn btn-sm btn-outline-info">
+													Delete
+												</a>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+
+							<pagination :data="laravelData" @pagination-change-page="fetchProducts"></pagination>
 						</div>
 					</div>
 				</div>
@@ -66,12 +71,15 @@
 	export default {
 		data(){
 			return {
-				products: []
+				products: [],
+				laravelData: {}
 			}
 		},
 		methods: {
-			async fetchProducts(){
-				let response = await axios.get(`products/product`)
+			async fetchProducts(page = 1){
+				let response = await axios.get(`products/product?page=${page}`)
+
+				this.laravelData = response.data
 
 				this.products = response.data.data
 			},

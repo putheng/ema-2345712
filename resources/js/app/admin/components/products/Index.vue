@@ -56,7 +56,7 @@
 								</table>
 							</div>
 
-							<pagination :data="products" @pagination-change-page="fetchProducts"></pagination>
+							<pagination :data="laravelData" @pagination-change-page="fetchProducts"></pagination>
 						</div>
 					</div>
 				</div>
@@ -76,12 +76,15 @@
 			return {
 				products: [],
 				isUpdating: false,
-				product: null
+				product: null,
+				laravelData: {}
 			}
 		},
 		methods: {
 			async fetchProducts(page = 1){
 				let response = await axios.get(`admin/products?page=${page}`)
+
+				this.laravelData = response.data
 
 				this.products = response.data.data
 			},
