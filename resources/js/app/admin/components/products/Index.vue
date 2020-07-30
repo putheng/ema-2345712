@@ -55,6 +55,8 @@
 									</tbody>
 								</table>
 							</div>
+
+							<pagination :data="products" @pagination-change-page="fetchProducts"></pagination>
 						</div>
 					</div>
 				</div>
@@ -78,8 +80,8 @@
 			}
 		},
 		methods: {
-			async fetchProducts(){
-				let response = await axios.get(`admin/products`)
+			async fetchProducts(page = 1){
+				let response = await axios.get(`admin/products?page=${page}`)
 
 				this.products = response.data.data
 			},
