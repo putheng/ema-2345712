@@ -9,33 +9,35 @@
 					</h5>
 				</div>
 				<div class="modal-body">
-					
-					<table class="table">
-						<tbody>
-							<tr v-for="product in order.products">
-								<td>
-									<img width="100" :src="product.product.images[0].url">
-								</td>
-								<td>
-									{{ product.product.name }} -
-									{{ product.type }} {{ product.name }}
-									<h5>{{ product.sale_price }}</h5>
-								</td>
-								<!-- <td>Quantity: <br>1</td> -->
-								<!-- <td>
-									Subtotal:<br>
-									{{ order.subtotal }}
-								</td> -->
-							</tr>
+					<div class="table-responsive">
+						<table class="table">
+							<tbody>
+								<tr v-for="product in order.products">
+									<td>
+										<img width="100" :src="product.product.images[0].url">
+									</td>
+									<td>
+										{{ product.product.name }} -
+										{{ product.type }} {{ product.name }}
+										<h5>{{ product.sale_price }}</h5>
+									</td>
+									<!-- <td>Quantity: <br>1</td> -->
+									<!-- <td>
+										Subtotal:<br>
+										{{ order.subtotal }}
+									</td> -->
+								</tr>
 
-							<tr>
-								<td>Subtotal: <div><b>{{ order.subtotal }}</b></div> </td>
-								<td>Shipping: <div><b>{{ order.shippingMethod.price }}</b></div> </td>
-								<!-- <td>Tax: <div><b>$9.50</b></div> </td> -->
-								<td>Total: <div><h6>{{ order.total }}</h6></div> </td>
-							</tr>
-						</tbody>
-					</table>
+								<tr>
+									<td>Subtotal: <div><b>{{ order.subtotal }}</b></div> </td>
+									<td>Shipping: <div><b>{{ order.shippingMethod.price }}</b></div> </td>
+									<!-- <td>Tax: <div><b>$9.50</b></div> </td> -->
+									<td>Total: <div><h6>{{ order.total }}</h6></div> </td>
+									<td v-if="order.bank">{{ order.bank_name }}: <div><h6>{{ order.bank_ref }}</h6></div> </td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
 				</div>
 				<div class="modal-footer">
 

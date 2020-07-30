@@ -15,7 +15,7 @@
 		<div class="row no-gutters pb-5 mb-xl-3">
 			<div class="col-xl-6 mb-3">
 				<h2 class="h5 mb-1 d-flex justify-content-between">
-					<span>លេខវិក្កយបត្រ:</span> 
+					<span>លេខសំរាប់បង់ប្រាក់:</span> 
 					<span class="text-danger">{{ $data->bill_code }}</span>
 				</h2>
 				<p class="d-flex mb-0 justify-content-between">
@@ -51,12 +51,12 @@
 								<div>
 									<p class="font-size-sm">
 										<span class="text-danger">កំណត់សម្គាល់:</span>
-										សូមធ្វើការថតស្គ្រុីននេះ​ ឬកត់លេខវិក្កយបត្រដែលមានពណ៍ក្រហម​ព្រមទាំងលេខសម្គាល់ភ្នាក់ងារទូទាត់ប្រាក់ខាងលើ​ ទៅជួបនឹងភ្នាក់ងារបង់ប្រាក់ណាមួយដើម្បីទូទាត់ប្រាក់ជាការស្រេច។
+										សូមធ្វើការថតស្គ្រុីននេះ​ ឬកត់លេខសំរាប់បង់ប្រាក់ដែលមានពណ៍ក្រហម​ព្រមទាំងលេខសម្គាល់ភ្នាក់ងារទូទាត់ប្រាក់ខាងលើ​ ទៅជួបនឹងភ្នាក់ងារបង់ប្រាក់ណាមួយដើម្បីទូទាត់ប្រាក់ជាការស្រេច។
 									</p>
 									<div class="font-size-sm">
 										<span class="text-danger">របៀបបង់ប្រាក់ជាមួយភ្នាក់ងារវីង ឬកម្មវិធីវីង:</span>
 										<div class="font-size-sm mt-0">
-											- ចូលទៅកាន់ Bill24 Co., Ltd ({{ $data->currency }})
+											- ចូលទៅកាន់ Bill24 Co., Ltd ({{ $data->currency }}) ឬវាយលេខកូដ​ 9125
 										</div>
 										<div>
 											- លេខទូរស័ព្ទប្រើ App របស់អ្នក
