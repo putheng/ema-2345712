@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Bankref;
 use App\Models\Track;
 use App\Cart\Money;
 use App\Models\PaymentMethod;
@@ -99,5 +100,10 @@ class Order extends Model
     public function transactions()
     {
         return $this->hasMany(Transaction::class);
+    }
+
+    public function banks()
+    {
+        return $this->hasMany(Bankref::class);
     }
 }

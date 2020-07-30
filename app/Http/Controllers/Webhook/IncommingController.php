@@ -20,6 +20,11 @@ class IncommingController extends Controller
 
             try {
 
+                $order->banks()->create([
+                    'bank_name' => $request->bank,
+                    'bank_ref' => $request->bank_ref,
+                ]);
+
                 event(new OrderPaid($order));
                 
             } catch (PaymentFailedException $e) {
