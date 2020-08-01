@@ -49,6 +49,10 @@
 													class="btn btn-sm btn-outline-info">
 													Delete
 												</a>
+												<a href="#" @click.prevent="addStock(product)" 
+													class="btn btn-sm btn-outline-info">
+													Add Stock
+												</a>
 											</td>
 										</tr>
 									</tbody>
@@ -61,6 +65,7 @@
 				</div>
 			</div>
 		</div>
+		<AddStock v-if="isAddStock" :product="product" @updated="updated"/>
 	</div>
 </div>
 </template>
@@ -68,11 +73,14 @@
 <script>
 	import { mapGetters, mapActions } from 'vuex'
 
+	import AddStock from './partials/AddStock'
+
 	export default {
 		data(){
 			return {
 				products: [],
-				laravelData: {}
+				laravelData: {},
+				isAddStock: false
 			}
 		},
 		methods: {
@@ -89,10 +97,16 @@
 
 					this.products = r.data.data
 				}
+			},
+			addStock(product){
+				this.product = product
+				this.isAddStock = true
+
+				$('#AddStock').modal('show')
 			}
 		},
-		computed: {
-			//
+		components: {
+			AddStock
 		},
 		mounted(){
 			this.fetchProducts()

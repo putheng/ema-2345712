@@ -41,10 +41,13 @@
 													:to="{name: 'admin-products-edit', params:{slug: product.slug}}" 
 													class="btn btn-sm btn-outline-info">Edit
 												</router-link>
-												<a href="#" @click.prevent="deletePro(product.slug)" 
-													:to="{name: 'admin-products-edit', params:{slug: product.slug}}" 
+												<a href="#" @click.prevent="deletePro(product.slug)"
 													class="btn btn-sm btn-outline-info">
 													Delete
+												</a>
+												<a href="#" @click.prevent="addStock(product)" 
+													class="btn btn-sm btn-outline-info">
+													Add Stock
 												</a>
 												<a href="#" @click.prevent="updateOwner(product)"
 													class="btn btn-sm btn-outline-info">
@@ -64,18 +67,21 @@
 		</div>
 	</div>
 	<ChangeOwner v-if="isUpdating" :product="product" @updated="updated"/>
+	<AddStock v-if="isAddStock" :product="product" @updated="updated"/>
 </div>
 </template>
 
 <script>
 	import { mapGetters, mapActions } from 'vuex'
 	import ChangeOwner from './partials/ChangeOwner'
+	import AddStock from './partials/AddStock'
 
 	export default {
 		data(){
 			return {
 				products: [],
 				isUpdating: false,
+				isAddStock: false,
 				product: null,
 				laravelData: {}
 			}
@@ -107,11 +113,19 @@
 				this.isUpdating = true
 
 				$('#UpateOwner').modal('show')
+			},
+
+			addStock(product){
+				this.product = product
+				this.isAddStock = true
+
+				$('#AddStock').modal('show')
 			}
 
 		},
 		components: {
-			ChangeOwner
+			ChangeOwner,
+			AddStock
 		},
 		mounted(){
 			this.fetchProducts()

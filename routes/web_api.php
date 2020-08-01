@@ -88,6 +88,7 @@ Route::group(['middleware' => 'auth'], function(){
 
 		Route::post('/{product}/variations', 'Admin\ProductVariantsController@store');
 		Route::post('/{product}/variations/edit', 'Admin\ProductVariantsController@update');
+		Route::post('/{product}/variations/stock', 'Admin\ProductVariantsController@update_stock');
 	});
 
 	Route::group(['prefix' => 'admin', 'middleware' => 'role:admin'], function(){

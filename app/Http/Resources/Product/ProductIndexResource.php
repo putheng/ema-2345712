@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\Product;
 
+use App\Http\Resources\Product\AdminVariationResource;
 use App\Http\Resources\ImageResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -25,6 +26,7 @@ class ProductIndexResource extends JsonResource
             'formattedPrice' => $this->formattedPrice,
             'formattedSalePrice' => $this->formattedSalePrice,
             'formattedTaxPrice' => $this->formattedTaxPrice,
+            'variations' => AdminVariationResource::collection($this->variations),
             'price' => currency_format($this->price->amount()),
             'sale_price' => currency_format($this->sale_price->amount()),
             'tax_price' => currency_format($this->tax_price->amount()),

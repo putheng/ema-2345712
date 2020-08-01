@@ -134,17 +134,6 @@
 									        </div>
 										</div>
 									</div>
-
-									<div class="col-md-2">
-										<div class="form-group">
-											<label class="control-label">Stock</label>
-											<input v-model="option.stock" type="number" class="form-control" :class="{'is-invalid': errors['variations.'+ index +'.options.'+ key +'.stock']}">
-											<div class="invalid-feedback" v-if="errors['variations.'+ index +'.options.'+ key +'.stock']">
-									            <i class="fa fa-exclamation-circle fa-fw"></i>
-									            {{ errors['variations.'+ index +'.options.'+ key +'.stock'][0] }}
-									        </div>
-										</div>
-									</div>
 								</div>
 							</div>
 						</div>

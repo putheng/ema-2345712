@@ -25,6 +25,10 @@ class ProductEditController extends Controller
             $product->market_price = currency_convert($request->market_price)->getAmount();
         }
 
+        if(empty($request->market_price) || $request->market_price == 0){
+            $product->market_price = NULL;
+        }
+
     	$product->description = nl2br(strip_tags($request->description));
     	// $product->user()->associate($request->user());
         $product->category_id = $request->category;

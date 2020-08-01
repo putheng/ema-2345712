@@ -66,7 +66,7 @@ class StoreController extends Controller
     public function show()
     {
         return response()->json([
-            'vat' => (boolean) auth()->user()->store->vat
+            'vat' => (boolean) optional(auth()->user()->store)->vat
         ]);
     }
 

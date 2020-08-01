@@ -66,6 +66,20 @@ class ProductVariantsController extends Controller
         return $price + ($price * 0.1);
     }
 
+    public function update_stock(Request $request)
+    {
+        $vari = ProductVariation::find($request->id);
+
+        $vari->stocks()->create([
+            'quantity' => $request->stock
+        ]);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Stock update successfully'
+        ]);
+    }
+
     public function update(Request $request, Product $product)
     {
         collect($request->variations)->each(function($value, $key) use ($product){
