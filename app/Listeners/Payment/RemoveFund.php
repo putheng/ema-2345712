@@ -19,7 +19,7 @@ class RemoveFund
     {
         $request = $event->request;
 
-        $user = auth()->user() != null auth()->user() : auth('api')->user();
+        $user = auth()->user();
 
         $user->decrement('balance', $request->amount);
     }

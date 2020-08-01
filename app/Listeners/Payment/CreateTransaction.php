@@ -21,7 +21,7 @@ class CreateTransaction
     public function handle(TransferCreated $event)
     {
         $request = $event->request;
-        $user = auth()->user() != null auth()->user() : auth('api')->user();
+        $user = auth()->user();
 
         $sender = $user;
 
