@@ -47,7 +47,7 @@ class CalculateComission
             
             $calcul['company'] = $company_earning;
 
-            $top_sale = $this->top_sale($commission); // ok
+            $top_sale = $this->top_sale($commission, $order->user); // ok
             $calcul['top_sale'] = $top_sale;
             $remain_earning = $commission - $top_sale;
 
@@ -57,7 +57,7 @@ class CalculateComission
 
             $shared = ($shared_rate / 100) * $commission;
 
-            if(auth()->user()->type == 'society'){
+            if($order->user->type == 'society'){
 
                 $calcul['share'] = $shared;
 
@@ -91,7 +91,7 @@ class CalculateComission
 
     protected function society($commission, $order, $remain_earning)
     {
-        $agent = auth()->user()->agent;
+        $agent = $order->user->agent;
         
         $rate = 3;
         $amount = ($rate / 100) * $commission;
@@ -331,14 +331,14 @@ if($user->agent && $user->agent->parent_id != null){
         $track = new Track;
         $track->symbol = '+ Store Sponsor';
         $track->value = $amount;
-        $track->user()->associate(auth()->user());
+        $track->user()->associate($order->user);
 
         $order->track()->save($track);
 
         return $amount;
     }
 
-    protected function top_sale($commission)
+    protected function top_sale($commission, $user)
     {
         $rate = (int) syt_option('top_sale')->cal_value;
 
@@ -349,7 +349,7 @@ if($user->agent && $user->agent->parent_id != null){
         $track = new Track;
         $track->symbol = '- Top sale';
         $track->value = $amount;
-        $track->user()->associate(auth()->user());
+        $track->user()->associate($user);
 
         $top->track()->save($track);
 
