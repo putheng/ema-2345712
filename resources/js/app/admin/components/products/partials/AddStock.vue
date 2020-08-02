@@ -15,7 +15,7 @@
 								<select class="form-control" @change="selected">
 									<option>Select</option>
 									<option :value="variation.id" v-for="(variation, key) in product.variations">
-										{{variation.type}} - {{ variation.name }}
+										{{variation.type}} - {{ variation.name }} (Stock count: {{variation.stock_count}})
 									</option>
 								</select>
 							</div>
@@ -27,8 +27,8 @@
 						
 					</div>
 					<div class="modal-footer">
-						<button :disabled="loading" class="btn btn-primary" @click.prevent="updateQty">
-							<span v-if="loading">Updating ...</span>
+						<button :disabled="isloading" class="btn btn-primary" @click.prevent="updateQty">
+							<span v-if="isloading">Updating ...</span>
 							<span v-else>Update</span>
 						</button>
 						<button
@@ -54,7 +54,7 @@
 		props: ['product'],
 		data(){
 			return {
-				loading: false,
+				isloading: false,
 				form: {
 					id: '',
 					stock: 5
@@ -75,7 +75,7 @@
 				clearErrors: 'clearErrors'
 			}),
 			resetLoading(){
-				this.loading = false
+				this.isloading = false
 				this.clearValidationErrors()
 				this.clearMessage()
 				this.clearErrors()
@@ -100,11 +100,11 @@
 					return
 				}
 
-				this.loading = true
+				this.isloading = true
 
 				await axios.post(`/products/${this.product.slug}/variations/stock`, this.form)
 					.then((response) => {
-						this.loading = false
+						this.isloading = false
 
 						alert(response.data.message)
 					})

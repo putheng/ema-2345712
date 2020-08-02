@@ -21,7 +21,8 @@ class Order extends Model
         'address_id',
         'shipping_method_id',
         'payment_method_id',
-        'subtotal'
+        'subtotal',
+        'currency'
     ];
 
     protected $appends = [
@@ -54,15 +55,22 @@ class Order extends Model
         $this->save();
     }
 
-    public function getSubtotalAttribute($subtotal)
+    public function getSubtotalAttribute($value)
     {
-        return new Money($subtotal);
+        if(get_currency()->current() == 'KHR' && $this->currency == 'USD'){
+            $value = (int) ($value * syt_option('c_usd_rate')->cal_value);
+        }
+
+        if(get_currency()->current() == 'USD' && $this->currency == 'KHR'){
+            $value = (int) ($value / syt_option('c_usd_rate')->cal_value);
+        }
+
+        return new Money($value);
     }
 
     public function total()
     {
-        return $this->subtotal;
-        // return $this->subtotal->add($this->shippingMethod->price);
+        return $this->subtotal->add($this->shippingMethod->price);
     }
 
     public function user()

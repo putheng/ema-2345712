@@ -24,3 +24,12 @@ $2y$10$GViglupscfgIbzRKqnrUtu2n6zJdIwP76MbT2NHpCD/wncIotgZku
 "bank":"ACLEDA Bank",
 "total_amount":10.4
 }
+
+out of stock color red
+- edit shipping not work
+- price currency on store ordr page
+- add admin balance to payment/wallet page
+- change profile can not select an image
+- order 10$ can active account, 20$ free delevery
+- add gender to register with referal link page
+- placement tree auto load name
