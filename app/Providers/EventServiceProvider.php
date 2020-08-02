@@ -34,6 +34,7 @@ class EventServiceProvider extends ServiceProvider
             'App\Listeners\Order\SendStoreNoti',
             'App\Listeners\Order\SendAdminNoti',
             'App\Listeners\Order\CalculateComission',
+            'App\Listeners\Order\CheckAndActivate',
         ],
 
         'App\Events\Agent\AgentCreated' => [

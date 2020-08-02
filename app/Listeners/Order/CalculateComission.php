@@ -259,7 +259,7 @@ if($user->agent && $user->agent->parent_id != null){
 
     protected function sponsor($commission, $order)
     {
-        $user = auth()->user();
+        $user = $order->user;
 
         if($user->agent && $user->agent->sponsor_id != null){
             $sponsor = User::find($user->agent->sponsor_id);
@@ -286,7 +286,7 @@ if($user->agent && $user->agent->parent_id != null){
         $rate = (int) syt_option('cash_back')->cal_value;
         $amount = ($rate / 100) * $commission;
 
-        $user = auth()->user();
+        $user = $order->user;
 
         if($user){
             $user->incrementIncome('earning', $amount);

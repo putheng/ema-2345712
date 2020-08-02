@@ -15,6 +15,7 @@ class Agent extends Model
     	'parent_id',
         'sponsor_id',
         'level',
+        'status',
     ];
 
     public static function boot()
