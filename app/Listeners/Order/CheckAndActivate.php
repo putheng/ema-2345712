@@ -37,8 +37,6 @@ class CheckAndActivate
         if($order->currency == 'KHR' && $subtotal > '4000000'){
             $this->activate($order->user);
         }
-
-        file_put_contents('amount', json_encode($subtotal));
     }
 
     protected function activate($user)
