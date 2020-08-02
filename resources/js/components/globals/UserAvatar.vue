@@ -5,7 +5,7 @@
 	        	@change="readURL"
 	        	type='file'
 	        	id="imageUpload"
-	        	accept=".png, .jpg, .jpeg"
+	        	accept="image/*"
 	         />
 	        <label for="imageUpload"><i class="fa fa-pencil-alt"></i></label>
 	    </div>
