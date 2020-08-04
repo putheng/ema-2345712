@@ -19,16 +19,17 @@ class OrderResource extends JsonResource
             'id' => $this->id,
             'status' => $this->status,
             'created_at' => $this->created_at->toDateTimeString(),
-            'total' => $this->total()->add($this->shippingMethod->price)->formatted(),
+            'total' => $this->total()->formatted(),
+            // 'total' => $this->total()->add($this->shippingMethod->price)->formatted(),
             'subtotal' => $this->subtotal->formatted(),
+            'address' => new AddressResource(
+                $this->whenLoaded('address')
+            ),
             'bank' => $this->banks,
             'dashboard' => auth()->user()->dashboard(),
             
             'products' => ProductVariationOrderResource::collection(
                 $this->whenLoaded('products')
-            ),
-            'address' => new AddressResource(
-                $this->whenLoaded('address')
             ),
             'shippingMethod' => new ShippingMethodResource(
                 $this->whenLoaded('shippingMethod')
