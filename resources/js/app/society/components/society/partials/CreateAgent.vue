@@ -147,6 +147,21 @@
 				placeName: ''
 			}
 		},
+		watch: {
+			'form.placement' (value){
+				this.placeName = 'Loading...'
+				axios.get(`sociaty/filter?id=${this.agent.uuid}`).then((response) => {
+					
+					if(response.data.count > 0){
+						return this.placeName = response.data.data.name
+					}
+
+					return this.placeName = 'Not found'
+				}).catch(() => {
+					return this.placeName = 'Not found'
+				})
+			}
+		},
 		methods: {
 			filter(){
 				this.sponsorName = 'Loading...'
