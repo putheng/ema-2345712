@@ -20,7 +20,7 @@ class EventServiceProvider extends ServiceProvider
         ],
         'App\Events\Order\OrderCreated' => [
             'App\Listeners\Order\ProcessPayment',
-            'App\Listeners\Order\EmptyCart',
+            // 'App\Listeners\Order\EmptyCart',
         ],
 
         'App\Events\Order\OrderPaymentFailed' => [
@@ -30,6 +30,7 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\Order\OrderPaid' => [
             'App\Listeners\Order\CreateTransaction',
             'App\Listeners\Order\MarkOrderProcessing',
+            'App\Listeners\Order\MakePaymentToOwner',
             'App\Listeners\Order\EmptyCart',
             'App\Listeners\Order\SendStoreNoti',
             'App\Listeners\Order\SendAdminNoti',

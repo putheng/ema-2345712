@@ -20,6 +20,14 @@ trait HasPrice
 
     public function getSalePriceAttribute($value)
     {
+        if(get_currency()->current() == 'KHR' && $this->currency == 'USD'){
+            $value = (int) ($value * syt_option('c_usd_rate')->cal_value);
+        }
+
+        if(get_currency()->current() == 'USD' && $this->currency == 'KHR'){
+            $value = (int) ($value / syt_option('c_usd_rate')->cal_value);
+        }
+
         return new Money($value);
     }
 

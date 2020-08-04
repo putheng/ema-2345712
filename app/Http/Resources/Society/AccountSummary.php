@@ -15,8 +15,7 @@ class AccountSummary extends JsonResource
      * @return array
      */
     public function toArray($request)
-    {
-        
+    {   
         return [
             'purchase' => $this->getPurchase(),
             'earning' => $this->currency . ' '. number_format(0, 2),
@@ -31,7 +30,8 @@ class AccountSummary extends JsonResource
 
         return [
             'counts' => $orders->count(),
-            'expenses' => $this->currency .' '. number_format($this->order->sum('total'), 2),
+            'expenses' => $this->currency .' '. number_format(
+                $this->order()->where('status', 'processing')->get()->sum('total'), 2),
         ];
     }
 
