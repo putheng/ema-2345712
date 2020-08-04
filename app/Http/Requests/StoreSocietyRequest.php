@@ -24,8 +24,8 @@ class StoreSocietyRequest extends FormRequest
     public function rules()
     {
         return [
-            'first_name' => 'required|min:3|max:30',
-            'last_name' => 'required|min:3|max:30',
+            'first_name' => 'required|min:1|max:30',
+            'last_name' => 'required|min:1|max:30',
             'gender' => 'required|max:20',
             'dob' => 'required',
             'id_type' => 'required|exists:i_d_types,id',
