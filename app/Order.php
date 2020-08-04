@@ -5,6 +5,7 @@ namespace App;
 
 use App\Models\User;
 use App\Models\Track;
+use App\Cart\Money;
 use App\Models\PaymentMethod;
 use App\Models\Transaction;
 use App\Models\ShippingMethod;
@@ -20,8 +21,26 @@ class Order extends Model
 
 	public function getTotalAttribute()
 	{
-		return $this->subtotal + $this->shippingMethod->price->amount();
+        // return $this->subtotal->amount();
+
+        // return $this->shippingMethod->price->amount();
+
+        // return $this->shippingMethod->price->amount();
+		return currency_format($this->subtotal->amount() + $this->shippingMethod->price->amount());
 	}
+
+    public function getSubtotalAttribute($value)
+    {
+        if(get_currency()->current() == 'KHR' && $this->currency == 'USD'){
+            $value = (int) ($value * syt_option('c_usd_rate')->cal_value);
+        }
+
+        if(get_currency()->current() == 'USD' && $this->currency == 'KHR'){
+            $value = (int) ($value / syt_option('c_usd_rate')->cal_value);
+        }
+
+        return new Money($value);
+    }
 
     public function scopeUuid($q, $uuid)
     {
