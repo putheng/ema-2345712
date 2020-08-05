@@ -68,19 +68,7 @@ trait HasPrice
 
     public function getFormattedSalePriceAttribute()
     {
-        if($this->sale_price->amount() == 0){
-            return false;
-        }
-
-        if($this->currency != get_currency()->current()){
-            return $this->switchCurrency($this->sale_price);
-        }else{
-            if($this->currency == 'KHR'){
-                return currency_format($this->sale_price->amount(), 'KHR').'៛';
-            }else{
-                return $this->sale_price->formatted();
-            }
-        }
+        return currency_format($this->sale_price->amount());
     }
 
     public function getFormattedMarketPriceAttribute()

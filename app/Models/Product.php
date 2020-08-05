@@ -58,6 +58,11 @@ class Product extends Model
         });
     }
 
+    public function image()
+    {
+        return $this->morphMany(Image::class, 'imageable');
+    }
+
     public function scopeIsNotBlock($q)
     {
         return $q->where('publish', '!=', 3);
@@ -112,11 +117,6 @@ class Product extends Model
     public function thumbnail()
     {
         return $this->image()->first();
-    }
-
-    public function image()
-    {
-        return $this->morphMany(Image::class, 'imageable');
     }
 
     public function inWishlist()
