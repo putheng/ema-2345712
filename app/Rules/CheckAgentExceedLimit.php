@@ -28,7 +28,8 @@ class CheckAgentExceedLimit implements Rule
     {
         $agent = Agent::byUuid($value)->first();
 
-        return $agent->child_count <= get_level($agent->level)->value;
+        // return $agent->child_count <= get_level($agent->level)->value;
+        return $agent->child_count <= 3;
     }
 
     /**
