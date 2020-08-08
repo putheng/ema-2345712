@@ -21,7 +21,7 @@ class TopSale extends Model
     {
     	$model = $q->where('isCounting', true)->first();
 
-    	if(!$model->count()){
+    	if($model == null){
     		static::create([
     			'amount' => $amount
     		]);

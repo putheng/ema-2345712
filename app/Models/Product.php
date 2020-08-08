@@ -8,6 +8,7 @@ use App\Models\{
     Image,
     User
 };
+
 use App\Models\ProductVariation;
 use App\Models\Traits\CanBeScoped;
 use App\Models\Traits\HasPrice;

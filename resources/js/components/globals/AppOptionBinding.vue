@@ -4,7 +4,7 @@
 	<select 
 		:name="inputName"
 		class="custom-select"
-		v-model="inputValue"
+		
 		@input="$emit('input', $event.target.value)"
 		@change="clearValidation"
 		v-bind="$attrs"
@@ -12,7 +12,13 @@
 	>
 		<optgroup :label="option.name" v-for="option in options">
 			<option :value="option.id" >All</option>
-			<option v-if="option.children" :value="child.id" v-for="child in option.children"> {{ child.name }} </option>
+			<option 
+				v-for="child in option.children"
+				v-if="option.children" 
+				:selected="child.id == selected"
+				:value="child.id"> 
+					{{ child.name }}
+				</option>
 		</optgroup>
 		
 	</select>
@@ -47,7 +53,8 @@ export default {
 	},
 
 	methods: {
-		clearValidation(){
+		clearValidation(e){
+			this.inputValue = e.target.value
 			this.$store.dispatch('clearValidateFor', this.inputName)
 		},
 		formatedInputName(){

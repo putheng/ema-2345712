@@ -18,18 +18,18 @@ class CreateTransaction
      */
     public function handle(OrderPaid $event)
     {
-        $amount = $event->order->total()->amount();
-
+        $total = $event->order->total()->amount();
+        $subtotal = $event->order->subtotal->amount();
 
         $in = $event->order->transactions()->create([
-            'total' => $amount,
+            'total' => $total,
             'type' => 'Purchase',
             'symbol' => '-'
         ]);
 
-        $event->order->products->each(function($variation, $key) use ($amount, $event){
+        $event->order->products->each(function($variation, $key) use ($subtotal, $event){
             $variation->sale()->create([
-                'amount' => $amount,
+                'amount' => $subtotal,
                 'user_id' => $event->order->user->id,
                 'product_variation_id' => $variation->id,
                 'product_id' => $variation->product_id,
@@ -42,7 +42,7 @@ class CreateTransaction
 
         $track = new Track;
         $track->symbol = '-';
-        $track->value = $amount;
+        $track->value = $total;
         $track->user_id = $user->id;
 
         $event->order->track()->save($track);

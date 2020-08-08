@@ -11,15 +11,15 @@ class SaleController extends Controller
     {
     	$sale = auth()->user()->sales();
 
-    	$sales = get_currency($sale->get()->sum('amount'))->amount();
+    	$sales = currency_format($sale->get()->sum('amount'));
 
     	$month = $sale->thisMonth()->get();
 
     	$data = [
     		'data' => [
 	    		'lifetime'=> $sales,
-	    		'thisMonth'=> get_currency($month->sum('amount'))->amount(),
-	    		'balance' => get_currency(auth()->user()->balance)->amount(),
+	    		'thisMonth'=> currency_format($month->sum('amount')),
+	    		'balance' => currency_format(auth()->user()->balance),
 	    		'series' => [
 	    			['name' => 'Sales',
 	    			'data' => $month->pluck('quantity')]
