@@ -18,7 +18,7 @@ use Illuminate\Support\Str;
 
 class Product extends Model
 {
-    use CanBeScoped, HasPrice;
+    use CanBeScoped;
     
     protected $fillable = [
         'name',
@@ -60,6 +60,11 @@ class Product extends Model
             // $model->tax_price = $price;
             
         });
+    }
+
+    public function getFormattedTaxPriceAttribute()
+    {
+        return $this->tax_price;
     }
 
     public function image()

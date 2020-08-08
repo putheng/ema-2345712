@@ -21,7 +21,6 @@ class ProductEditController extends Controller
     	$product->name = $request->name;
         $product->price = $request->price;
         $product->sale_price = $request->sale_price;
-        $product->tax_price = $request->sale_price;
 
         $product->commission = ($request->sale_price - $request->price);
         
