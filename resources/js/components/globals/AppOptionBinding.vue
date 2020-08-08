@@ -1,6 +1,6 @@
 <template>
 <div class="form-group">
-	<label class="col-form-label">{{ label }}</label>
+	<label class="col-form-label">{{ label }} {{ inputValue }}</label>
 	<select 
 		:name="inputName"
 		class="custom-select"
@@ -66,6 +66,10 @@ export default {
 		return {
 			inputValue: ''
 		}
+	},
+
+	mounted(){
+		this.inputValue = this.selected
 	},
 
 	computed: {
