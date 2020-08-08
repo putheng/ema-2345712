@@ -21,6 +21,7 @@ class ProductEditController extends Controller
     	$product->name = $request->name;
         $product->price = $request->price;
         $product->sale_price = $request->sale_price;
+        $product->tax_price = $request->sale_price;
 
         $product->commission = ($request->sale_price - $request->price);
         
@@ -33,7 +34,7 @@ class ProductEditController extends Controller
         }
 
     	$product->description = nl2br(strip_tags($request->description));
-    	// $product->user()->associate($request->user());
+
         $product->category_id = $request->category;
         
     	$product->save();
