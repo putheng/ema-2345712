@@ -49,13 +49,15 @@ class Product extends Model
         });
 
         static::updating(function($model){
-            $price = $model->sale_price->amount();
+            // $price = $model->sale_price->amount();
 
-            if(auth()->user()->type == 'store' && (boolean) auth()->user()->store->vat){
-                $model->tax_price = $price + ($price * 0.1);
-            }else{
-                $model->tax_price = $price;
-            }
+            // if(auth()->user()->type == 'store' && (boolean) auth()->user()->store->vat){
+            //     $model->tax_price = $price + ($price * 0.1);
+            // }else{
+            //     $model->tax_price = $price;
+            // }
+
+            $model->tax_price = $price;
             
         });
     }

@@ -92,7 +92,7 @@ class ProductVariantsController extends Controller
                     'weight' => $val['weight'],
                     'commission' => ($val['sale_pricex'] - $val['pricex']),
                     'sale_price' => $val['sale_pricex'],
-                    'tax_price' => $this->getVatPrice($val['sale_pricex']),
+                    'tax_price' => $val['sale_pricex'],
                 ]);
 
                 $stock = Stock::where('product_variation_id', $val['id'])->first();
