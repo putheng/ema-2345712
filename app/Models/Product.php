@@ -14,6 +14,7 @@ use App\Models\Traits\CanBeScoped;
 use App\Models\Traits\HasPrice;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Str;
 
 class Product extends Model
 {
@@ -42,7 +43,7 @@ class Product extends Model
                 $model->tax_price = $price;
             }
 
-            $model->slug = str_slug($model->name) .'-'. time() .'.html';
+            $model->slug = str_slug($model->name) .'-'. Str::uuid() .'.html';
 
             $model->currency = get_currency()->current();
         });

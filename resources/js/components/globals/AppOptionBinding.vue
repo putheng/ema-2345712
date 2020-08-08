@@ -1,6 +1,6 @@
 <template>
 <div class="form-group">
-	<label class="col-form-label">{{ label }} {{ inputValue }}</label>
+	<label class="col-form-label">{{ label }}</label>
 	<select 
 		:name="inputName"
 		class="custom-select"

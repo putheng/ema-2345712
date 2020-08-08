@@ -88,10 +88,11 @@ class ProductVariantsController extends Controller
 
                 $vari->update([
                     'name' => $val['name'],
-                    'price' => currency_convert($val['pricex'])->getAmount(),
+                    'price' => $val['pricex'],
                     'weight' => $val['weight'],
-                    'sale_price' => currency_convert($val['sale_pricex'])->getAmount(),
-                    'tax_price' => currency_convert($this->getVatPrice($val['sale_pricex']))->getAmount(),
+                    'commission' => ($val['sale_pricex'] - $val['pricex']),
+                    'sale_price' => $val['sale_pricex'],
+                    'tax_price' => $this->getVatPrice($val['sale_pricex']),
                 ]);
 
                 $stock = Stock::where('product_variation_id', $val['id'])->first();

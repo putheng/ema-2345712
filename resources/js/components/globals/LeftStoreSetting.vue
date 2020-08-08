@@ -42,14 +42,14 @@
 					<span class="oi oi-graph"></span>
 					<span class="menu-text">Sales</span>
 				</router-link>
-				<router-link :to="{ name: 'store-products' }" class="menu-link">
+				<!-- <router-link :to="{ name: 'store-products' }" class="menu-link">
 					<span class="oi oi-list-rich"></span>
 					<span class="menu-text">Products</span>
-				</router-link>
-				<router-link :to="{ name: 'store-products-new' }" class="menu-link">
+				</router-link> -->
+				<!-- <router-link :to="{ name: 'store-products-new' }" class="menu-link">
 					<span class="oi oi-plus"></span>
 					<span class="menu-text">Add New Product</span>
-				</router-link>
+				</router-link> -->
 			</li>
 
 			<!-- <li class="menu-header" style="margin-top: 0;">Payment</li>
