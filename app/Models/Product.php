@@ -68,7 +68,7 @@ class Product extends Model
             return number_format(($this->tax_price * 4100), 2) .'៛';
         }
 
-        return $this->tax_price;
+        return '$'.number_format($this->tax_price, 2);
     }
 
     public function image()
