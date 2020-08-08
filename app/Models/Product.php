@@ -64,6 +64,10 @@ class Product extends Model
 
     public function getFormattedTaxPriceAttribute()
     {
+        if(get_currency()->current() == 'KHR'){
+            return number_format(($this->tax_price * 4100), 2) .'៛';
+        }
+
         return $this->tax_price;
     }
 
