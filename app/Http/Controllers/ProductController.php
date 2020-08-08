@@ -31,7 +31,13 @@ class ProductController extends Controller
     {
     	$products = $product->category->products()->with('image', 'category')->paginate(10);
 
-    	return view('home.product', compact('product', 'products'));
+        $store = '';
+
+        if($product->user->type == 'store' || $product->user->type == 'admin'){
+            $store = $product->user->store;
+        }
+
+    	return view('home.product', compact('product', 'products', 'store'));
     }
 
     public function icons()
