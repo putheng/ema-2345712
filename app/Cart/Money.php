@@ -15,88 +15,52 @@ class Money
 
     public function __construct($value)
     {
-        $value = (int) $value;
-        
-        $this->money = new BaseMoney($value, new Currency('USD'));
+        $this->money = $value;
     }
 
     public function convert($value)
     {
-        $moneyParser = new IntlMoneyParser(
-            new \NumberFormatter('en_US', \NumberFormatter::CURRENCY),
-            new ISOCurrencies()
-        );
-
-        return $moneyParser->parse($value);
+        
     }
 
     public function amount()
     {
-        return $this->money->getAmount();
+        return $this->money;
     }
 
     public function totalAmount()
     {
-        return currency_format($this->amount());
+        return $this->money;
     }
 
     public function formatted()
     {
         if(get_currency()->current() == 'KHR'){
-            $price = currency_format($this->amount());
-            return number_format($price, 2) .'៛';
+            return number_format($this->money, 2) .'៛';
         }
 
-        $formatter = new IntlMoneyFormatter(
-            new NumberFormatter('USD', NumberFormatter::CURRENCY),
-            new ISOCurrencies()
-        );
-
-        return $formatter->format($this->money);
+        return '$'.number_format($this->money, 2);
     }
 
     public function formattedCart()
     {
-        if(get_currency()->current() == 'KHR'){
-            $price = currency_format($this->amount());
-
-            // return number_format($price * syt_option('c_usd_rate')->cal_value, 2) .'៛';
-            return number_format($price, 2) .'៛';
-        }
-
-
-        $formatter = new IntlMoneyFormatter(
-            new NumberFormatter('USD', NumberFormatter::CURRENCY),
-            new ISOCurrencies()
-        );
-
-        return $formatter->format($this->money);
+        
     }
 
     public function unformattedCart()
     {
-        if(get_currency()->current() == 'KHR'){
-            return currency_format($this->amount());
 
-        }
-
-        $formatter = new IntlMoneyFormatter(
-            new NumberFormatter('USD', NumberFormatter::CURRENCY),
-            new ISOCurrencies()
-        );
-
-        return currency_format($this->amount());
     }
 
-    public function add(Money $money)
+    public function add($added)
     {
-        $this->money = $this->money->add($money->instance());
+        $this->money = ($this->money + $added);
 
         return $this;
     }
 
     public function instance()
     {
-        return $this->money;
+        
     }
 }

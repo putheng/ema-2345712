@@ -18,7 +18,7 @@ use Illuminate\Support\Str;
 
 class Product extends Model
 {
-    use CanBeScoped;
+    use CanBeScoped, HasPrice;
     
     protected $fillable = [
         'name',
@@ -35,17 +35,17 @@ class Product extends Model
         parent::boot();
 
         static::creating(function($model){
-            $price = $model->sale_price->amount();
+            // $price = $model->sale_price->amount();
 
-            if(auth()->user()->type == 'store' && (boolean) auth()->user()->store->vat){
-                $model->tax_price = $price + ($price * 0.1);
-            }else{
-                $model->tax_price = $price;
-            }
+            // if(auth()->user()->type == 'store' && (boolean) auth()->user()->store->vat){
+            //     $model->tax_price = $price + ($price * 0.1);
+            // }else{
+            //     $model->tax_price = $price;
+            // }
 
-            $model->slug = str_slug($model->name) .'-'. Str::uuid() .'.html';
+            // $model->slug = str_slug($model->name) .'-'. Str::uuid() .'.html';
 
-            $model->currency = get_currency()->current();
+            // $model->currency = get_currency()->current();
         });
 
         static::updating(function($model){
@@ -60,15 +60,6 @@ class Product extends Model
             // $model->tax_price = $price;
             
         });
-    }
-
-    public function getFormattedTaxPriceAttribute()
-    {
-        if(get_currency()->current() == 'KHR'){
-            return number_format(($this->tax_price * 4100), 2) .'៛';
-        }
-
-        return '$'.number_format($this->tax_price, 2);
     }
 
     public function image()

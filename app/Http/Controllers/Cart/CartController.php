@@ -33,10 +33,12 @@ class CartController extends Controller
 
     protected function meta(Cart $cart, Request $request)
     {
+        // dd($cart->withShipping($request->shipping_method_id));
+        
         return [
             'empty' => $cart->isEmpty(),
-            'subtotal' => $cart->subtotal()->formattedCart(),
-            'total' => $cart->withShipping($request->shipping_method_id)->total()->formattedCart(),
+            'subtotal' => $cart->subtotal()->formatted(),
+            'total' => $cart->withShipping($request->shipping_method_id)->total()->formatted(),
             'changed' => $cart->hasChanged(),
         ];
     }

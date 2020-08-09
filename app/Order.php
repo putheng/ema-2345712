@@ -21,12 +21,7 @@ class Order extends Model
 
 	public function getTotalAttribute()
 	{
-        // return $this->subtotal->amount();
-
-        // return $this->shippingMethod->price->amount();
-
-        // return $this->shippingMethod->price->amount();
-		return currency_format($this->subtotal->amount() + $this->shippingMethod->price->amount());
+		return ($this->subtotal->amount() + $this->shippingMethod->price);
 	}
 
     public function getSubtotalAttribute($value)

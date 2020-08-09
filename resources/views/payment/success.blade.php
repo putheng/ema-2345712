@@ -45,7 +45,7 @@
 						<div class="media align-items-center py-2">
 							<div class="media-body">
 								<h6 class="widget-product-title">
-									{{ $product->name }}
+									{{ $product->product->name }} - {{ $product->name }}
 								</h6>
 								<div class="widget-product-meta">
 									<div class="d-sm-flex flex-wrap justify-content-between align-items-center pb-2">

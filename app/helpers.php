@@ -47,9 +47,6 @@ if(!function_exists('currency_convert')){
 
 if(!function_exists('currency_format')){
 	function currency_format($value, $currency = 'USD'){
-		return (new DecimalMoneyFormatter(new ISOCurrencies()))
-		->format(
-			new Money($value, new BaseCurrency($currency))
-		);
+		return $value;
 	}
 }

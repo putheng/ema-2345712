@@ -25,17 +25,12 @@ class ShippingMethod extends Model
         return $this->belongsToMany(City::class);
     }
 
-    public function getPriceAttribute($value)
-    {
-        if(get_currency()->current() == 'KHR'){
-            $value = (int) ($value * syt_option('c_usd_rate')->cal_value);
-        }
-
-        return new Money($value);
-    }
-
     public function getFormattedPriceAttribute()
     {
-        return $this->price->formatted();
+        if(get_currency()->current() == 'KHR'){
+            return number_format(($this->price * 4100), 2) .'៛';
+        }
+
+        return '$'.number_format($this->price, 2);
     }
 }
