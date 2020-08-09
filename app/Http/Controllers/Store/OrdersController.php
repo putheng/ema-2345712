@@ -20,8 +20,9 @@ class OrdersController extends Controller
 
     	
     	$orders = ProductVariationOrder::whereIn('product_variation_id', $variation)
+            ->with('order', 'variation', 'order.address', 'order.shippingMethod', 'variation.product', 'variation.type')
             ->orderBy('created_at', 'desc')
-            ->paginate(200);
+            ->paginate(20);
 
     	return ProductVariationOrderResource::collection($orders);
     }

@@ -15,7 +15,7 @@
 									<th>Items</th>
 									<th>Date Purchased</th>
 									<th>Status</th>
-									<th>Total</th>
+									<th>Ship To</th>
 									<th>Actions</th>
 								</thead>
 								<tbody>
@@ -29,6 +29,7 @@
 											{{ order.product_variation.product.name }}
 											( {{ order.product_variation.type }}
 											{{ order.product_variation.name }} )
+											x {{ order.quantity }}
 
 										</td>
 										<td>{{ order.order.created_at }}</td>
@@ -39,8 +40,18 @@
 												'badge-danger': order.order.status == 'Payment failed',
 												'badge-success': order.order.status == 'Completed',
 											}"
-											>{{ order.order.status }}</span></td>
-										<td>{{ order.order.total }}</td>
+											>{{ order.order.status }}</span>
+										</td>
+										<td>
+											{{ order.order.address.name }}
+											<div>
+												{{ order.order.address.address }},
+												{{ order.order.address.city.name }}
+											</div>
+											<div>
+												{{ order.order.address.phone }}
+											</div>
+										</td>
 										<td width="250">
 											<div class="form-group">
 												<label class="col-form-label">Type</label>

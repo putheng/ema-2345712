@@ -20,7 +20,7 @@ class OrderResource extends JsonResource
             'status' => $this->status,
             'created_at' => $this->created_at->toDateTimeString(),
             'total' => $this->total()->formatted(),
-            // 'total' => $this->total()->add($this->shippingMethod->price)->formatted(),
+            // 'address' => $this->address,
             'subtotal' => $this->subtotal->formatted(),
             'address' => new AddressResource(
                 $this->whenLoaded('address')
