@@ -40,29 +40,29 @@ class Product extends Model
         parent::boot();
 
         static::creating(function($model){
-            // $price = $model->sale_price->amount();
+            $price = $model->sale_price->amount();
 
-            // if(auth()->user()->type == 'store' && (boolean) auth()->user()->store->vat){
-            //     $model->tax_price = $price + ($price * 0.1);
-            // }else{
-            //     $model->tax_price = $price;
-            // }
+            if(auth()->user()->type == 'store' && (boolean) auth()->user()->store->vat){
+                $model->tax_price = $price + ($price * 0.1);
+            }else{
+                $model->tax_price = $price;
+            }
 
             $model->slug = str_slug($model->name) .'-'. Str::uuid() .'.html';
 
-            // $model->currency = get_currency()->current();
+            $model->currency = get_currency()->current();
         });
 
         static::updating(function($model){
             // $price = $model->sale_price->amount();
 
+            // dump($price);
+
             // if(auth()->user()->type == 'store' && (boolean) auth()->user()->store->vat){
             //     $model->tax_price = $price + ($price * 0.1);
             // }else{
             //     $model->tax_price = $price;
             // }
-
-            // $model->tax_price = $price;
             
         });
     }

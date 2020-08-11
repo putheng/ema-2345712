@@ -65,7 +65,7 @@
 				</div>
 			</div>
 		</div>
-		<AddStock v-if="isAddStock" :product="product" @updated="updated"/>
+		<AddStock v-if="isAddStock" :product="product"/>
 	</div>
 </div>
 </template>

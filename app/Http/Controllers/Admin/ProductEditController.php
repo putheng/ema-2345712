@@ -35,6 +35,14 @@ class ProductEditController extends Controller
     	$product->description = nl2br(strip_tags($request->description));
 
         $product->category_id = $request->category;
+
+        $price = $request->sale_price;
+
+        if(auth()->user()->type == 'store' && (boolean) auth()->user()->store->vat){
+            $product->tax_price = $price + ($price * 0.1);
+        }else{
+            $product->tax_price = $price;
+        }
         
     	$product->save();
 

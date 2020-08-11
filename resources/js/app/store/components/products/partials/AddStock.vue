@@ -27,8 +27,8 @@
 						
 					</div>
 					<div class="modal-footer">
-						<button :disabled="loading" class="btn btn-primary" @click.prevent="updateQty">
-							<span v-if="loading">Updating ...</span>
+						<button :disabled="loadingStock" class="btn btn-primary" @click.prevent="updateQty">
+							<span v-if="loadingStock">Updating ...</span>
 							<span v-else>Update</span>
 						</button>
 						<button
@@ -54,7 +54,7 @@
 		props: ['product'],
 		data(){
 			return {
-				loading: false,
+				loadingStock: false,
 				form: {
 					id: '',
 					stock: 5
@@ -75,7 +75,7 @@
 				clearErrors: 'clearErrors'
 			}),
 			resetLoading(){
-				this.loading = false
+				this.loadingStock = false
 				this.clearValidationErrors()
 				this.clearMessage()
 				this.clearErrors()
@@ -100,11 +100,11 @@
 					return
 				}
 
-				this.loading = true
+				this.loadingStock = true
 
 				await axios.post(`/products/${this.product.slug}/variations/stock`, this.form)
 					.then((response) => {
-						this.loading = false
+						this.loadingStock = false
 
 						alert(response.data.message)
 					})
