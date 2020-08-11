@@ -48,7 +48,7 @@ class Product extends Model
             //     $model->tax_price = $price;
             // }
 
-            // $model->slug = str_slug($model->name) .'-'. Str::uuid() .'.html';
+            $model->slug = str_slug($model->name) .'-'. Str::uuid() .'.html';
 
             // $model->currency = get_currency()->current();
         });
