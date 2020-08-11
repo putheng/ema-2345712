@@ -17,7 +17,8 @@ class ProductVariation extends Model
     use HasPrice;
 
     protected $fillable = [
-        'name', 'price', 'sale_price', 'weight', 'tax_price', 'commission'
+        'name', 'price', 'sale_price', 'weight', 'tax_price', 'commission',
+        'price_2', 'sale_price2', 'tax_price2', 'commission_2'
     ];
 
     public static function boot(){

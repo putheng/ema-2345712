@@ -53,7 +53,10 @@ class ProductController extends Controller
         $product->delete();
 
         return ProductIndexResource::collection(
-            $request->user()->products()->with('image', 'category', 'variations')->orderBy('id', 'desc')->paginate(20)
+            $request->user()->products()
+                ->with('image', 'category', 'variations')
+                ->orderBy('id', 'desc')
+                ->paginate(20)
         );
     }
 
@@ -63,7 +66,6 @@ class ProductController extends Controller
 
     	$product->name = $request->name;
         $product->price = $request->price;
-        $product->commission = $request->commission;
         $product->sale_price = $request->sale_price;
         
         if(!empty($request->market_price)){

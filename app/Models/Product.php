@@ -27,7 +27,12 @@ class Product extends Model
         'user_id',
         'publish',
         'user_id',
-        'sale_price'
+        'sale_price',
+        'price_2',
+        'sale_price2',
+        'tax_price2',
+        'commission_2',
+        'market_price2',
     ];
 
     public static function boot()

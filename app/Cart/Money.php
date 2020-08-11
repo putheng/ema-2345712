@@ -63,4 +63,16 @@ class Money
     {
         
     }
+
+    public function priceformatt()
+    {
+        $money = new BaseMoney($this->money, new Currency('USD'));
+
+        $formatter = new IntlMoneyFormatter(
+            new NumberFormatter('USD', NumberFormatter::CURRENCY),
+            new ISOCurrencies()
+        );
+
+        return $formatter->format($money);
+    }
 }

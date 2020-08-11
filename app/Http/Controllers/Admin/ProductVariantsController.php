@@ -34,10 +34,10 @@ class ProductVariantsController extends Controller
 
     			$variation = new ProductVariation;
                 $variation->name = $value['option'];
-                $variation->price =  currency_convert($value['price'])->getAmount();
+                $variation->price =  $value['price'];
                 $variation->weight = $value['weight'];
-                $variation->sale_price = currency_convert($value['sale_price'])->getAmount();
-                $variation->commission = currency_convert($value['sale_price'] - $value['price'])->getAmount();
+                $variation->sale_price = $value['sale_price'];
+                $variation->commission = ($value['sale_price'] - $value['price']);
                 $variation->product_variation_type_id = $type->id;
                 $variation->product()->associate($product);
 

@@ -27,12 +27,12 @@
 				<a href="#" class="menu-link"><span class="menu-icon oi oi-list-rich"></span> <span class="menu-text">Products</span></a> <!-- child menu -->
 				<ul class="menu">
 					<li class="menu-item">
-						<!-- <router-link class="menu-link" :to="{name: 'admin-products-create'}">
+						<router-link class="menu-link" :to="{name: 'admin-products-create'}">
 							Create
-						</router-link> -->
-						<!-- <router-link class="menu-link" :to="{name: 'admin-products'}">
+						</router-link>
+						<router-link class="menu-link" :to="{name: 'admin-products'}">
 							View
-						</router-link> -->
+						</router-link>
 						<router-link class="menu-link" :to="{name: 'admin-products-shipping'}">
 							Shipping Method
 						</router-link>
