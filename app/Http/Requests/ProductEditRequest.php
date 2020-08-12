@@ -28,10 +28,10 @@ class ProductEditRequest extends FormRequest
             'price' => 'nullable|numeric',
             'sale_price' => 'nullable|numeric',
             'category' => 'required|exists:categories,id',
-            'image1' => 'nullable|image|max:5120',
-            'image2' => 'nullable|image|max:5120',
-            'image3' => 'nullable|image|max:5120',
-            'image4' => 'nullable|image|max:5120',
+            'image1' => 'nullable|image',
+            'image2' => 'nullable|image',
+            'image3' => 'nullable|image',
+            'image4' => 'nullable|image',
         ];
     }
 
