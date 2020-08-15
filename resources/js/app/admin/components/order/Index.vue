@@ -8,53 +8,48 @@
 			<div class="col-md-12">
 				<div class="card card-fluid">
 					<div class="card-body">
+						<h3 class="card-title"> Latest Order </h3>
 						<div class="table-responsive">
 							<table class="table">
 								<thead>
 									<th>Order #</th>
-									<th>Items</th>
 									<th>Date Purchased</th>
 									<th>Status</th>
 									<th>Ship To</th>
 									<th>Actions</th>
 								</thead>
 								<tbody>
-									<tr v-if="orders.length" v-for="(order, i) in orders">
+									<tr v-for="order in orders">
 										<td>
-											{{ order.order.uuid }}
+											<a href="#" @click.prevent="showModal(order)">
+												{{ order.uuid }}
+											</a>
 										</td>
+										<td>{{ order.created_at }}</td>
 										<td>
-											{{ order.product_variation.product.name }}
-											( {{ order.product_variation.type }}
-											{{ order.product_variation.name }} )
-											x {{ order.quantity }}
-
-										</td>
-										<td>{{ order.order.created_at }}</td>
-										<td><span class="badge "
+											<span class="badge "
 											:class="{
-												'badge-warning': order.order.status == 'Pending',
-												'badge-primary': order.order.status == 'Processing',
-												'badge-danger': order.order.status == 'Payment failed',
-												'badge-success': order.order.status == 'Completed',
+												'badge-warning': order.status == 'Pending',
+												'badge-primary': order.status == 'Processing',
+												'badge-danger': order.status == 'Payment failed',
+												'badge-success': order.status == 'Completed',
 											}"
-											>{{ order.order.status }}</span>
+											>{{ order.status }}</span>
 										</td>
 										<td>
-											{{ order.order.address.name }}
+											{{ order.address.name }}
 											<div>
-												{{ order.order.address.address }},
-												{{ order.order.address.city.name }}
+												{{ order.address.address }},
+												{{ order.address.city.name }}
 											</div>
 											<div>
-												{{ order.order.address.phone }}
+												{{ order.address.phone }}
 											</div>
 										</td>
 										<td width="250">
 											<div class="form-group">
-												<label class="col-form-label">Type</label>
 												 <select name="type" class="custom-select" 
-												 	@change="updateStatus(order.order.id, $event.target.value)">
+												 	@change="updateStatus(order.id, $event.target.value)">
 												 	<option value=""> Choose... </option> 
 												 	<option :value="type.name" v-for="type in types">{{ type.name }} </option>
 												 </select> 
@@ -68,8 +63,8 @@
 				</div>
 			</div>
 		</div>
-		<OrderModal :order="order"/>
 	</div>
+	<OrderModal :order="order" v-if="openModal"/>
 </div>
 </template>
 
@@ -80,9 +75,9 @@
 	export default {
 		data(){
 			return {
-				selected: '',
 				orders: [],
-				order: null,
+				order: [],
+				openModal: false,
 				types:[
 					{name: 'Pending', value: '1'},
 					{name: 'Processing', value: '2'},
@@ -96,30 +91,31 @@
 			}
 		},
 		methods: {
-			async fetch(){
-				let r = await axios.get(`store/orders`)
+			async fetchOrders(){
+				let r = await axios.get('admin/orders')
 
 				this.orders = r.data.data
 			},
-			showModal(order){
-				// this.order = order
-				// $('#orderModal').modal('show')
-			},
 			async updateStatus(order, e){
 				
-				let r = await axios.put(`store/orders/${order}`, {
+				let r = await axios.post(`admin/orders/${order}`, {
 					status: e
 				})
 
 				this.orders = r.data.data
 
+			},
+			showModal(order){
+				this.openModal = true
+				this.order = order
+				$('#orderModal').modal('show')
 			}
 		},
 		components: {
 			OrderModal
 		},
-		created(){
-			this.fetch()
+		mounted(){
+			this.fetchOrders()
 		}
 	}
 </script>

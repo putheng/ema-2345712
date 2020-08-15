@@ -50,7 +50,7 @@
 									<div class="col-md-3">
 										<div class="form-group">
 											<label for="com" class="col-form-label">Profit in percent (%)</label> 
-											<input :value="income(product.sale_price, product.price)" disabled name="com" id="com" type="text" class="form-control">
+											<input disabled :value="income(product.sale_price, product.price)" name="com" id="com" type="text" class="form-control">
 										</div>
 									</div>
 
@@ -127,14 +127,25 @@
 			},
 			income(sale_price, price){
 				
-				if(sale_price != 0){
+				if(sale_price != 0 && sale_price != NaN){
 					let p = (Number(sale_price) - Number(price)) / Number(price)
 
 					let t = p * 100
 
 					return t + '%'
 				}
+
 				return '0%'
+			},
+
+			recalculate(e){
+				let v = Number(e.target.value.replace('%', ''))
+				let s = Number(this.product.sale_price)
+
+				let t = s - (s * v) / 100 
+
+				this.product.price = t
+				
 			},
 		},
 		computed: {

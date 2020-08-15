@@ -30,6 +30,7 @@ import {
 	C15EC075F9A0BA8B,
 	C15ED1DD6E9B161B,
 	C15ED1E074A65F4B,
+	C15F37BC206714CB,
 	/****/
 } from '../components'
 
@@ -189,6 +190,11 @@ export default [
 		path: '/admin/products/shippingplace',
 		component: C15ED1E074A65F4B,
 		name: 'admin-products-shippingplace'
+	},
+	{
+		path: '/admin/order/index',
+		component: C15F37BC206714CB,
+		name: 'admin-order'
 	},
 	/**/
 ]

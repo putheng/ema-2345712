@@ -32,3 +32,4 @@ export const C15EC075F148A2CB = Vue.component('C15EC075F148A2CB', require('./soc
 export const C15EC075F9A0BA8B = Vue.component('C15EC075F9A0BA8B', require('./store/Users.vue').default)
 export const C15ED1DD6E9B161B = Vue.component('C15ED1DD6E9B161B', require('./products/Shipping.vue').default)
 export const C15ED1E074A65F4B = Vue.component('C15ED1E074A65F4B', require('./products/Shippingplace.vue').default)
+export const C15F37BC206714CB = Vue.component('C15F37BC206714CB', require('./order/Index.vue').default)

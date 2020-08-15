@@ -74,6 +74,7 @@
 											<input 
 											:value="saleVat(option.sale_pricex)"
 											type="number" 
+											disabled
 											class="form-control" :class="{'is-invalid': errors['variations.'+ index +'.options.'+ key +'.sale_price']}">
 											<div class="invalid-feedback" v-if="errors['variations.'+ index +'.options.'+ key +'.sale_price']">
 									            <i class="fa fa-exclamation-circle fa-fw"></i>
@@ -88,6 +89,7 @@
 											<input 
 											:value="comp(option.sale_pricex, option.pricex)"
 											type="number" 
+											disabled
 											class="form-control" :class="{'is-invalid': errors['variations.'+ index +'.options.'+ key +'.sale_price']}">
 											<div class="invalid-feedback" v-if="errors['variations.'+ index +'.options.'+ key +'.sale_price']">
 									            <i class="fa fa-exclamation-circle fa-fw"></i>
@@ -102,6 +104,7 @@
 											<input 
 											:value="saleVat(option.sale_pricex)"
 											type="number" 
+											disabled
 											class="form-control" :class="{'is-invalid': errors['variations.'+ index +'.options.'+ key +'.sale_price']}">
 											<div class="invalid-feedback" v-if="errors['variations.'+ index +'.options.'+ key +'.sale_price']">
 									            <i class="fa fa-exclamation-circle fa-fw"></i>
@@ -116,6 +119,7 @@
 											<input 
 											:value="income(option.sale_pricex, option.pricex)"
 											type="text" 
+											disabled 
 											class="form-control" :class="{'is-invalid': errors['variations.'+ index +'.options.'+ key +'.sale_price']}">
 											<div class="invalid-feedback" v-if="errors['variations.'+ index +'.options.'+ key +'.sale_price']">
 									            <i class="fa fa-exclamation-circle fa-fw"></i>
@@ -218,6 +222,7 @@
 											<input 
 											:value="comp(option.sale_price, option.price)"
 											type="number" 
+											disabled
 											class="form-control" :class="{'is-invalid': errors['variations.'+ index +'.options.'+ key +'.sale_price']}">
 											<div class="invalid-feedback" v-if="errors['variations.'+ index +'.options.'+ key +'.sale_price']">
 									            <i class="fa fa-exclamation-circle fa-fw"></i>
@@ -232,6 +237,7 @@
 											<input 
 											:value="saleVat(option.sale_price)"
 											type="number" 
+											disabled
 											class="form-control" :class="{'is-invalid': errors['variations.'+ index +'.options.'+ key +'.sale_price']}">
 											<div class="invalid-feedback" v-if="errors['variations.'+ index +'.options.'+ key +'.sale_price']">
 									            <i class="fa fa-exclamation-circle fa-fw"></i>
@@ -245,6 +251,7 @@
 											<label class="control-label">Profit in percent (%)</label>
 											<input 
 											@keyup="recalculate($event, index, key, option.sale_price)"
+											disabled 
 											type="text" 
 											class="form-control" :class="{'is-invalid': errors['variations.'+ index +'.options.'+ key +'.sale_price']}">
 

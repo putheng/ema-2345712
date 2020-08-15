@@ -95,6 +95,9 @@ Route::group(['middleware' => 'auth'], function(){
 		Route::resource('summary', 'Admin\SummaryController');
 
 		Route::resource('category', 'Admin\CategoryController');
+
+		Route::get('orders', 'Admin\OrderController@index');
+		Route::post('orders/{order}', 'Admin\OrderController@update');
 		
 		Route::get('users', 'Admin\UserController@index');
 		Route::get('society', 'Admin\SocietyController@index');

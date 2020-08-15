@@ -101,7 +101,8 @@ class ProductVariation extends Model
 
     public function orders()
     { 
-        return $this->belongsToMany(Order::class, 'product_variation_order');
+        return $this->belongsToMany(Order::class, 'product_variation_order')
+            ->withPivot('quantity');
     }
 
     public function stocks()

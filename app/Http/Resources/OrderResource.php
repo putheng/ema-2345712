@@ -17,6 +17,7 @@ class OrderResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'uuid' => $this->uuid,
             'status' => $this->status,
             'created_at' => $this->created_at->toDateTimeString(),
             'total' => $this->total()->formatted(),

@@ -43,6 +43,17 @@
 				</ul>
 				<!-- /child menu -->
 			</li>
+			<li class="menu-item has-child">
+				<a href="#" class="menu-link"><span class="menu-icon oi oi-list-rich"></span> <span class="menu-text">Orders</span></a> <!-- child menu -->
+				<ul class="menu">
+					<li class="menu-item">
+						<router-link class="menu-link" :to="{name: 'admin-order'}">
+							View
+						</router-link>
+					</li>
+				</ul>
+				<!-- /child menu -->
+			</li>
 			<!-- /.menu-item -->
 			<!-- .menu-item -->
 			<li class="menu-item has-child">
