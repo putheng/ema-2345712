@@ -115,7 +115,7 @@
 											<label class="control-label">Profit in percent (%)</label>
 											<input 
 											:value="income(option.sale_pricex, option.pricex)"
-											disabled 
+											 
 											type="text" 
 											class="form-control" :class="{'is-invalid': errors['variations.'+ index +'.options.'+ key +'.sale_price']}">
 											<div class="invalid-feedback" v-if="errors['variations.'+ index +'.options.'+ key +'.sale_price']">

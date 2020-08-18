@@ -119,7 +119,7 @@
 											<input 
 											:value="income(option.sale_pricex, option.pricex)"
 											type="text" 
-											disabled 
+											 
 											class="form-control" :class="{'is-invalid': errors['variations.'+ index +'.options.'+ key +'.sale_price']}">
 											<div class="invalid-feedback" v-if="errors['variations.'+ index +'.options.'+ key +'.sale_price']">
 									            <i class="fa fa-exclamation-circle fa-fw"></i>

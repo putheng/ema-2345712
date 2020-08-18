@@ -50,7 +50,7 @@
 									<div class="col-md-3">
 										<div class="form-group">
 											<label for="com" class="col-form-label">Profit in percent (%)</label> 
-											<input :value="income(product.sale_price, product.price)" disabled name="com" id="com" type="text" class="form-control">
+											<input :value="income(product.sale_price, product.price)" name="com" id="com" type="text" class="form-control">
 										</div>
 									</div>
 
