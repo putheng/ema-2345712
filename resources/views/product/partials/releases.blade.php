@@ -32,7 +32,7 @@
                 </div> --}}
 
                   <a class="product-thumb-overlay" href="{{ route('show.product', $product) }}"></a>
-                    <img style="width: 220px; height: 224px; margin: auto;" src="{{ $product->image->first()->product() }}" alt="Product">
+                    <img style="width: 220px; height: 224px; margin: auto;" src="{{ optional($product->image->first())->product() }}" alt="Product">
 
                 </div>
               <div class="card-body">
