@@ -23,7 +23,7 @@
 
 								<div class="row">
 									<div class="col-md-3">
-										<input-binding v-model="product.price" name="price" :label="'Price ('+ product.currency +')'"/>
+										<input-binding disabled v-model="product.price" name="price" :label="'Price ('+ product.currency +')'"/>
 									</div>
 									<div class="col-md-3">
 										<input-binding v-model="product.sale_price" name="sale_price" :label="'Sale Price ('+ product.currency +')'"/>

@@ -49,7 +49,7 @@
 									<div class="col-md-2">
 										<div class="form-group">
 											<label class="control-label">Price ({{ option.currency }})</label>
-											<input v-model="option.pricex" type="number" class="form-control" :class="{'is-invalid': errors['variations.'+ index +'.options.'+ key +'.price']}">
+											<input disabled v-model="option.pricex" type="number" class="form-control" :class="{'is-invalid': errors['variations.'+ index +'.options.'+ key +'.price']}">
 											<div class="invalid-feedback" v-if="errors['variations.'+ index +'.options.'+ key +'.price']">
 									            <i class="fa fa-exclamation-circle fa-fw"></i>
 									            {{ errors['variations.'+ index +'.options.'+ key +'.price'][0] }}
@@ -177,7 +177,7 @@
 									<div class="col-md-2">
 										<div class="form-group">
 											<label class="control-label">Price ({{ user.currency }})</label>
-											<input v-model="option.price" type="number" class="form-control" :class="{'is-invalid': errors['variations.'+ index +'.options.'+ key +'.price']}">
+											<input disabled v-model="option.price" type="number" class="form-control" :class="{'is-invalid': errors['variations.'+ index +'.options.'+ key +'.price']}">
 											<div class="invalid-feedback" v-if="errors['variations.'+ index +'.options.'+ key +'.price']">
 									            <i class="fa fa-exclamation-circle fa-fw"></i>
 									            {{ errors['variations.'+ index +'.options.'+ key +'.price'][0] }}
@@ -339,6 +339,17 @@
 			},
 
 			recalculate(e, index, key, sale_price){
+				let v = e.target.value
+				let s = Number(sale_price)
+
+				let t = s - (s * v) / 100
+				
+				this.variations[index].options[key].price = t
+
+				
+			},
+
+			recalculateOld(e, index, key, sale_price){
 				let v = e.target.value
 				let s = Number(sale_price)
 

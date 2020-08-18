@@ -49,7 +49,7 @@
 									<div class="col-md-2">
 										<div class="form-group">
 											<label class="control-label">Price ({{ option.currency }})</label>
-											<input v-model="option.pricex" type="number" class="form-control" :class="{'is-invalid': errors['variations.'+ index +'.options.'+ key +'.price']}">
+											<input disabled v-model="option.pricex" type="number" class="form-control" :class="{'is-invalid': errors['variations.'+ index +'.options.'+ key +'.price']}">
 											<div class="invalid-feedback" v-if="errors['variations.'+ index +'.options.'+ key +'.price']">
 									            <i class="fa fa-exclamation-circle fa-fw"></i>
 									            {{ errors['variations.'+ index +'.options.'+ key +'.price'][0] }}
