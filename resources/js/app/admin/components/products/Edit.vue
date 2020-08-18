@@ -50,7 +50,7 @@
 									<div class="col-md-3">
 										<div class="form-group">
 											<label for="com" class="col-form-label">Profit in percent (%)</label> 
-											<input :value="income(product.sale_price, product.price)" name="com" id="com" type="text" class="form-control">
+											<input @keyup="recalculate" name="com" id="com" type="number" class="form-control">
 										</div>
 									</div>
 
@@ -127,8 +127,19 @@
 
 					return t + '%'
 				}
+
 				return '0%'
 			},
+
+			recalculate(e){
+				let v = Number(e.target.value.replace('%', ''))
+				let s = Number(this.product.sale_price)
+
+				let t = s - (s * v) / 100 
+
+				this.product.price = t
+				
+			}
 		},
 		computed: {
 			...mapGetters({
