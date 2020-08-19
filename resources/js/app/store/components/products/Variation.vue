@@ -117,7 +117,7 @@
 										<div class="form-group">
 											<label class="control-label">Profit in percent (%)</label>
 											<input 
-											:value="income(option.sale_pricex, option.pricex)"
+											
 											type="text" 
 											 
 											class="form-control" :class="{'is-invalid': errors['variations.'+ index +'.options.'+ key +'.sale_price']}">
@@ -183,7 +183,7 @@
 									<div class="col-md-2">
 										<div class="form-group">
 											<label class="control-label">Price ({{ user.currency }})</label>
-											<input v-model="option.price" type="number" class="form-control" :class="{'is-invalid': errors['variations.'+ index +'.options.'+ key +'.price']}">
+											<input disabled v-model="option.price" type="number" class="form-control" :class="{'is-invalid': errors['variations.'+ index +'.options.'+ key +'.price']}">
 											<div class="invalid-feedback" v-if="errors['variations.'+ index +'.options.'+ key +'.price']">
 									            <i class="fa fa-exclamation-circle fa-fw"></i>
 									            {{ errors['variations.'+ index +'.options.'+ key +'.price'][0] }}
@@ -251,7 +251,6 @@
 											<label class="control-label">Profit in percent (%)</label>
 											<input 
 											@keyup="recalculate($event, index, key, option.sale_price)"
-											disabled 
 											type="text" 
 											class="form-control" :class="{'is-invalid': errors['variations.'+ index +'.options.'+ key +'.sale_price']}">
 
