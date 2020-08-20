@@ -116,10 +116,8 @@
 									<div class="col-md-2">
 										<div class="form-group">
 											<label class="control-label">Profit in percent (%)</label>
-											<input 
-											
-											type="text" 
-											 
+											<input type="text" 
+											@keyup="recalculaten($event, index, key, option.sale_pricex)"
 											class="form-control" :class="{'is-invalid': errors['variations.'+ index +'.options.'+ key +'.sale_price']}">
 											<div class="invalid-feedback" v-if="errors['variations.'+ index +'.options.'+ key +'.sale_price']">
 									            <i class="fa fa-exclamation-circle fa-fw"></i>
@@ -359,6 +357,19 @@
 
 				
 			},
+
+			recalculaten(e, index, key, sale_price){
+				let v = e.target.value
+				let s = Number(sale_price)
+
+				let t = s - (s * v) / 100
+				
+
+				this.product.variations[index][key].pricex = t
+
+				
+			},
+
 
 			addVariant(){
 				this.variations.push({
