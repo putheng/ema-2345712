@@ -3,15 +3,15 @@
 	<div class="row no-gutters pb-5 mb-xl-3">
 		<!-- Delivery details-->
 		<div class="col-xl-6 mb-3">
-			<h1 class="h2 mb-4">Checkout</h1>
-			<h2 class="h5 mb-4">Delivery details</h2>
+			<h1 class="h2 mb-4">បង់ប្រាក់</h1>
+			<h2 class="h5 mb-4">ព័ត៌មានលម្អិតសំរាប់ការដឹកជញ្ជូន</h2>
 			<shipping-address 
 				:addresses="addresses"
             	v-model="form.address_id"
 			/>
 			
 			<div>
-				<h2 class="h5 pb-3">Your order</h2>
+				<h2 class="h5 pb-3">ការបញ្ជាទិញរបស់អ្នក</h2>
 				<cart-overview-product 
 					v-for="(product, index) in products"
 					:key="index"
@@ -25,21 +25,21 @@
 			<div class="bg-light rounded-lg py-5 px-4 px-sm-5">
 				<ul class="list-unstyled font-size-sm pb-2 border-bottom">
 					<li class="d-flex justify-content-between align-items-center">
-						<span class="mr-2">Subtotal:</span>
+						<span class="mr-2">តម្លៃទំនិញ:</span>
 						<span class="text-right font-weight-medium">{{ subtotal }}</span>
 					</li>
 					<li class="d-flex justify-content-between align-items-center">
-						<span class="mr-2">Delivery:</span>
+						<span class="mr-2">តម្លៃសេវាដឹកជញ្ជូន:</span>
 						<span class="text-right font-weight-medium" v-if="shippingMethods.length">
 							{{ shippingMethods[0].price }}
 						</span>
 						<span class="text-right font-weight-medium" v-else>
-							Please select a shipping address
+							សូមជ្រើសរើសអាសយដ្ឋានដឹកជញ្ជូន
 						</span>
 					</li>
 				</ul>
 				<h3 class="font-weight-normal text-center my-4 py-2">
-					<small>Total :</small> {{ totalPrice }}
+					<small>តម្លៃសរុប :</small> {{ totalPrice }}
 				</h3>
 				<!-- <div class="accordion box-shadow-sm mb-4" id="payment-methods">
 					<div class="card">
@@ -74,7 +74,7 @@
 						<span v-if="submitting" 
 						class="spinner-border spinner-border-sm mr-2"
 						role="status" aria-hidden="true"></span>
-						Place Order
+						ទូទាត់ប្រាក់
 					</button>
 				</div>
 			</div>

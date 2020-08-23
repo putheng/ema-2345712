@@ -3,7 +3,7 @@
 		<div class="d-flex flex-wrap justify-content-between align-items-center rounded-lg border py-2 px-3 mb-4">
 			<div class="media media-ie-fix align-items-center mr-3 py-2">
 				<div class="media-body">
-					<div class="font-size-ms text-muted">Shipping to:</div>
+					<div class="font-size-ms text-muted">ដឹកជញ្ជូន​ទៅ:</div>
 					<div class="font-size-md font-weight-medium text-heading" v-if="selectedAddress">
             {{ selectedAddress.name }} - {{ selectedAddress.phone }}<br>
             {{ selectedAddress.address }},
@@ -17,11 +17,11 @@
 			<div class="py-2">
         <a class="btn btn-light btn-sm btn-shadow mt-3 mt-sm-0"
           href="#" @click.prevent="changeAddress">
-          Change shipping address
+          ជ្រើសរើស អាសយដ្ឋាន
         </a>
 				<a class="btn btn-light btn-sm btn-shadow mt-3 mt-sm-0"
 					href="#" @click.prevent="addAddress">
-					Add an address
+					បង្កើត អាសយដ្ឋាន
 				</a>
 			</div>
 		</div>

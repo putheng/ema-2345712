@@ -11,15 +11,13 @@
             
           </p>
         </td>
-        <td>
-          <a href="" class="button is-info" @click.prevent="$emit('click', address)">
-            Ship here
+        <td class="text-right">
+          <a href="" class="btn btn-sm btn-primary" @click.prevent="$emit('click', address)">
+            ជ្រើសយក
           </a>
-          <div>
-          <a href="" class="button is-info" @click.prevent="removeAddress(address.id, index)">
-            Remove
+          <a href="" class="btn btn-link" @click.prevent="removeAddress(address.id, index)">
+            លុបចោល
           </a>
-          </div>
         </td>
       </tr>
     </tbody>
