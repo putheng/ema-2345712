@@ -28,6 +28,11 @@ class Sale extends Model
  		$q->whereDate('created_at', '=', date('Y-m-d'));
  	}
 
+ 	public function getTamountAttribute()
+ 	{
+ 		return $this->amount * $this->quantity;
+ 	}
+
  	public function owner()
  	{
  		return $this->belongsTo(User::class, 'owner_id');

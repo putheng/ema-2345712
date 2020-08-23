@@ -5,7 +5,7 @@
 			<div class="modal-content" v-if="order">
 				<div class="modal-header">
 					<h5 class="modal-title">
-						Order No - EMAO{{ order.id }}
+						Order No - {{ order.uuid }}
 					</h5>
 				</div>
 				<div class="modal-body">
@@ -21,24 +21,17 @@
 									{{ product.type }} {{ product.name }}
 									<h5>{{ product.sale_price }}</h5>
 								</td>
-								<!-- <td>Quantity: <br>1</td> -->
-								<!-- <td>
-									Subtotal:<br>
-									{{ order.subtotal }}
-								</td> -->
 							</tr>
 
 							<tr>
 								<td>Subtotal: <div><b>{{ order.subtotal }}</b></div> </td>
 								<td>Shipping: <div><b>{{ order.shippingMethod.price }}</b></div> </td>
-								<!-- <td>Tax: <div><b>$9.50</b></div> </td> -->
 								<td>Total: <div><h6>{{ order.total }}</h6></div> </td>
 							</tr>
 						</tbody>
 					</table>
 				</div>
 				<div class="modal-footer">
-
 					<button
 						type="button"
 						class="btn btn-warning"

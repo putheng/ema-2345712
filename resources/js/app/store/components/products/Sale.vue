@@ -58,8 +58,8 @@
 								<tbody>
 									<tr v-if="orders.length" v-for="(order, i) in orders">
 										<td>
-											<a href="#" @click.prevent="showModal(order)">
-												EMAO{{ order.order.id }}
+											<a href="#" @click.prevent="showModal(order.order)">
+												{{ order.order.uuid }}
 											</a>
 										</td>
 										<td>
@@ -89,13 +89,19 @@
 				</div>
 			</div>
 		</div>
+		<OrderModal :order="order" v-if="openModal"/>
 	</div>
 </template>
 
 <script>
 	import { mapGetters, mapActions } from 'vuex'
 
+	import OrderModal from './partials/OrderModal'
+
 	export default {
+		components: {
+			OrderModal
+		},
 		methods: {
 			async fetch(){
 				let r = await axios.get('store/sales')
@@ -105,6 +111,12 @@
 
 				this.data = r.data.data
 				this.series = r.data.data.series
+			},
+
+			showModal(order){
+				this.openModal = true
+				this.order = order
+				$('#orderModal').modal('show')
 			}
 		},
 		data(){
@@ -112,6 +124,8 @@
 				data:[],
 				orders: [],
 				series: [],
+				order: [],
+				openModal: false,
         		chartOptions: {
         			chart: {
         				height: 350,

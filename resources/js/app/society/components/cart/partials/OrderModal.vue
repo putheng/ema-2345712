@@ -5,7 +5,7 @@
 			<div class="modal-content" v-if="order">
 				<div class="modal-header">
 					<h5 class="modal-title">
-						Order No - EMAO{{ order.id }}
+						Order No - {{ order.uuid }}
 					</h5>
 				</div>
 				<div class="modal-body">

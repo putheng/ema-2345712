@@ -10,36 +10,38 @@
 					<div class="card-body">
 						<h3 class="card-title"> My tickets</h3>
 
-						<table class="table table-hover">
-							<thead>
-								<th>Ticket Subject</th>
-								<th>Date Submitted | Updated</th>
-								<th>Type</th>
-								<th>Priority</th>
-								<th>Status</th>
-							</thead>
+						<div class="table-responsive">
+							<table class="table table-hover">
+								<thead>
+									<th>Ticket Subject</th>
+									<th>Date Submitted | Updated</th>
+									<th>Type</th>
+									<th>Priority</th>
+									<th>Status</th>
+								</thead>
 
-							<tbody>
-								<tr v-if="tickets.length > 0" v-for="(ticket, index) in tickets" >
-									<td>
-										<router-link :to="{name: 'store-cart-viewticket', params:{id:ticket.id}}">
-											{{ ticket.subject }}
-										</router-link>
-									</td>
-									<td>{{ ticket.created }} | {{ ticket.updated }}</td>
-									<td>{{ ticket.type }}</td>
-									<td>
-										<span class="badge badge-warning">{{ ticket.priority }}</span>
-									</td>
-									<td>
-										<span class="badge badge-success">{{ ticket.status }}</span>
-									</td>
-								</tr>
-								<tr v-else>
-									<td colspan="5">No any ticket</td>
-								</tr>
-							</tbody>
-						</table>
+								<tbody>
+									<tr v-if="tickets.length > 0" v-for="(ticket, index) in tickets" >
+										<td>
+											<router-link :to="{name: 'store-cart-viewticket', params:{id:ticket.id}}">
+												{{ ticket.subject }}
+											</router-link>
+										</td>
+										<td>{{ ticket.created }} | {{ ticket.updated }}</td>
+										<td>{{ ticket.type }}</td>
+										<td>
+											<span class="badge badge-warning">{{ ticket.priority }}</span>
+										</td>
+										<td>
+											<span class="badge badge-success">{{ ticket.status }}</span>
+										</td>
+									</tr>
+									<tr v-else>
+										<td colspan="5">No any ticket</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
 						
 						<!-- <div class="text-right">
 							<button 

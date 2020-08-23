@@ -20,7 +20,7 @@ class OrdersController extends Controller
 
     	
     	$orders = ProductVariationOrder::whereIn('product_variation_id', $variation)
-            ->with('order', 'variation', 'order.address', 'order.shippingMethod', 'variation.product', 'variation.type')
+            ->with('order', 'order.products', 'variation', 'order.address', 'order.shippingMethod', 'variation.product', 'variation.type')
             ->orderBy('created_at', 'desc')
             ->paginate(20);
 

@@ -6,34 +6,36 @@
 	<div class="row">
 		
 		<div class="col-md-12">
-			<table class="table">
-				<tr>
-					<td>
-						<b>Date Submitted</b>
-						<div>{{ ticket.created }}</div>
-					</td>
-					<td>
-						<b>Last Updated</b>
-						<div>{{ ticket.updated }}</div>
-					</td>
-					<td>
-						<b>Type</b>
-						<div>{{ ticket.type }}</div>
-					</td>
-					<td>
-						<b>Priority</b>
-						<div>
-							<span class="badge badge-warning">{{ ticket.priority }}</span>
-						</div>
-					</td>
-					<td>
-						<b>Status</b>
-						<div>
-							<span class="badge badge-success">{{ ticket.status }}</span>
-						</div>
-					</td>
-				</tr>
-			</table>
+			<div class="table-responsive">
+				<table class="table">
+					<tr>
+						<td>
+							<b>Date Submitted</b>
+							<div>{{ ticket.created }}</div>
+						</td>
+						<td>
+							<b>Last Updated</b>
+							<div>{{ ticket.updated }}</div>
+						</td>
+						<td>
+							<b>Type</b>
+							<div>{{ ticket.type }}</div>
+						</td>
+						<td>
+							<b>Priority</b>
+							<div>
+								<span class="badge badge-warning">{{ ticket.priority }}</span>
+							</div>
+						</td>
+						<td>
+							<b>Status</b>
+							<div>
+								<span class="badge badge-success">{{ ticket.status }}</span>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</div>
 		</div>
 	</div>
 	<div class="page-section">
