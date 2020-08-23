@@ -35,13 +35,12 @@
 
 								<div class="row">
 									<div class="col-md-3">
-										<input-binding v-model="saleVat" name="vat_price" 
-										value="0" :label="'Total sale Price ('+ user.currency +')'"/>
+										<input-binding disabled v-model="saleVat" name="vat_price" value="0" :label="'Total sale Price ('+ user.currency +')'"/>
 									</div>
 									<div class="col-md-3">
 										<div class="form-group">
-											<label for="com" class="col-form-label">Profit in percent (%)</label> 
-											<input @keyup="recalculate"  name="com" id="com" type="text" class="form-control">
+											<label for="com" class="col-form-label">Profit in percent ({{percent}}%)</label> 
+											<input v-model="percent"  name="com" id="com" type="text" class="form-control">
 										</div>
 									</div>
 									<div class="col-md-3">
@@ -89,7 +88,25 @@
 				price: 0,
 				sale_price: 0,
 				comission: 0,
-				isVat: false
+				isVat: false,
+				percent: 0
+			}
+		},
+		watch: {
+			'sale_price'(s){
+				let v = Number(this.percent)
+				let p = Number(this.price)
+
+				this.price = s - (s * v) / 100 
+			},
+
+			'percent'(e){
+				let v = Number(e.replace('%', ''))
+				let s = Number(this.sale_price)
+
+				let t = s - (s * v) / 100 
+
+				this.price = t
 			}
 		},
 		methods: {
