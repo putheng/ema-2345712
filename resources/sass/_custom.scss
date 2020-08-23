@@ -296,3 +296,26 @@ header.page-navs.bg-light.shadow-sm.pdt10 {
     padding-top: 10px !important;
     padding-bottom: 10px !important;
 }
+
+.stacked-menu .menu-link>.menu-icon {
+    color: #ff6601;
+}
+
+.stacked-menu .menu-link>.oi{
+    color: #ff6601;
+    font-size: 1.125rem;
+    margin-right: 0.5em;
+}
+
+.stacked-menu > .menu > .menu-item:hover {
+        background: #eee0;
+}
+.stacked-menu > .menu > .menu-item > .menu-link:hover {
+    color: #363642;
+    background: #eee;
+}
+
+.menu-link.router-link-exact-active.active{
+    color: #363642;
+    background: #00ccff;
+}
