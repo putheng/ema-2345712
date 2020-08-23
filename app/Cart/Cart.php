@@ -91,8 +91,8 @@ class Cart
 
     public function total()
     {
-        if ($this->shipping) {
 
+        if ($this->shipping) {
             return $this->subtotal()->add($this->shipping->price);
         }
 

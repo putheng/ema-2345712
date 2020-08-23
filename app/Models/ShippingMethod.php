@@ -20,6 +20,15 @@ class ShippingMethod extends Model
         return $this->belongsToMany(Country::class);
     }
 
+    public function getPriceAttribute($value)
+    {
+        if(get_currency()->current() == 'KHR'){
+            return ($value * 4100);
+        }
+
+        return $value;
+    }
+
     public function cities()
     {
         return $this->belongsToMany(City::class);
@@ -28,7 +37,7 @@ class ShippingMethod extends Model
     public function getFormattedPriceAttribute()
     {
         if(get_currency()->current() == 'KHR'){
-            return number_format(($this->price * 4100), 2) .'៛';
+            return number_format($this->price, 2) .'៛';
         }
 
         return '$'.number_format($this->price, 2);

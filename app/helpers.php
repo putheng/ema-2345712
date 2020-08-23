@@ -15,8 +15,9 @@ if(!function_exists('syt_option')){
 	{
 		if($type !== null){
 			// $value = Cache::get($type, function () use ($type) {
-			// 	return optional(Option::where('type', $type))->first();
+			// 	return Option::where('type', $type)->first();
 			// });
+
 			return optional(Option::where('type', $type))->first();
 		}
 

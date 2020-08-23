@@ -30,6 +30,10 @@ trait HasPrice
 
     public function getTaxPriceAttribute($value)
     {
+        if(get_currency()->current() == 'KHR'){
+            return new Money($value * 4100);
+        }
+
         return new Money($value);
     }
 
@@ -45,7 +49,7 @@ trait HasPrice
     public function getFormattedSalePriceAttribute()
     {
         if(get_currency()->current() == 'KHR'){
-            return number_format(($this->tax_price->amount() * 4100), 2) .'៛';
+            return number_format($this->tax_price->amount(), 2) .'៛';
         }
 
         return '$'.number_format($this->tax_price->amount(), 2);
@@ -63,7 +67,7 @@ trait HasPrice
     public function getFormattedTaxPriceAttribute()
     {
         if(get_currency()->current() == 'KHR'){
-            return number_format(($this->tax_price->amount() * 4100), 2) .'៛';
+            return number_format($this->tax_price->amount(), 2) .'៛';
         }
 
         return '$'.number_format($this->tax_price->amount(), 2);
