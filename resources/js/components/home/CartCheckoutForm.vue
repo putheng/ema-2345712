@@ -76,6 +76,10 @@
 						role="status" aria-hidden="true"></span>
 						ទូទាត់ប្រាក់
 					</button>
+
+					<p class="text-center mt-2 text-danger" v-if="validations && validations.address_id">
+						សូមជ្រើសរើសអាសយដ្ឋាន ឬ បង្កើត អាសយដ្ឋានដឹកជញ្ជូន
+					</p>
 				</div>
 			</div>
 		</div>
@@ -100,7 +104,7 @@ export default {
         	form: {
 	          address_id: null,
 	          payment_method_id: 1,
-	        }
+	        },
 		}
 	},
 
@@ -125,7 +129,7 @@ export default {
 	methods: {
 		...mapActions({
 			getCart: 'getCart',
-			setShipping: 'setShipping',
+			setShipping: 'setShipping'
 		}),
 		async fetchData(){
 
@@ -161,8 +165,8 @@ export default {
 
 	        } catch (e) {
 
-	          this.getCart()
-	          this.submitting = false
+		        this.getCart()
+		        this.submitting = false
 	        }
 
 	        
@@ -181,7 +185,8 @@ export default {
 	        subtotal: 'subtotal',
 	        products: 'products',
 	        empty: 'empty',
-        	shipping: 'shipping'
+        	shipping: 'shipping',
+        	validations: 'getValidationErrors'
 	    }),
 	    shippingMethodId: {
 	        get () {
