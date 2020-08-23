@@ -78,7 +78,7 @@
 					</button>
 
 					<p class="text-center mt-2 text-danger" v-if="validations && validations.address_id">
-						សូមជ្រើសរើសអាសយដ្ឋាន ឬ បង្កើត អាសយដ្ឋានដឹកជញ្ជូន
+						សូមជ្រើសរើសអាសយដ្ឋាន ឬ បង្កើត អាសយដ្ឋានដឹកជញ្ជូន នៅខាងលើ
 					</p>
 				</div>
 			</div>
