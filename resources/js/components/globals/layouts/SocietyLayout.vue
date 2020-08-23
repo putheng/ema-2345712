@@ -23,9 +23,8 @@
 	</header>
 	<aside class="app-aside app-aside-expand-md app-aside-light" id="appMenu">
 		<div class="aside-content">
-			<left-society-setting></left-society-setting>
 			<div class="aside-menu overflow-hidden">
-				<!-- <left-menu></left-menu> -->
+				<left-society-setting></left-society-setting>
 			</div>
 			<main-footer></main-footer>
 		</div>
