@@ -8,10 +8,15 @@ use Money\Parser\IntlMoneyParser;
 use Money\Currencies\ISOCurrencies;
 use Money\Formatter\DecimalMoneyFormatter;
 
+use Illuminate\Support\Facades\Cache;
+
 if(!function_exists('syt_option')){
 	function syt_option($type = null)
 	{
 		if($type !== null){
+			// $value = Cache::get($type, function () use ($type) {
+			// 	return optional(Option::where('type', $type))->first();
+			// });
 			return optional(Option::where('type', $type))->first();
 		}
 

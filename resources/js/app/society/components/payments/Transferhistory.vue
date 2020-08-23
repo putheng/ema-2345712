@@ -10,7 +10,7 @@
 						<div class="card-body">
 							<h3 class="card-title"> Transfer history </h3>
 							
-							<div class="responsive-table">
+							<div class="table-responsive">
 								<table class="table table-hover">
 									<thead>
 										<th>#</th>

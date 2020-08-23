@@ -10,7 +10,7 @@
 						<div class="card-body">
 							<h3 class="card-title"> Transaction <strong>History</strong> </h3>
 							
-							<div class="table table-responsive">
+							<div class="table-responsive">
 								<table class="table table-hovered table-striped">
 									<thead>
 										<th>Transaction ID</th>

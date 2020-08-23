@@ -9,7 +9,7 @@
 					<div class="card card-fluid">
 						<div class="card-body">
 							<h3 class="card-title"> Level commissions </h3>
-							<div class="responsive-table">
+							<div class="table-responsive">
 								<table class="table">
 									<thead>
 										<th>#</th>
