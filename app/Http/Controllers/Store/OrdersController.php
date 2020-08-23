@@ -22,7 +22,7 @@ class OrdersController extends Controller
     	$orders = ProductVariationOrder::whereIn('product_variation_id', $variation)
             ->with('order', 'order.products', 'variation', 'order.address', 'order.shippingMethod', 'variation.product', 'variation.type')
             ->orderBy('created_at', 'desc')
-            ->paginate(20);
+            ->paginate(200);
 
     	return ProductVariationOrderResource::collection($orders);
     }
@@ -36,7 +36,10 @@ class OrdersController extends Controller
         $variation = ProductVariation::whereIn('product_id', $products)->get()->pluck('id');
 
         
-        $orders = ProductVariationOrder::whereIn('product_variation_id', $variation)->paginate(200);
+        $orders = ProductVariationOrder::whereIn('product_variation_id', $variation)
+            ->with('order', 'order.products', 'variation', 'order.address', 'order.shippingMethod', 'variation.product', 'variation.type')
+            ->orderBy('created_at', 'desc')
+            ->paginate(200);
 
         return ProductVariationOrderResource::collection($orders);
     }

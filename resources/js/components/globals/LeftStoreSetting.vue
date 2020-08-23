@@ -114,3 +114,18 @@
 		}
 	}
 </script>
+
+<style lang="scss">
+	.stacked-menu > .menu > .menu-item:hover {
+	    background: #eee0;
+	}
+	.stacked-menu > .menu > .menu-item > .menu-link:hover {
+	    color: #363642;
+	    background: #eee;
+	}
+
+	.menu-link.router-link-exact-active.active{
+		color: #363642;
+	    background: #eee;
+	}
+</style>

@@ -84,14 +84,8 @@
 				orders: [],
 				order: null,
 				types:[
-					{name: 'Pending', value: '1'},
-					{name: 'Processing', value: '2'},
-					{name: 'Shipping', value: '3'},
-					{name: 'Payment failed', value: '4'},
-					{name: 'Completed', value: '5'},
-					{name: 'Finished', value: '6'},
-					{name: 'Refund', value: '7'},
 					{name: 'Cancellation', value: '8'},
+					{name: 'Out of Stock', value: '9'},
 				],
 			}
 		},
