@@ -49,7 +49,7 @@
 
 									<div class="col-md-3">
 										<div class="form-group">
-											<label for="com" class="col-form-label">Profit in percent (%)</label> 
+											<label for="com" class="col-form-label">Profit in percent ({{ getPercentage(product.sale_price, product.price) }}%)</label> 
 											<input @keyup="recalculate" name="com" id="com" type="text" class="form-control">
 										</div>
 									</div>
@@ -132,10 +132,26 @@
 
 					let t = p * 100
 
-					return t + '%'
+					return t
 				}
 
-				return '0%'
+				return '0'
+			},
+
+			getPercentage(sale_price, price){
+				
+				console.log(sale_price)
+				console.log(price)
+
+				if(sale_price != 0 && sale_price != NaN){
+					let p = (Number(sale_price) - Number(price)) / Number(price)
+
+					let t = p * 100
+
+					// return t
+				}
+
+				// return '0'
 			},
 
 			recalculate(e){
@@ -143,6 +159,8 @@
 				let s = Number(this.product.sale_price)
 
 				let t = s - (s * v) / 100 
+
+				console.log(t)
 
 				this.product.price = t
 				
