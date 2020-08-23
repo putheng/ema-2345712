@@ -19,7 +19,7 @@
 
 								<div class="row">
 									<div class="col-md-3">
-										<input-binding v-model="price" name="price" :label="'Price ('+ user.currency +')'"/>
+										<input-binding disabled v-model="price" name="price" :label="'Price ('+ user.currency +')'"/>
 									</div>
 									<div class="col-md-3">
 										<app-input v-model="sale_price" name="sale_price" :label="'Sale Price ('+ user.currency +')'"/>

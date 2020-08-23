@@ -77,7 +77,7 @@
 												'badge-success': order.order.status == 'Completed',
 											}"
 											>{{ order.order.status }}</span></td>
-										<td>{{ order.order.total }}</td>
+										<td>{{ order.order.subtotal }}</td>
 										
 									</tr>
 								</tbody>
