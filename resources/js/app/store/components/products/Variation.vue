@@ -48,7 +48,7 @@
 
 									<div class="col-md-2">
 										<div class="form-group">
-											<label class="control-label">Price ({{ option.currency }})</label>
+											<label class="control-label">Price ({{ user.currency }})</label>
 											<input disabled v-model="option.pricex" type="number" class="form-control" :class="{'is-invalid': errors['variations.'+ index +'.options.'+ key +'.price']}">
 											<div class="invalid-feedback" v-if="errors['variations.'+ index +'.options.'+ key +'.price']">
 									            <i class="fa fa-exclamation-circle fa-fw"></i>
@@ -59,7 +59,7 @@
 
 									<div class="col-md-2">
 										<div class="form-group">
-											<label class="control-label">Sale Price ({{ option.currency }})</label>
+											<label class="control-label">Sale Price ({{ user.currency }})</label>
 											<input v-model="option.sale_pricex" type="number" class="form-control" :class="{'is-invalid': errors['variations.'+ index +'.options.'+ key +'.sale_price']}">
 											<div class="invalid-feedback" v-if="errors['variations.'+ index +'.options.'+ key +'.sale_price']">
 									            <i class="fa fa-exclamation-circle fa-fw"></i>
@@ -70,7 +70,7 @@
 
 									<div class="col-md-2" v-show="isVat">
 										<div class="form-group">
-											<label class="control-label">Sale Price include VAT + 10% ({{ option.currency }})</label>
+											<label class="control-label">Sale Price include VAT + 10% ({{ user.currency }})</label>
 											<input 
 											:value="saleVat(option.sale_pricex)"
 											type="number" 
@@ -85,7 +85,7 @@
 
 									<div class="col-md-2">
 										<div class="form-group">
-											<label class="control-label">Company's Profit ({{ option.currency }})</label>
+											<label class="control-label">Company's Profit ({{ user.currency }})</label>
 											<input 
 											:value="comp(option.sale_pricex, option.pricex)"
 											type="number" 
@@ -100,7 +100,7 @@
 
 									<div class="col-md-2">
 										<div class="form-group">
-											<label class="control-label">Total sale Price ({{ option.currency }})</label>
+											<label class="control-label">Total sale Price ({{ user.currency }})</label>
 											<input 
 											:value="saleVat(option.sale_pricex)"
 											type="number" 

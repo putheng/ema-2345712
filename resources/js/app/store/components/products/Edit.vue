@@ -23,15 +23,15 @@
 
 								<div class="row">
 									<div class="col-md-3">
-										<input-binding disabled v-model="product.price" name="price" :label="'Price ('+ product.currency +')'"/>
+										<input-binding disabled v-model="product.price" name="price" :label="'Price ('+ user.currency +')'"/>
 									</div>
 									<div class="col-md-3">
-										<input-binding v-model="product.sale_price" name="sale_price" :label="'Sale Price ('+ product.currency +')'"/>
+										<input-binding v-model="product.sale_price" name="sale_price" :label="'Sale Price ('+ user.currency +')'"/>
 									</div>
 									<div class="col-md-3" v-show="isVat">
 
 										<div class="form-group">
-											<label class="col-form-label">Sale Price include VAT + 10% ({{ product.currency }})</label>
+											<label class="col-form-label">Sale Price include VAT + 10% ({{ user.currency }})</label>
 											<input class="form-control" type="text" disabled="" :value="saleVat(product.sale_price)">
 										</div>
 									</div>
@@ -42,7 +42,7 @@
 								</div>
 								<div class="row">
 									<div class="col-md-3">
-										<label class="col-form-label">Total sale Price ({{ product.currency }})</label>
+										<label class="col-form-label">Total sale Price ({{ user.currency }})</label>
 										<input class="form-control" 
 											type="text" disabled="" :value="saleVat(product.sale_price)">
 									</div>
@@ -55,7 +55,7 @@
 									</div>
 
 									<div class="col-md-3">
-										<input-binding v-model="product.market_price" name="market_price" :label="'Market Price ('+ product.currency +')'"/>
+										<input-binding v-model="product.market_price" name="market_price" :label="'Market Price ('+ user.currency +')'"/>
 									</div>
 								</div>
 
