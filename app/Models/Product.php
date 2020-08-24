@@ -51,20 +51,41 @@ class Product extends Model
             $model->slug = str_slug($model->name) .'-'. Str::uuid() .'.html';
 
             $model->currency = get_currency()->current();
+
+
         });
 
         static::updating(function($model){
-            // $price = $model->sale_price->amount();
+            
+            $price = self::exchangeCurrency(request()->price);
+            $sale_price = self::exchangeCurrency(request()->sale_price);
+            $market_price = self::exchangeCurrency(request()->market_price);
 
-            // dump($price);
-
-            // if(auth()->user()->type == 'store' && (boolean) auth()->user()->store->vat){
-            //     $model->tax_price = $price + ($price * 0.1);
-            // }else{
-            //     $model->tax_price = $price;
-            // }
+            $model->price = $price;
+            $model->sale_price = $sale_price;
+            $model->commission = ($sale_price - $price);
+            $model->market_price = $market_price;
+            $model->tax_price = self::calculateTax(self::exchangeCurrency(request()->sale_price));
             
         });
+    }
+
+    public static function calculateTax($value)
+    {
+        if(auth()->user()->type == 'store' && (boolean) auth()->user()->store->vat){
+            return $value + ($value * 0.1);
+        }
+
+        return $value;
+    }
+
+    public static function exchangeCurrency($value)
+    {
+        if(get_currency()->current() == 'KHR'){
+            return ($value / 4100);
+        }
+
+        return $value;
     }
 
     public function image()

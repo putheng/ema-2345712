@@ -15,16 +15,28 @@ trait HasPrice
 {
     public function getPriceAttribute($value)
     {
+        if(get_currency()->current() == 'KHR'){
+            return new Money($value * 4100);
+        }
+
         return new Money($value);
     }
 
     public function getSalePriceAttribute($value)
     {
+        if(get_currency()->current() == 'KHR'){
+            return new Money($value * 4100);
+        }
+
         return new Money($value);
     }
 
     public function getMarketPriceAttribute($value)
     {
+        if(get_currency()->current() == 'KHR'){
+            return new Money($value * 4100);
+        }
+
         return new Money($value);
     }
 
