@@ -17,8 +17,10 @@ export const submit = ({commit}, {endpoint, payload, method}) => {
 export const fetchUser = ({commit}) => {
 	return axios.get('account/me').then((response) => {
 		commit('setUserData', response.data.data, {root:true})
-	}).catch((error) => {
 
+		return Promise.resolve(response)
+	}).catch((error) => {
+		return Promise.reject(error)
 	})
 }
 

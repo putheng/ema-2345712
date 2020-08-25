@@ -105,7 +105,7 @@
 		</div>
 		</section>
 	</div>
-	<CreateAgent :agent="agent" @completed="completed"/>
+	<CreateAgent :user="user" :agent="agent" @completed="completed"/>
 </div>
 </template>
 
@@ -122,15 +122,28 @@
 				isCreating: false,
 				agent: [],
 				q: 'EMA0000',
-				scal: 1
+				scal: 1,
+				user: []
 			}
 		},
 		components: {
 			CreateAgent
 		},
+		computed: {
+			...mapGetters({
+				networks: 'society/getNetworks'
+			}),
+		},
+		mounted(){
+
+			this.fetchUser().then((r) => {
+				this.user = r.data.data
+			})
+		},
 		methods: {
 			...mapActions({
-				fetchNetworks: 'society/fetchNetworks'
+				fetchNetworks: 'society/fetchNetworks',
+				fetchUser: 'fetchUser'
 			}),
 
 			async search(){
@@ -185,11 +198,6 @@
 				$('#createAgentModal').modal('hide')
 				this.isCreating = false
 			}
-		},
-		computed: {
-			...mapGetters({
-				networks: 'society/getNetworks'
-			}),
 		},
 		created(){
 			this.fetch().then((r) => {

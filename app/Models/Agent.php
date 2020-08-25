@@ -27,7 +27,8 @@ class Agent extends Model
 
             $data = [
                 'id_code_type' => 1,
-                'status' => 'Pending'
+                'status' => 'Pending',
+                'gender' => request()->gender
             ];
 
             if(request()->phone){
