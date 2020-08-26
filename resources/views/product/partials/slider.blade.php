@@ -22,7 +22,7 @@
             <h2 class="h1 text-light">24/7 Delivery Service</h2>
             <p class="text-light pb-4">Order any goods from our store online and we deliver them to your door at a time convenient for you.</p>
             <h5 class="text-light pb-3">On the go? Try our mobile app</h5>
-            <div class="d-flex flex-wrap justify-content-center justify-content-xl-start"><a class="btn-market btn-apple mr-2 mb-2" href="#" role="button"><span class="btn-market-subtitle">Download on the</span><span class="btn-market-title">App Store</span></a><a class="btn-market btn-google mb-2" href="#" role="button"><span class="btn-market-subtitle">Download on the</span><span class="btn-market-title">Google Play</span></a></div>
+            <div style="display: none" class="d-flex flex-wrap justify-content-center justify-content-xl-start"><a class="btn-market btn-apple mr-2 mb-2" href="#" role="button"><span class="btn-market-subtitle">Download on the</span><span class="btn-market-title">App Store</span></a><a class="btn-market btn-google mb-2" href="#" role="button"><span class="btn-market-subtitle">Download on the</span><span class="btn-market-title">Google Play</span></a></div>
           </div>
           <div><img src="dist/img/grocery/slider/slide02.jpg" alt="Image"></div>
         </div>
