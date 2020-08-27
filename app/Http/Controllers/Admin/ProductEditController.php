@@ -17,14 +17,13 @@ class ProductEditController extends Controller
 {
     public function store(ProductEditRequest $request, Product $product)
     {
-
     	$product->name = $request->name;
         $product->price = $request->price;
         $product->sale_price = $request->sale_price;
 
         $product->commission = ($request->sale_price - $request->price);
         
-        if(!empty($request->market_price)){
+        if(!empty($request->market_price) && $request->market_price != 'null'){
             $product->market_price = $request->market_price;
         }
 

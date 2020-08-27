@@ -28,11 +28,11 @@ class Product extends Model
         'publish',
         'user_id',
         'sale_price',
-        'price_2',
-        'sale_price2',
-        'tax_price2',
-        'commission_2',
-        'market_price2',
+        'price',
+        'sale_price',
+        'tax_price',
+        'commission',
+        'market_price',
     ];
 
     public static function boot()
@@ -59,13 +59,18 @@ class Product extends Model
             
             $price = self::exchangeCurrency(request()->price);
             $sale_price = self::exchangeCurrency(request()->sale_price);
-            $market_price = self::exchangeCurrency(request()->market_price);
-
+            
             $model->price = $price;
             $model->sale_price = $sale_price;
             $model->commission = ($sale_price - $price);
-            $model->market_price = $market_price;
+            
             $model->tax_price = self::calculateTax(self::exchangeCurrency(request()->sale_price));
+
+            if(request()->market_price != 'null'){
+                $market_price = self::exchangeCurrency(request()->market_price);
+
+                $model->market_price = $market_price;
+            }
             
         });
     }
