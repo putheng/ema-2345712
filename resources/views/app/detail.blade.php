@@ -43,9 +43,8 @@
 
 			<div class="col-xl-5 px-2 mb-3" id="app">
 				<div class="h-100 bg-light rounded-lg py-5 px-4 px-sm-5">
-					<a class="product-meta d-block font-size-sm pb-2" 
-						href="{{ route('categoryshow', $product->category) }}">
-							{{ $product->category->name }}
+					<a class="product-meta d-block font-size-sm pb-2" href="#">
+						{{ $store->name }}
 					</a>
 					<h1 class="h2">{{ $product->name }}</h1>
 					@if(!$product->inStock())
