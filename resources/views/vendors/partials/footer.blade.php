@@ -24,7 +24,7 @@
           <button class="btn btn-outline-light border-light dropdown-toggle" type="button" data-toggle="dropdown">
           Company</button>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="{{ route('about') }}">About us</a>
+            <li><a class="dropdown-item" href="#">About us</a>
             <li><a class="dropdown-item" href="{{ route('stores') }}">Store locator</a>
             <li><a class="dropdown-item" href="{{ route('contact') }}">Contacts</a>
             <li><a class="dropdown-item" href="{{ url('/auth/login') }}">Become a society</a>
@@ -47,7 +47,7 @@
           <h3 class="widget-title text-light">Company</h3>
           <ul class="widget-list">
               <li class="widget-list-item">
-                <a class="widget-list-link" href="{{ route('about') }}">About us</a>
+                <a class="widget-list-link" href="#">About us</a>
               </li>
               <li class="widget-list-item">
                 <a class="widget-list-link" href="{{ route('stores') }}">Store locator</a>

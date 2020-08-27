@@ -62,7 +62,7 @@
 						<h3 class="widget-title text-light">Company</h3>
 						<ul class="widget-list">
 							<li class="widget-list-item">
-								<a class="widget-list-link" href="{{ route('about') }}">About us</a>
+								<a class="widget-list-link" href="#">About us</a>
 							</li>
 							<li class="widget-list-item">
 								<a class="widget-list-link" href="{{ route('stores') }}">Store locator</a>
