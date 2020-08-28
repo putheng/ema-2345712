@@ -25,7 +25,7 @@ $2y$10$GViglupscfgIbzRKqnrUtu2n6zJdIwP76MbT2NHpCD/wncIotgZku
 "total_amount":10.4
 }
 
->>>>>>>>>
+>>>>>>>>>---------
 
 out of stock color red
 - edit shipping not work
