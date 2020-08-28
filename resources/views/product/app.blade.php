@@ -19,7 +19,7 @@
   <body class="bg-secondary">
     <div id="app" >
     <!-- Sign in / sign up modal-->
-    @include('home.partials.sign-model')
+    {{-- @include('home.partials.sign-model') --}}
     <!-- Navbar-->
     @include('product.partials.header')
 
