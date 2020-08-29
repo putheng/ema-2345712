@@ -1,11 +1,14 @@
 <?php
 
-namespace App\Http\Resources;
+namespace App\Http\Resources\Delivery;
 
-use App\Http\Resources\ShippingMethodResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class OrderResource extends JsonResource
+use App\Http\Resources\AddressResource;
+use App\Http\Resources\ShippingMethodResource;
+use App\Http\Resources\ProductVariationOrderResource;
+
+class ShipmentsResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -19,7 +22,6 @@ class OrderResource extends JsonResource
             'id' => $this->id,
             'uuid' => $this->uuid,
             'status' => $this->status,
-            'driver' => count($this->users) > 0 ? $this->users->first()->id : '',
             'created_at' => $this->created_at->toDateTimeString(),
             'total' => $this->total()->formatted(),
             // 'address' => $this->address,

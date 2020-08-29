@@ -1,17 +1,20 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Delivery;
 
-use App\Http\Resources\OrderResource;
+use App\Http\Resources\Delivery\ShipmentsResource;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+
 use App\Models\Order;
 
-class OrderController extends Controller
+class ShipmentController extends Controller
 {
     public function index(Request $request)
     {
-        $orders = Order::with([
+    	$orders = $request->user()
+            ->shipments()
+            ->with([
                 'products',
                 'products.stock',
                 'products.type',
@@ -20,18 +23,20 @@ class OrderController extends Controller
                 'products.product.variations.stock',
                 'address',
                 'shippingMethod',
-                'banks',
-                'users',
+                'banks'
             ])
             ->latest()
-            ->paginate(50);
+            ->paginate(10);
 
-        return OrderResource::collection($orders);
+        return ShipmentsResource::collection($orders);
     }
 
     public function processing(Request $request)
     {
-        $orders = Order::with([
+        $orders = $request->user()
+            ->shipments()
+            ->where('status', 'Processing')
+            ->with([
                 'products',
                 'products.stock',
                 'products.type',
@@ -40,19 +45,20 @@ class OrderController extends Controller
                 'products.product.variations.stock',
                 'address',
                 'shippingMethod',
-                'banks',
-                'users',
+                'banks'
             ])
-            ->where('status', 'Processing')
             ->latest()
-            ->paginate(50);
+            ->paginate(10);
 
-        return OrderResource::collection($orders);
+        return ShipmentsResource::collection($orders);
     }
 
     public function completed(Request $request)
     {
-        $orders = Order::with([
+        $orders = $request->user()
+            ->shipments()
+            ->where('status', 'Completed')
+            ->with([
                 'products',
                 'products.stock',
                 'products.type',
@@ -61,21 +67,21 @@ class OrderController extends Controller
                 'products.product.variations.stock',
                 'address',
                 'shippingMethod',
-                'banks',
-                'users',
+                'banks'
             ])
-            ->where('status', 'Completed')
             ->latest()
-            ->paginate(50);
+            ->paginate(10);
 
-        return OrderResource::collection($orders);
+        return ShipmentsResource::collection($orders);
     }
 
     public function update(Request $request, Order $order)
     {
-    	$order->update($request->only('status'));
+        $order->update($request->only('status'));
 
-    	$orders = Order::with([
+        $orders = $request->user()
+            ->shipments()
+            ->with([
                 'products',
                 'products.stock',
                 'products.type',
@@ -84,13 +90,11 @@ class OrderController extends Controller
                 'products.product.variations.stock',
                 'address',
                 'shippingMethod',
-                'banks',
-                'users',
+                'banks'
             ])
-            ->withStatus($request->status)
             ->latest()
-            ->paginate(50);
+            ->paginate(10);
 
-        return OrderResource::collection($orders);
+        return ShipmentsResource::collection($orders);
     }
 }

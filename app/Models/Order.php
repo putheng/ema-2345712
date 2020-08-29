@@ -11,10 +11,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
-    const PENDING = 'pending';
-    const PROCESSING = 'processing';
-    const PAYMENT_FAILED = 'payment_failed';
-    const COMPLETED = 'completed';
+    const PENDING = 'Pending';
+    const PROCESSING = 'Processing';
+    const PAYMENT_FAILED = 'Payment failed';
+    const COMPLETED = 'Completed';
 
     protected $fillable = [
         'status',
@@ -40,6 +40,19 @@ class Order extends Model
         static::created(function($model){
             $model->setID();
         });
+    }
+
+    public function scopeWithStatus($builder, $status)
+    {
+        if($status == 'Completed'){
+            return $builder->where('status', 'Processing');
+        }
+
+        if($status == 'Completed'){
+            return $builder->where('status', 'Completed');
+        }
+
+        return $builder;
     }
 
     public function scopeUuid($q, $uuid)
@@ -96,6 +109,12 @@ class Order extends Model
     public function paymentMethod()
     {
         return $this->belongsTo(PaymentMethod::class);
+    }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'delivery_order')
+            ->withTimestamps();
     }
 
     public function products()

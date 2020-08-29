@@ -191,6 +191,12 @@ class User extends Authenticatable implements JWTSubject
         return $this->hasMany(OrderO::class);
     }
 
+    public function shipments()
+    {
+        return $this->belongsToMany(Order::class, 'delivery_order')
+            ->withTimestamps();
+    }
+
     public function transfers()
     {
         return $this->hasMany(Transfer::class);

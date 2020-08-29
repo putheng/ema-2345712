@@ -5,6 +5,7 @@ export { default as Dashboard } from './Dashboard'
 export { default as SocietyLayout } from './layouts/SocietyLayout'
 export { default as StoreLayout } from './layouts/StoreLayout'
 export { default as SupplierLayout } from './layouts/SupplierLayout'
+export { default as DeliveryLayout } from './layouts/DeliveryLayout'
 
 export { default as AppMain } from './AppMain'
 export { default as UserSetting } from './UserSetting'
@@ -22,6 +23,8 @@ export { default as LeftAdminSetting } from './LeftAdminSetting'
 export { default as LeftSocietySetting } from './partials/LeftSocietySetting'
 export { default as LeftSupplierSetting } from './partials/LeftSupplierSetting'
 export { default as LeftStoreSetting } from './LeftStoreSetting'
+export { default as LeftDeliverySetting } from './LeftDeliverySetting'
+
 export { default as HomeCarosel } from './HomeCarosel'
 
 export { default as HomeSignIn } from './HomeSignIn'

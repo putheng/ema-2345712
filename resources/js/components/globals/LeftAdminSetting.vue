@@ -50,6 +50,12 @@
 						<router-link class="menu-link" :to="{name: 'admin-order'}">
 							View
 						</router-link>
+						<router-link class="menu-link" :to="{name: 'admin-order-processing'}">
+							Processing
+						</router-link>
+						<router-link class="menu-link" :to="{name: 'admin-order-completed'}">
+							Completed
+						</router-link>
 					</li>
 				</ul>
 				<!-- /child menu -->

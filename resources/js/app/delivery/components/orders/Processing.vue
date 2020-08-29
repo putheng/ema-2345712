@@ -16,7 +16,6 @@
 									<th>Date Purchased</th>
 									<th>Status</th>
 									<th>Ship To</th>
-									<th>Delivery</th>
 									<th>Actions</th>
 								</thead>
 								<tbody>
@@ -32,8 +31,11 @@
 											:class="{
 												'badge-warning': order.status == 'Pending',
 												'badge-primary': order.status == 'Processing',
+												'badge-primary': order.status == 'Shipping',
 												'badge-danger': order.status == 'Payment failed',
 												'badge-success': order.status == 'Completed',
+												'badge-info': order.status == 'On the way',
+												'badge-danger': order.status == 'Lost Customer',
 											}"
 											>{{ order.status }}</span>
 										</td>
@@ -49,19 +51,7 @@
 										</td>
 										<td width="250">
 											<div class="form-group">
-												 <select name="type" class="custom-select" 
-												 	@change="assignDriver(order.id, $event.target.value)">
-												 	<option value=""> Choose... </option> 
-												 	<option 
-												 		:selected="driver.id == order.driver" 
-												 		:value="driver.id" 
-												 		v-for="driver in drivers">{{ driver.name }} </option>
-												 </select> 
-											</div>
-										</td>
-										<td width="250">
-											<div class="form-group">
-												 <select name="type" class="custom-select" 
+												 <select :disabled="order.status == 'Completed' " name="type" class="custom-select" 
 												 	@change="updateStatus(order.id, $event.target.value)">
 												 	<option value=""> Choose... </option> 
 												 	<option :value="type.name" v-for="type in types">{{ type.name }} </option>
@@ -90,43 +80,29 @@
 			return {
 				orders: [],
 				order: [],
-				drivers: [],
 				openModal: false,
 				types:[
-					{name: 'Pending', value: '1'},
-					{name: 'Processing', value: '2'},
-					{name: 'Shipping', value: '3'},
-					{name: 'Payment failed', value: '4'},
-					{name: 'Completed', value: '5'},
-					{name: 'Finished', value: '6'},
-					{name: 'Refund', value: '7'},
-					{name: 'Cancellation', value: '8'},
+					{name: 'On the way', value: '1'},
+					{name: 'Shipping', value: '2'},
+					{name: 'Completed', value: '3'},
+					{name: 'Lost Customer', value: '4'},
 				],
 			}
 		},
 		methods: {
 			async fetchOrders(){
+				let r = await axios.get('delivery/shipments/processing')
 
-				let d = await axios.get('admin/drivers')
-				this.drivers = d.data
-
-				let r = await axios.get('admin/orders')
 				this.orders = r.data.data
 			},
 			async updateStatus(order, e){
 				
-				let r = await axios.post(`admin/orders/${order}`, {
+				let r = await axios.post(`delivery/shipments/${order}`, {
 					status: e
 				})
 
 				this.orders = r.data.data
 
-			},
-			async assignDriver(order, e){
-				let r = await axios.post(`admin/drivers`, {
-					driver: e,
-					order: order
-				})
 			},
 			showModal(order){
 				this.openModal = true

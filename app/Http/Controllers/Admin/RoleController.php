@@ -8,6 +8,7 @@ use App\Http\Requests\Role\StoreUpRoleRequest;
 use App\Http\Resources\RoleResource;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
+use App\Models\User;
 
 class RoleController extends Controller
 {

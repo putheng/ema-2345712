@@ -38,6 +38,14 @@ Route::group(['middleware' => 'auth'], function(){
 		Route::post('password', 'Api\PasswordController@store');
 	});
 
+	Route::group(['prefix' => 'delivery', 'middleware' => 'role:delivery|admin', 'namespace' => 'Delivery'], function(){
+		Route::get('shipments', 'ShipmentController@index');
+		Route::get('shipments/processing', 'ShipmentController@processing');
+		Route::get('shipments/completed', 'ShipmentController@completed');
+		
+		Route::post('shipments/{order}', 'ShipmentController@update');
+	});
+
 	Route::group(['prefix' => 'customer', 'middleware' => 'role:customer'], function(){
 		Route::resource('profile', 'Api\CustomerController');
 	});
@@ -92,11 +100,18 @@ Route::group(['middleware' => 'auth'], function(){
 	});
 
 	Route::group(['prefix' => 'admin', 'middleware' => 'role:admin'], function(){
+
+		Route::get('drivers', 'Admin\DriverController@index');
+		Route::post('drivers', 'Admin\DriverController@store');
+
 		Route::resource('summary', 'Admin\SummaryController');
 
 		Route::resource('category', 'Admin\CategoryController');
 
 		Route::get('orders', 'Admin\OrderController@index');
+		Route::get('orders/processing', 'Admin\OrderController@processing');
+		Route::get('orders/completed', 'Admin\OrderController@completed');
+
 		Route::post('orders/{order}', 'Admin\OrderController@update');
 		
 		Route::get('users', 'Admin\UserController@index');
@@ -127,6 +142,7 @@ Route::group(['middleware' => 'auth'], function(){
 		Route::resource('city', 'Admin\PlaceController');
 
 		Route::resource('roles', 'Admin\RoleController');
+
 		Route::resource('permissions', 'Admin\PermissionController');
 
 		Route::get('roles/{role}/permission', 'Admin\RolePermissionController@show');

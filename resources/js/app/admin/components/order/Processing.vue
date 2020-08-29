@@ -106,12 +106,11 @@
 		},
 		methods: {
 			async fetchOrders(){
-
+				let r = await axios.get('admin/orders/processing')
 				let d = await axios.get('admin/drivers')
-				this.drivers = d.data
 
-				let r = await axios.get('admin/orders')
 				this.orders = r.data.data
+				this.drivers = d.data
 			},
 			async updateStatus(order, e){
 				

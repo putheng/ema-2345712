@@ -51,6 +51,13 @@ Route::get('/app/product/{product}/show', 'AppProductController@show')->name('ap
 Route::get('/app/category/{category}', 'AppProductController@category')->name('app.category');
 
 
+Route::group(['prefix' => 'delivery', 'middleware' => ['auth', 'role:delivery|admin']], function(){
+	
+	Route::get('/{vue?}', 'DeliveryController@index')
+		->where('vue', '[\/\w\.-]*');
+
+});
+
 Route::group(['prefix' => 'supplier', 'middleware' => ['auth', 'role:supplier|admin']], function(){
 	
 	Route::get('/{vue?}', 'HomeController@supplier')

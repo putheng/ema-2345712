@@ -1,3 +1,4 @@
+import delivery from './delivery/routes'
 import cart from './cart/routes'
 import suppliers from './suppliers/routes'
 import store from './store/routes'
@@ -14,5 +15,6 @@ export default [
 	...store,
 	...suppliers,
 	...cart,
+	...delivery,
 	/**/
 ]

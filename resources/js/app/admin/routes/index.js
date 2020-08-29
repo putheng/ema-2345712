@@ -31,6 +31,8 @@ import {
 	C15ED1DD6E9B161B,
 	C15ED1E074A65F4B,
 	C15F37BC206714CB,
+	C15F4A2EC23F80EB,
+	C15F4A2ECB8ABC3B,
 	/****/
 } from '../components'
 
@@ -195,6 +197,16 @@ export default [
 		path: '/admin/order/index',
 		component: C15F37BC206714CB,
 		name: 'admin-order'
+	},
+	{
+		path: '/admin/order/processing',
+		component: C15F4A2EC23F80EB,
+		name: 'admin-order-processing'
+	},
+	{
+		path: '/admin/order/completed',
+		component: C15F4A2ECB8ABC3B,
+		name: 'admin-order-completed'
 	},
 	/**/
 ]
