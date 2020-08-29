@@ -17,17 +17,14 @@
 									<td>
 										<img width="100" :src="product.product.images[0].url">
 									</td>
-									<td>
+									<td colspan="2">
+										<div>Store: <strong>{{ product.product.store }}</strong></div>
 										{{ product.product.name }} -
 										{{ product.type }} {{ product.name }}
-										<strong>x {{ product.qty }}</strong>
+										<h6 class="mb-0"><strong>x {{ product.qty }}</strong></h6>
 										<h5>{{ product.sale_price }}</h5>
+										
 									</td>
-									<!-- <td>Quantity: <br>1</td> -->
-									<!-- <td>
-										Subtotal:<br>
-										{{ order.subtotal }}
-									</td> -->
 								</tr>
 
 								<tr>

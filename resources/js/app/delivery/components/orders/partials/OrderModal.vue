@@ -7,6 +7,7 @@
 					<h5 class="modal-title">
 						Order No - {{ order.uuid }}
 					</h5>
+
 				</div>
 				<div class="modal-body">
 					<div class="table-responsive">
@@ -17,16 +18,19 @@
 										<img width="100" :src="product.product.images[0].url">
 									</td>
 									<td colspan="2">
+										<div>Store: <strong>{{ product.product.store }}</strong></div>
 										{{ product.product.name }} -
 										{{ product.type }} {{ product.name }}
-										<strong>x {{ product.qty }}</strong>
+										<h6 class="mb-0"><strong>x {{ product.qty }}</strong></h6>
 										<h5>{{ product.sale_price }}</h5>
+										
 									</td>
 								</tr>
 
 								<tr>
 									<td>Subtotal: <div><b>{{ order.subtotal }}</b></div> </td>
 									<td>Shipping: <div><b>{{ order.shippingMethod.price }}</b></div> </td>
+									<!-- <td>Tax: <div><b>$9.50</b></div> </td> -->
 									<td>Total: <div><h6>{{ order.total }}</h6></div> </td>
 								</tr>
 								<tr>

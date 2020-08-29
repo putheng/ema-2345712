@@ -18,6 +18,7 @@ class ProductIndexResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'slug' => $this->slug,
+            'store' => $this->user->type == 'store' ? $this->user->store->name : '',
             'in_wishlist' => $this->inWishlist(),
             'description' => $this->description,
             'price' => $this->formattedPrice,
