@@ -5,7 +5,7 @@
     <div class="px-2">
         <div class="row">
           <div class="col-md-12">
-            {{-- <home-carosel/> --}}
+            <home-carosel/>
           </div>
         </div>
 
