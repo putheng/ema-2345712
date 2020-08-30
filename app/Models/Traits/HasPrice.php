@@ -70,7 +70,7 @@ trait HasPrice
     public function getFormattedMarketPriceAttribute()
     {
         if(get_currency()->current() == 'KHR'){
-            return number_format(($this->market_price->amount() * 4100), 2) .'៛';
+            return number_format($this->market_price->amount(), 2) .'៛';
         }
 
         return '$'.number_format($this->market_price->amount(), 2);
