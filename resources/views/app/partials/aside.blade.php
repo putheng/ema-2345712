@@ -30,12 +30,12 @@
                       <div class="widget widget-links">
                         <ul class="widget-list">
                           <li class="widget-list-item">
-                            <a class="widget-list-link" href="#">View all</a>
+                            <a class="widget-list-link" href="{{ route('app.category', $category) }}">View all</a>
                           </li>
                           @if($category->children->count())
                             @foreach($category->children as $children)
                               <li class="widget-list-item">
-                                <a class="widget-list-link" href="#">{{ $children->name }}</a>
+                                <a class="widget-list-link" href="{{ route('app.category', $children) }}">{{ $children->name }}</a>
                               </li>
                             @endforeach
                           @endif
@@ -67,8 +67,8 @@
           <a class="nav-link-style font-size-md" href="mailto:support@emarketasia.com">support@emarketasia.com</a>
         </div>
       </div>
-      {{-- <h6 class="pt-2 pb-1">Follow us</h6>
-      <a class="social-btn sb-outline sb-twitter mr-2 mb-2" href="#"><i class="czi-twitter"></i></a><a class="social-btn sb-outline sb-facebook mr-2 mb-2" href="#"><i class="czi-facebook"></i></a><a class="social-btn sb-outline sb-instagram mr-2 mb-2" href="#"><i class="czi-instagram"></i></a><a class="social-btn sb-outline sb-youtube mr-2 mb-2" href="#"><i class="czi-youtube"></i></a> --}}
+      <h6 class="pt-2 pb-1">Follow us</h6>
+      <a class="social-btn sb-outline sb-twitter mr-2 mb-2" href="#"><i class="czi-twitter"></i></a><a class="social-btn sb-outline sb-facebook mr-2 mb-2" href="#"><i class="czi-facebook"></i></a><a class="social-btn sb-outline sb-instagram mr-2 mb-2" href="#"><i class="czi-instagram"></i></a><a class="social-btn sb-outline sb-youtube mr-2 mb-2" href="#"><i class="czi-youtube"></i></a>
     </div>
   </div>
 </aside>
