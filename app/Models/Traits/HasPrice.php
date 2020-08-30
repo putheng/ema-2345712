@@ -52,7 +52,7 @@ trait HasPrice
     public function getFormattedPriceAttribute()
     {
         if(get_currency()->current() == 'KHR'){
-            return number_format(($this->price->amount() * 4100), 2) .'៛';
+            return number_format($this->price->amount(), 2) .'៛';
         }
 
         return '$'.number_format($this->price->amount(), 2);
