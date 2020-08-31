@@ -5,7 +5,7 @@
     <div class="px-2">
         <div class="row">
           <div class="col-md-12">
-            <home-carosel/>
+            {{-- <home-carosel/> --}}
           </div>
         </div>
 
@@ -46,7 +46,7 @@
         <div class="row mt-1">
           @foreach($categories as $category)
             <div class="col text-center">
-              <a href="{{ route('app.category', $category) }}">
+              <a href="#">
                 <img src="/app/category/{{ $category->image }}">
               </a>
               <small>{{ explode('&', $category->name)[0] }}</small>
@@ -57,7 +57,7 @@
         <div class="row mt-4">
           @foreach($categoriesb as $categoryb)
             <div class="col">
-              <a href="{{ route('app.category', $categoryb) }}">
+              <a href="#">
                 <img src="/app/category/{{ $categoryb->image }}">
               </a>
               <small>{{ explode('&', $categoryb->name)[0] }}</small>

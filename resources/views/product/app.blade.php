@@ -19,7 +19,7 @@
   <body class="bg-secondary">
     <div id="app" >
     <!-- Sign in / sign up modal-->
-    @include('home.partials.sign-model')
+    {{-- @include('home.partials.sign-model') --}}
     <!-- Navbar-->
     @include('product.partials.header')
 
@@ -30,7 +30,7 @@
       
       @yield('content')
       <!-- Footer-->
-      @include('product.partials.footer')
+      {{-- @include('product.partials.footer') --}}
     </main>
     <!-- Back To Top Button--><a class="btn-scroll-top" href="#top" data-scroll><span class="btn-scroll-top-tooltip text-muted font-size-sm mr-2">Top</span><i class="btn-scroll-top-icon czi-arrow-up">   </i></a>
     </div>
