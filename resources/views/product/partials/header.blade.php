@@ -25,7 +25,7 @@
           <card-list-header/>
         @else
           <a class="navbar-tool ml-1 ml-lg-0 mr-n1 mr-lg-2" href="#signin-modal" data-toggle="modal">
-              <div class="navbar-tool-icon-box"><i class="navbar-tool-icon czi-user"></i></div>
+              <div class="navbar-tool-icon-box d-none"><i class="navbar-tool-icon czi-user"></i></div>
             <div class="navbar-tool-text ml-n3"><small>Hello, Sign in</small>My Account</div>
           </a>
         @endif
