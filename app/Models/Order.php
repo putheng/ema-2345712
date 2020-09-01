@@ -55,6 +55,13 @@ class Order extends Model
         return $builder;
     }
 
+    public function scopeNotPending($query)
+    {
+        $status = ['Processing', 'Completed', 'On the way', 'Shipping'];
+
+        return $query->whereIn('status', $status);
+    }
+
     public function scopeUuid($q, $uuid)
     {
         return $q->where('uuid', $uuid)->first();

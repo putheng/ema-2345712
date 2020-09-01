@@ -18,7 +18,7 @@ class AccountSummary extends JsonResource
     {   
         return [
             'purchase' => $this->getPurchase(),
-            'earning' => get_currency()->current() . ' '. number_format(0, 2),
+            'earning' => get_currency()->current() . ' '. number_format((float) auth()->user()->earning, 2),
             'transactions' => TrackResources::collection($this->tracks()->latest()->take(10)->get()),
             'orders' => OrderResource::collection($this->getOrders())
         ];
@@ -26,12 +26,12 @@ class AccountSummary extends JsonResource
 
     protected function getPurchase()
     {
-        $orders = $this->orders;
+        $orders = $this->orders()->notPending()->get();
 
         return [
             'counts' => $orders->count(),
             'expenses' => get_currency()->current() .' '. number_format(
-                $this->order()->where('status', 'processing')->get()->sum('total'), 2),
+                $this->order()->where('status', '!=', 'Pending')->get()->sum('total'), 2),
         ];
     }
 
