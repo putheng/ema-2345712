@@ -46,7 +46,7 @@
         <div class="row mt-1">
           @foreach($categories as $category)
             <div class="col text-center">
-              <a href="#">
+              <a href="{{ route('app.category', $category) }}">
                 <img src="/app/category/{{ $category->image }}">
               </a>
               <small>{{ explode('&', $category->name)[0] }}</small>
@@ -57,7 +57,7 @@
         <div class="row mt-4">
           @foreach($categoriesb as $categoryb)
             <div class="col">
-              <a href="#">
+              <a href="{{ route('app.category', $categoryb) }}">
                 <img src="/app/category/{{ $categoryb->image }}">
               </a>
               <small>{{ explode('&', $categoryb->name)[0] }}</small>

@@ -52,7 +52,7 @@
 
 			<app-input label="Email address" name="email" placeholder="Please enter your email" />
 			
-			<app-select class="d-none" :options="genders" label="Gender" name="gender"/>
+			<app-select :options="genders" label="Gender" name="gender"/>
 
 			<app-input label="Password" name="password" type="password" placeholder="Please enter password"/>
 			<app-input label="Confirm password" name="password_confirmation" type="password" placeholder="Please enter password again"/>

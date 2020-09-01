@@ -30,12 +30,12 @@
                       <div class="widget widget-links">
                         <ul class="widget-list">
                           <li class="widget-list-item">
-                            <a class="widget-list-link" href="#">View all</a>
+                            <a class="widget-list-link" href="{{ route('app.category', $category) }}">View all</a>
                           </li>
                           @if($category->children->count())
                             @foreach($category->children as $children)
                               <li class="widget-list-item">
-                                <a class="widget-list-link" href="#">{{ $children->name }}</a>
+                                <a class="widget-list-link" href="{{ route('app.category', $children) }}">{{ $children->name }}</a>
                               </li>
                             @endforeach
                           @endif
