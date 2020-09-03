@@ -10,7 +10,9 @@ class ProductVariationCollection extends Collection
     {
         return $this->keyBy('id')->map(function ($product) {
             return [
-                'quantity' => $product->pivot->quantity
+                'quantity' => $product->pivot->quantity,
+                'owner_id' => $product->product->user_id,
+                'price' => $product->price->amount()
             ];
         })->toArray();
     }

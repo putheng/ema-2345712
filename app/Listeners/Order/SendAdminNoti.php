@@ -36,7 +36,7 @@ class SendAdminNoti
                     'json' => [
                         "to" => "cuqcnTGfQEyd_Sm8qc39Z3:APA91bGJgEzCb276bu0P3yFwKx2a4ODy2J8IKsAevCv1GVsMdKj8bgrKo2xyFeHFa3wWv9s_nT526LV_V89lUAhfDbrqthk2gh_Hlg-SiUk_6s8m-QuTWBQP7ADbrkkinhc0GkpHKETr",
                         "notification" => [
-                            "title" => "មានការទិញទំនិញពីហាងរបស់នាក់",
+                            "title" => "មានការទិញទំនិញពីហាងរបស់អ្នក",
                             "sound" => "default"
                         ],
                         "data" => [

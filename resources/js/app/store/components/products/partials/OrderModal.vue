@@ -5,28 +5,27 @@
 			<div class="modal-content" v-if="order">
 				<div class="modal-header">
 					<h5 class="modal-title">
-						Order No - {{ order.uuid }}
+						Order No - {{ order.order.uuid }}
 					</h5>
 				</div>
 				<div class="modal-body">
-					
 					<table class="table">
 						<tbody>
-							<tr v-for="product in order.products">
+							<tr>
 								<td>
-									<img width="100" :src="product.product.images[0].url">
+									<img width="100" :src="order.product_variation.product.images[0].url">
 								</td>
 								<td>
-									{{ product.product.name }} -
-									{{ product.type }} {{ product.name }}
-									<h5>{{ product.sale_price }}</h5>
+									{{ order.product_variation.product.name }} -
+									{{ order.product_variation.type }} {{ order.product_variation.product.name }}
+									<h5>{{ order.product_variation.product.sale_price }}</h5>
 								</td>
 							</tr>
 
 							<tr>
-								<td>Subtotal: <div><b>{{ order.subtotal }}</b></div> </td>
-								<td>Shipping: <div><b>{{ order.shippingMethod.price }}</b></div> </td>
-								<td>Total: <div><h6>{{ order.total }}</h6></div> </td>
+								<td>Subtotal: <div><b>{{ order.order.subtotal }}</b></div> </td>
+								<td>Shipping: <div><b>{{ order.order.shippingMethod.price }}</b></div> </td>
+								<td>Total: <div><h6>{{ order.order.total }}</h6></div> </td>
 							</tr>
 						</tbody>
 					</table>

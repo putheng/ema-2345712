@@ -41,7 +41,7 @@ class SendStoreNoti
                     'json' => [
                         "to" => $order->user->gateway_customer_id,
                         "notification" => [
-                            "title" => "មានការទិញទំនិញពីហាងរបស់នាក់",
+                            "title" => "មានការទិញទំនិញពីហាងរបស់អ្នក",
                             "sound" => "default"
                         ],
                         "data" => [

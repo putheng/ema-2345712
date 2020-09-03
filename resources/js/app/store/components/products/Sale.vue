@@ -53,20 +53,20 @@
 									<th>Items</th>
 									<th>Date Purchased</th>
 									<th>Status</th>
+									<th>Quantity</th>
 									<th>Total</th>
 								</thead>
 								<tbody>
 									<tr v-if="orders.length" v-for="(order, i) in orders">
 										<td>
-											<a href="#" @click.prevent="showModal(order.order)">
-												{{ order.order.uuid }}
-											</a>
+											<!-- <a href="#" @click.prevent="showModal(order)"> -->
+											{{ order.order.uuid }}
+											<!-- </a> -->
 										</td>
 										<td>
 											{{ order.product_variation.product.name }}
 											( {{ order.product_variation.type }}
 											{{ order.product_variation.name }} )
-
 										</td>
 										<td>{{ order.order.created_at }}</td>
 										<td><span class="badge "
@@ -77,7 +77,9 @@
 												'badge-success': order.order.status == 'Completed',
 											}"
 											>{{ order.order.status }}</span></td>
-										<td>{{ order.order.subtotal }}</td>
+
+										<td>{{ order.quantity }}</td>
+										<td>{{ order.price }}</td>
 										
 									</tr>
 								</tbody>
@@ -111,6 +113,10 @@
 
 				this.data = r.data.data
 				this.series = r.data.data.series
+			},
+
+			calculatePrice(q, p){
+				return (q * p)
 			},
 
 			showModal(order){

@@ -30,11 +30,11 @@ class CheckAndActivate
 
         $subtotal = $event->order->subtotal->amount();
 
-        if($order->currency == 'USD' && $subtotal > '1000'){
+        if($order->currency == 'USD' && $subtotal > '10'){
             $this->activate($order->user);
         }
 
-        if($order->currency == 'KHR' && $subtotal > '4000000'){
+        if($order->currency == 'KHR' && $subtotal > '40000'){
             $this->activate($order->user);
         }
     }

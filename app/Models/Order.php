@@ -22,6 +22,8 @@ class Order extends Model
         'shipping_method_id',
         'payment_method_id',
         'subtotal',
+        'price',
+        'status',
         'currency'
     ];
 
@@ -127,7 +129,7 @@ class Order extends Model
     public function products()
     {
         return $this->belongsToMany(ProductVariation::class, 'product_variation_order')
-            ->withPivot(['quantity'])
+            ->withPivot(['quantity', 'owner_id', 'price', 'status'])
             ->withTimestamps();
     }
 

@@ -11,18 +11,21 @@ class SaleController extends Controller
     {
     	$sale = auth()->user()->sales();
 
-    	$sales = currency_format($sale->get()->sum('tamount'));
+    	$sales = $sale->get()->sum('pivot.price');
 
-    	$month = $sale->thisMonth()->get();
+    	// $month = $sale->thisMonth()->get();
+
+        // $month = $sale->wherePivot('created_at', '>=', date('Y-m-d'));
 
     	$data = [
     		'data' => [
-	    		'lifetime'=> $sales,
-	    		'thisMonth'=> currency_format($month->sum('tamount')),
+	    		'lifetime'=> '$'. number_format($sales, 2),
+	    		'thisMonth'=> '$'. number_format($sales, 2),
 	    		'balance' => currency_format(auth()->user()->balance),
 	    		'series' => [
 	    			['name' => 'Sales',
-	    			'data' => $month->pluck('quantity')]
+	    			// 'data' => $month->pluck('quantity')
+                    ]
 	    		]
 	    	]
     	];

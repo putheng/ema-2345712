@@ -7,6 +7,7 @@ use App\Models\Address;
 use App\Models\Wishlist;
 use App\Models\Agent;
 use App\Models\Image;
+use App\Models\Order;
 use App\Models\PaymentMethod;
 use App\Models\Product;
 use App\Models\Track;
@@ -224,6 +225,10 @@ class User extends Authenticatable implements JWTSubject
 
     public function sales()
     {
-        return $this->hasMany(Sale::class, 'owner_id');
+        $status = ['Processing', 'Completed', 'On the way', 'Shipping'];
+
+        return $this->belongsToMany(Order::class, 'product_variation_order', 'owner_id')
+            ->wherePivotIn('status', $status)
+            ->withPivot('price', 'status', 'quantity', 'product_variation_id', 'order_id');
     }
 }
