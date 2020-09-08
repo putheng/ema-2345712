@@ -48,7 +48,7 @@
 			
 			<app-input label="Full name" name="name" placeholder="Please enter your name" />
 
-			<app-input label="Phone number" name="phone" placeholder="Please enter your phone number" />
+			<app-input class="d-none" label="Phone number" name="phone" placeholder="Please enter your phone number" />
 
 			<app-input label="Email address" name="email" placeholder="Please enter your email" />
 			

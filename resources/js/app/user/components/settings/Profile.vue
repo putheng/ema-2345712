@@ -21,12 +21,12 @@
 										</div>
 									</div>
 
-									<div class="row">
+									<div class="row d-none">
 										<div class="col-md-6">
 											<input-binding v-model="user.phone" name="phone" label="Phone number"/>	
 										</div>
 										<div class="col-md-6">
-											<app-select v-model="user.gender" label="Gender" name="gender" :options="genders" />
+											<app-select  v-model="user.gender" label="Gender" name="gender" :options="genders" />
 										</div>
 									</div>
 									
