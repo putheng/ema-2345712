@@ -14,7 +14,7 @@
         </a>
         
         @if(auth()->check())
-          <a class="navbar-tool d-none d-lg-flex" href="{{ auth()->user()->dashboard() }}/cart/wishlist">
+          <a class="navbar-tool d-lg-flex" href="{{ auth()->user()->dashboard() }}/cart/wishlist">
             <span class="navbar-tool-tooltip">Wishlist</span>
             <div class="navbar-tool-icon-box"><i class="navbar-tool-icon czi-heart"></i></div>
           </a>

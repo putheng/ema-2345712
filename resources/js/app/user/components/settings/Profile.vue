@@ -21,7 +21,7 @@
 										</div>
 									</div>
 
-									<div class="row d-none">
+									<div class="row">
 										<div class="col-md-6">
 											<input-binding v-model="user.phone" name="phone" label="Phone number"/>	
 										</div>
