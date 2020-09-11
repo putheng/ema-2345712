@@ -26,7 +26,7 @@ class SendAdminNoti
      * @param  OrderPaid  $event
      * @return void
      */
-    public function handle(OrderPaid $event)
+    public function handle($event)
     {
         $client = new Client();
 

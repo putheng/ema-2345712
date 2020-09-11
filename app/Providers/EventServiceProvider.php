@@ -27,12 +27,21 @@ class EventServiceProvider extends ServiceProvider
             'App\Listeners\Order\MarkOrderPaymentFailed'
         ],
 
+        'App\Events\Order\OrderCase\OrderPaid' => [
+            'App\Listeners\Order\EmptyCart',
+            'App\Listeners\Order\CreateTransaction',
+            'App\Listeners\Order\MarkOrderProcessing',
+            'App\Listeners\Order\EmptyCart',
+            'App\Listeners\Order\SendStoreNoti',
+            'App\Listeners\Order\SendAdminNoti',
+        ],
+
         'App\Events\Order\OrderPaid' => [
             'App\Listeners\Order\CreateTransaction',
             'App\Listeners\Order\MarkOrderProcessing',
             'App\Listeners\Order\MakePaymentToOwner',
             'App\Listeners\Order\EmptyCart',
-            // 'App\Listeners\Order\SendStoreNoti',
+            'App\Listeners\Order\SendStoreNoti',
             'App\Listeners\Order\SendAdminNoti',
             'App\Listeners\Order\CalculateComission',
             'App\Listeners\Order\CheckAndActivate',

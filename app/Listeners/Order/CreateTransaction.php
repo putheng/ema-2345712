@@ -16,7 +16,7 @@ class CreateTransaction
      * @param  OrderPaid  $event
      * @return void
      */
-    public function handle(OrderPaid $event)
+    public function handle($event)
     {
         $total = $event->order->total()->amount();
         $subtotal = $event->order->subtotal->amount();

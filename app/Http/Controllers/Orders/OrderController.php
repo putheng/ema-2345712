@@ -12,6 +12,8 @@ use Illuminate\Http\Request;
 
 use GuzzleHttp\Client;
 
+use App\Events\Order\OrderCase\OrderPaid;
+
 
 class OrderController extends Controller
 {
@@ -52,10 +54,9 @@ class OrderController extends Controller
 
         $order->products()->sync($cart->products()->forSyncing());
 
-        // event(new OrderCreated($order));
-
         if($request->payment_method_id == 2){
-            $order->update(['status' => 'Processing']);
+
+            event(new OrderPaid($order));
 
             return (new OrderResource($order)
             )->additional([
