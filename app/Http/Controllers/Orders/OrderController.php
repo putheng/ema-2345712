@@ -54,12 +54,30 @@ class OrderController extends Controller
 
         // event(new OrderCreated($order));
 
-        if($response = $this->sendPayment($order, $total)){
+        if($request->payment_method_id == 2){
+            $order->update(['status' => 'Processing']);
+
+            return (new OrderResource($order)
+            )->additional([
+                'payment_url' => $this->generate_url($order, $total)
+            ]);
+
+        }
+
+        if($request->payment_method_id == 1 && $response = $this->sendPayment($order, $total)){
+
             return (new OrderResource($order)
             )->additional([
                 'payment_url' => url('api/v1/content?url=') . $response->data->payment_url 
             ]);
         }
+    }
+
+    protected function generate_url($order, $total)
+    {
+        $date = \Carbon\Carbon::now();
+
+        return '/cart/checkout/success?message=Transaction successful.&code=SUCCESS&data={"fee_amount": 0, "total_amount": 2.05, "tran_amount": '.  $total .', "reference_id": "'. $order->uuid .'", "currency": "USD", "bank_reference_no": "00", "tran_id": "00", "tran_date": "'.$date.'"}';
     }
 
     protected function sendPayment($order, $total)

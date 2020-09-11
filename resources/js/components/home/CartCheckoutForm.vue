@@ -41,29 +41,43 @@
 				<h3 class="font-weight-normal text-center my-4 py-2">
 					<small>តម្លៃសរុប :</small> {{ totalPrice }}
 				</h3>
-				<!-- <div class="accordion box-shadow-sm mb-4" id="payment-methods">
+				
+				<div class="accordion box-shadow-sm mb-4" id="payment-methods">
+					
 					<div class="card">
 						<div class="card-header py-3 px-3">
 							<div class="custom-control custom-radio">
-								<input class="custom-control-input" type="radio" name="license" id="payment-card" checked>
-								<label class="custom-control-label font-weight-medium text-dark" for="payment-card" data-toggle="collapse" data-target="#credit-card">Credit card<i class="czi-card text-muted font-size-lg align-middle mt-n1 ml-2"></i></label>
+								<input v-model="form.payment_method_id" class="custom-control-input" value="1" type="radio" name="payment" id="payment-paypal">
+								<label class="custom-control-label font-weight-medium text-dark collapsed" for="payment-paypal" data-toggle="collapse" data-target="#paypal" aria-expanded="false">ទូទាត់ជាមួយធនាគា</label>
 							</div>
 						</div>
-						<div class="collapse show" id="credit-card" data-parent="#payment-methods">
-							<div class="card-body pb-2">
-								<input class="form-control mb-3" type="text" placeholder="Card number">
-								<div class="row">
-									<div class="col-6 mb-3">
-										<input class="form-control" type="text" placeholder="MM/YY">
-									</div>
-									<div class="col-6 mb-3">
-										<input class="form-control" type="text" placeholder="CVC">
-									</div>
-								</div>
+						<div class="collapse" id="paypal" data-parent="#payment-methods" style="">
+							<div class="card-body">
+								<img src="https://s3-ap-southeast-1.amazonaws.com/b24-upload/bank_logos/acleda_logo.jpg" width="70">
+
+								<img src="https://s3-ap-southeast-1.amazonaws.com/b24-upload/bank_app_logos/lyhour_app_logo.png" width="70">
+
+								<img src="https://s3-ap-southeast-1.amazonaws.com/b24-upload/bank_app_logos/pipay_app_logo.png" width="70">
+								<img src="https://s3-ap-southeast-1.amazonaws.com/b24-upload/bank_app_logos/wing_app_logo.png" width="70">
 							</div>
 						</div>
 					</div>
-				</div> -->
+					<div class="card">
+						<div class="card-header py-3 px-3">
+							<div class="custom-control custom-radio">
+								<input v-model="form.payment_method_id" class="custom-control-input" value="2" type="radio" name="payment" id="payment-cash">
+								<label class="custom-control-label font-weight-medium text-dark collapsed" for="payment-cash" data-toggle="collapse" data-target="#cash" aria-expanded="false">បង់ប្រាក់នៅពេលដឹកជញ្ជូន</label>
+							</div>
+						</div>
+						<div class="collapse" id="cash" data-parent="#payment-methods" style="">
+							<div class="card-body">
+								<p class="font-size-sm mb-0">ខ្ញុំនឹងបង់ជាសាច់ប្រាក់ទៅអ្នកដឹកជញ្ជូន។</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
 				<div class="pt-2">
 					<button 
 						class="btn btn-primary btn-block"
@@ -103,7 +117,7 @@ export default {
         	addresses: [],
         	form: {
 	          address_id: null,
-	          payment_method_id: 1,
+	          payment_method_id: 2,
 	        },
 		}
 	},
