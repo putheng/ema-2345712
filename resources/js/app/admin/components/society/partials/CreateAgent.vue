@@ -4,7 +4,7 @@
 		id="createAgentModal" data-backdrop="static" 
 		tabindex="-1" role="dialog"aria-hidden="true"
 	>
-		<div class="modal-dialog modal-dialog" role="document">
+		<div class="modal-dialog modal-dialog-centered" role="document">
 			<form @submit.prevent="submit">
 			<div class="modal-content" v-if="agent">
 				<div class="modal-header">
@@ -50,6 +50,14 @@
 						</div>
 
 						<div class="form-group">
+							<label for="phone" class="col-form-label">Gender</label>
+							<select v-model="form.gender" class="form-control">
+								<option value="Male">Male</option>
+								<option value="Female">Female</option>
+							</select>
+						</div>
+
+						<div class="form-group">
 							<label for="password" class="col-form-label">Password</label>
 							<input :class="{'is-invalid': validation['password']}"
 								@keyup="clearValidation('password')"
@@ -60,12 +68,23 @@
 						        </div>
 						</div>
 
+						<div class="form-group">
+							<label for="password" class="col-form-label">Password Confirmed</label>
+							<input :class="{'is-invalid': validation['password_confirmed']}"
+								@keyup="clearValidation('password_confirmed')"
+								v-model="form.password_confirmation" name="password_confirmed" id="password" type="password" class="form-control">
+								<div class="invalid-feedback" v-if="validation['password_confirmed']">
+						            <i class="fa fa-exclamation-circle fa-fw"></i>
+						            {{ validation['password_confirmed'][0] }}
+						        </div>
+						</div>
+
 						<div class="row">
 							<div class="col-md-7">
 								<div class="form-group">
 									<label for="placement" class="col-form-label">Placement Tree</label>
-									<input @keyup="filterPlacement" :class="{'is-invalid': validation['placement']}"
-										v-model="form.placement" name="placement" id="placeNamec" type="text" class="form-control">
+									<input @keyup="filter" :class="{'is-invalid': validation['placement']}"
+										v-model="agent.uuid" name="placement" id="placement" type="text" class="form-control">
 									<div class="invalid-feedback" v-if="validation['placement']">
 							            <i class="fa fa-exclamation-circle fa-fw"></i>
 							            {{ validation['placement'][0] }}
@@ -76,7 +95,7 @@
 							<div class="col-md-5">
 								<div class="form-group">
 									<label for="sponsor" class="col-form-label">Placement Name</label>
-									<input v-model="placeName" name="sponsor" id="placeName" type="texta" disabled="" class="form-control">
+									<input v-model="agent.name" name="sponsor" id="placeName" type="texta" disabled="" class="form-control">
 								</div>
 							</div>
 						</div>
@@ -85,9 +104,9 @@
 							<div class="col-md-7">
 								<div class="form-group">
 									<label for="sponsor" class="col-form-label">Sponsor ID</label>
-									<input :class="{'is-invalid': validation['sponsor']}" 
+									<input disabled :class="{'is-invalid': validation['sponsor']}" 
 										
-										@keyup="filter" v-model="agent.uuid" name="sponsor" id="sponsor" type="text" class="form-control">
+										v-model="user.uuid" name="sponsor" id="sponsor" type="text" class="form-control">
 										<div class="invalid-feedback" v-if="validation['sponsor']">
 								            <i class="fa fa-exclamation-circle fa-fw"></i>
 								            {{ validation['sponsor'][0] }}
@@ -97,7 +116,7 @@
 							<div class="col-md-5">
 								<div class="form-group">
 									<label for="sponsor" class="col-form-label">Sponsor Name</label>
-									<input v-model="sponsorName" name="sponsor" id="sponsorid" type="texta" disabled="" class="form-control">
+									<input v-model="user.name" name="sponsor" id="sponsorid" type="texta" disabled="" class="form-control">
 								</div>
 							</div>
 						</div>
@@ -133,18 +152,35 @@
 	import { mapGetters } from 'vuex'
 
 	export default {
-		props: ['agent'],
+		props: ['agent', 'user'],
 		data(){
 			return {
 				form: {
 					name: '',
 					email: '',
 					password: '',
+					password_confirmation: '',
 					phone: '',
+					gender: 'Male',
 					placement: ''
 				},
 				loading: false,
 				placeName: ''
+			}
+		},
+		watch: {
+			'form.placement' (value){
+				this.placeName = 'Loading...'
+				axios.get(`sociaty/filter?id=${this.agent.uuid}`).then((response) => {
+					
+					if(response.data.count > 0){
+						return this.placeName = response.data.data.name
+					}
+
+					return this.placeName = 'Not found'
+				}).catch(() => {
+					return this.placeName = 'Not found'
+				})
 			}
 		},
 		methods: {
@@ -161,30 +197,17 @@
 					return this.sponsorName = 'Not found'
 				})
 			},
-			filterPlacement(e){
-				let pid = e.target.value.toUpperCase()
-				this.placeName = 'Loading...'
-
-				axios.get(`sociaty/filter?id=${pid}`).then((response) => {
-					
-					if(response.data.count > 0){
-						return this.placeName = response.data.data.name
-					}
-
-					return this.sponsorName = 'Not found'
-				}).catch(() => {
-					return this.sponsorName = 'Not found'
-				})
-			},
 			submit(){
 				this.loading = true
 				axios.post(`sociaty/create`, {
 					name: this.form.name,
 					email: this.form.email,
-					phone: this.form.phone,
+					gender: this.form.gender,
 					password: this.form.password,
-					placement: this.form.placement,
-					sponsor: this.agent.uuid,
+					placement: this.agent.uuid,
+					phone: this.form.phone,
+					sponsor: this.user.uuid,
+					password_confirmation: this.form.password_confirmation
 
 				}).then((response) => {
 					this.$emit('completed', response)
