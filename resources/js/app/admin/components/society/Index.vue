@@ -100,7 +100,7 @@
 		</div>
 		</section>
 	</div>
-	<CreateAgent :agent="agent" @completed="completed"/>
+	<CreateAgent :user="user" :agent="agent" @completed="completed"/>
 </div>
 </template>
 
@@ -116,7 +116,8 @@
 				breadcrumb: [],
 				isCreating: false,
 				agent: [],
-				q: ''
+				q: '',
+				user: []
 			}
 		},
 		components: {
@@ -124,7 +125,8 @@
 		},
 		methods: {
 			...mapActions({
-				fetchNetworks: 'society/fetchNetworks'
+				fetchNetworks: 'society/fetchNetworks',
+				fetchUser: 'fetchUser'
 			}),
 			async fetch(){
 				let r = await axios.get(`sociaty/show`)
@@ -182,8 +184,12 @@
 					user_id: r.data.data.user_id,
 				})
 			})
+		},
 
-			
+		mounted(){
+			this.fetchUser().then((r) => {
+				this.user = r.data.data
+			})
 		}
 	}
 </script>
