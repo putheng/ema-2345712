@@ -7,6 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 
 use GuzzleHttp\Client;
+use App\Models\User;
 
 class SendStoreNoti
 {
@@ -30,40 +31,44 @@ class SendStoreNoti
     {
         $order = $event->order;
 
-        $client = new Client();
-
         try {
 
-            if($order->user->gateway_customer_id != NULL){
-
-                
-                $request = $client->post('https://fcm.googleapis.com/fcm/send', [
-                    'json' => [
-                        "to" => $order->user->gateway_customer_id,
-                        "notification" => [
-                            "title" => "មានការទិញទំនិញពីហាងរបស់អ្នក",
-                            "sound" => "default"
-                        ],
-                        "data" => [
-                            "title" => "E-Market Asia",
-                            "click_action" => "FLUTTER_NOTIFICATION_CLICK",
-                            
-                        ]
-                    ],
-                    'headers' => [
-                        'Content-Type' => 'application/json',
-                        'Authorization' => 'key=AAAAGBWBz_E:APA91bHAGOxY7ydHCAwCCIMbdrHmnPDzSjo2tPH2QUJhz9GAzJvgW7mLQS4AtBbWiXrRPkOPGuWA1cfIPytu5TG34fGeB9bfjjVPr8W71d7eMWxuYYu96bpciZxjJ0PdkuUGT9WZf58e'
-                    ]
-                ]);
-              
-                // if($request->getStatusCode() == 200){
-                //     return json_decode($request->getBody()->getContents());
-                // }
-
-            }
+            $order->products->each(function($item){
+                $this->send_noti($item->pivot->owner_id);
+            });
 
         }catch(Exception $e){
             return false;
         }
+    }
+
+    protected function send_noti($id)
+    {
+        $user = User::find($id);
+
+        if($user && $user->gateway_customer_id != NULL){
+
+            (new Client())->post('https://fcm.googleapis.com/fcm/send', [
+                'json' => [
+                    "to" => $user->gateway_customer_id,
+                    "notification" => [
+                        "title" => "មានការទិញទំនិញពីហាងរបស់អ្នក",
+                        "sound" => "default"
+                    ],
+                    "data" => [
+                        "title" => "E-Market Asia",
+                        "click_action" => "FLUTTER_NOTIFICATION_CLICK",
+                        
+                    ]
+                ],
+                'headers' => [
+                    'Content-Type' => 'application/json',
+                    'Authorization' => 'key=AAAAGBWBz_E:APA91bHAGOxY7ydHCAwCCIMbdrHmnPDzSjo2tPH2QUJhz9GAzJvgW7mLQS4AtBbWiXrRPkOPGuWA1cfIPytu5TG34fGeB9bfjjVPr8W71d7eMWxuYYu96bpciZxjJ0PdkuUGT9WZf58e'
+                ]
+            ]);
+
+        }
+
+        
     }
 }
