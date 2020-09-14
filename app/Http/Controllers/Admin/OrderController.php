@@ -6,6 +6,7 @@ use App\Http\Resources\OrderResource;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Order;
+use App\Models\User;
 
 class OrderController extends Controller
 {
@@ -91,6 +92,25 @@ class OrderController extends Controller
             ->latest()
             ->paginate(50);
 
+        $this->update_variation_order($order, $request->status);
+
         return OrderResource::collection($orders);
+    }
+
+    protected function update_variation_order($order, $status)
+    {
+        $statuses = ['Refund', 'Cancellation'];
+
+        $order->products->each(function($item) use ($status, $statuses){
+            $item->pivot->status = $status;
+            $item->pivot->save();
+
+
+            if(in_array($status, $statuses)){
+                User::find($item->pivot->owner_id)
+                ->decrement('earning', $item->pivot->price);
+            }
+
+        });
     }
 }
