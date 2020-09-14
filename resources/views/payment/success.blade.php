@@ -30,7 +30,7 @@
 				<p class="d-flex mb-0 justify-content-between">
 					<span>ចំនួនទឹកប្រាក់</span>
 					<span>{{ $data->currency }} 
-						<strong>{{ number_format($data->total_amount, 2) }}</strong>
+						<strong>{{ number_format($order->total()->amount(), 2) }}</strong>
 					</span>
 				</p>
 				<p class="d-flex mt-0 justify-content-between">
