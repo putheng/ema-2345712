@@ -52,7 +52,7 @@ class SendStoreNoti
                 'json' => [
                     "to" => $user->gateway_customer_id,
                     "notification" => [
-                        "title" => "មានការទិញទំនិញពីហាងរបស់អ្នក",
+                        "title" => "មានការបញ្ជាទិញទំនិញពីហាងរបស់អ្នក",
                         "sound" => "default"
                     ],
                     "data" => [
