@@ -7,9 +7,11 @@
     data() {
       return {
         data: [
-          '<div class="example-slide"><img src="/app/b1.jpg"/></div>',
-          '<div class="example-slide"><img src="/app/b2.jpg"/></div>',
-          '<div class="example-slide"><img src="/app/b3.jpg"/></div>',
+          '<div class="example-slide"><img src="/images/banners/s1-min.jpg"/></div>',
+          '<div class="example-slide"><img src="/images/banners/s2-min.jpg"/></div>',
+          '<div class="example-slide"><img src="/images/banners/s3-min.jpg"/></div>',
+          '<div class="example-slide"><img src="/images/banners/s4-min.jpg"/></div>',
+          '<div class="example-slide"><img src="/images/banners/s5-min.jpg"/></div>',
         ],
       };
     },
