@@ -174,7 +174,7 @@ export default {
 
 					this.payment_url = r.data.payment_url
 					
-					window.location.href = r.data.payment_url
+					window.location = r.data.payment_url
 				})
 
 	        } catch (e) {
