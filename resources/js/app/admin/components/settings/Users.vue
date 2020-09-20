@@ -35,6 +35,7 @@
 										</tbody>
 									</table>
 								</div>
+								<pagination :data="laravelData" @pagination-change-page="fetch"></pagination>
 							</div>
 						</div>
 					</div>
@@ -55,12 +56,15 @@
 			return {
 				users: [],
 				isShow: false,
-				user: null
+				user: null,
+				laravelData: {}
 			}
 		},
 		methods: {
-			async fetch(){
-				let r = await axios.get('admin/users')
+			async fetch(page = 1){
+				let r = await axios.get(`admin/users?page=${page}`)
+
+				this.laravelData = r.data
 
 				this.users = r.data.data
 			},

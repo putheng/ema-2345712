@@ -12,7 +12,7 @@ class UserController extends Controller
     public function index()
     {
     	return UserResource::collection(
-    		User::isCustomer()->paginate(30)
+    		User::paginate(30)
     	);
     }
 
