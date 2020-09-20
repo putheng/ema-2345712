@@ -46,7 +46,7 @@ class SendStoreNoti
     {
         $user = User::find($id);
 
-        if($user && $user->gateway_customer_id != NULL){
+        if($user && !empty($user->gateway_customer_id)){
 
             (new Client())->post('https://fcm.googleapis.com/fcm/send', [
                 'json' => [
