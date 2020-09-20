@@ -8,6 +8,9 @@ use Illuminate\Queue\InteractsWithQueue;
 
 use GuzzleHttp\Client;
 
+
+use App\Models\User;
+
 class SendAdminNoti
 {
     /**
