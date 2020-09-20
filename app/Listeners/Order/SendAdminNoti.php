@@ -45,7 +45,7 @@ class SendAdminNoti
 
             $request = $client->post('https://fcm.googleapis.com/fcm/send', [
                     'json' => [
-                        "to" => $$notification,
+                        "to" => $notification,
                         "notification" => [
                             "title" => "មានការទិញទំនិញពីហាងរបស់អ្នក",
                             "sound" => "default"
