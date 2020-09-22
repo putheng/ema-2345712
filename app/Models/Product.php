@@ -6,8 +6,11 @@ use App\Models\{
     Category,
     Wishlist,
     Image,
-    User
+    User,
+    Discount,
 };
+
+use App\Models\Product\BestSell;
 
 use App\Models\ProductVariation;
 use App\Models\Traits\CanBeScoped;
@@ -177,5 +180,15 @@ class Product extends Model
     public function variations()
     {
         return $this->hasMany(ProductVariation::class)->orderBy('order', 'asc');
+    }
+
+    public function discounted()
+    {
+        return $this->hasOne(Discount::class);
+    }
+
+    public function bestsell()
+    {
+        return $this->hasOne(BestSell::class);
     }
 }

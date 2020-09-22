@@ -36,23 +36,37 @@
 													<span>{{ product.formattedTaxPrice }}</span>
 												</h6>
 											</td>
+											<td>
+												<div class="form-group">
+													<input :checked="product.discounted" @change="addDiscounted(product)" :id="'discounted'+ product.slug" type="checkbox">
+													<label :for="'discounted'+ product.slug">Discounted</label>
+												</div>
+											</td>
+											<td>
+												<div class="form-group">
+													<input :checked="product.bestsell" @change="addBest(product)" :id="'best'+ product.slug" type="checkbox">
+													<label :for="'best'+ product.slug">Bestsell</label>
+												</div>
+											</td>
 											<td class="text-center">
-												<router-link 
-													:to="{name: 'admin-products-edit', params:{slug: product.slug}}" 
-													class="btn btn-sm btn-outline-info">Edit
-												</router-link>
-												<a href="#" @click.prevent="deletePro(product.slug)"
-													class="btn btn-sm btn-outline-info">
-													Delete
-												</a>
-												<a href="#" @click.prevent="addStock(product)" 
-													class="btn btn-sm btn-outline-info">
-													Add Stock
-												</a>
-												<a href="#" @click.prevent="updateOwner(product)"
-													class="btn btn-sm btn-outline-info">
-													Change Owner
-												</a>
+												<div>
+													<router-link 
+														:to="{name: 'admin-products-edit', params:{slug: product.slug}}" 
+														class="btn btn-sm btn-outline-info">Edit
+													</router-link>
+													<a href="#" @click.prevent="deletePro(product.slug)"
+														class="btn btn-sm btn-outline-info">
+														Delete
+													</a>
+													<a href="#" @click.prevent="addStock(product)" 
+														class="btn btn-sm btn-outline-info">
+														Add Stock
+													</a>
+													<a href="#" @click.prevent="updateOwner(product)"
+														class="btn btn-sm btn-outline-info">
+														Change Owner
+													</a>
+												</div>
 											</td>
 										</tr>
 									</tbody>
@@ -68,6 +82,7 @@
 	</div>
 	<ChangeOwner v-if="isUpdating" :product="product" @updated="updated"/>
 	<AddStock v-if="isAddStock" :product="product" @updated="updated"/>
+	<Discounted v-if="discounted" :product="product" @updated="updated"/>
 </div>
 </template>
 
@@ -75,6 +90,7 @@
 	import { mapGetters, mapActions } from 'vuex'
 	import ChangeOwner from './partials/ChangeOwner'
 	import AddStock from './partials/AddStock'
+	import Discounted from './partials/Discounted'
 
 	export default {
 		data(){
@@ -82,6 +98,7 @@
 				products: [],
 				isUpdating: false,
 				isAddStock: false,
+				discounted: false,
 				product: null,
 				laravelData: {}
 			}
@@ -102,6 +119,14 @@
 				}
 			},
 
+			async addDiscounted(product){
+				axios.post(`admin/discounted/${product.slug}`)
+			},
+
+			async addBest(product){
+				axios.post(`admin/bestsell/${product.slug}`)
+			},
+
 			updated(e){
 				if(e.data.success){
 					$('#UpateOwner').modal('show')
@@ -115,6 +140,13 @@
 				$('#UpateOwner').modal('show')
 			},
 
+			addProTo(product){
+				this.product = product
+				this.discounted = true
+
+				$('#Discounted').modal('show')
+			},
+
 			addStock(product){
 				this.product = product
 				this.isAddStock = true
@@ -125,6 +157,7 @@
 		},
 		components: {
 			ChangeOwner,
+			Discounted,
 			AddStock
 		},
 		mounted(){

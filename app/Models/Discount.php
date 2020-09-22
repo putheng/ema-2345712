@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Models\Product;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class BestSell extends Model
+class Discount extends Model
 {
     protected $fillable = [
     	'enable'

@@ -13,7 +13,7 @@ class ProductsController extends Controller
     {
     	return ProductIndexResource::collection(
             Product::isNotBlock()
-            	->with('image', 'category', 'variations')
+            	->with('image', 'category', 'variations', 'discounted')
             	->orderBy('id', 'desc')
             	->paginate(30)
         );

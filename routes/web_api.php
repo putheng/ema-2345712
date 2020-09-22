@@ -101,7 +101,11 @@ Route::group(['middleware' => 'auth'], function(){
 
 	Route::group(['prefix' => 'admin', 'middleware' => 'role:admin'], function(){
 
+		Route::post('discounted/{product}', 'Admin\DiscountedController@store');
+		Route::post('bestsell/{product}', 'Admin\DiscountedController@bestsell');
+
 		Route::get('drivers', 'Admin\DriverController@index');
+
 		Route::post('drivers', 'Admin\DriverController@store');
 
 		Route::resource('summary', 'Admin\SummaryController');

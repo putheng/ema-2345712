@@ -12,7 +12,9 @@ use App\ViewComposers\{
     DiscountProduct,
     BestSale,
     AppHomeCategory,
-    AppHomeCategoryNext
+    AppHomeCategoryNext,
+    AppDiscountProduct,
+    AppBestSell
 };
 
 class ViewComposerServicesProvider extends ServiceProvider
@@ -69,7 +71,7 @@ class ViewComposerServicesProvider extends ServiceProvider
         );
 
         View::composer(
-            ['product.partials.best', 'app.partials.best-sale', 'app.partials.maylike'], 
+            ['product.partials.best', 'app.partials.maylike'], 
             BestSale::class
         );
 
@@ -78,6 +80,19 @@ class ViewComposerServicesProvider extends ServiceProvider
                 'app.partials.discounted',
             ],
             DiscountProduct::class
+        );
+
+        // App
+        View::composer([
+                'app.partials.discounted',
+            ],
+            AppDiscountProduct::class
+        );
+
+        View::composer([
+                'app.partials.best-sale',
+            ],
+            AppBestSell::class
         );
 
         View::composer(

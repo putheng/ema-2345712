@@ -38,7 +38,8 @@ class Image extends Model
 
     public function product()
     {
-        return secure_asset('uploads/products'. $this->url);
+        // return secure_asset('http://emarketasia.com/uploads/products'. $this->url);
+        return 'http://emarketasia.com/uploads/products'. $this->url;
     }
 
     public function user()

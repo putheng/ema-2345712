@@ -53,4 +53,5 @@ Add order address validation
 -- view all go to store
 -- add expire date to QR code
 -- increse show product pagination
+-- VAT on income ( price 10 => sale price 15 = VAT 5 * 10%)
 
