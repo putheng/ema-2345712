@@ -61,7 +61,9 @@
 					</div>	
 
 					@if(auth()->check())
-						<product-variations slug="{!! $product->slug !!}"/>
+						@if($product->inStock())
+							<product-variations slug="{!! $product->slug !!}"/>
+						@endif
 					@else
 						<a href="#signin-modal" data-toggle="modal" class="btn btn-link">
 							Login

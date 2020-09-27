@@ -132,7 +132,7 @@ class Product extends Model
 
     public function inStock()
     {
-        return $this->stockCount() > 0;
+        return (boolean) $this->stock ? $this->stockCount() > 0 : (boolean) $this->stock;
     }
 
     public function stockCount()

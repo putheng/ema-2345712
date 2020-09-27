@@ -26,47 +26,66 @@
 												</template>
 												
 											</td>
-											<td>
-												<h5>
-													<a :href="'/product/'+ product.slug +'/show'" target="_blank">{{ product.name }}</a>
-												</h5>
+											<td class="min-width">
+												<a :href="'/product/'+ product.slug +'/show'" target="_blank">{{ product.name }}</a>
 												<h6 class="text-info">
 													<span>{{ product.formattedPrice }}</span> |
 													<span>{{ product.formattedSalePrice }}</span> |
 													<span>{{ product.formattedTaxPrice }}</span>
 												</h6>
+												<div>
+													<ul class="variation-list">
+														<li v-for="(variation, key) in product.variations">
+															<span class="text-xs" >
+																{{variation.type}} : {{ variation.name }} 
+																<span class="badge badge-warning">{{variation.stock_count}}</span>
+															</span>
+														</li>
+													</ul>
+												</div>
 											</td>
-											<td>
+											<td class="min-stock">
+												<div class="form-group">
+													<input :checked="product.in_stock" @change="addStockStatus(product)" :id="'discounted'+ product.slug" type="checkbox">
+													<label :for="'discounted'+ product.slug">In Stock</label>
+												</div>
+											</td>
+											<td class="min-discount">
 												<div class="form-group">
 													<input :checked="product.discounted" @change="addDiscounted(product)" :id="'discounted'+ product.slug" type="checkbox">
 													<label :for="'discounted'+ product.slug">Discounted</label>
 												</div>
 											</td>
-											<td>
+											<td class="min-best">
 												<div class="form-group">
 													<input :checked="product.bestsell" @change="addBest(product)" :id="'best'+ product.slug" type="checkbox">
 													<label :for="'best'+ product.slug">Bestsell</label>
 												</div>
 											</td>
 											<td class="text-center">
-												<div>
-													<router-link 
-														:to="{name: 'admin-products-edit', params:{slug: product.slug}}" 
-														class="btn btn-sm btn-outline-info">Edit
-													</router-link>
-													<a href="#" @click.prevent="deletePro(product.slug)"
-														class="btn btn-sm btn-outline-info">
-														Delete
-													</a>
-													<a href="#" @click.prevent="addStock(product)" 
-														class="btn btn-sm btn-outline-info">
-														Add Stock
-													</a>
-													<a href="#" @click.prevent="updateOwner(product)"
-														class="btn btn-sm btn-outline-info">
-														Change Owner
-													</a>
-												</div>
+												<router-link 
+													:to="{name: 'admin-products-edit', params:{slug: product.slug}}" 
+													class="btn btn-sm btn-outline-info">Edit
+												</router-link>
+											</td>
+											<td>
+												<a href="#" @click.prevent="deletePro(product.slug)"
+													class="btn btn-sm btn-outline-info">
+													Delete
+												</a>
+											</td>
+											<td>
+												<a href="#" @click.prevent="addStock(product)" 
+													class="btn btn-sm btn-outline-info">
+													Stock
+												</a>
+											</td>
+											<td>
+												<a href="#" @click.prevent="updateOwner(product)"
+													class="btn btn-sm btn-outline-info">
+													Owner
+												</a>
+											</td>
 											</td>
 										</tr>
 									</tbody>
@@ -119,6 +138,10 @@
 				}
 			},
 
+			async addStockStatus(product){
+				let r = await axios.put(`admin/products/${product.slug}`)
+			},
+
 			async addDiscounted(product){
 				axios.post(`admin/discounted/${product.slug}`)
 			},
@@ -165,3 +188,23 @@
 		}
 	}
 </script>
+
+
+<style scoped>
+	.min-width{min-width: 230px !important;}
+	.min-stock{min-width: 100px;}
+	.min-discount{min-width: 130px;}
+	.min-best{min-width: 110px;}
+	ul.variation-list {
+    margin-left: 0;
+    padding: 0;}
+
+	h6{
+    	font-size: 13px !important;
+    	margin-bottom: 0 !important;
+	}
+
+	span.text-xs {
+    	font-size: 12px;
+	}
+</style>

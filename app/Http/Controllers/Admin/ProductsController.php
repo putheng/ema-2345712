@@ -19,6 +19,21 @@ class ProductsController extends Controller
         );
     }
 
+    public function update(Request $request, Product $product)
+    {
+        $stock = $product->stock;
+
+        if( (boolean) $stock){
+            $product->stock = false;
+            $product->save();
+        }else{
+            $product->stock = true;
+            $product->save();
+        }
+
+        $product->refresh();
+    }
+
     public function destroy(Request $request, Product $product)
     {
         $product->delete();
