@@ -104,6 +104,7 @@ export const storeCart = ({ dispatch, commit }, products) => {
     	return Promise.resolve(response)
     })
     .catch((error) => {
+    	alert(error.response.data.errors.message)
     	return Promise.reject(error)
     })
 }

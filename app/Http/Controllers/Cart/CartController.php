@@ -41,8 +41,46 @@ class CartController extends Controller
         ];
     }
 
+    protected function getStore()
+    {
+        $id =  request('products')[0]['id'];
+
+        $variation = ProductVariation::find($id);
+        $user = $variation->product->user;
+
+        if($user->type == 'store'){
+            return $user->store->id;
+        }
+
+        return 0;
+    }
+
+    protected function checkStore($products)
+    {
+        $storeid = $this->getStore();
+
+        return auth()->user()->cart->map(function($cart) use ($storeid){
+            if($cart->product->user && $cart->product->user->type == 'store'){
+                if($storeid != $cart->product->user->store->id){
+                    return false;
+                }
+            }
+            
+            return true;
+        })->contains(false);
+
+    }
+
     public function store(CartStoreRequest $request, Cart $cart)
     {
+        if($this->checkStore($request->products)){
+            return response()->json([
+                'errors' => [
+                    'message' => 'សូមអធ្យាស្រ័យ លោកអ្នកមិនអាចបញ្ជាទិញពីហាងផ្សេងគ្នាក្នុងពេលតែមួយបានទេ.'
+                ] 
+            ], 422);
+        }
+
         $cart->add($request->products);
 
         $cart->sync();

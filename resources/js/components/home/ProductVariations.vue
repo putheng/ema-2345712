@@ -63,12 +63,13 @@
 					})
 					.catch((error) => {})
 			},
-			async add () {
+			add () {
 				this.loading = true
-		        
-		        await this.store([{
-		          id: this.form.variation.id, quantity: this.form.quantity
-		        }]).then((re) => {
+
+				this.store([{
+		        	id: this.form.variation.id, quantity: this.form.quantity
+		        }])
+				.then((re) => {
 		        	this.loading = false
 		        	this.form = {
 			          variation: '',
@@ -77,7 +78,7 @@
 		        })
 
 
-		        // this.getCart()
+		        this.getCart()
 		    }
 		},
 		mounted(){
