@@ -26,15 +26,13 @@ class OrderResource extends JsonResource
             'total' => '$'. number_format($this->pivot->price),
             // 'address' => $this->address,
             'subtotal' => '$'. number_format($this->pivot->price),
-            'address' => new AddressResource(
-                $this->whenLoaded('address')
-            ),
             'bank' => $this->banks,
             'dashboard' => auth()->user()->dashboard(),
             
             'products' => ProductVariationOrderResource::collection(
                 $this->whenLoaded('products')
             ),
+            'address' => new AddressResource($this->address),
             'shippingMethod' => new ShippingMethodResource($this->shippingMethod)
         ];
     }
