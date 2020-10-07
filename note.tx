@@ -55,3 +55,6 @@ Add order address validation
 -- increse show product pagination
 -- VAT on income ( price 10 => sale price 15 = VAT 5 * 10%)
 
+
+- unblock sponser from create placement tree
+

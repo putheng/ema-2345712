@@ -69,10 +69,10 @@
 						</div>
 
 						<div class="form-group">
-							<label for="password" class="col-form-label">Password Confirmed</label>
+							<label for="password_confirmed" class="col-form-label">Password Confirmed</label>
 							<input :class="{'is-invalid': validation['password_confirmed']}"
 								@keyup="clearValidation('password_confirmed')"
-								v-model="form.password_confirmation" name="password_confirmed" id="password" type="password" class="form-control">
+								v-model="form.password_confirmation" name="password_confirmed" id="password_confirmed" type="password" class="form-control">
 								<div class="invalid-feedback" v-if="validation['password_confirmed']">
 						            <i class="fa fa-exclamation-circle fa-fw"></i>
 						            {{ validation['password_confirmed'][0] }}
@@ -104,7 +104,7 @@
 							<div class="col-md-7">
 								<div class="form-group">
 									<label for="sponsor" class="col-form-label">Sponsor ID</label>
-									<input disabled :class="{'is-invalid': validation['sponsor']}" 
+									<input :class="{'is-invalid': validation['sponsor']}" 
 										
 										v-model="user.uuid" name="sponsor" id="sponsor" type="text" class="form-control">
 										<div class="invalid-feedback" v-if="validation['sponsor']">
@@ -116,7 +116,7 @@
 							<div class="col-md-5">
 								<div class="form-group">
 									<label for="sponsor" class="col-form-label">Sponsor Name</label>
-									<input v-model="user.name" name="sponsor" id="sponsorid" type="texta" disabled="" class="form-control">
+									<input v-model="sponsorName" name="sponsor" id="sponsorid" type="texta" disabled="" class="form-control">
 								</div>
 							</div>
 						</div>
@@ -162,10 +162,12 @@
 					password_confirmation: '',
 					phone: '',
 					gender: 'Male',
-					placement: ''
+					placement: '',
+					sponsorID: ''
 				},
 				loading: false,
-				placeName: ''
+				placeName: '',
+				sponsorName: '',
 			}
 		},
 		watch: {
@@ -180,6 +182,20 @@
 					return this.placeName = 'Not found'
 				}).catch(() => {
 					return this.placeName = 'Not found'
+				})
+			},
+
+			'user.uuid' (value){
+				this.sponsorName = 'Loading...'
+				axios.get(`sociaty/filter?id=${value}`).then((response) => {
+					
+					if(response.data.count > 0){
+						return this.sponsorName = response.data.data.name
+					}
+
+					return this.sponsorName = 'Not found'
+				}).catch(() => {
+					return this.sponsorName = 'Not found'
 				})
 			}
 		},
@@ -221,28 +237,14 @@
 			},
 		},
 
+		mounted(){
+			this.sponsorName = this.user.name
+		},
+
 		computed: {
 			...mapGetters({
 				validation: 'getValidationErrors',
-			}),
-
-			sponsorID: {
-				set(value){
-					return value
-				},
-				get(){
-					return this.agent.uuid
-				}
-			},
-
-			sponsorName:{
-				set(value){
-					return this.agent.name = value
-				},
-				get(){
-					return this.agent.name
-				}
-			}
+			})
 		}
 	}
 </script>
