@@ -115,7 +115,7 @@
 			},
 
 			async addStockStatus(product){
-				let r = await axios.put(`products/${product.slug}`)
+				let r = await axios.put(`products/products/${product.slug}`)
 			},
 			
 			addStock(product){
