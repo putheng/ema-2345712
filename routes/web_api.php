@@ -86,6 +86,8 @@ Route::group(['middleware' => 'auth'], function(){
 
 	Route::group(['prefix' => 'products', 'middleware' => 'role:store|admin|supplier'], function(){
 		Route::resource('product', 'Admin\ProductController');
+		Route::resource('products', 'Admin\ProductsController');
+		
 		Route::resource('sale', 'Product\SaleController');
 
 		Route::post('product/{product}/edit', 'Admin\ProductEditController@store');
