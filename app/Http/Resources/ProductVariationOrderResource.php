@@ -26,7 +26,7 @@ class ProductVariationOrderResource extends JsonResource
             'price_varies' => $this->priceVaries(),
             'stock_count' => (int) $this->stockCount(),
             'type' => $this->type->name,
-            'qty' => $this->orders->where('status', 'Processing')->sum('pivot.quantity'),
+            'qty' => $this->orders->where('status', $this->pivot->status)->sum('pivot.quantity'),
             'in_stock' => $this->inStock(),
             'product' => new ProductIndexResource($this->product),
         ];
