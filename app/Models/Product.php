@@ -58,20 +58,15 @@ class Product extends Model
         });
 
         static::updating(function($model){
-
-            if(request()->price != 'null' && request()->sale_price != 'null'){
-                $price = self::exchangeCurrency(request()->price);
-                $sale_price = self::exchangeCurrency(request()->sale_price);
-
-                $model->price = $price;
-                $model->sale_price = $sale_price;
-
-                $model->commission = ($sale_price - $price);
-
-                $model->tax_price = 
-                    self::calculateTax(self::exchangeCurrency(request()->sale_price));
-            }
             
+            $price = self::exchangeCurrency(request()->price);
+            $sale_price = self::exchangeCurrency(request()->sale_price);
+            
+            $model->price = $price;
+            $model->sale_price = $sale_price;
+            $model->commission = ($sale_price - $price);
+            
+            $model->tax_price = self::calculateTax(self::exchangeCurrency(request()->sale_price));
 
             if(request()->market_price != 'null'){
                 $market_price = self::exchangeCurrency(request()->market_price);
