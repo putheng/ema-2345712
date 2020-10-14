@@ -10,7 +10,12 @@ class TrackableController extends Controller
 {
     public function index(Request $request)
     {
-    	$tracks = $request->user()->tracks;
+    	$symbols = ['+ Cash back', '-'];
+
+    	$tracks = $request->user()
+    		->tracks()
+    		->whereIn('symbol', $symbols)
+    		->get();
 
     	return TrackResources::collection($tracks);
     }
