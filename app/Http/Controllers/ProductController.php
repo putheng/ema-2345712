@@ -29,12 +29,15 @@ class ProductController extends Controller
 
     public function show(Request $request, Product $product)
     {
-    	$products = $product->category->products()->with('image', 'category')->paginate(10);
-
         $store = '';
 
         if($product->user->type == 'store' || $product->user->type == 'admin'){
             $store = $product->user->store;
+
+            $products = $store->user->products()->with('image', 'category')->paginate(10);
+
+        }else{
+            $products = $product->category->products()->with('image', 'category')->paginate(10);
         }
 
     	return view('home.product', compact('product', 'products', 'store'));

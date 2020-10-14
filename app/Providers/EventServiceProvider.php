@@ -33,7 +33,7 @@ class EventServiceProvider extends ServiceProvider
             'App\Listeners\Order\MarkOrderProcessing',
             'App\Listeners\Order\CalculateComission',
             'App\Listeners\Order\EmptyCart',
-            // 'App\Listeners\Order\SendStoreNoti',
+            'App\Listeners\Order\SendStoreNoti',
             'App\Listeners\Order\SendAdminNoti',
         ],
 
@@ -42,7 +42,7 @@ class EventServiceProvider extends ServiceProvider
             'App\Listeners\Order\MarkOrderProcessing',
             'App\Listeners\Order\MakePaymentToOwner',
             'App\Listeners\Order\EmptyCart',
-            // 'App\Listeners\Order\SendStoreNoti',
+            'App\Listeners\Order\SendStoreNoti',
             'App\Listeners\Order\SendAdminNoti',
             'App\Listeners\Order\CalculateComission',
             'App\Listeners\Order\CheckAndActivate',
