@@ -28,7 +28,7 @@ class CalculateComission
      * @param  OrderPaid  $event
      * @return void
      */
-    public function handle(OrderPaid $event)
+    public function handle($event)
     {
         $order = $event->order;
 

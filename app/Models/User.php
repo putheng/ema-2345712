@@ -55,9 +55,9 @@ class User extends Authenticatable implements JWTSubject
 
     public function incrementIncome($column, $amount)
     {
-        if($this->agent->status != 'pending'){
+        // if($this->agent->status != 'pending'){
             $this->increment($column, $amount);
-        }
+        // }
     }
 
     public function scopeIsStore($q)

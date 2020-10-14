@@ -19,7 +19,9 @@ class AccountSummary extends JsonResource
         return [
             'purchase' => $this->getPurchase(),
             'earning' => get_currency()->current() . ' '. number_format((float) auth()->user()->earning, 2),
-            'transactions' => TrackResources::collection($this->tracks()->latest()->take(10)->get()),
+            'transactions' => TrackResources::collection(
+                $this->tracks()->where('symbol', '-')->latest()->take(10)->get()
+            ),
             'orders' => OrderResource::collection($this->getOrders())
         ];
     }
