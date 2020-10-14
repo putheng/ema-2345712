@@ -1,7 +1,7 @@
 <h2 class="h3 pb-2 mb-grid-gutter text-center">You may also like</h2>
 
 <div class="row p-2">
-	@foreach($products as $product)
+	@foreach($productss as $product)
 		<div class="col-6 mb-3">
 			<div class="card product-card card-static pb-3 text-center">
 				<a class="card-img-top d-block overflow-hidden" href="{{ route('app.show', $product) }}">

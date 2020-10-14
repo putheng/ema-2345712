@@ -78,7 +78,7 @@
 		</section>
 		<!-- Related products-->
 		<section class="pb-5 mb-2 mb-xl-4">
-			@include('app.partials.maylike')
+			@include('app.partials.maylike', ['productss' => $products])
 		</section>
 	</div>
 </section>

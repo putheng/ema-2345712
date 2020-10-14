@@ -135,7 +135,8 @@
 		</div>
 	</div>
 </div>
-</footer>@section('script')
+</footer>
+@section('script')
 <script type="text/javascript">
 $(document).ready(function(){
 	$('#languagex').on('change', function(){

@@ -16,8 +16,8 @@ class AppProductController extends Controller
             $store = $product->user->store;
 
             $products = $store->user->products()->with('image', 'category')->paginate(10);
-
         }else{
+            
             $products = $product->category->products()->with('image', 'category')->paginate(10);
         }
 
