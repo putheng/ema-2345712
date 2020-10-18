@@ -46,7 +46,7 @@ class AdminSummaryResource extends JsonResource
         $status = ['Finished', 'Processing', 'Completed'];
 
         return [
-            'count' => Sale::whereIn('status', $status)->get()count(),
+            'count' => Sale::whereIn('status', $status)->get()->count(),
             'sales' => SaleResource::collection($sales)
         ];
     }
