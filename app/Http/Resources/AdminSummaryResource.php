@@ -13,6 +13,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 use App\Models\{
     Product,
     Society,
+    Order,
     Supplier,
     Store,
     Transfer,
@@ -46,7 +47,7 @@ class AdminSummaryResource extends JsonResource
         $status = ['Finished', 'Processing', 'Completed'];
 
         return [
-            'count' => Sale::whereIn('status', $status)->get()->count(),
+            'count' => Order::whereIn('status', $status)->get()->count(),
             'sales' => SaleResource::collection($sales)
         ];
     }
