@@ -59,7 +59,7 @@ class Order extends Model
 
     public function scopeNotPending($query)
     {
-        $status = ['Processing', 'Completed', 'On the way', 'Shipping'];
+        $status = ['Processing', 'Completed', 'On the way', 'Shipping', 'Finished'];
 
         return $query->whereIn('status', $status);
     }

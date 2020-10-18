@@ -29,11 +29,12 @@ class AccountSummary extends JsonResource
     protected function getPurchase()
     {
         $orders = $this->orders()->notPending()->get();
+        $status = ['Processing', 'Completed', 'On the way', 'Shipping', 'Finished'];
 
         return [
             'counts' => $orders->count(),
             'expenses' => get_currency()->current() .' '. number_format(
-                $this->order()->where('status', '!=', 'Pending')->get()->sum('total'), 2),
+                $this->order()->whereIn('status', $status)->get()->sum('total'), 2),
         ];
     }
 
