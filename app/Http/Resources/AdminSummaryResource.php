@@ -43,8 +43,10 @@ class AdminSummaryResource extends JsonResource
     {
         $sales = Sale::orderBy('id', 'desc')->take(10)->get();
 
+        $status = ['Finished', 'Processing', 'Completed'];
+
         return [
-            'count' => Sale::count(),
+            'count' => Sale::whereIn('status', $status)->get()count(),
             'sales' => SaleResource::collection($sales)
         ];
     }
