@@ -50,7 +50,7 @@
 
 			<app-input label="Phone number" name="phone" placeholder="Please enter your phone number" />
 
-			<app-input label="Email address" name="email" placeholder="Please enter your email" />
+			<app-input label="<!-- Email address -->" name="email" placeholder="Please enter your email" />
 			
 			<app-select :options="genders" label="Gender" name="gender"/>
 
